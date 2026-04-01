@@ -30,7 +30,7 @@ export default function Header() {
           {links.map(l => (
             <Link key={l.href} href={l.href} className="text-sm text-gray-600 hover:text-[#1a2e4a] transition-colors">{l.label}</Link>
           ))}
-          <Link href="/quote" className="text-sm font-semibold text-white px-4 py-2 rounded transition-opacity hover:opacity-90" style={{background:"#1a2e4a"}}>Get a Quote</Link>
+          <Link href="/tax-intake" className="text-sm font-semibold text-white px-4 py-2 rounded transition-opacity hover:opacity-90" style={{background:"#1a2e4a"}}>Get a Quote</Link>
           <Link href="/contact" className="text-sm font-semibold px-4 py-2 rounded border transition-colors hover:bg-gray-50" style={{color:"#1a2e4a", borderColor:"#1a2e4a"}}>Contact</Link>
         </nav>
 
@@ -46,7 +46,7 @@ export default function Header() {
           {links.map(l => (
             <Link key={l.href} href={l.href} className="text-sm text-gray-700 py-1" onClick={() => setOpen(false)}>{l.label}</Link>
           ))}
-          <Link href="/quote" className="text-sm font-semibold text-white px-4 py-2 rounded text-center" style={{background:"#1a2e4a"}} onClick={() => setOpen(false)}>Get a Quote</Link>
+          <Link href="/tax-intake" className="text-sm font-semibold text-white px-4 py-2 rounded text-center" style={{background:"#1a2e4a"}} onClick={() => setOpen(false)}>Get a Quote</Link>
           <Link href="/contact" className="text-sm font-semibold px-4 py-2 rounded border text-center" style={{color:"#1a2e4a", borderColor:"#1a2e4a"}} onClick={() => setOpen(false)}>Contact</Link>
         </div>
       )}

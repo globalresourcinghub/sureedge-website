@@ -16,7 +16,7 @@ export default function Home() {
             <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4" style={{textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>Expert Tax &<br/>Accounting Services</h1>
             <p className="text-sm md:text-base leading-relaxed mb-8 max-w-sm" style={{color:"#e8f0f8", textShadow:"0 1px 4px rgba(0,0,0,0.9)"}}>CPA & Enrolled Agent. Individual & business returns, bookkeeping, payroll, and IRS representation — all virtual, nationwide.</p>
             <div className="flex flex-col gap-3 items-start">
-              <Link href="/quote" className="text-white text-sm font-bold px-7 py-3 rounded transition-opacity hover:opacity-90" style={{background:"#b8962e"}}>Get Your Free Quote</Link>
+              <Link href="/tax-intake" className="text-white text-sm font-bold px-7 py-3 rounded transition-opacity hover:opacity-90" style={{background:"#b8962e"}}>Get Your Free Quote</Link>
               <Link href="/booking" className="text-white text-sm font-bold px-7 py-3 rounded border-2 transition-colors hover:bg-white/20" style={{background:"rgba(255,255,255,0.15)", borderColor:"rgba(255,255,255,0.75)"}}>Book a Free Consultation</Link>
             </div>
           </div>
@@ -53,12 +53,12 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            ["Individual Tax Preparation","Federal & state returns for employees, freelancers, investors and retirees.","/quote"],
-            ["Small Business Tax","Schedule C, Form 1120-S, Form 1065 — LLCs, S-Corps, partnerships.","/quote"],
-            ["Bookkeeping","Monthly reconciliation and financial statements via QuickBooks.","/quote"],
-            ["Payroll Services","End-to-end payroll, tax filings, W-2 and 1099 preparation.","/quote"],
-            ["Tax Planning & Strategy","Year-round proactive planning to legally reduce your tax liability.","/quote"],
-            ["IRS Representation","Audit support and notice response by a licensed Enrolled Agent.","/quote"],
+            ["Individual Tax Preparation","Federal & state returns for employees, freelancers, investors and retirees.","/tax-intake"],
+            ["Small Business Tax","Schedule C, Form 1120-S, Form 1065 — LLCs, S-Corps, partnerships.","/tax-intake"],
+            ["Bookkeeping","Monthly reconciliation and financial statements via QuickBooks.","/tax-intake"],
+            ["Payroll Services","End-to-end payroll, tax filings, W-2 and 1099 preparation.","/tax-intake"],
+            ["Tax Planning & Strategy","Year-round proactive planning to legally reduce your tax liability.","/tax-intake"],
+            ["IRS Representation","Audit support and notice response by a licensed Enrolled Agent.","/tax-intake"],
           ].map(([title, desc, href]) => (
             <div key={title} className="bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow">
               <div className="w-8 h-1 rounded mb-4" style={{background:"#b8962e"}}/>

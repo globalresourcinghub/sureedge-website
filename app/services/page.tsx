@@ -61,7 +61,7 @@ export default function Services() {
               <div className="text-2xl mb-3">{s.icon}</div>
               <h3 className="text-sm font-bold mb-2" style={{color:"#1a2e4a"}}>{s.title}</h3>
               <p className="text-xs text-gray-500 leading-relaxed mb-4">{s.desc}</p>
-              <Link href="/quote" className="text-xs font-semibold" style={{color:"#b8962e"}}>Get a quote →</Link>
+              <Link href="/tax-intake" className="text-xs font-semibold" style={{color:"#b8962e"}}>Get a quote →</Link>
             </div>
           ))}
         </div>

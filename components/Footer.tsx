@@ -26,7 +26,7 @@ export default function Footer() {
           <div className="flex-1">
             <div className="text-[10px] font-bold uppercase tracking-widest mb-3" style={{color:"#b8962e"}}>Quick Links</div>
             <div className="flex flex-col gap-1.5">
-              {[["About Us","/about"],["Blog","/blog"],["Get a Quote","/quote"],["Book a Consultation","/booking"],["Contact","/contact"]].map(([l,h]) => (
+              {[["About Us","/about"],["Blog","/blog"],["Get a Quote","/tax-intake"],["Book a Consultation","/booking"],["Contact","/contact"]].map(([l,h]) => (
                 <Link key={h} href={h} className="text-xs text-gray-500 hover:text-gray-700 transition-colors">{l}</Link>
               ))}
             </div>

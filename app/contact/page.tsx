@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { submitToWeb3Forms } from "@/lib/web3forms";
 
 function EnvelopeBg() {
   return (
@@ -22,19 +23,38 @@ function EnvelopeBg() {
 export default function Contact() {
   const [form, setForm] = useState({firstname:"",lastname:"",email:"",message:""});
   const [status, setStatus] = useState<"idle"|"sending"|"sent"|"error">("idle");
+  const [errorDetail, setErrorDetail] = useState<string | null>(null);
+  const web3FormsKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
+    setErrorDetail(null);
+    if (!web3FormsKey) {
+      setStatus("error");
+      setErrorDetail(
+        "Missing NEXT_PUBLIC_WEB3FORMS_KEY. Add it in Vercel (or .env.local), then redeploy."
+      );
+      return;
+    }
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body: JSON.stringify({access_key:"YOUR_WEB3FORMS_KEY", subject:"New Contact Form Message - SureEdge", ...form})
+      const { ok, message } = await submitToWeb3Forms({
+        access_key: web3FormsKey,
+        subject: "New Contact Form Message - SureEdge",
+        ...form,
       });
-      if (res.ok) setStatus("sent");
-      else setStatus("error");
-    } catch { setStatus("error"); }
+      if (ok) setStatus("sent");
+      else {
+        setStatus("error");
+        setErrorDetail(
+          message ??
+            "If this persists, add your domain in Web3Forms and confirm the key in Vercel, then redeploy."
+        );
+      }
+    } catch {
+      setStatus("error");
+      setErrorDetail("Network error. Try again or email contact@sureedgetax.com.");
+    }
   };
 
   return (
@@ -76,7 +96,11 @@ export default function Contact() {
               <button type="submit" disabled={status==="sending"} className="text-white text-sm font-bold py-3 rounded transition-opacity hover:opacity-90" style={{background:"#b8962e"}}>
                 {status==="sending" ? "Sending..." : "Send Message"}
               </button>
-              {status==="error" && <p className="text-xs text-red-500 text-center">Something went wrong. Please email us directly.</p>}
+              {status==="error" && (
+                <p className="text-xs text-red-500 text-center">
+                  {errorDetail ?? "Something went wrong. Please email contact@sureedgetax.com."}
+                </p>
+              )}
             </form>
           )}
         </div>
@@ -88,6 +112,11 @@ export default function Contact() {
           <input type="email" placeholder="Email *" required value={form.email} onChange={e => setForm(p=>({...p,email:e.target.value}))} className="w-full border border-gray-200 rounded-md px-3 py-2.5 text-sm"/>
           <textarea placeholder="Your message..." required value={form.message} onChange={e => setForm(p=>({...p,message:e.target.value}))} rows={4} className="w-full border border-gray-200 rounded-md px-3 py-2.5 text-sm resize-none"/>
           <button type="submit" className="text-white text-sm font-bold py-3 rounded" style={{background:"#b8962e"}}>Send Message</button>
+          {status==="error" && (
+            <p className="text-xs text-red-500 text-center">
+              {errorDetail ?? "Something went wrong. Please email contact@sureedgetax.com."}
+            </p>
+          )}
         </form>
       </div>
     </>
