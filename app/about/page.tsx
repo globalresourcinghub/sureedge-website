@@ -31,7 +31,7 @@ export default function About() {
           <div className="relative z-10 p-10 md:p-14 h-full flex flex-col justify-center">
             <div className="inline-block text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-5" style={{background:"#b8962e"}}>About Us</div>
             <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4" style={{textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>A CPA Firm Built<br/>for Real People</h1>
-            <p className="text-sm leading-relaxed mb-6 max-w-sm" style={{color:"#e8f0f8", textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Based in Frisco, TX — serving individuals and small businesses nationwide with CPA, EA, and ChFC credentials.</p>
+            <p className="text-sm leading-relaxed mb-6 max-w-sm" style={{color:"#e8f0f8", textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Based in Texas — serving individuals and small businesses nationwide with licensed CPA & EA credentials.</p>
             <div className="p-3 rounded-r-md border-l-2" style={{background:"rgba(184,150,46,0.15)", borderColor:"#b8962e"}}>
               <p className="text-xs italic" style={{color:"rgba(255,255,255,0.85)"}}>Delivered personally, accessibly, and affordably.</p>
             </div>
@@ -41,10 +41,10 @@ export default function About() {
           <div className="text-[10px] text-gray-400 uppercase tracking-widest mb-5">Our credentials</div>
           <div className="grid grid-cols-2 gap-4">
             {[
-              ["CPA","Certified Public Accountant — licensed for full accounting services."],
-              ["Enrolled Agent","IRS-licensed to represent clients in all tax matters."],
-              ["ChFC","Chartered Financial Consultant for comprehensive financial planning."],
-              ["100% Virtual","Serving clients nationwide from Frisco, TX."],
+              ["CPA","Certified Public Accountant — licensed for full accounting and tax services."],
+              ["Enrolled Agent","IRS-licensed to represent clients in all tax matters, including audits."],
+              ["100% Virtual","Serving clients nationwide from Texas — no office visit required."],
+              ["Year-Round","Available all year, not just at tax time. We plan proactively."],
             ].map(([t,d]) => (
               <div key={t} className="bg-white rounded-lg p-4 border-l-[3px]" style={{borderLeftColor:"#b8962e",boxShadow:"0 1px 4px rgba(0,0,0,0.06)"}}>
                 <div className="text-sm font-bold mb-1" style={{color:"#1a2e4a"}}>{t}</div>
@@ -60,7 +60,7 @@ export default function About() {
           <div>
             <h2 className="text-2xl font-bold mb-4" style={{color:"#1a2e4a"}}>Our Story</h2>
             <p className="text-sm text-gray-600 leading-relaxed mb-4">SureEdge Tax & Accounting was founded on a simple belief: every individual and small business deserves the same quality of tax and accounting services that larger firms provide their biggest clients.</p>
-            <p className="text-sm text-gray-600 leading-relaxed mb-4">As a husband-and-wife team based in Frisco, TX, we bring together complementary expertise — CPA, Enrolled Agent, and ChFC credentials — to serve our clients as a true partner, not just a once-a-year preparer.</p>
+            <p className="text-sm text-gray-600 leading-relaxed mb-4">We are a family-run practice based in Texas, bringing together complementary expertise — CPA and Enrolled Agent credentials — to serve our clients as a true partner, not just a once-a-year preparer.</p>
             <p className="text-sm text-gray-600 leading-relaxed">We operate 100% virtually, which means we can serve clients across the entire country while keeping our overhead low and passing those savings on to you.</p>
           </div>
           <div className="flex flex-col gap-4">

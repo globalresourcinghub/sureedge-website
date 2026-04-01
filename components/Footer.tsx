@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -6,11 +7,14 @@ export default function Footer() {
       <div className="max-w-screen-xl mx-auto px-6 py-8">
         <div className="flex flex-col md:flex-row gap-10 mb-6">
           <div className="flex-[1.5]">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-6 h-6 rounded flex items-center justify-center" style={{background:"#b8962e"}}>
-                <span className="text-white text-[9px] font-bold">SE</span>
-              </div>
-              <span className="text-sm font-bold" style={{color:"#1a2e4a"}}>SureEdge Tax & Accounting</span>
+            <div className="mb-3">
+              <Image
+                src="https://sureedgetax.com/wp-content/uploads/2026/03/sureedge_logo_v3-1.png"
+                alt="SureEdge Tax & Accounting"
+                width={130}
+                height={40}
+                style={{height:"36px", width:"auto"}}
+              />
             </div>
             <p className="text-xs text-gray-500 leading-relaxed max-w-xs">Licensed CPA & EA firm in Frisco, TX. Serving clients nationwide — 100% virtual.</p>
             <div className="text-xs text-gray-400 mt-2">contact@sureedgetax.com · Mon–Fri 9am–6pm CT</div>
