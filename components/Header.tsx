@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Menu, X } from "lucide-react";
+import Logo from "./Logo";
 
 const links = [
   { href: "/services", label: "Services" },
@@ -14,42 +14,29 @@ const links = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
-      <div className="max-w-screen-xl mx-auto px-6 py-3 flex items-center justify-between">
+    <header className="bg-white sticky top-0 z-50" style={{ borderBottom: "1px solid #f0ede6" }}>
+      <div className="max-w-screen-xl mx-auto px-8 flex items-center justify-between" style={{ height: "64px" }}>
         <Link href="/" className="flex items-center">
-          <Image
-            src="https://sureedgetax.com/wp-content/uploads/2026/03/sureedge_logo_v3-1.png"
-            alt="SureEdge Tax & Accounting"
-            width={160}
-            height={50}
-            style={{height:"44px", width:"auto"}}
-            priority
-          />
+          <Logo size="md" />
         </Link>
-
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-7">
           {links.map(l => (
-            <Link key={l.href} href={l.href} className="text-sm text-gray-600 hover:text-[#1a2e4a] transition-colors">{l.label}</Link>
+            <Link key={l.href} href={l.href} className="text-sm transition-colors" style={{ color: "#555", fontWeight: 400 }}>{l.label}</Link>
           ))}
-          <Link href="/tax-intake" className="text-sm font-semibold text-white px-4 py-2 rounded transition-opacity hover:opacity-90" style={{background:"#1a2e4a"}}>Get a Quote</Link>
-          <Link href="/contact" className="text-sm font-semibold px-4 py-2 rounded border transition-colors hover:bg-gray-50" style={{color:"#1a2e4a", borderColor:"#1a2e4a"}}>Contact</Link>
+          <Link href="/contact" className="text-sm font-medium px-5 py-2 rounded-md" style={{ color: "#1a2e4a", border: "1.5px solid #1a2e4a" }}>Contact</Link>
+          <Link href="/tax-intake" className="text-sm font-semibold text-white px-5 py-2 rounded-md hover:opacity-90" style={{ background: "#b8962e" }}>Get a Quote</Link>
         </nav>
-
-        {/* Mobile hamburger */}
         <button className="md:hidden p-1" onClick={() => setOpen(!open)}>
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
-
-      {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4 flex flex-col gap-3">
+        <div className="md:hidden bg-white border-t px-6 py-4 flex flex-col gap-3" style={{ borderColor: "#f0ede6" }}>
           {links.map(l => (
-            <Link key={l.href} href={l.href} className="text-sm text-gray-700 py-1" onClick={() => setOpen(false)}>{l.label}</Link>
+            <Link key={l.href} href={l.href} className="text-sm py-1" style={{ color: "#444" }} onClick={() => setOpen(false)}>{l.label}</Link>
           ))}
-          <Link href="/tax-intake" className="text-sm font-semibold text-white px-4 py-2 rounded text-center" style={{background:"#1a2e4a"}} onClick={() => setOpen(false)}>Get a Quote</Link>
-          <Link href="/contact" className="text-sm font-semibold px-4 py-2 rounded border text-center" style={{color:"#1a2e4a", borderColor:"#1a2e4a"}} onClick={() => setOpen(false)}>Contact</Link>
+          <Link href="/contact" className="text-sm font-medium px-4 py-2 rounded-md text-center" style={{ color: "#1a2e4a", border: "1.5px solid #1a2e4a" }} onClick={() => setOpen(false)}>Contact</Link>
+          <Link href="/tax-intake" className="text-sm font-semibold text-white px-4 py-2 rounded-md text-center" style={{ background: "#b8962e" }} onClick={() => setOpen(false)}>Get a Quote</Link>
         </div>
       )}
     </header>
