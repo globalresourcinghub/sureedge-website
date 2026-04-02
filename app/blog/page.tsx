@@ -36,37 +36,39 @@ function NewspaperBg() {
 export default function Blog() {
   return (
     <>
-      <div className="flex min-h-[300px]">
-        <div className="flex-[0.8] relative overflow-hidden min-w-0">
-          <NewspaperBg />
-          <div className="absolute inset-0" style={{background:"linear-gradient(to right,rgba(8,18,32,0.65) 0%,rgba(8,18,32,0.4) 100%)"}}/>
-          <div className="relative z-10 p-10 md:p-14 h-full flex flex-col justify-center">
-            <div className="inline-block text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-5" style={{background:"#b8962e"}}>Tax & Accounting Insights</div>
-            <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4" style={{textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>Tips from Our<br/>CPA & EA Team</h1>
-            <p className="text-sm leading-relaxed max-w-sm" style={{color:"#e8f0f8", textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Practical tax tips and financial guidance written by licensed professionals — not algorithms.</p>
+      {/* Hero */}
+      <div style={{display:"flex",minHeight:"300px"}}>
+        <div style={{flex:0.8,position:"relative",overflow:"hidden",minWidth:0}}>
+          <NewspaperBg/>
+          <div style={{position:"absolute",inset:0,background:"linear-gradient(to right,rgba(8,18,32,0.65) 0%,rgba(8,18,32,0.4) 100%)"}}/>
+          <div style={{position:"relative",zIndex:10,padding:"52px 48px",height:"100%",display:"flex",flexDirection:"column",justifyContent:"center"}}>
+            <div style={{display:"inline-block",color:"white",fontSize:"10px",fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",padding:"4px 12px",borderRadius:"20px",marginBottom:"20px",background:"#b8962e",width:"fit-content"}}>Tax &amp; Accounting Insights</div>
+            <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px",textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>Tips from Our<br/>CPA &amp; EA Team</h1>
+            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.8)",lineHeight:1.7,maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Practical tax tips and financial guidance written by licensed professionals — not algorithms.</p>
           </div>
         </div>
-        <div className="flex-[1.2] hidden md:flex flex-col justify-center p-10 lg:p-14" style={{background:"#f8f9fb"}}>
-          <div className="text-[10px] text-gray-400 uppercase tracking-widest mb-4">Latest articles</div>
-          <div className="flex flex-col gap-3">
+        <div style={{flex:1.2,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
+          <div style={{fontSize:"10px",color:"#b8962e",fontWeight:600,textTransform:"uppercase",letterSpacing:"2.5px",marginBottom:"20px"}}>Latest articles</div>
+          <div style={{display:"flex",flexDirection:"column",gap:"0"}}>
             {posts.slice(0,4).map(p => (
-              <div key={p.slug} className="flex items-center gap-3 py-2 border-b border-gray-100">
-                <div className="text-[10px] text-gray-400 w-24 flex-shrink-0">{p.category}</div>
-                <Link href={`/blog/${p.slug}`} className="text-sm font-medium hover:underline" style={{color:"#1a2e4a"}}>{p.title}</Link>
+              <div key={p.slug} style={{display:"flex",alignItems:"center",gap:"16px",padding:"10px 0",borderBottom:"1px solid #f0ede6"}}>
+                <div style={{fontSize:"10px",color:"#b8962e",width:"96px",flexShrink:0,fontWeight:500}}>{p.category}</div>
+                <Link href={`/blog/${p.slug}`} style={{fontSize:"13px",fontWeight:500,color:"#1a2e4a",textDecoration:"none"}}>{p.title}</Link>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <section className="py-16 px-6 max-w-screen-xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Post grid */}
+      <section style={{padding:"56px 44px",background:"#fff"}}>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"16px"}}>
           {posts.map(p => (
-            <div key={p.slug} className="bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow">
-              <div className="text-[10px] font-semibold uppercase tracking-widest mb-3" style={{color:"#b8962e"}}>{p.category} · {p.date}</div>
-              <h3 className="text-sm font-bold mb-2 leading-snug" style={{color:"#1a2e4a"}}>{p.title}</h3>
-              <p className="text-xs text-gray-500 leading-relaxed mb-4">{p.excerpt}</p>
-              <Link href={`/blog/${p.slug}`} className="text-xs font-semibold" style={{color:"#b8962e"}}>Read more →</Link>
+            <div key={p.slug} style={{background:"#faf9f6",borderRadius:"10px",padding:"24px",border:"1px solid #f0ede6"}}>
+              <div style={{fontSize:"10px",fontWeight:600,textTransform:"uppercase",letterSpacing:"1.5px",color:"#b8962e",marginBottom:"10px"}}>{p.category} · {p.date}</div>
+              <h3 style={{fontSize:"14px",fontWeight:600,color:"#1a2e4a",marginBottom:"8px",lineHeight:1.4}}>{p.title}</h3>
+              <p style={{fontSize:"12px",color:"#888",lineHeight:1.6,marginBottom:"14px"}}>{p.excerpt}</p>
+              <Link href={`/blog/${p.slug}`} style={{fontSize:"12px",fontWeight:600,color:"#b8962e",textDecoration:"none"}}>Read more →</Link>
             </div>
           ))}
         </div>

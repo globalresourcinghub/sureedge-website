@@ -23,44 +23,29 @@ function CalendarBg() {
       <rect x="38" y="140" width="134" height="30" rx="4" fill="#b8962e" opacity="0.25"/>
       <rect x="200" y="30" width="80" height="170" rx="6" fill="#162c4a" opacity="0.4"/>
       <rect x="208" y="42" width="64" height="4" rx="1" fill="#b8962e" opacity="0.5"/>
-      <rect x="208" y="62" width="50" height="3" rx="1" fill="#fff" opacity="0.15"/>
-      <rect x="208" y="80" width="44" height="3" rx="1" fill="#fff" opacity="0.15"/>
-      <rect x="208" y="98" width="55" height="3" rx="1" fill="#b8962e" opacity="0.4"/>
     </svg>
   );
 }
 
+const inputStyle = {width:"100%",border:"1px solid #e5e7eb",borderRadius:"6px",padding:"10px 12px",fontSize:"13px",outline:"none",background:"#fff"} as const;
+const selectStyle = {...inputStyle,color:"#555"} as const;
+
 export default function Booking() {
   const [form, setForm] = useState({name:"",email:"",phone:"",service:"",days:"",message:""});
   const [status, setStatus] = useState<"idle"|"sending"|"sent"|"error">("idle");
-  const [errorDetail, setErrorDetail] = useState<string | null>(null);
-  const web3FormsKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+  const [errorDetail, setErrorDetail] = useState<string|null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
     setErrorDetail(null);
-    if (!web3FormsKey) {
-      setStatus("error");
-      setErrorDetail(
-        "Missing NEXT_PUBLIC_WEB3FORMS_KEY. Add it in Vercel (or .env.local), then redeploy."
-      );
-      return;
-    }
     try {
       const { ok, message } = await submitToWeb3Forms({
-        access_key: web3FormsKey,
         subject: "New Consultation Request - SureEdge",
         ...form,
       });
       if (ok) setStatus("sent");
-      else {
-        setStatus("error");
-        setErrorDetail(
-          message ??
-            "If this persists, add your domain in Web3Forms and confirm the key in Vercel, then redeploy."
-        );
-      }
+      else { setStatus("error"); setErrorDetail(message ?? "Something went wrong."); }
     } catch {
       setStatus("error");
       setErrorDetail("Network error. Try again or email contact@sureedgetax.com.");
@@ -69,72 +54,55 @@ export default function Booking() {
 
   return (
     <>
-      <div className="flex min-h-[360px]">
-        <div className="flex-[0.85] relative overflow-hidden min-w-0">
-          <CalendarBg />
-          <div className="absolute inset-0" style={{background:"linear-gradient(to right,rgba(8,18,32,0.65) 0%,rgba(8,18,32,0.4) 100%)"}}/>
-          <div className="relative z-10 p-10 md:p-14 h-full flex flex-col justify-center">
-            <div className="inline-block text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-5" style={{background:"#b8962e"}}>Free Consultation</div>
-            <h1 className="text-3xl font-bold text-white leading-tight mb-4" style={{textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>Book a Free<br/>30-Minute Call</h1>
-            <p className="text-sm leading-relaxed mb-6 max-w-sm" style={{color:"#e8f0f8", textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Tell us your preferred times — we will confirm within 2 business days.</p>
-            <div className="flex flex-col gap-2">
+      <div style={{display:"flex",minHeight:"360px"}}>
+        {/* Left dark panel */}
+        <div style={{flex:0.9,position:"relative",overflow:"hidden",minWidth:0}}>
+          <CalendarBg/>
+          <div style={{position:"absolute",inset:0,background:"linear-gradient(to right,rgba(8,18,32,0.65) 0%,rgba(8,18,32,0.4) 100%)"}}/>
+          <div style={{position:"relative",zIndex:10,padding:"52px 48px",height:"100%",display:"flex",flexDirection:"column",justifyContent:"center"}}>
+            <div style={{display:"inline-block",color:"white",fontSize:"10px",fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",padding:"4px 12px",borderRadius:"20px",marginBottom:"20px",background:"#b8962e",width:"fit-content"}}>Free Consultation</div>
+            <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px",textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>Book a Free<br/>30-Minute Call</h1>
+            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.8)",lineHeight:1.7,marginBottom:"24px",maxWidth:"360px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Tell us your preferred times — we will confirm within 2 business days.</p>
+            <div style={{display:"flex",flexDirection:"column",gap:"8px"}}>
               {["Phone call — no video required","Confirmed within 2 business days","No obligation, no pressure"].map(i => (
-                <div key={i} className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{background:"#b8962e"}}/>
-                  <span className="text-xs" style={{color:"rgba(255,255,255,0.8)"}}>{i}</span>
+                <div key={i} style={{display:"flex",alignItems:"center",gap:"8px"}}>
+                  <div style={{width:"6px",height:"6px",borderRadius:"50%",background:"#b8962e",flexShrink:0}}/>
+                  <span style={{fontSize:"13px",color:"rgba(255,255,255,0.8)"}}>{i}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
-        <div className="flex-[1.15] hidden md:flex flex-col justify-center p-10 lg:p-14" style={{background:"#f8f9fb"}}>
+        {/* Right form panel */}
+        <div style={{flex:1.1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
           {status === "sent" ? (
-            <div className="text-center py-8">
-              <div className="text-3xl mb-3">✅</div>
-              <h3 className="text-lg font-bold mb-2" style={{color:"#1a2e4a"}}>Request Received!</h3>
-              <p className="text-sm text-gray-500">We will reach out within 2 business days to confirm your consultation.</p>
+            <div style={{textAlign:"center",padding:"32px 0"}}>
+              <div style={{fontSize:"40px",marginBottom:"12px"}}>✅</div>
+              <h3 style={{fontSize:"18px",fontWeight:700,color:"#1a2e4a",marginBottom:"8px"}}>Request Received!</h3>
+              <p style={{fontSize:"13px",color:"#888"}}>We will reach out within 2 business days to confirm your consultation.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-              <div className="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Request a consultation</div>
+            <form onSubmit={handleSubmit} style={{display:"flex",flexDirection:"column",gap:"12px"}}>
+              <div style={{fontSize:"10px",color:"#b8962e",fontWeight:600,textTransform:"uppercase",letterSpacing:"2px",marginBottom:"4px"}}>Request a consultation</div>
               {[{name:"name",placeholder:"Full Name *",type:"text"},{name:"email",placeholder:"Email Address *",type:"email"},{name:"phone",placeholder:"Phone Number *",type:"tel"}].map(f => (
-                <input key={f.name} type={f.type} placeholder={f.placeholder} required value={(form as any)[f.name]} onChange={e => setForm(p => ({...p,[f.name]:e.target.value}))} className="w-full border border-gray-200 rounded-md px-3 py-2.5 text-sm focus:outline-none focus:border-[#b8962e]"/>
+                <input key={f.name} type={f.type} placeholder={f.placeholder} required value={(form as any)[f.name]} onChange={e => setForm(p=>({...p,[f.name]:e.target.value}))} style={inputStyle}/>
               ))}
-              <select value={form.service} onChange={e => setForm(p => ({...p,service:e.target.value}))} className="w-full border border-gray-200 rounded-md px-3 py-2.5 text-sm focus:outline-none focus:border-[#b8962e] text-gray-500">
+              <select value={form.service} onChange={e => setForm(p=>({...p,service:e.target.value}))} style={selectStyle}>
                 <option value="">What do you need help with?</option>
                 <option>Individual Tax Return</option><option>Small Business Tax</option><option>Bookkeeping</option><option>Payroll</option><option>IRS Issue</option><option>Tax Planning</option><option>Other</option>
               </select>
-              <select value={form.days} onChange={e => setForm(p => ({...p,days:e.target.value}))} className="w-full border border-gray-200 rounded-md px-3 py-2.5 text-sm focus:outline-none focus:border-[#b8962e] text-gray-500">
-                <option value="">Preferred Days & Time</option>
+              <select value={form.days} onChange={e => setForm(p=>({...p,days:e.target.value}))} style={selectStyle}>
+                <option value="">Preferred Days &amp; Time</option>
                 <option>Weekday Morning</option><option>Weekday Afternoon</option><option>Weekday Evening</option><option>Weekend Morning</option><option>Flexible</option>
               </select>
-              <textarea placeholder="Brief description of your situation..." value={form.message} onChange={e => setForm(p => ({...p,message:e.target.value}))} rows={3} className="w-full border border-gray-200 rounded-md px-3 py-2.5 text-sm focus:outline-none focus:border-[#b8962e] resize-none"/>
-              <button type="submit" disabled={status==="sending"} className="text-white text-sm font-bold py-3 rounded transition-opacity hover:opacity-90" style={{background:"#b8962e"}}>
+              <textarea placeholder="Brief description of your situation..." value={form.message} onChange={e => setForm(p=>({...p,message:e.target.value}))} rows={3} style={{...inputStyle,resize:"none"}}/>
+              <button type="submit" disabled={status==="sending"} style={{background:"#b8962e",color:"white",fontSize:"13px",fontWeight:700,padding:"13px",borderRadius:"7px",border:"none",cursor:"pointer"}}>
                 {status==="sending" ? "Sending..." : "Request Consultation"}
               </button>
-              {status==="error" && (
-                <p className="text-xs text-red-500 text-center">
-                  {errorDetail ?? "Something went wrong. Please email contact@sureedgetax.com."}
-                </p>
-              )}
+              {status==="error" && <p style={{fontSize:"12px",color:"#dc2626",textAlign:"center"}}>{errorDetail ?? "Something went wrong."}</p>}
             </form>
           )}
         </div>
-      </div>
-      {/* Mobile form */}
-      <div className="md:hidden px-6 py-10" style={{background:"#f8f9fb"}}>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3 max-w-md mx-auto">
-          <h2 className="text-lg font-bold mb-2" style={{color:"#1a2e4a"}}>Request a Consultation</h2>
-          {[{name:"name",placeholder:"Full Name *",type:"text"},{name:"email",placeholder:"Email *",type:"email"},{name:"phone",placeholder:"Phone *",type:"tel"}].map(f => (
-            <input key={f.name} type={f.type} placeholder={f.placeholder} required value={(form as any)[f.name]} onChange={e => setForm(p => ({...p,[f.name]:e.target.value}))} className="w-full border border-gray-200 rounded-md px-3 py-2.5 text-sm focus:outline-none"/>
-          ))}
-          <button type="submit" className="text-white text-sm font-bold py-3 rounded" style={{background:"#b8962e"}}>Request Consultation</button>
-          {status==="error" && (
-            <p className="text-xs text-red-500 text-center">
-              {errorDetail ?? "Something went wrong. Please email contact@sureedgetax.com."}
-            </p>
-          )}
-        </form>
       </div>
     </>
   );

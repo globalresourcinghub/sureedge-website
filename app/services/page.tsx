@@ -21,59 +21,61 @@ function DocsBg() {
 }
 
 const services = [
-  {title:"Individual Tax Preparation",desc:"Federal & state returns for W-2 employees, freelancers, investors, rental property owners, and retirees.",icon:"📄"},
-  {title:"Small Business Tax",desc:"Schedule C, Form 1120-S, Form 1065 — LLCs, S-Corps, C-Corps, and partnerships.",icon:"🏢"},
-  {title:"Bookkeeping",desc:"Monthly reconciliation and financial statements delivered via QuickBooks.",icon:"📊"},
-  {title:"Payroll Services",desc:"End-to-end payroll processing, quarterly filings, W-2 and 1099 preparation.",icon:"💰"},
-  {title:"Tax Planning & Strategy",desc:"Proactive year-round strategies to legally reduce your tax burden.",icon:"🎯"},
-  {title:"IRS Representation",desc:"Licensed Enrolled Agent represents you directly before the IRS.",icon:"🛡️"},
+  {title:"Individual Tax Preparation",desc:"Federal & state returns for W-2 employees, freelancers, investors, rental property owners, and retirees.",href:"/tax-intake"},
+  {title:"Small Business Tax",desc:"Schedule C, Form 1120-S, Form 1065 — LLCs, S-Corps, C-Corps, and partnerships.",href:"/business-tax-intake"},
+  {title:"Bookkeeping",desc:"Monthly reconciliation and financial statements delivered via QuickBooks.",href:"/business-tax-intake"},
+  {title:"Payroll Services",desc:"End-to-end payroll processing, quarterly filings, W-2 and 1099 preparation.",href:"/business-tax-intake"},
+  {title:"Tax Planning & Strategy",desc:"Proactive year-round strategies to legally reduce your tax burden.",href:"/tax-intake"},
+  {title:"IRS Representation",desc:"Licensed Enrolled Agent represents you directly before the IRS.",href:"/contact"},
 ];
 
 export default function Services() {
   return (
     <>
-      <div className="flex min-h-[340px]">
-        <div className="flex-1 relative overflow-hidden min-w-0">
-          <DocsBg />
-          <div className="absolute inset-0" style={{background:"linear-gradient(to right,rgba(8,18,32,0.65) 0%,rgba(8,18,32,0.4) 100%)"}}/>
-          <div className="relative z-10 p-10 md:p-14 h-full flex flex-col justify-center">
-            <div className="inline-block text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-5" style={{background:"#b8962e"}}>What We Offer</div>
-            <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4" style={{textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>Full-Service Tax<br/>{"&"} Accounting</h1>
-            <p className="text-sm leading-relaxed max-w-sm" style={{color:"#e8f0f8", textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>From individual returns to complex small business accounting — handled with precision by licensed CPA & EA professionals.</p>
+      {/* Hero */}
+      <div style={{display:"flex",minHeight:"340px"}}>
+        <div style={{flex:1,position:"relative",overflow:"hidden",minWidth:0}}>
+          <DocsBg/>
+          <div style={{position:"absolute",inset:0,background:"linear-gradient(to right,rgba(8,18,32,0.65) 0%,rgba(8,18,32,0.4) 100%)"}}/>
+          <div style={{position:"relative",zIndex:10,padding:"52px 48px",height:"100%",display:"flex",flexDirection:"column",justifyContent:"center"}}>
+            <div style={{display:"inline-block",color:"white",fontSize:"10px",fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",padding:"4px 12px",borderRadius:"20px",marginBottom:"20px",background:"#b8962e",width:"fit-content"}}>What We Offer</div>
+            <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px",textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>Full-Service Tax<br/>&amp; Accounting</h1>
+            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.8)",lineHeight:1.7,maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>From individual returns to complex small business accounting — handled with precision by licensed CPA &amp; EA professionals.</p>
           </div>
         </div>
-        <div className="flex-[1.1] hidden md:flex flex-col justify-center p-10 lg:p-14" style={{background:"#f8f9fb"}}>
-          <div className="text-[10px] text-gray-400 uppercase tracking-widest mb-4">Our services include</div>
-          <div className="flex flex-col gap-2">
+        <div style={{flex:1.1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
+          <div style={{fontSize:"10px",color:"#b8962e",fontWeight:600,textTransform:"uppercase",letterSpacing:"2.5px",marginBottom:"20px"}}>Our services include</div>
+          <div style={{display:"flex",flexDirection:"column",gap:"0"}}>
             {services.map(s => (
-              <div key={s.title} className="flex items-center gap-3 py-2 border-b border-gray-100">
-                <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{background:"#b8962e"}}/>
-                <span className="text-sm font-medium" style={{color:"#1a2e4a"}}>{s.title}</span>
+              <div key={s.title} style={{display:"flex",alignItems:"center",gap:"12px",padding:"10px 0",borderBottom:"1px solid #f0ede6"}}>
+                <div style={{width:"6px",height:"6px",borderRadius:"50%",background:"#b8962e",flexShrink:0}}/>
+                <span style={{fontSize:"13px",fontWeight:500,color:"#1a2e4a"}}>{s.title}</span>
               </div>
             ))}
           </div>
         </div>
       </div>
-      <section className="py-16 px-6 max-w-screen-xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      {/* Service cards */}
+      <section style={{padding:"56px 44px",background:"#fff"}}>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"16px"}}>
           {services.map(s => (
-            <div key={s.title} className="bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow">
-              <div className="text-2xl mb-3">{s.icon}</div>
-              <h3 className="text-sm font-bold mb-2" style={{color:"#1a2e4a"}}>{s.title}</h3>
-              <p className="text-xs text-gray-500 leading-relaxed mb-4">{s.desc}</p>
-              <Link href="/tax-intake" className="text-xs font-semibold" style={{color:"#b8962e"}}>Get a quote →</Link>
+            <div key={s.title} style={{background:"#faf9f6",borderRadius:"10px",padding:"24px",border:"1px solid #f0ede6"}}>
+              <h3 style={{fontSize:"14px",fontWeight:600,color:"#1a2e4a",marginBottom:"8px"}}>{s.title}</h3>
+              <p style={{fontSize:"12px",color:"#888",lineHeight:1.6,marginBottom:"14px"}}>{s.desc}</p>
+              <Link href={s.href} style={{fontSize:"12px",fontWeight:600,color:"#b8962e",textDecoration:"none"}}>Get a quote →</Link>
             </div>
           ))}
         </div>
       </section>
-      <section className="py-14 px-6" style={{background:"#1a2e4a"}}>
-        <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h2 className="text-xl font-bold text-white mb-1">Not sure which service you need?</h2>
-            <p className="text-sm" style={{color:"rgba(255,255,255,0.6)"}}>Book a free 30-minute consultation and we will guide you.</p>
-          </div>
-          <Link href="/booking" className="text-white text-sm font-bold px-8 py-3 rounded whitespace-nowrap" style={{background:"#b8962e"}}>Book a Free Call</Link>
+
+      {/* CTA */}
+      <section style={{background:"#1a2e4a",padding:"52px 44px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:"24px"}}>
+        <div>
+          <h2 style={{fontSize:"22px",fontWeight:700,color:"white",marginBottom:"6px"}}>Not sure which service you need?</h2>
+          <p style={{fontSize:"13px",color:"rgba(255,255,255,0.6)"}}>Book a free 30-minute consultation and we will guide you.</p>
         </div>
+        <Link href="/booking" style={{color:"white",fontSize:"13px",fontWeight:700,padding:"13px 28px",borderRadius:"7px",background:"#b8962e",textDecoration:"none",whiteSpace:"nowrap"}}>Book a Free Call</Link>
       </section>
     </>
   );

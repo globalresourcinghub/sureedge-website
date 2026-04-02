@@ -14,9 +14,6 @@ function PeopleBg() {
       <circle cx="170" cy="115" r="12" fill="#b8962e" opacity="0.2"/>
       <circle cx="170" cy="115" r="6" fill="#b8962e" opacity="0.5"/>
       <rect x="40" y="180" width="260" height="2" fill="#b8962e" opacity="0.15"/>
-      <circle cx="90" cy="220" r="8" fill="#b8962e" opacity="0.4"/>
-      <circle cx="170" cy="220" r="8" fill="#b8962e" opacity="0.6"/>
-      <circle cx="250" cy="220" r="8" fill="#b8962e" opacity="0.4"/>
     </svg>
   );
 }
@@ -24,73 +21,76 @@ function PeopleBg() {
 export default function About() {
   return (
     <>
-      <div className="flex min-h-[360px]">
-        <div className="flex-1 relative overflow-hidden min-w-0">
-          <PeopleBg />
-          <div className="absolute inset-0" style={{background:"linear-gradient(to right,rgba(8,18,32,0.65) 0%,rgba(8,18,32,0.4) 100%)"}}/>
-          <div className="relative z-10 p-10 md:p-14 h-full flex flex-col justify-center">
-            <div className="inline-block text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-5" style={{background:"#b8962e"}}>About Us</div>
-            <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4" style={{textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>A CPA Firm Built<br/>for Real People</h1>
-            <p className="text-sm leading-relaxed mb-6 max-w-sm" style={{color:"#e8f0f8", textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Based in Texas — serving individuals and small businesses nationwide with licensed CPA & EA credentials.</p>
-            <div className="p-3 rounded-r-md border-l-2" style={{background:"rgba(184,150,46,0.15)", borderColor:"#b8962e"}}>
-              <p className="text-xs italic" style={{color:"rgba(255,255,255,0.85)"}}>Delivered personally, accessibly, and affordably.</p>
+      {/* Hero */}
+      <div style={{display:"flex",minHeight:"340px"}}>
+        <div style={{flex:1,position:"relative",overflow:"hidden",minWidth:0}}>
+          <PeopleBg/>
+          <div style={{position:"absolute",inset:0,background:"linear-gradient(to right,rgba(8,18,32,0.65) 0%,rgba(8,18,32,0.4) 100%)"}}/>
+          <div style={{position:"relative",zIndex:10,padding:"52px 48px",height:"100%",display:"flex",flexDirection:"column",justifyContent:"center"}}>
+            <div style={{display:"inline-block",color:"white",fontSize:"10px",fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",padding:"4px 12px",borderRadius:"20px",marginBottom:"20px",background:"#b8962e",width:"fit-content"}}>About Us</div>
+            <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px",textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>A CPA Firm Built<br/>for Real People</h1>
+            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.8)",lineHeight:1.7,marginBottom:"20px",maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Based in Texas — serving individuals and small businesses nationwide with licensed CPA &amp; EA credentials.</p>
+            <div style={{padding:"12px 16px",borderLeft:"2px solid #b8962e",background:"rgba(184,150,46,0.12)",borderRadius:"0 6px 6px 0"}}>
+              <p style={{fontSize:"12px",fontStyle:"italic",color:"rgba(255,255,255,0.85)"}}>Delivered personally, accessibly, and affordably.</p>
             </div>
           </div>
         </div>
-        <div className="flex-[1.1] hidden md:flex flex-col justify-center p-10 lg:p-14" style={{background:"#f8f9fb"}}>
-          <div className="text-[10px] text-gray-400 uppercase tracking-widest mb-5">Our credentials</div>
-          <div className="grid grid-cols-2 gap-4">
+        <div style={{flex:1.1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
+          <div style={{fontSize:"10px",color:"#b8962e",fontWeight:600,textTransform:"uppercase",letterSpacing:"2.5px",marginBottom:"20px"}}>Our credentials</div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"12px"}}>
             {[
               ["CPA","Certified Public Accountant — licensed for full accounting and tax services."],
               ["Enrolled Agent","IRS-licensed to represent clients in all tax matters, including audits."],
               ["100% Virtual","Serving clients nationwide from Texas — no office visit required."],
               ["Year-Round","Available all year, not just at tax time. We plan proactively."],
             ].map(([t,d]) => (
-              <div key={t} className="bg-white rounded-lg p-4 border-l-[3px]" style={{borderLeftColor:"#b8962e",boxShadow:"0 1px 4px rgba(0,0,0,0.06)"}}>
-                <div className="text-sm font-bold mb-1" style={{color:"#1a2e4a"}}>{t}</div>
-                <div className="text-xs text-gray-500 leading-relaxed">{d}</div>
+              <div key={t} style={{background:"white",borderRadius:"10px",padding:"16px",borderLeft:"3px solid #b8962e",boxShadow:"0 1px 4px rgba(0,0,0,0.06)"}}>
+                <div style={{fontSize:"13px",fontWeight:600,color:"#1a2e4a",marginBottom:"4px"}}>{t}</div>
+                <div style={{fontSize:"11px",color:"#888",lineHeight:1.55}}>{d}</div>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <section className="py-16 px-6 max-w-screen-xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+      {/* Our Story + Values */}
+      <section style={{padding:"64px 44px",background:"#fff"}}>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"48px",maxWidth:"1100px",margin:"0 auto"}}>
           <div>
-            <h2 className="text-2xl font-bold mb-4" style={{color:"#1a2e4a"}}>Our Story</h2>
-            <p className="text-sm text-gray-600 leading-relaxed mb-4">SureEdge Tax & Accounting was founded on a simple belief: every individual and small business deserves the same quality of tax and accounting services that larger firms provide their biggest clients.</p>
-            <p className="text-sm text-gray-600 leading-relaxed mb-4">We are a family-run practice based in Texas, bringing together complementary expertise — CPA and Enrolled Agent credentials — to serve our clients as a true partner, not just a once-a-year preparer.</p>
-            <p className="text-sm text-gray-600 leading-relaxed">We operate 100% virtually, which means we can serve clients across the entire country while keeping our overhead low and passing those savings on to you.</p>
+            <h2 style={{fontSize:"24px",fontWeight:700,color:"#1a2e4a",marginBottom:"16px"}}>Our Story</h2>
+            <p style={{fontSize:"14px",color:"#555",lineHeight:1.75,marginBottom:"14px"}}>SureEdge Tax &amp; Accounting was founded on a simple belief: every individual and small business deserves the same quality of tax and accounting services that larger firms provide their biggest clients.</p>
+            <p style={{fontSize:"14px",color:"#555",lineHeight:1.75,marginBottom:"14px"}}>We are a family-run practice based in Texas, bringing together complementary expertise — CPA and Enrolled Agent credentials — to serve our clients as a true partner, not just a once-a-year preparer.</p>
+            <p style={{fontSize:"14px",color:"#555",lineHeight:1.75}}>We operate 100% virtually, which means we can serve clients across the entire country while keeping our overhead low and passing those savings on to you.</p>
           </div>
-          <div className="flex flex-col gap-4">
-            <h2 className="text-2xl font-bold" style={{color:"#1a2e4a"}}>Our Values</h2>
-            {[
-              ["Transparency","No surprise fees. Clear pricing, clear communication."],
-              ["Accessibility","You get our direct number and email — no phone trees."],
-              ["Precision","Every return reviewed for accuracy before filing."],
-              ["Partnership","We think about your taxes year-round, not just in April."],
-            ].map(([t,d]) => (
-              <div key={t} className="flex gap-3">
-                <div className="w-1 rounded flex-shrink-0 mt-1" style={{background:"#b8962e", minHeight:"40px"}}/>
-                <div>
-                  <div className="text-sm font-bold mb-0.5" style={{color:"#1a2e4a"}}>{t}</div>
-                  <div className="text-xs text-gray-500 leading-relaxed">{d}</div>
+          <div>
+            <h2 style={{fontSize:"24px",fontWeight:700,color:"#1a2e4a",marginBottom:"20px"}}>Our Values</h2>
+            <div style={{display:"flex",flexDirection:"column",gap:"16px"}}>
+              {[
+                ["Transparency","No surprise fees. Clear pricing, clear communication."],
+                ["Accessibility","You get our direct number and email — no phone trees."],
+                ["Precision","Every return reviewed for accuracy before filing."],
+                ["Partnership","We think about your taxes year-round, not just in April."],
+              ].map(([t,d]) => (
+                <div key={t} style={{display:"flex",gap:"12px"}}>
+                  <div style={{width:"3px",borderRadius:"2px",background:"#b8962e",flexShrink:0,minHeight:"40px"}}/>
+                  <div>
+                    <div style={{fontSize:"13px",fontWeight:600,color:"#1a2e4a",marginBottom:"3px"}}>{t}</div>
+                    <div style={{fontSize:"12px",color:"#888",lineHeight:1.55}}>{d}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-14 px-6" style={{background:"#1a2e4a"}}>
-        <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h2 className="text-xl font-bold text-white mb-1">Ready to work together?</h2>
-            <p className="text-sm" style={{color:"rgba(255,255,255,0.6)"}}>Start with a free 30-minute consultation.</p>
-          </div>
-          <Link href="/booking" className="text-white text-sm font-bold px-8 py-3 rounded whitespace-nowrap" style={{background:"#b8962e"}}>Book a Free Call</Link>
+      {/* CTA */}
+      <section style={{background:"#1a2e4a",padding:"52px 44px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:"24px"}}>
+        <div>
+          <h2 style={{fontSize:"22px",fontWeight:700,color:"white",marginBottom:"6px"}}>Ready to work together?</h2>
+          <p style={{fontSize:"13px",color:"rgba(255,255,255,0.6)"}}>Start with a free 30-minute consultation.</p>
         </div>
+        <Link href="/booking" style={{color:"white",fontSize:"13px",fontWeight:700,padding:"13px 28px",borderRadius:"7px",background:"#b8962e",textDecoration:"none",whiteSpace:"nowrap"}}>Book a Free Call</Link>
       </section>
     </>
   );
