@@ -91,7 +91,7 @@ export default function Home() {
       {/* HERO */}
       <section style={{ display: "flex", minHeight: "420px" }}>
         {/* Left — dark city skyline */}
-        <div style={{ flex: "0 0 44.4%", background: "#0d1928", position: "relative", overflow: "hidden" }}>
+        <div style={{ flex: 1, background: "#0d1928", position: "relative", overflow: "hidden" }}>
           {/* City skyline SVG */}
           <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 480 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -205,16 +205,18 @@ export default function Home() {
         </div>
 
         {/* Right — feature cards on warm off-white */}
-        <div style={{ flex: "0 0 55.6%", background: "#faf9f6", display: "flex", flexDirection: "column", justifyContent: "center", padding: "44px 40px" }}>
+        <div style={{ flex: 1, background: "#faf9f6", display: "flex", flexDirection: "column", justifyContent: "center", padding: "44px 48px" }}>
           <div style={{ fontSize: "10px", fontWeight: 600, color: "#b8962e", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "20px" }}>
             Why clients choose us
           </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
           {featureCards.map((fc, i) => (
-            <div key={i} style={{ background: "#fff", borderRadius: "10px", padding: "16px 18px", marginBottom: i < featureCards.length - 1 ? "12px" : 0, borderLeft: "3px solid #b8962e", boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04)" }}>
+            <div key={i} style={{ background: "#fff", borderRadius: "10px", padding: "16px 18px", borderLeft: "3px solid #b8962e", boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04)" }}>
               <div style={{ fontSize: "13px", fontWeight: 600, color: "#1a2e4a", marginBottom: "4px" }}>{fc.title}</div>
               <div style={{ fontSize: "12px", color: "#777", lineHeight: 1.55 }}>{fc.desc}</div>
             </div>
           ))}
+          </div>
         </div>
       </section>
 
