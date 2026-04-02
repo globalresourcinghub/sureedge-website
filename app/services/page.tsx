@@ -22,10 +22,10 @@ function DocsBg() {
 
 const services = [
   {title:"Individual Tax Preparation",desc:"Federal & state returns for W-2 employees, freelancers, investors, rental property owners, and retirees.",href:"/tax-intake"},
-  {title:"Small Business Tax",desc:"Schedule C, Form 1120-S, Form 1065 — LLCs, S-Corps, C-Corps, and partnerships.",href:"/business-tax-intake"},
+  {title:"Small Business Tax",desc:"Schedule C, Form 1120-S, and Form 1065 for LLCs, S-Corps, C-Corps, and partnerships.",href:"/business-tax-intake"},
   {title:"Bookkeeping",desc:"Monthly reconciliation and financial statements delivered via QuickBooks.",href:"/business-tax-intake"},
   {title:"Payroll Services",desc:"End-to-end payroll processing, quarterly filings, W-2 and 1099 preparation.",href:"/business-tax-intake"},
-  {title:"Tax Planning & Strategy",desc:"Proactive year-round strategies to legally reduce your tax burden.",href:"/tax-intake"},
+  {title:"Tax Planning & Strategy",desc:"Proactive year-round strategies to legally reduce your tax burden.",href:"/contact"},
   {title:"IRS Representation",desc:"Licensed Enrolled Agent represents you directly before the IRS.",href:"/contact"},
 ];
 
@@ -40,7 +40,7 @@ export default function Services() {
           <div style={{position:"relative",zIndex:10,padding:"52px 48px",height:"100%",display:"flex",flexDirection:"column",justifyContent:"center"}}>
             <div style={{display:"inline-block",color:"white",fontSize:"10px",fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",padding:"4px 12px",borderRadius:"20px",marginBottom:"20px",background:"#b8962e",width:"fit-content"}}>What We Offer</div>
             <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px",textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>Full-Service Tax<br/>&amp; Accounting</h1>
-            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.8)",lineHeight:1.7,maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>From individual returns to complex small business accounting — handled with precision by licensed CPA &amp; EA professionals.</p>
+            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.8)",lineHeight:1.7,maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>From individual returns to complex small business accounting, handled with precision by licensed CPA &amp; EA professionals.</p>
           </div>
         </div>
         <div style={{flex:1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>

@@ -3,7 +3,7 @@ import Link from "next/link";
 const serviceCards = [
   {
     title: "Individual Tax Preparation",
-    desc: "Federal & state returns — W-2, freelancers, investors, retirees, multi-state filers.",
+    desc: "Federal and state returns for W-2 employees, freelancers, investors, retirees, and multi-state filers.",
     href: "/tax-intake",
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -16,7 +16,7 @@ const serviceCards = [
   },
   {
     title: "Small Business Tax",
-    desc: "Schedule C, S-Corp, Partnership — LLCs, sole proprietors, and corporations.",
+    desc: "Schedule C, S-Corp, and Partnership returns for LLCs, sole proprietors, and corporations.",
     href: "/business-tax-intake",
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -72,10 +72,10 @@ const serviceCards = [
 ];
 
 const featureCards = [
-  { title: "CPA & Enrolled Agent", desc: "Dual credentials — full tax preparation and IRS representation under one roof." },
-  { title: "Direct Access to Your CPA", desc: "Speak directly with us — no call centers, no junior staff, no waiting." },
+  { title: "CPA & Enrolled Agent", desc: "Dual credentials for full tax preparation and IRS representation, all under one roof." },
+  { title: "Direct Access to Your CPA", desc: "Speak directly with us. No call centers, no junior staff, no waiting." },
   { title: "100% Virtual, Nationwide", desc: "Based in Texas, serving clients across the country. No office visit required." },
-  { title: "Year-Round Support", desc: "We're here all year — proactive planning, not just April filing." },
+  { title: "Year-Round Support", desc: "We are here all year for proactive planning, not just at tax time." },
 ];
 
 const stats = [
@@ -234,7 +234,7 @@ export default function Home() {
       <section style={{ padding: "56px 44px", background: "#fff", margin: 0 }}>
         <div style={{ fontSize: "10px", fontWeight: 600, color: "#b8962e", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "8px" }}>What We Offer</div>
         <h2 style={{ fontSize: "26px", fontWeight: 700, color: "#1a2e4a", marginBottom: "6px", letterSpacing: "-0.4px" }}>Full-Service Tax &amp; Accounting</h2>
-        <p style={{ fontSize: "13px", color: "#888", marginBottom: "36px", lineHeight: 1.6 }}>From individual returns to complex small business accounting — all handled with precision.</p>
+        <p style={{ fontSize: "13px", color: "#888", marginBottom: "36px", lineHeight: 1.6 }}>From individual returns to complex small business accounting, all handled with precision.</p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px" }}>
           {serviceCards.map((svc) => (
             <div key={svc.title} style={{ background: "#faf9f6", borderRadius: "10px", padding: "20px", border: "1px solid #f0ede6" }}>
@@ -253,7 +253,7 @@ export default function Home() {
       <section style={{ background: "#f5f3ee", padding: "52px 44px", borderTop: "1px solid #ede9e0", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "24px" }}>
         <div>
           <h2 style={{ fontSize: "22px", fontWeight: 700, color: "#1a2e4a", marginBottom: "6px", letterSpacing: "-0.3px" }}>Ready to get started?</h2>
-          <p style={{ fontSize: "13px", color: "#888" }}>Book a free 30-minute consultation — no commitment required.</p>
+          <p style={{ fontSize: "13px", color: "#888" }}>Book a free 30-minute consultation with no commitment required.</p>
         </div>
         <Link href="/booking" style={{ background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "13px 28px", borderRadius: "7px", textDecoration: "none", whiteSpace: "nowrap" }}>
           Book a Free Call →

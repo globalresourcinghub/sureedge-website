@@ -51,7 +51,7 @@ export default function Contact() {
           <div style={{position:"relative",zIndex:10,padding:"52px 48px",height:"100%",display:"flex",flexDirection:"column",justifyContent:"center"}}>
             <div style={{display:"inline-block",color:"white",fontSize:"10px",fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",padding:"4px 12px",borderRadius:"20px",marginBottom:"20px",background:"#b8962e",width:"fit-content"}}>Get In Touch</div>
             <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px",textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>{"We'd"} Love to<br/>Hear From You</h1>
-            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.8)",lineHeight:1.7,marginBottom:"24px",maxWidth:"360px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Reach out with any questions — we respond within 1 business day.</p>
+            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.8)",lineHeight:1.7,marginBottom:"24px",maxWidth:"360px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Reach out with any questions and we will respond within 1 business day.</p>
             <div style={{display:"flex",flexDirection:"column",gap:"8px"}}>
               {["contact@sureedgetax.com","Mon–Fri, 9am–6pm CT","Response within 1 business day"].map(i => (
                 <div key={i} style={{display:"flex",alignItems:"center",gap:"8px"}}>

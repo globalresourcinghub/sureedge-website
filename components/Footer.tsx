@@ -36,7 +36,7 @@ export default function Footer() {
               <FooterLogo />
             </div>
             <p style={{ fontSize: "11px", color: "#888", lineHeight: 1.7, maxWidth: "240px", margin: 0 }}>
-              Licensed CPA &amp; EA firm based in Texas. Serving individuals and small businesses nationwide — 100% virtual.
+              Licensed CPA &amp; EA firm based in Texas. Serving individuals and small businesses nationwide. 100% virtual.
             </p>
             <p style={{ fontSize: "11px", color: "#bbb", marginTop: "10px" }}>
               contact@sureedgetax.com · Mon–Fri 9am–6pm CT

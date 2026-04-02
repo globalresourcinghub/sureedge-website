@@ -31,10 +31,10 @@ export default function PageHero({ badge, title, subtitle, background, children,
         <div style={{ fontSize: "10px", color: "#b8962e", fontWeight: 600, textTransform: "uppercase", letterSpacing: "2.5px", marginBottom: "20px" }}>Why clients choose us</div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
           {[
-            ["CPA & Enrolled Agent", "Dual credentials — full tax preparation and IRS representation under one roof."],
-            ["Direct Access to Your CPA", "You speak directly with us — not a call center or junior staffer."],
+            ["CPA & Enrolled Agent", "Dual credentials for full tax preparation and IRS representation, all under one roof."],
+            ["Direct Access to Your CPA", "You speak directly with us. No call centers or junior staffers."],
             ["100% Virtual, Nationwide", "Based in Texas, serving clients across the entire country."],
-            ["Year-Round Support", "We're available all year — not just at tax time."],
+            ["Year-Round Support", "We are available all year, not just at tax time."],
           ].map(([t, d]) => (
             <div key={t} style={{ background: "white", borderRadius: "10px", padding: "14px 16px", borderLeft: "3px solid #b8962e", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
               <div style={{ fontSize: "13px", fontWeight: 600, marginBottom: "4px", color: "#1a2e4a" }}>{t}</div>

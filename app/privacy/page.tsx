@@ -12,7 +12,7 @@ export default function Privacy() {
 
         <section>
           <h2 className="text-base font-bold mb-2" style={{color:"#1a2e4a"}}>2. How We Use Your Information</h2>
-          <p>We use the information we collect to provide, maintain, and improve our services — including preparing tax quotes, responding to inquiries, scheduling consultations, and communicating with you about your account.</p>
+          <p>We use the information we collect to provide, maintain, and improve our services, including preparing tax quotes, responding to inquiries, scheduling consultations, and communicating with you about your account.</p>
         </section>
 
         <section>

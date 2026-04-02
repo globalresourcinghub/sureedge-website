@@ -29,7 +29,7 @@ export default function About() {
           <div style={{position:"relative",zIndex:10,padding:"52px 48px",height:"100%",display:"flex",flexDirection:"column",justifyContent:"center"}}>
             <div style={{display:"inline-block",color:"white",fontSize:"10px",fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",padding:"4px 12px",borderRadius:"20px",marginBottom:"20px",background:"#b8962e",width:"fit-content"}}>About Us</div>
             <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px",textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>A CPA Firm Built<br/>for Real People</h1>
-            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.8)",lineHeight:1.7,marginBottom:"20px",maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Based in Texas — serving individuals and small businesses nationwide with licensed CPA &amp; EA credentials.</p>
+            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.8)",lineHeight:1.7,marginBottom:"20px",maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Based in Texas, serving individuals and small businesses nationwide with licensed CPA &amp; EA credentials.</p>
             <div style={{padding:"12px 16px",borderLeft:"2px solid #b8962e",background:"rgba(184,150,46,0.12)",borderRadius:"0 6px 6px 0"}}>
               <p style={{fontSize:"12px",fontStyle:"italic",color:"rgba(255,255,255,0.85)"}}>Delivered personally, accessibly, and affordably.</p>
             </div>
@@ -39,9 +39,9 @@ export default function About() {
           <div style={{fontSize:"10px",color:"#b8962e",fontWeight:600,textTransform:"uppercase",letterSpacing:"2.5px",marginBottom:"20px"}}>Our credentials</div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"12px"}}>
             {[
-              ["CPA","Certified Public Accountant — licensed for full accounting and tax services."],
+              ["CPA","Certified Public Accountant licensed for full accounting and tax services."],
               ["Enrolled Agent","IRS-licensed to represent clients in all tax matters, including audits."],
-              ["100% Virtual","Serving clients nationwide from Texas — no office visit required."],
+              ["100% Virtual","Serving clients nationwide from Texas. No office visit required."],
               ["Year-Round","Available all year, not just at tax time. We plan proactively."],
             ].map(([t,d]) => (
               <div key={t} style={{background:"white",borderRadius:"10px",padding:"16px",borderLeft:"3px solid #b8962e",boxShadow:"0 1px 4px rgba(0,0,0,0.06)"}}>
@@ -59,7 +59,7 @@ export default function About() {
           <div>
             <h2 style={{fontSize:"24px",fontWeight:700,color:"#1a2e4a",marginBottom:"16px"}}>Our Story</h2>
             <p style={{fontSize:"14px",color:"#555",lineHeight:1.75,marginBottom:"14px"}}>SureEdge Tax &amp; Accounting was founded on a simple belief: every individual and small business deserves the same quality of tax and accounting services that larger firms provide their biggest clients.</p>
-            <p style={{fontSize:"14px",color:"#555",lineHeight:1.75,marginBottom:"14px"}}>We are a family-run practice based in Texas, bringing together complementary expertise — CPA and Enrolled Agent credentials — to serve our clients as a true partner, not just a once-a-year preparer.</p>
+            <p style={{fontSize:"14px",color:"#555",lineHeight:1.75,marginBottom:"14px"}}>We are a family-run practice based in Texas, bringing together CPA and Enrolled Agent expertise to serve our clients as a true partner, not just a once-a-year tax preparer.</p>
             <p style={{fontSize:"14px",color:"#555",lineHeight:1.75}}>We operate 100% virtually, which means we can serve clients across the entire country while keeping our overhead low and passing those savings on to you.</p>
           </div>
           <div>
@@ -67,7 +67,7 @@ export default function About() {
             <div style={{display:"flex",flexDirection:"column",gap:"16px"}}>
               {[
                 ["Transparency","No surprise fees. Clear pricing, clear communication."],
-                ["Accessibility","You get our direct number and email — no phone trees."],
+                ["Accessibility","You get our direct number and email. No phone trees or voicemail loops."],
                 ["Precision","Every return reviewed for accuracy before filing."],
                 ["Partnership","We think about your taxes year-round, not just in April."],
               ].map(([t,d]) => (
