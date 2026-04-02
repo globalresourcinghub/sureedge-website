@@ -41,8 +41,9 @@ export default function Header() {
 
   return (
     <header style={{ background: "#fff", borderBottom: "1px solid #f0ede6", position: "sticky", top: 0, zIndex: 50 }}>
-      <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 44px", height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <div style={{ padding: "0 44px", height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <HeaderLogo />
+
         <nav style={{ display: "flex", alignItems: "center", gap: "28px" }}>
           {links.map(l => {
             const isActive = pathname === l.href || pathname.startsWith(l.href + "/");
