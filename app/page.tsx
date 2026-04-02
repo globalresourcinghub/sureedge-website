@@ -230,7 +230,6 @@ export default function Home() {
 
       {/* SERVICES */}
       <section style={{ padding: "56px 44px", background: "#fff", margin: 0 }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ fontSize: "10px", fontWeight: 600, color: "#b8962e", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "8px" }}>What We Offer</div>
         <h2 style={{ fontSize: "26px", fontWeight: 700, color: "#1a2e4a", marginBottom: "6px", letterSpacing: "-0.4px" }}>Full-Service Tax &amp; Accounting</h2>
         <p style={{ fontSize: "13px", color: "#888", marginBottom: "36px", lineHeight: 1.6 }}>From individual returns to complex small business accounting — all handled with precision.</p>
@@ -246,12 +245,10 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </div>
       </section>
 
       {/* CTA SECTION */}
-      <section style={{ background: "#f5f3ee", padding: "52px 44px", borderTop: "1px solid #ede9e0" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "24px" }}>
+      <section style={{ background: "#f5f3ee", padding: "52px 44px", borderTop: "1px solid #ede9e0", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "24px" }}>
         <div>
           <h2 style={{ fontSize: "22px", fontWeight: 700, color: "#1a2e4a", marginBottom: "6px", letterSpacing: "-0.3px" }}>Ready to get started?</h2>
           <p style={{ fontSize: "13px", color: "#888" }}>Book a free 30-minute consultation — no commitment required.</p>
@@ -259,7 +256,6 @@ export default function Home() {
         <Link href="/booking" style={{ background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "13px 28px", borderRadius: "7px", textDecoration: "none", whiteSpace: "nowrap" }}>
           Book a Free Call →
         </Link>
-      </div>
       </section>
     </>
   );
