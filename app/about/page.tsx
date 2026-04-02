@@ -35,7 +35,7 @@ export default function About() {
             </div>
           </div>
         </div>
-        <div style={{flex:1.1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
+        <div style={{flex:1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
           <div style={{fontSize:"10px",color:"#b8962e",fontWeight:600,textTransform:"uppercase",letterSpacing:"2.5px",marginBottom:"20px"}}>Our credentials</div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"12px"}}>
             {[

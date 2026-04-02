@@ -43,9 +43,9 @@ export default function Services() {
             <p style={{fontSize:"14px",color:"rgba(255,255,255,0.8)",lineHeight:1.7,maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>From individual returns to complex small business accounting — handled with precision by licensed CPA &amp; EA professionals.</p>
           </div>
         </div>
-        <div style={{flex:1.1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
+        <div style={{flex:1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
           <div style={{fontSize:"10px",color:"#b8962e",fontWeight:600,textTransform:"uppercase",letterSpacing:"2.5px",marginBottom:"20px"}}>Our services include</div>
-          <div style={{display:"flex",flexDirection:"column",gap:"0"}}>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0"}}>
             {services.map(s => (
               <div key={s.title} style={{display:"flex",alignItems:"center",gap:"12px",padding:"10px 0",borderBottom:"1px solid #f0ede6"}}>
                 <div style={{width:"6px",height:"6px",borderRadius:"50%",background:"#b8962e",flexShrink:0}}/>

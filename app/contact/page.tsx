@@ -63,7 +63,7 @@ export default function Contact() {
           </div>
         </div>
         {/* Right form panel */}
-        <div style={{flex:1.1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
+        <div style={{flex:1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
           {status === "sent" ? (
             <div style={{textAlign:"center",padding:"32px 0"}}>
               <div style={{fontSize:"40px",marginBottom:"12px"}}>✅</div>

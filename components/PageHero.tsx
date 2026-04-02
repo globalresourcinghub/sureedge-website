@@ -27,9 +27,9 @@ export default function PageHero({ badge, title, subtitle, background, children,
         </div>
       </div>
       {/* Right light panel */}
-      <div style={{ flex: 1.1, background: "#faf9f6", display: "flex", flexDirection: "column", justifyContent: "center", padding: "44px 48px" }}>
+      <div style={{ flex: 1, background: "#faf9f6", display: "flex", flexDirection: "column", justifyContent: "center", padding: "44px 48px" }}>
         <div style={{ fontSize: "10px", color: "#b8962e", fontWeight: 600, textTransform: "uppercase", letterSpacing: "2.5px", marginBottom: "20px" }}>Why clients choose us</div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
           {[
             ["CPA & Enrolled Agent", "Dual credentials — full tax preparation and IRS representation under one roof."],
             ["Direct Access to Your CPA", "You speak directly with us — not a call center or junior staffer."],
