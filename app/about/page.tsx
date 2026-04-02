@@ -55,6 +55,7 @@ export default function About() {
 
       {/* Our Story + Values */}
       <section style={{padding:"64px 44px",background:"#fff"}}>
+      <div style={{maxWidth:"1200px",margin:"0 auto"}}>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"48px"}}>
           <div>
             <h2 style={{fontSize:"24px",fontWeight:700,color:"#1a2e4a",marginBottom:"16px"}}>Our Story</h2>
@@ -85,12 +86,14 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section style={{background:"#1a2e4a",padding:"52px 44px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:"24px"}}>
+      <section style={{background:"#1a2e4a",padding:"52px 44px"}}>
+      <div style={{maxWidth:"1200px",margin:"0 auto",display:"flex",alignItems:"center",justifyContent:"space-between",gap:"24px"}}>
         <div>
           <h2 style={{fontSize:"22px",fontWeight:700,color:"white",marginBottom:"6px"}}>Ready to work together?</h2>
           <p style={{fontSize:"13px",color:"rgba(255,255,255,0.6)"}}>Start with a free 30-minute consultation.</p>
         </div>
         <Link href="/booking" style={{color:"white",fontSize:"13px",fontWeight:700,padding:"13px 28px",borderRadius:"7px",background:"#b8962e",textDecoration:"none",whiteSpace:"nowrap"}}>Book a Free Call</Link>
+      </div>
       </section>
     </>
   );
