@@ -4,10 +4,27 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { joinFieldList, submitToWeb3Forms } from "@/lib/web3forms";
 
-const inputClass =
-  "w-full border border-gray-200 rounded-md px-3 py-2.5 text-sm focus:outline-none focus:border-[#b8962e]";
-const selectClass =
-  "w-full border border-gray-200 rounded-md px-3 py-2.5 text-sm text-gray-600 focus:outline-none focus:border-[#b8962e]";
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  border: "1px solid #e5e7eb",
+  borderRadius: "6px",
+  padding: "10px 12px",
+  fontSize: "14px",
+  outline: "none",
+  boxSizing: "border-box",
+};
+
+const selectStyle: React.CSSProperties = {
+  width: "100%",
+  border: "1px solid #e5e7eb",
+  borderRadius: "6px",
+  padding: "10px 12px",
+  fontSize: "14px",
+  color: "#555",
+  outline: "none",
+  boxSizing: "border-box",
+  background: "#fff",
+};
 
 const servicesNeeded = [
   "Business Tax Return Preparation",
@@ -32,10 +49,10 @@ const incomeActivity = [
 
 function GroupCheckboxes({ name, options }: { name: string; options: string[] }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
       {options.map((option) => (
-        <label key={option} className="flex items-start gap-2 text-sm text-gray-700">
-          <input type="checkbox" name={name} value={option} className="mt-0.5" />
+        <label key={option} style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "14px", color: "#374151", cursor: "pointer" }}>
+          <input type="checkbox" name={name} value={option} style={{ marginTop: "2px", flexShrink: 0 }} />
           <span>{option}</span>
         </label>
       ))}
@@ -54,9 +71,7 @@ export default function BusinessTaxIntakePage() {
     setErrorDetail(null);
     if (!web3FormsKey) {
       setStatus("error");
-      setErrorDetail(
-        "Missing NEXT_PUBLIC_WEB3FORMS_KEY. Add it in Vercel (or .env.local), then redeploy."
-      );
+      setErrorDetail("Missing NEXT_PUBLIC_WEB3FORMS_KEY. Add it in Vercel (or .env.local), then redeploy.");
       return;
     }
 
@@ -76,10 +91,7 @@ export default function BusinessTaxIntakePage() {
       if (ok) setStatus("sent");
       else {
         setStatus("error");
-        setErrorDetail(
-          message ??
-            "If this persists, add your domain in Web3Forms and confirm the key in Vercel, then redeploy."
-        );
+        setErrorDetail(message ?? "If this persists, add your domain in Web3Forms and confirm the key in Vercel, then redeploy.");
       }
     } catch {
       setStatus("error");
@@ -88,53 +100,49 @@ export default function BusinessTaxIntakePage() {
   };
 
   return (
-    <section className="py-12 px-6 max-w-4xl mx-auto">
-      <div className="text-center mb-8">
-        <div
-          className="inline-block text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3"
-          style={{ background: "#b8962e", color: "#fff" }}
-        >
+    <section style={{ padding: "48px 24px", maxWidth: "896px", margin: "0 auto" }}>
+      <div style={{ textAlign: "center", marginBottom: "32px" }}>
+        <div style={{ display: "inline-block", fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "2px", padding: "4px 12px", borderRadius: "20px", marginBottom: "12px", background: "#b8962e", color: "#fff" }}>
           Business Tax Return
         </div>
-        <h1 className="text-3xl font-bold mb-2" style={{ color: "#1a2e4a" }}>
+        <h1 style={{ fontSize: "28px", fontWeight: 700, marginBottom: "8px", color: "#1a2e4a" }}>
           Get Your Free Business Tax Quote
         </h1>
-        <p className="text-sm text-gray-600 max-w-2xl mx-auto">
-          Fill out our simple intake form and we&apos;ll provide a personalized fee quote within 2
-          business days.
+        <p style={{ fontSize: "14px", color: "#6b7280", maxWidth: "560px", margin: "0 auto" }}>
+          Fill out our simple intake form and we&apos;ll provide a personalized fee quote within 2 business days.
         </p>
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-xl p-6 md:p-8">
-        <p className="text-sm mb-5">
+      <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: "12px", padding: "32px" }}>
+        <p style={{ fontSize: "14px", marginBottom: "20px" }}>
           Filing as an individual instead?{" "}
-          <Link href="/tax-intake" className="font-semibold" style={{ color: "#b8962e" }}>
+          <Link href="/tax-intake" style={{ fontWeight: 600, color: "#b8962e", textDecoration: "none" }}>
             Use our Individual Tax Quote Form
           </Link>
           .
         </p>
 
         {status === "sent" ? (
-          <div className="text-center py-10">
-            <h2 className="text-xl font-bold mb-2" style={{ color: "#1a2e4a" }}>
+          <div style={{ textAlign: "center", padding: "40px 0" }}>
+            <h2 style={{ fontSize: "20px", fontWeight: 700, marginBottom: "8px", color: "#1a2e4a" }}>
               Quote Request Received
             </h2>
-            <p className="text-sm text-gray-600">
+            <p style={{ fontSize: "14px", color: "#6b7280" }}>
               Thank you. We will review your details and reply within 2 business days.
             </p>
           </div>
         ) : (
-          <form onSubmit={onSubmit} className="space-y-5">
-            <h2 className="text-lg font-semibold" style={{ color: "#1a2e4a" }}>
+          <form onSubmit={onSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            <h2 style={{ fontSize: "17px", fontWeight: 600, color: "#1a2e4a", margin: 0 }}>
               Business Tax Return Quote Form
             </h2>
 
-            <input name="businessName" placeholder="Business Name" required className={inputClass} />
-            <input name="contactName" placeholder="Contact Name" required className={inputClass} />
-            <input name="email" type="email" placeholder="Email Address" required className={inputClass} />
-            <input name="phone" type="tel" placeholder="Phone Number" required className={inputClass} />
+            <input name="businessName" placeholder="Business Name" required style={inputStyle} />
+            <input name="contactName" placeholder="Contact Name" required style={inputStyle} />
+            <input name="email" type="email" placeholder="Email Address" required style={inputStyle} />
+            <input name="phone" type="tel" placeholder="Phone Number" required style={inputStyle} />
 
-            <select name="entityType" required className={selectClass} defaultValue="">
+            <select name="entityType" required style={selectStyle} defaultValue="">
               <option value="">Business Entity Type - Select</option>
               <option>Sole Proprietor / Schedule C</option>
               <option>Single-Member LLC</option>
@@ -145,14 +153,14 @@ export default function BusinessTaxIntakePage() {
               <option>Not Sure</option>
             </select>
 
-            <select name="taxYear" required className={selectClass} defaultValue="">
+            <select name="taxYear" required style={selectStyle} defaultValue="">
               <option value="">Tax Year - Select</option>
               <option>2024</option>
               <option>2023</option>
               <option>2022 or earlier</option>
             </select>
 
-            <select name="teamSize" className={selectClass} defaultValue="">
+            <select name="teamSize" style={selectStyle} defaultValue="">
               <option value="">Number of Employees / Contractors - Select</option>
               <option>0</option>
               <option>1-5</option>
@@ -160,23 +168,23 @@ export default function BusinessTaxIntakePage() {
               <option>21 or more</option>
             </select>
 
-            <select name="firstYearInBusiness" className={selectClass} defaultValue="">
+            <select name="firstYearInBusiness" style={selectStyle} defaultValue="">
               <option value="">Is this your first year in business? - Select</option>
               <option>Yes</option>
               <option>No</option>
             </select>
 
             <div>
-              <p className="font-medium mb-2">Services Needed</p>
+              <p style={{ fontWeight: 500, marginBottom: "8px", fontSize: "14px", color: "#1a2e4a" }}>Services Needed</p>
               <GroupCheckboxes name="servicesNeeded" options={servicesNeeded} />
             </div>
 
             <div>
-              <p className="font-medium mb-2">Business Income &amp; Activity</p>
+              <p style={{ fontWeight: 500, marginBottom: "8px", fontSize: "14px", color: "#1a2e4a" }}>Business Income &amp; Activity</p>
               <GroupCheckboxes name="incomeActivity" options={incomeActivity} />
             </div>
 
-            <select name="bookkeepingSoftware" className={selectClass} defaultValue="">
+            <select name="bookkeepingSoftware" style={selectStyle} defaultValue="">
               <option value="">Do you use bookkeeping software? - Select</option>
               <option>QuickBooks</option>
               <option>Excel / Spreadsheets</option>
@@ -184,7 +192,7 @@ export default function BusinessTaxIntakePage() {
               <option>Nothing currently</option>
             </select>
 
-            <select name="booksStatus" className={selectClass} defaultValue="">
+            <select name="booksStatus" style={selectStyle} defaultValue="">
               <option value="">Are your books up to date? - Select</option>
               <option>Yes, fully up to date</option>
               <option>Partially - some catching up needed</option>
@@ -195,22 +203,20 @@ export default function BusinessTaxIntakePage() {
             <textarea
               name="comments"
               placeholder="Additional Comments or Questions"
-              className={`${inputClass} resize-y min-h-24`}
+              style={{ ...inputStyle, resize: "vertical", minHeight: "96px" }}
             />
 
             <button
               type="submit"
               disabled={status === "sending"}
-              className="text-white text-sm font-bold py-3 px-5 rounded transition-opacity hover:opacity-90"
-              style={{ background: "#b8962e" }}
+              style={{ background: "#b8962e", color: "#fff", fontSize: "14px", fontWeight: 700, padding: "12px 20px", borderRadius: "6px", border: "none", cursor: status === "sending" ? "not-allowed" : "pointer", opacity: status === "sending" ? 0.75 : 1, alignSelf: "flex-start" }}
             >
               {status === "sending" ? "Submitting..." : "Submit Form"}
             </button>
 
             {status === "error" && (
-              <p className="text-sm text-red-500">
-                {errorDetail ??
-                  "Something went wrong. Please email contact@sureedgetax.com."}
+              <p style={{ fontSize: "14px", color: "#ef4444" }}>
+                {errorDetail ?? "Something went wrong. Please email contact@sureedgetax.com."}
               </p>
             )}
           </form>

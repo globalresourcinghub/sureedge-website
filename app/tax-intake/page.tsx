@@ -4,10 +4,27 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { joinFieldList, submitToWeb3Forms } from "@/lib/web3forms";
 
-const inputClass =
-  "w-full border border-gray-200 rounded-md px-3 py-2.5 text-sm focus:outline-none focus:border-[#b8962e]";
-const selectClass =
-  "w-full border border-gray-200 rounded-md px-3 py-2.5 text-sm text-gray-600 focus:outline-none focus:border-[#b8962e]";
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  border: "1px solid #e5e7eb",
+  borderRadius: "6px",
+  padding: "10px 12px",
+  fontSize: "14px",
+  outline: "none",
+  boxSizing: "border-box",
+};
+
+const selectStyle: React.CSSProperties = {
+  width: "100%",
+  border: "1px solid #e5e7eb",
+  borderRadius: "6px",
+  padding: "10px 12px",
+  fontSize: "14px",
+  color: "#555",
+  outline: "none",
+  boxSizing: "border-box",
+  background: "#fff",
+};
 
 const incomeDocuments = [
   "W-2 (Employment Income)",
@@ -78,10 +95,10 @@ const specialCases = [
 
 function GroupCheckboxes({ name, options }: { name: string; options: string[] }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
       {options.map((option) => (
-        <label key={option} className="flex items-start gap-2 text-sm text-gray-700">
-          <input type="checkbox" name={name} value={option} className="mt-0.5" />
+        <label key={option} style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "14px", color: "#374151", cursor: "pointer" }}>
+          <input type="checkbox" name={name} value={option} style={{ marginTop: "2px", flexShrink: 0 }} />
           <span>{option}</span>
         </label>
       ))}
@@ -100,9 +117,7 @@ export default function TaxIntakePage() {
     setErrorDetail(null);
     if (!web3FormsKey) {
       setStatus("error");
-      setErrorDetail(
-        "Missing NEXT_PUBLIC_WEB3FORMS_KEY. Add it in Vercel (or .env.local), then redeploy."
-      );
+      setErrorDetail("Missing NEXT_PUBLIC_WEB3FORMS_KEY. Add it in Vercel (or .env.local), then redeploy.");
       return;
     }
 
@@ -126,10 +141,7 @@ export default function TaxIntakePage() {
       if (ok) setStatus("sent");
       else {
         setStatus("error");
-        setErrorDetail(
-          message ??
-            "If this persists, add your domain in Web3Forms and confirm the key in Vercel, then redeploy."
-        );
+        setErrorDetail(message ?? "If this persists, add your domain in Web3Forms and confirm the key in Vercel, then redeploy.");
       }
     } catch {
       setStatus("error");
@@ -138,52 +150,48 @@ export default function TaxIntakePage() {
   };
 
   return (
-    <section className="py-12 px-6 max-w-4xl mx-auto">
-      <div className="text-center mb-8">
-        <div
-          className="inline-block text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3"
-          style={{ background: "#b8962e", color: "#fff" }}
-        >
+    <section style={{ padding: "48px 24px", maxWidth: "896px", margin: "0 auto" }}>
+      <div style={{ textAlign: "center", marginBottom: "32px" }}>
+        <div style={{ display: "inline-block", fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "2px", padding: "4px 12px", borderRadius: "20px", marginBottom: "12px", background: "#b8962e", color: "#fff" }}>
           Individual Tax Return
         </div>
-        <h1 className="text-3xl font-bold mb-2" style={{ color: "#1a2e4a" }}>
+        <h1 style={{ fontSize: "28px", fontWeight: 700, marginBottom: "8px", color: "#1a2e4a" }}>
           Get Your Free Tax Quote
         </h1>
-        <p className="text-sm text-gray-600 max-w-2xl mx-auto">
-          Fill out our simple intake form and we&apos;ll provide a personalized fee quote within 2
-          business days.
+        <p style={{ fontSize: "14px", color: "#6b7280", maxWidth: "560px", margin: "0 auto" }}>
+          Fill out our simple intake form and we&apos;ll provide a personalized fee quote within 2 business days.
         </p>
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-xl p-6 md:p-8">
-        <p className="text-sm mb-5">
+      <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: "12px", padding: "32px" }}>
+        <p style={{ fontSize: "14px", marginBottom: "20px" }}>
           Need a quote for a business return?{" "}
-          <Link href="/business-tax-intake" className="font-semibold" style={{ color: "#b8962e" }}>
+          <Link href="/business-tax-intake" style={{ fontWeight: 600, color: "#b8962e", textDecoration: "none" }}>
             Use our Business Tax Quote Form instead
           </Link>
           .
         </p>
 
         {status === "sent" ? (
-          <div className="text-center py-10">
-            <h2 className="text-xl font-bold mb-2" style={{ color: "#1a2e4a" }}>
+          <div style={{ textAlign: "center", padding: "40px 0" }}>
+            <h2 style={{ fontSize: "20px", fontWeight: 700, marginBottom: "8px", color: "#1a2e4a" }}>
               Quote Request Received
             </h2>
-            <p className="text-sm text-gray-600">
+            <p style={{ fontSize: "14px", color: "#6b7280" }}>
               Thank you. We will review your details and reply within 2 business days.
             </p>
           </div>
         ) : (
-          <form onSubmit={onSubmit} className="space-y-5">
-            <h2 className="text-lg font-semibold" style={{ color: "#1a2e4a" }}>
+          <form onSubmit={onSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            <h2 style={{ fontSize: "17px", fontWeight: 600, color: "#1a2e4a", margin: 0 }}>
               Individual Tax Return Intake Form
             </h2>
 
-            <input name="fullName" placeholder="Full Name" required className={inputClass} />
-            <input name="email" type="email" placeholder="Email Address" required className={inputClass} />
-            <input name="phone" type="tel" placeholder="Phone Number" required className={inputClass} />
+            <input name="fullName" placeholder="Full Name" required style={inputStyle} />
+            <input name="email" type="email" placeholder="Email Address" required style={inputStyle} />
+            <input name="phone" type="tel" placeholder="Phone Number" required style={inputStyle} />
 
-            <select name="filingStatus" required className={selectClass} defaultValue="">
+            <select name="filingStatus" required style={selectStyle} defaultValue="">
               <option value="">Filing Status - Select</option>
               <option>Single</option>
               <option>Married Filing Jointly</option>
@@ -192,14 +200,14 @@ export default function TaxIntakePage() {
               <option>Qualifying Surviving Spouse</option>
             </select>
 
-            <select name="taxYear" required className={selectClass} defaultValue="">
+            <select name="taxYear" required style={selectStyle} defaultValue="">
               <option value="">Tax Year - Select</option>
               <option>2024</option>
               <option>2023</option>
               <option>2022 or earlier</option>
             </select>
 
-            <select name="dependents" className={selectClass} defaultValue="">
+            <select name="dependents" style={selectStyle} defaultValue="">
               <option value="">Number of Dependents - Select</option>
               <option>0</option>
               <option>1</option>
@@ -209,49 +217,47 @@ export default function TaxIntakePage() {
             </select>
 
             <div>
-              <p className="font-medium mb-2">Which income documents do you have?</p>
+              <p style={{ fontWeight: 500, marginBottom: "8px", fontSize: "14px", color: "#1a2e4a" }}>Which income documents do you have?</p>
               <GroupCheckboxes name="incomeDocuments" options={incomeDocuments} />
             </div>
             <div>
-              <p className="font-medium mb-2">Which investment or retirement items apply to you?</p>
+              <p style={{ fontWeight: 500, marginBottom: "8px", fontSize: "14px", color: "#1a2e4a" }}>Which investment or retirement items apply to you?</p>
               <GroupCheckboxes name="investmentItems" options={investmentItems} />
             </div>
             <div>
-              <p className="font-medium mb-2">Which business or self-employment items apply to you?</p>
+              <p style={{ fontWeight: 500, marginBottom: "8px", fontSize: "14px", color: "#1a2e4a" }}>Which business or self-employment items apply to you?</p>
               <GroupCheckboxes name="businessItems" options={businessItems} />
             </div>
             <div>
-              <p className="font-medium mb-2">Which real estate items apply to you?</p>
+              <p style={{ fontWeight: 500, marginBottom: "8px", fontSize: "14px", color: "#1a2e4a" }}>Which real estate items apply to you?</p>
               <GroupCheckboxes name="realEstateItems" options={realEstateItems} />
             </div>
             <div>
-              <p className="font-medium mb-2">Which credits or deductions apply to you?</p>
+              <p style={{ fontWeight: 500, marginBottom: "8px", fontSize: "14px", color: "#1a2e4a" }}>Which credits or deductions apply to you?</p>
               <GroupCheckboxes name="deductionItems" options={deductionItems} />
             </div>
             <div>
-              <p className="font-medium mb-2">Do any of these special situations apply to you?</p>
+              <p style={{ fontWeight: 500, marginBottom: "8px", fontSize: "14px", color: "#1a2e4a" }}>Do any of these special situations apply to you?</p>
               <GroupCheckboxes name="specialCases" options={specialCases} />
             </div>
 
             <textarea
               name="comments"
               placeholder="Additional Comments or Questions"
-              className={`${inputClass} resize-y min-h-24`}
+              style={{ ...inputStyle, resize: "vertical", minHeight: "96px" }}
             />
 
             <button
               type="submit"
               disabled={status === "sending"}
-              className="text-white text-sm font-bold py-3 px-5 rounded transition-opacity hover:opacity-90"
-              style={{ background: "#b8962e" }}
+              style={{ background: "#b8962e", color: "#fff", fontSize: "14px", fontWeight: 700, padding: "12px 20px", borderRadius: "6px", border: "none", cursor: status === "sending" ? "not-allowed" : "pointer", opacity: status === "sending" ? 0.75 : 1, alignSelf: "flex-start" }}
             >
               {status === "sending" ? "Submitting..." : "Submit Form"}
             </button>
 
             {status === "error" && (
-              <p className="text-sm text-red-500">
-                {errorDetail ??
-                  "Something went wrong. Please email contact@sureedgetax.com."}
+              <p style={{ fontSize: "14px", color: "#ef4444" }}>
+                {errorDetail ?? "Something went wrong. Please email contact@sureedgetax.com."}
               </p>
             )}
           </form>

@@ -55,7 +55,7 @@ export default function About() {
 
       {/* Our Story + Values */}
       <section style={{padding:"64px 44px",background:"#fff"}}>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"48px",maxWidth:"1100px",margin:"0 auto"}}>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"48px"}}>
           <div>
             <h2 style={{fontSize:"24px",fontWeight:700,color:"#1a2e4a",marginBottom:"16px"}}>Our Story</h2>
             <p style={{fontSize:"14px",color:"#555",lineHeight:1.75,marginBottom:"14px"}}>SureEdge Tax &amp; Accounting was founded on a simple belief: every individual and small business deserves the same quality of tax and accounting services that larger firms provide their biggest clients.</p>
