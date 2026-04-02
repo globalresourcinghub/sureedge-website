@@ -38,7 +38,7 @@ export default function Blog() {
     <>
       {/* Hero */}
       <div style={{display:"flex",minHeight:"300px"}}>
-        <div style={{flex:0.8,position:"relative",overflow:"hidden",minWidth:0}}>
+        <div style={{flex:1,position:"relative",overflow:"hidden",minWidth:0}}>
           <NewspaperBg/>
           <div style={{position:"absolute",inset:0,background:"linear-gradient(to right,rgba(8,18,32,0.65) 0%,rgba(8,18,32,0.4) 100%)"}}/>
           <div style={{position:"relative",zIndex:10,padding:"52px 48px",height:"100%",display:"flex",flexDirection:"column",justifyContent:"center"}}>
@@ -47,13 +47,13 @@ export default function Blog() {
             <p style={{fontSize:"14px",color:"rgba(255,255,255,0.8)",lineHeight:1.7,maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Practical tax tips and financial guidance written by licensed professionals — not algorithms.</p>
           </div>
         </div>
-        <div style={{flex:1.2,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
+        <div style={{flex:1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
           <div style={{fontSize:"10px",color:"#b8962e",fontWeight:600,textTransform:"uppercase",letterSpacing:"2.5px",marginBottom:"20px"}}>Latest articles</div>
-          <div style={{display:"flex",flexDirection:"column",gap:"0"}}>
-            {posts.slice(0,4).map(p => (
-              <div key={p.slug} style={{display:"flex",alignItems:"center",gap:"16px",padding:"10px 0",borderBottom:"1px solid #f0ede6"}}>
-                <div style={{fontSize:"10px",color:"#b8962e",width:"96px",flexShrink:0,fontWeight:500}}>{p.category}</div>
-                <Link href={`/blog/${p.slug}`} style={{fontSize:"13px",fontWeight:500,color:"#1a2e4a",textDecoration:"none"}}>{p.title}</Link>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0"}}>
+            {posts.map(p => (
+              <div key={p.slug} style={{display:"flex",alignItems:"flex-start",gap:"10px",padding:"10px 12px 10px 0",borderBottom:"1px solid #f0ede6"}}>
+                <div style={{fontSize:"10px",color:"#b8962e",width:"80px",flexShrink:0,fontWeight:500,paddingTop:"1px"}}>{p.category}</div>
+                <Link href={`/blog/${p.slug}`} style={{fontSize:"12px",fontWeight:500,color:"#1a2e4a",textDecoration:"none",lineHeight:1.4}}>{p.title}</Link>
               </div>
             ))}
           </div>
