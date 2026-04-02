@@ -2,15 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --navy: #1a2e4a;
-  --gold: #b8962e;
-  --warm-bg: #faf9f6;
-  --warm-border: #f0ede6;
-}
-
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -28,12 +23,7 @@ a {
   text-decoration: none;
 }
 
-/* Hover states for nav links */
-header nav a:not([class*="bg-"]):not([class*="border"]):hover {
-  color: #1a2e4a !important;
-}
-
-/* Service card hover */
-div[style*="#faf9f6"]:hover {
-  border-color: #e0dbd0 !important;
+section {
+  margin: 0;
+  padding: 0;
 }

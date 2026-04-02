@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
 
 const links = [
@@ -14,31 +13,28 @@ const links = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="bg-white sticky top-0 z-50" style={{ borderBottom: "1px solid #f0ede6" }}>
-      <div className="max-w-screen-xl mx-auto px-8 flex items-center justify-between" style={{ height: "64px" }}>
-        <Link href="/" className="flex items-center">
+    <header style={{ background: "#fff", borderBottom: "1px solid #f0ede6", position: "sticky", top: 0, zIndex: 50 }}>
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 40px", height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        {/* Logo */}
+        <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
           <Logo size="md" />
         </Link>
-        <nav className="hidden md:flex items-center gap-7">
+
+        {/* Desktop nav — always visible above 768px */}
+        <nav style={{ display: "flex", alignItems: "center", gap: "28px" }}>
           {links.map(l => (
-            <Link key={l.href} href={l.href} className="text-sm transition-colors" style={{ color: "#555", fontWeight: 400 }}>{l.label}</Link>
+            <Link key={l.href} href={l.href} style={{ fontSize: "13px", color: "#555", fontWeight: 400, textDecoration: "none" }}>
+              {l.label}
+            </Link>
           ))}
-          <Link href="/contact" className="text-sm font-medium px-5 py-2 rounded-md" style={{ color: "#1a2e4a", border: "1.5px solid #1a2e4a" }}>Contact</Link>
-          <Link href="/tax-intake" className="text-sm font-semibold text-white px-5 py-2 rounded-md hover:opacity-90" style={{ background: "#b8962e" }}>Get a Quote</Link>
+          <Link href="/contact" style={{ fontSize: "13px", fontWeight: 500, color: "#1a2e4a", padding: "8px 20px", borderRadius: "6px", border: "1.5px solid #1a2e4a", textDecoration: "none" }}>
+            Contact
+          </Link>
+          <Link href="/tax-intake" style={{ fontSize: "13px", fontWeight: 600, color: "#fff", background: "#b8962e", padding: "9px 20px", borderRadius: "6px", textDecoration: "none" }}>
+            Get a Quote
+          </Link>
         </nav>
-        <button className="md:hidden p-1" onClick={() => setOpen(!open)}>
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
       </div>
-      {open && (
-        <div className="md:hidden bg-white border-t px-6 py-4 flex flex-col gap-3" style={{ borderColor: "#f0ede6" }}>
-          {links.map(l => (
-            <Link key={l.href} href={l.href} className="text-sm py-1" style={{ color: "#444" }} onClick={() => setOpen(false)}>{l.label}</Link>
-          ))}
-          <Link href="/contact" className="text-sm font-medium px-4 py-2 rounded-md text-center" style={{ color: "#1a2e4a", border: "1.5px solid #1a2e4a" }} onClick={() => setOpen(false)}>Contact</Link>
-          <Link href="/tax-intake" className="text-sm font-semibold text-white px-4 py-2 rounded-md text-center" style={{ background: "#b8962e" }} onClick={() => setOpen(false)}>Get a Quote</Link>
-        </div>
-      )}
     </header>
   );
 }

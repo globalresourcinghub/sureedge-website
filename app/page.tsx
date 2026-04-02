@@ -229,7 +229,7 @@ export default function Home() {
       </div>
 
       {/* SERVICES */}
-      <section style={{ padding: "64px 44px", background: "#fff", maxWidth: "1280px", margin: "0 auto" }}>
+      <section style={{ padding: "56px 44px", background: "#fff", margin: 0 }}>
         <div style={{ fontSize: "10px", fontWeight: 600, color: "#b8962e", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "8px" }}>What We Offer</div>
         <h2 style={{ fontSize: "26px", fontWeight: 700, color: "#1a2e4a", marginBottom: "6px", letterSpacing: "-0.4px" }}>Full-Service Tax &amp; Accounting</h2>
         <p style={{ fontSize: "13px", color: "#888", marginBottom: "36px", lineHeight: 1.6 }}>From individual returns to complex small business accounting — all handled with precision.</p>
