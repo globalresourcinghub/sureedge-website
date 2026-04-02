@@ -27,7 +27,7 @@ function FooterLogo() {
 export default function Footer() {
   return (
     <footer style={{ background: "#fff", borderTop: "1px solid #f0ede6" }}>
-      <div style={{ padding: "40px 44px 24px" }}>
+      <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "40px 44px 24px" }}>
         {/* 3-column grid */}
         <div style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr", gap: "32px", marginBottom: "28px" }}>
           {/* Brand */}

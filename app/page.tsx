@@ -89,9 +89,10 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section style={{ display: "flex", minHeight: "420px" }}>
+      <section style={{ background: "#0d1928" }}>
+      <div style={{ maxWidth: "1440px", margin: "0 auto", display: "flex", minHeight: "420px" }}>
         {/* Left — dark city skyline */}
-        <div style={{ flex: 1, background: "#0d1928", position: "relative", overflow: "hidden" }}>
+        <div style={{ flex: "0 0 45%", background: "#0d1928", position: "relative", overflow: "hidden" }}>
           {/* City skyline SVG */}
           <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 480 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -205,7 +206,7 @@ export default function Home() {
         </div>
 
         {/* Right — feature cards on warm off-white */}
-        <div style={{ flex: 1.05, background: "#faf9f6", display: "flex", flexDirection: "column", justifyContent: "center", padding: "44px 40px" }}>
+        <div style={{ flex: "0 0 55%", background: "#faf9f6", display: "flex", flexDirection: "column", justifyContent: "center", padding: "44px 44px 44px 40px" }}>
           <div style={{ fontSize: "10px", fontWeight: 600, color: "#b8962e", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "20px" }}>
             Why clients choose us
           </div>
@@ -216,10 +217,12 @@ export default function Home() {
             </div>
           ))}
         </div>
+      </div>
       </section>
 
       {/* TRUST BAR */}
-      <div style={{ background: "#1a2e4a", display: "flex" }}>
+      <div style={{ background: "#1a2e4a" }}>
+      <div style={{ maxWidth: "1440px", margin: "0 auto", display: "flex" }}>
         {stats.map((s, i) => (
           <div key={i} style={{ flex: 1, textAlign: "center", padding: "18px 12px", borderRight: i < stats.length - 1 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
             <div style={{ fontSize: "20px", fontWeight: 700, color: "#b8962e", letterSpacing: "-0.3px" }}>{s.val}</div>
@@ -227,9 +230,11 @@ export default function Home() {
           </div>
         ))}
       </div>
+      </div>
 
       {/* SERVICES */}
-      <section style={{ padding: "56px 44px", background: "#fff", margin: 0 }}>
+      <section style={{ background: "#fff" }}>
+      <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "56px 44px" }}>
         <div style={{ fontSize: "10px", fontWeight: 600, color: "#b8962e", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "8px" }}>What We Offer</div>
         <h2 style={{ fontSize: "26px", fontWeight: 700, color: "#1a2e4a", marginBottom: "6px", letterSpacing: "-0.4px" }}>Full-Service Tax &amp; Accounting</h2>
         <p style={{ fontSize: "13px", color: "#888", marginBottom: "36px", lineHeight: 1.6 }}>From individual returns to complex small business accounting — all handled with precision.</p>
@@ -245,10 +250,12 @@ export default function Home() {
             </div>
           ))}
         </div>
+      </div>
       </section>
 
       {/* CTA SECTION */}
-      <section style={{ background: "#f5f3ee", padding: "52px 44px", borderTop: "1px solid #ede9e0", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "24px" }}>
+      <section style={{ background: "#f5f3ee", borderTop: "1px solid #ede9e0" }}>
+      <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "52px 44px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "24px" }}>
         <div>
           <h2 style={{ fontSize: "22px", fontWeight: 700, color: "#1a2e4a", marginBottom: "6px", letterSpacing: "-0.3px" }}>Ready to get started?</h2>
           <p style={{ fontSize: "13px", color: "#888" }}>Book a free 30-minute consultation — no commitment required.</p>
@@ -256,6 +263,7 @@ export default function Home() {
         <Link href="/booking" style={{ background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "13px 28px", borderRadius: "7px", textDecoration: "none", whiteSpace: "nowrap" }}>
           Book a Free Call →
         </Link>
+      </div>
       </section>
     </>
   );
