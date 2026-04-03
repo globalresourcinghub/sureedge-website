@@ -63,7 +63,7 @@ export default function Services() {
             <div key={s.title} style={{background:"#faf9f6",borderRadius:"10px",padding:"24px",border:"1px solid #f0ede6"}}>
               <h3 style={{fontSize:"14px",fontWeight:600,color:"#1a2e4a",marginBottom:"8px"}}>{s.title}</h3>
               <p style={{fontSize:"12px",color:"#555",lineHeight:1.6,marginBottom:"14px"}}>{s.desc}</p>
-              <Link href={s.href} style={{fontSize:"12px",fontWeight:600,color:"#b8962e",textDecoration:"none"}}>Get a quote â</Link>
+              <Link href={s.href} style={{fontSize:"12px",fontWeight:600,color:"#b8962e",textDecoration:"none"}}>Get a quote Ã¢ÂÂ</Link>
             </div>
           ))}
         </div>
