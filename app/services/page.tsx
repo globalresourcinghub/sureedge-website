@@ -40,7 +40,7 @@ export default function Services() {
           <div style={{position:"relative",zIndex:10,padding:"52px 48px",height:"100%",display:"flex",flexDirection:"column",justifyContent:"center"}}>
             <div style={{display:"inline-block",color:"white",fontSize:"10px",fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",padding:"4px 12px",borderRadius:"20px",marginBottom:"20px",background:"#b8962e",width:"fit-content"}}>What We Offer</div>
             <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px",textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>Full-Service Tax<br/>&amp; Accounting</h1>
-            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.8)",lineHeight:1.7,maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>From individual returns to complex small business accounting, handled with precision by licensed CPA &amp; EA professionals.</p>
+            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.92)",lineHeight:1.7,maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>From individual returns to complex small business accounting, handled with precision by licensed CPA &amp; EA professionals.</p>
           </div>
         </div>
         <div style={{flex:1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
@@ -62,8 +62,8 @@ export default function Services() {
           {services.map(s => (
             <div key={s.title} style={{background:"#faf9f6",borderRadius:"10px",padding:"24px",border:"1px solid #f0ede6"}}>
               <h3 style={{fontSize:"14px",fontWeight:600,color:"#1a2e4a",marginBottom:"8px"}}>{s.title}</h3>
-              <p style={{fontSize:"12px",color:"#888",lineHeight:1.6,marginBottom:"14px"}}>{s.desc}</p>
-              <Link href={s.href} style={{fontSize:"12px",fontWeight:600,color:"#b8962e",textDecoration:"none"}}>Get a quote →</Link>
+              <p style={{fontSize:"12px",color:"#555",lineHeight:1.6,marginBottom:"14px"}}>{s.desc}</p>
+              <Link href={s.href} style={{fontSize:"12px",fontWeight:600,color:"#b8962e",textDecoration:"none"}}>Get a quote â</Link>
             </div>
           ))}
         </div>
@@ -73,7 +73,7 @@ export default function Services() {
       <section style={{background:"#1a2e4a",padding:"52px 44px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:"24px"}}>
         <div>
           <h2 style={{fontSize:"22px",fontWeight:700,color:"white",marginBottom:"6px"}}>Not sure which service you need?</h2>
-          <p style={{fontSize:"13px",color:"rgba(255,255,255,0.6)"}}>Book a free 30-minute consultation and we will guide you.</p>
+          <p style={{fontSize:"13px",color:"rgba(255,255,255,0.88)"}}>Book a free 30-minute consultation and we will guide you.</p>
         </div>
         <Link href="/booking" style={{color:"white",fontSize:"13px",fontWeight:700,padding:"13px 28px",borderRadius:"7px",background:"#b8962e",textDecoration:"none",whiteSpace:"nowrap"}}>Book a Free Call</Link>
       </section>
