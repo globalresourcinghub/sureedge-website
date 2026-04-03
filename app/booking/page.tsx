@@ -62,12 +62,12 @@ export default function Booking() {
           <div style={{position:"relative",zIndex:10,padding:"52px 48px",height:"100%",display:"flex",flexDirection:"column",justifyContent:"center"}}>
             <div style={{display:"inline-block",color:"white",fontSize:"10px",fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",padding:"4px 12px",borderRadius:"20px",marginBottom:"20px",background:"#b8962e",width:"fit-content"}}>Free Consultation</div>
             <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px",textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>Book a Free<br/>30-Minute Call</h1>
-            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.8)",lineHeight:1.7,marginBottom:"24px",maxWidth:"360px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Tell us your preferred times and we will confirm within 2 business days.</p>
+            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.92)",lineHeight:1.7,marginBottom:"24px",maxWidth:"360px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Tell us your preferred times and we will confirm within 2 business days.</p>
             <div style={{display:"flex",flexDirection:"column",gap:"8px"}}>
               {["Phone call, no video required","Confirmed within 2 business days","No obligation, no pressure"].map(i => (
                 <div key={i} style={{display:"flex",alignItems:"center",gap:"8px"}}>
                   <div style={{width:"6px",height:"6px",borderRadius:"50%",background:"#b8962e",flexShrink:0}}/>
-                  <span style={{fontSize:"13px",color:"rgba(255,255,255,0.8)"}}>{i}</span>
+                  <span style={{fontSize:"13px",color:"rgba(255,255,255,0.92)"}}>{i}</span>
                 </div>
               ))}
             </div>
@@ -77,9 +77,9 @@ export default function Booking() {
         <div style={{flex:1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
           {status === "sent" ? (
             <div style={{textAlign:"center",padding:"32px 0"}}>
-              <div style={{fontSize:"40px",marginBottom:"12px"}}>â</div>
+              <div style={{fontSize:"40px",marginBottom:"12px"}}>Ã¢ÂÂ</div>
               <h3 style={{fontSize:"18px",fontWeight:700,color:"#1a2e4a",marginBottom:"8px"}}>Request Received!</h3>
-              <p style={{fontSize:"13px",color:"#888"}}>We will reach out within 2 business days to confirm your consultation.</p>
+              <p style={{fontSize:"13px",color:"#555"}}>We will reach out within 2 business days to confirm your consultation.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{display:"flex",flexDirection:"column",gap:"12px"}}>
