@@ -77,7 +77,7 @@ export default function Booking() {
         <div style={{flex:1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
           {status === "sent" ? (
             <div style={{textAlign:"center",padding:"32px 0"}}>
-              <div style={{fontSize:"40px",marginBottom:"12px"}}>✅</div>
+              <div style={{fontSize:"40px",marginBottom:"12px"}}>â</div>
               <h3 style={{fontSize:"18px",fontWeight:700,color:"#1a2e4a",marginBottom:"8px"}}>Request Received!</h3>
               <p style={{fontSize:"13px",color:"#888"}}>We will reach out within 2 business days to confirm your consultation.</p>
             </div>
