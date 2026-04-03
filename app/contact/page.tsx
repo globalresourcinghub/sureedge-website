@@ -53,7 +53,7 @@ export default function Contact() {
             <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px",textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>{"We'd"} Love to<br/>Hear From You</h1>
             <p style={{fontSize:"14px",color:"rgba(255,255,255,0.8)",lineHeight:1.7,marginBottom:"24px",maxWidth:"360px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Reach out with any questions and we will respond within 2 business days.</p>
             <div style={{display:"flex",flexDirection:"column",gap:"8px"}}>
-              {["contact@sureedgetax.com","Mon–Fri, 9am–6pm CT","Response within 2 business days"].map(i => (
+              {["contact@sureedgetax.com","MonâFri, 9amâ6pm CT","Response within 2 business days"].map(i => (
                 <div key={i} style={{display:"flex",alignItems:"center",gap:"8px"}}>
                   <div style={{width:"6px",height:"6px",borderRadius:"50%",background:"#b8962e",flexShrink:0}}/>
                   <span style={{fontSize:"13px",color:"rgba(255,255,255,0.8)"}}>{i}</span>
@@ -66,7 +66,7 @@ export default function Contact() {
         <div style={{flex:1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
           {status === "sent" ? (
             <div style={{textAlign:"center",padding:"32px 0"}}>
-              <div style={{fontSize:"40px",marginBottom:"12px"}}>✅</div>
+              <div style={{fontSize:"40px",marginBottom:"12px"}}>â</div>
               <h3 style={{fontSize:"18px",fontWeight:700,color:"#1a2e4a",marginBottom:"8px"}}>Message Sent!</h3>
               <p style={{fontSize:"13px",color:"#888"}}>We will get back to you within 2 business days.</p>
             </div>
