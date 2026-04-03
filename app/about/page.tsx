@@ -29,9 +29,9 @@ export default function About() {
           <div style={{position:"relative",zIndex:10,padding:"52px 48px",height:"100%",display:"flex",flexDirection:"column",justifyContent:"center"}}>
             <div style={{display:"inline-block",color:"white",fontSize:"10px",fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",padding:"4px 12px",borderRadius:"20px",marginBottom:"20px",background:"#b8962e",width:"fit-content"}}>About Us</div>
             <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px",textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>A CPA Firm Built<br/>for Real People</h1>
-            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.8)",lineHeight:1.7,marginBottom:"20px",maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Based in Texas, serving individuals and small businesses nationwide with licensed CPA &amp; EA credentials.</p>
+            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.92)",lineHeight:1.7,marginBottom:"20px",maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Based in Texas, serving individuals and small businesses nationwide with licensed CPA &amp; EA credentials.</p>
             <div style={{padding:"12px 16px",borderLeft:"2px solid #b8962e",background:"rgba(184,150,46,0.12)",borderRadius:"0 6px 6px 0"}}>
-              <p style={{fontSize:"12px",fontStyle:"italic",color:"rgba(255,255,255,0.85)"}}>Delivered personally, accessibly, and affordably.</p>
+              <p style={{fontSize:"12px",fontStyle:"italic",color:"rgba(255,255,255,0.95)"}}>Delivered personally, accessibly, and affordably.</p>
             </div>
           </div>
         </div>
@@ -41,14 +41,14 @@ export default function About() {
             {[
               ["CPA","Certified Public Accountant licensed for full accounting and tax services."],
               ["Enrolled Agent","IRS-licensed to represent clients in all tax matters, including audits."],
-              ["ChFC Candidate","Chartered Financial Consultant — advanced financial planning in progress."],
-              ["CFP Certification Candidate","Certified Financial Planner — comprehensive financial planning in progress."],
+              ["ChFC Candidate","Chartered Financial Consultant â advanced financial planning in progress."],
+              ["CFP Certification Candidate","Certified Financial Planner â comprehensive financial planning in progress."],
               ["100% Virtual","Serving clients nationwide from Texas. No office visit required."],
               ["Year-Round","Available all year, not just at tax time. We plan proactively."],
             ].map(([t,d]) => (
               <div key={t} style={{background:"white",borderRadius:"10px",padding:"16px",borderLeft:"3px solid #b8962e",boxShadow:"0 1px 4px rgba(0,0,0,0.06)"}}>
                 <div style={{fontSize:"13px",fontWeight:600,color:"#1a2e4a",marginBottom:"4px"}}>{t}</div>
-                <div style={{fontSize:"11px",color:"#888",lineHeight:1.55}}>{d}</div>
+                <div style={{fontSize:"11px",color:"#555",lineHeight:1.55}}>{d}</div>
               </div>
             ))}
           </div>
@@ -77,7 +77,7 @@ export default function About() {
                   <div style={{width:"3px",borderRadius:"2px",background:"#b8962e",flexShrink:0,minHeight:"40px"}}/>
                   <div>
                     <div style={{fontSize:"13px",fontWeight:600,color:"#1a2e4a",marginBottom:"3px"}}>{t}</div>
-                    <div style={{fontSize:"12px",color:"#888",lineHeight:1.55}}>{d}</div>
+                    <div style={{fontSize:"12px",color:"#555",lineHeight:1.55}}>{d}</div>
                   </div>
                 </div>
               ))}
@@ -90,7 +90,7 @@ export default function About() {
       <section style={{background:"#1a2e4a",padding:"52px 44px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:"24px"}}>
         <div>
           <h2 style={{fontSize:"22px",fontWeight:700,color:"white",marginBottom:"6px"}}>Ready to work together?</h2>
-          <p style={{fontSize:"13px",color:"rgba(255,255,255,0.6)"}}>Start with a free 30-minute consultation.</p>
+          <p style={{fontSize:"13px",color:"rgba(255,255,255,0.88)"}}>Start with a free 30-minute consultation.</p>
         </div>
         <Link href="/booking" style={{color:"white",fontSize:"13px",fontWeight:700,padding:"13px 28px",borderRadius:"7px",background:"#b8962e",textDecoration:"none",whiteSpace:"nowrap"}}>Book a Free Call</Link>
       </section>
