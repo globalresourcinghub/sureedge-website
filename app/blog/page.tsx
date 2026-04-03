@@ -1,15 +1,5 @@
 import Link from "next/link";
-
-const posts = [
-  {slug:"stress-free-tax-filing",title:"Stress-Free Tax Filing: What You Need to Know",date:"March 14, 2026",category:"Tax Tips",excerpt:"Tax season doesn't have to be stressful. Here's how to gather your documents, understand your deductions, and file with confidence."},
-  {slug:"maximizing-tax-refunds",title:"Maximizing Tax Refunds: Tips from SureEdge",date:"March 14, 2026",category:"Tax Tips",excerpt:"Most taxpayers leave money on the table every year. Learn the most commonly missed deductions and credits for individuals."},
-  {slug:"small-business-financial-support",title:"Why Small Businesses Need Expert Financial Support",date:"March 14, 2026",category:"Small Business",excerpt:"DIY bookkeeping and tax prep might seem like a cost-saving measure, but it often costs more in the long run. Here's why."},
-  {slug:"personalized-solutions-entrepreneurs",title:"Personalized Financial Solutions for Modern Entrepreneurs",date:"March 14, 2026",category:"Financial Planning",excerpt:"The gig economy and remote work have changed how people earn. Your tax strategy needs to evolve with you."},
-  {slug:"navigating-tax-season",title:"Navigating Tax Season with SureEdge Professionals",date:"March 14, 2026",category:"Tax Tips",excerpt:"A behind-the-scenes look at how our team approaches tax season to deliver accurate, timely returns for every client."},
-  {slug:"choosing-accounting-service",title:"Choosing the Right Accounting Service for Your Business",date:"March 14, 2026",category:"Small Business",excerpt:"Not all accounting services are created equal. Here's what to look for when choosing a CPA or accounting firm for your business."},
-  {slug:"irs-notices-explained",title:"IRS Notices Explained: What to Do When You Receive One",date:"March 14, 2026",category:"IRS & Compliance",excerpt:"Receiving a letter from the IRS is stressful, but most notices are routine. Learn what each type means and what to do next."},
-  {slug:"s-corp-vs-llc-tax",title:"S-Corp vs LLC: Which is Better for Your Taxes?",date:"March 14, 2026",category:"Small Business",excerpt:"Choosing the right entity structure can save thousands in taxes. Here's a plain-English breakdown of the tax implications."},
-];
+import { posts } from "@/lib/posts";
 
 function NewspaperBg() {
   return (
