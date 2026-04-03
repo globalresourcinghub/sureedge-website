@@ -19,6 +19,24 @@ a {
 /* ── Mobile responsive ── */
 @media (max-width: 768px) {
 
+  /* Hide desktop nav, show hamburger */
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .hamburger {
+    display: flex !important;
+  }
+
+  .mobile-menu {
+    display: flex !important;
+  }
+
+  /* Header padding tighter on mobile */
+  header > div {
+    padding: 0 20px !important;
+  }
+
   /* Stack all split hero panels vertically */
   section[style*="display: flex"],
   div[style*="display:flex"][style*="minHeight"],
@@ -33,16 +51,6 @@ a {
     flex: none !important;
     width: 100% !important;
     min-height: unset !important;
-  }
-
-  /* Header — shrink padding */
-  header > div {
-    padding: 0 20px !important;
-  }
-
-  /* Hide nav links on mobile, show only CTA */
-  header nav > a:not(:last-child) {
-    display: none !important;
   }
 
   /* Section padding tighter on mobile */
@@ -74,12 +82,6 @@ a {
   /* Footer grid — 1 col on mobile */
   footer div[style*="gridTemplateColumns"] {
     grid-template-columns: 1fr !important;
-  }
-
-  /* CTA sections — stack vertically */
-  section[style*="justifyContent: space-between"] > div,
-  section[style*="justifyContent:space-between"] > div {
-    width: 100% !important;
   }
 
   /* Hero content padding tighter */

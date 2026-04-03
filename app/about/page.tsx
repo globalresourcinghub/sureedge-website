@@ -42,7 +42,7 @@ export default function About() {
               ["CPA","Certified Public Accountant licensed for full accounting and tax services."],
               ["Enrolled Agent","IRS-licensed to represent clients in all tax matters, including audits."],
               ["ChFC Candidate","Chartered Financial Consultant — advanced financial planning in progress."],
-              ["CFP Candidate","Certified Financial Planner — comprehensive financial planning in progress."],
+              ["CFP Certification Candidate","Certified Financial Planner — comprehensive financial planning in progress."],
               ["100% Virtual","Serving clients nationwide from Texas. No office visit required."],
               ["Year-Round","Available all year, not just at tax time. We plan proactively."],
             ].map(([t,d]) => (
