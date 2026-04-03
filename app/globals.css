@@ -15,3 +15,88 @@ body {
 a {
   text-decoration: none;
 }
+
+/* ── Mobile responsive ── */
+@media (max-width: 768px) {
+
+  /* Stack all split hero panels vertically */
+  section[style*="display: flex"],
+  div[style*="display:flex"][style*="minHeight"],
+  div[style*="display: flex"][style*="minHeight"] {
+    flex-direction: column !important;
+  }
+
+  /* Full width on both panels */
+  section[style*="display: flex"] > div,
+  div[style*="display:flex"][style*="minHeight"] > div,
+  div[style*="display: flex"][style*="minHeight"] > div {
+    flex: none !important;
+    width: 100% !important;
+    min-height: unset !important;
+  }
+
+  /* Header — shrink padding */
+  header > div {
+    padding: 0 20px !important;
+  }
+
+  /* Hide nav links on mobile, show only CTA */
+  header nav > a:not(:last-child) {
+    display: none !important;
+  }
+
+  /* Section padding tighter on mobile */
+  section[style*="padding: 56px 44px"],
+  section[style*="padding:56px 44px"],
+  section[style*="padding: 52px 44px"],
+  section[style*="padding:52px 44px"],
+  section[style*="padding: 64px 44px"],
+  section[style*="padding:64px 44px"] {
+    padding: 40px 20px !important;
+  }
+
+  /* Services grid — 1 col on mobile */
+  div[style*="gridTemplateColumns: repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Blog post grid — 1 col on mobile */
+  div[style*="gridTemplateColumns: repeat(3,1fr)"],
+  div[style*="gridTemplateColumns:repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Blog post sidebar — hide on mobile */
+  article + aside {
+    display: none !important;
+  }
+
+  /* Footer grid — 1 col on mobile */
+  footer div[style*="gridTemplateColumns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* CTA sections — stack vertically */
+  section[style*="justifyContent: space-between"] > div,
+  section[style*="justifyContent:space-between"] > div {
+    width: 100% !important;
+  }
+
+  /* Hero content padding tighter */
+  div[style*="padding: 52px 48px"],
+  div[style*="padding:52px 48px"],
+  div[style*="padding: 44px 48px"],
+  div[style*="padding:44px 48px"] {
+    padding: 32px 20px !important;
+  }
+
+  /* Trust bar — 2 col on mobile */
+  div[style*="background: #1a2e4a"] > div[style*="display: flex"] {
+    flex-wrap: wrap !important;
+  }
+
+  div[style*="background: #1a2e4a"] > div > div[style*="flex: 1"] {
+    flex: 0 0 50% !important;
+  }
+}
+
