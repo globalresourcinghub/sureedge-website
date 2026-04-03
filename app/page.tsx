@@ -90,7 +90,7 @@ export default function Home() {
     <>
       {/* HERO */}
       <section style={{ display: "flex", minHeight: "420px" }}>
-        {/* Left — dark city skyline */}
+        {/* Left â dark city skyline */}
         <div style={{ flex: 1, background: "#0d1928", position: "relative", overflow: "hidden" }}>
           {/* City skyline SVG */}
           <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 480 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -185,26 +185,26 @@ export default function Home() {
           <div style={{ position: "relative", zIndex: 2, padding: "52px 44px", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(184,150,46,0.15)", border: "1px solid rgba(184,150,46,0.4)", color: "#b8962e", fontSize: "10px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", padding: "4px 12px", borderRadius: "20px", marginBottom: "22px", width: "fit-content" }}>
               <div style={{ width: "5px", height: "5px", background: "#b8962e", borderRadius: "50%" }}/>
-              Licensed CPA &amp; EA · Texas
+              Licensed CPA &amp; EA Â· Texas
             </div>
             <h1 style={{ fontSize: "clamp(28px,3vw,38px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "16px", letterSpacing: "-0.5px" }}>
               Tax &amp; Accounting<br/>Done <span style={{ color: "#b8962e" }}>Right</span>
             </h1>
-            <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.72)", lineHeight: 1.75, marginBottom: "32px", maxWidth: "360px" }}>
+            <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.88)", lineHeight: 1.75, marginBottom: "32px", maxWidth: "360px" }}>
               Virtual CPA &amp; Enrolled Agent firm serving individuals and small businesses nationwide. Expert guidance, personal service, year-round support.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px", alignItems: "flex-start" }}>
               <Link href="/tax-intake" style={{ background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "13px 28px", borderRadius: "7px", textDecoration: "none", letterSpacing: "0.2px" }}>
-                Get Your Free Quote →
+                Get Your Free Quote â
               </Link>
-              <Link href="/booking" style={{ background: "transparent", color: "#fff", fontSize: "13px", fontWeight: 500, padding: "12px 28px", borderRadius: "7px", border: "1.5px solid rgba(255,255,255,0.35)", textDecoration: "none" }}>
+              <Link href="/booking" style={{ background: "transparent", color: "#fff", fontSize: "13px", fontWeight: 500, padding: "12px 28px", borderRadius: "7px", border: "1.5px solid rgba(255,255,255,0.7)", textDecoration: "none" }}>
                 Book a Free Consultation
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Right — feature cards on warm off-white */}
+        {/* Right â feature cards on warm off-white */}
         <div style={{ flex: 1, background: "#faf9f6", display: "flex", flexDirection: "column", justifyContent: "center", padding: "44px 48px" }}>
           <div style={{ fontSize: "10px", fontWeight: 600, color: "#b8962e", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "20px" }}>
             Why clients choose us
@@ -225,7 +225,7 @@ export default function Home() {
         {stats.map((s, i) => (
           <div key={i} style={{ flex: 1, textAlign: "center", padding: "18px 12px", borderRight: i < stats.length - 1 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
             <div style={{ fontSize: "20px", fontWeight: 700, color: "#b8962e", letterSpacing: "-0.3px" }}>{s.val}</div>
-            <div style={{ fontSize: "10px", color: "rgba(255,255,255,0.45)", marginTop: "3px", letterSpacing: "0.5px" }}>{s.lbl}</div>
+            <div style={{ fontSize: "10px", color: "rgba(255,255,255,0.75)", marginTop: "3px", letterSpacing: "0.5px" }}>{s.lbl}</div>
           </div>
         ))}
       </div>
@@ -234,7 +234,7 @@ export default function Home() {
       <section style={{ padding: "56px 44px", background: "#fff", margin: 0 }}>
         <div style={{ fontSize: "10px", fontWeight: 600, color: "#b8962e", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "8px" }}>What We Offer</div>
         <h2 style={{ fontSize: "26px", fontWeight: 700, color: "#1a2e4a", marginBottom: "6px", letterSpacing: "-0.4px" }}>Full-Service Tax &amp; Accounting</h2>
-        <p style={{ fontSize: "13px", color: "#888", marginBottom: "36px", lineHeight: 1.6 }}>From individual returns to complex small business accounting, all handled with precision.</p>
+        <p style={{ fontSize: "13px", color: "#555", marginBottom: "36px", lineHeight: 1.6 }}>From individual returns to complex small business accounting, all handled with precision.</p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px" }}>
           {serviceCards.map((svc) => (
             <div key={svc.title} style={{ background: "#faf9f6", borderRadius: "10px", padding: "20px", border: "1px solid #f0ede6" }}>
@@ -242,8 +242,8 @@ export default function Home() {
                 {svc.icon}
               </div>
               <div style={{ fontSize: "13px", fontWeight: 600, color: "#1a2e4a", marginBottom: "6px" }}>{svc.title}</div>
-              <div style={{ fontSize: "11px", color: "#888", lineHeight: 1.55 }}>{svc.desc}</div>
-              <Link href={svc.href} style={{ fontSize: "11px", color: "#b8962e", fontWeight: 600, marginTop: "10px", display: "block", textDecoration: "none" }}>Get a quote →</Link>
+              <div style={{ fontSize: "11px", color: "#555", lineHeight: 1.55 }}>{svc.desc}</div>
+              <Link href={svc.href} style={{ fontSize: "11px", color: "#b8962e", fontWeight: 600, marginTop: "10px", display: "block", textDecoration: "none" }}>Get a quote â</Link>
             </div>
           ))}
         </div>
@@ -253,10 +253,10 @@ export default function Home() {
       <section style={{ background: "#f5f3ee", padding: "52px 44px", borderTop: "1px solid #ede9e0", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "24px" }}>
         <div>
           <h2 style={{ fontSize: "22px", fontWeight: 700, color: "#1a2e4a", marginBottom: "6px", letterSpacing: "-0.3px" }}>Ready to get started?</h2>
-          <p style={{ fontSize: "13px", color: "#888" }}>Book a free 30-minute consultation with no commitment required.</p>
+          <p style={{ fontSize: "13px", color: "#555" }}>Book a free 30-minute consultation with no commitment required.</p>
         </div>
         <Link href="/booking" style={{ background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "13px 28px", borderRadius: "7px", textDecoration: "none", whiteSpace: "nowrap" }}>
-          Book a Free Call →
+          Book a Free Call â
         </Link>
       </section>
     </>
