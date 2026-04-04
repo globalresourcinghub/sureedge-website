@@ -90,7 +90,7 @@ export default function Home() {
     <>
       {/* HERO */}
       <section style={{ display: "flex", minHeight: "420px" }}>
-        {/* Left — dark city skyline */}
+        {/* Left , dark city skyline */}
         <div style={{ flex: 1, background: "#0d1928", position: "relative", overflow: "hidden" }}>
           {/* City skyline SVG */}
           <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 480 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -204,7 +204,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right — feature cards on warm off-white */}
+        {/* Right , feature cards on warm off-white */}
         <div style={{ flex: 1, background: "#faf9f6", display: "flex", flexDirection: "column", justifyContent: "center", padding: "44px 48px" }}>
           <div style={{ fontSize: "10px", fontWeight: 600, color: "#b8962e", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "20px" }}>
             Why clients choose us
