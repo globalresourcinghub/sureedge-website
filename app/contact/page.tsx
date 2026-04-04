@@ -53,7 +53,7 @@ export default function Contact() {
             <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px",textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>{"We'd"} Love to<br/>Hear From You</h1>
             <p style={{fontSize:"14px",color:"rgba(255,255,255,0.92)",lineHeight:1.7,marginBottom:"24px",maxWidth:"360px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Reach out with any questions and we will respond within 1 business day.</p>
             <div style={{display:"flex",flexDirection:"column",gap:"8px"}}>
-              {["contact@sureedgetax.com","Mon–Fri, 9am–6pm CT","Response within 1 business day"].map(i => (
+              {["contact@sureedgetax.com","Mon to Fri, 9am to 6pm CT","Response within 1 business day"].map(i => (
                 <div key={i} style={{display:"flex",alignItems:"center",gap:"8px"}}>
                   <div style={{width:"6px",height:"6px",borderRadius:"50%",background:"#b8962e",flexShrink:0}}/>
                   <span style={{fontSize:"13px",color:"rgba(255,255,255,0.92)"}}>{i}</span>
