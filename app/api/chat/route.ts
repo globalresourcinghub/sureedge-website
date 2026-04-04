@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server'; // v2
 
 const SYSTEM_PROMPT = `You are a friendly and knowledgeable tax assistant for SureEdge Tax & Accounting, a licensed CPA and Enrolled Agent firm based in Texas serving clients nationwide.
 
