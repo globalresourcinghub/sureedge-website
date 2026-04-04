@@ -55,10 +55,10 @@ export default function Blog() {
         <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"16px"}}>
           {posts.map(p => (
             <div key={p.slug} style={{background:"#faf9f6",borderRadius:"10px",padding:"24px",border:"1px solid #f0ede6"}}>
-              <div style={{fontSize:"10px",fontWeight:600,textTransform:"uppercase",letterSpacing:"1.5px",color:"#b8962e",marginBottom:"10px"}}>{p.category} Â· {p.date}</div>
+              <div style={{fontSize:"10px",fontWeight:600,textTransform:"uppercase",letterSpacing:"1.5px",color:"#b8962e",marginBottom:"10px"}}>{p.category} · {p.date}</div>
               <h3 style={{fontSize:"14px",fontWeight:600,color:"#1a2e4a",marginBottom:"8px",lineHeight:1.4}}>{p.title}</h3>
               <p style={{fontSize:"12px",color:"#555",lineHeight:1.6,marginBottom:"14px"}}>{p.excerpt}</p>
-              <Link href={`/blog/${p.slug}`} style={{fontSize:"12px",fontWeight:600,color:"#b8962e",textDecoration:"none"}}>Read more â</Link>
+              <Link href={`/blog/${p.slug}`} style={{fontSize:"12px",fontWeight:600,color:"#b8962e",textDecoration:"none"}}>Read more →</Link>
             </div>
           ))}
         </div>
