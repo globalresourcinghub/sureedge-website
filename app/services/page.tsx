@@ -21,12 +21,21 @@ function DocsBg() {
 }
 
 const services = [
-  {title:"Individual Tax Preparation",desc:"Federal & state returns for W-2 employees, freelancers, investors, rental property owners, and retirees.",href:"/tax-intake"},
-  {title:"Small Business Tax",desc:"Schedule C, Form 1120-S, and Form 1065 for LLCs, S-Corps, C-Corps, and partnerships.",href:"/business-tax-intake"},
-  {title:"Bookkeeping",desc:"Monthly reconciliation and financial statements delivered via QuickBooks.",href:"/business-tax-intake"},
-  {title:"Payroll Services",desc:"End-to-end payroll processing, quarterly filings, W-2 and 1099 preparation.",href:"/business-tax-intake"},
-  {title:"Tax Planning & Strategy",desc:"Proactive year-round strategies to legally reduce your tax burden.",href:"/contact"},
-  {title:"IRS Representation",desc:"Licensed Enrolled Agent represents you directly before the IRS.",href:"/contact"},
+  {title:"Individual Tax Preparation",desc:"Federal and state returns for W-2 employees, freelancers, investors, rental property owners, and retirees. We handle all forms and schedules so nothing gets missed."},
+  {title:"Small Business Tax",desc:"Schedule C, Form 1120-S, and Form 1065 for LLCs, S-Corps, C-Corps, and partnerships. Accurate, on-time filing with full entity-level review."},
+  {title:"Bookkeeping",desc:"Monthly reconciliation, categorization, and financial statements delivered via QuickBooks. Clean books you can actually use to run your business."},
+  {title:"Payroll Services",desc:"End-to-end payroll processing, quarterly filings, and year-end W-2 and 1099 preparation. We keep you compliant so you can focus on your team."},
+  {title:"Tax Planning & Strategy",desc:"Proactive year-round strategies to legally reduce what you owe. We identify opportunities before the year closes, not after."},
+  {title:"IRS Representation",desc:"Received a notice or facing an audit? Our licensed Enrolled Agent represents you directly before the IRS with unlimited practice rights."},
+];
+
+const highlights = [
+  "Licensed CPA and Enrolled Agent on every return",
+  "Federal and state filings for all 50 states",
+  "Individuals, freelancers, and small businesses",
+  "Year-round support, not just tax season",
+  "Secure document handling and e-filing",
+  "Flat fees with no surprise billing",
 ];
 
 export default function Services() {
@@ -44,12 +53,12 @@ export default function Services() {
           </div>
         </div>
         <div style={{flex:1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
-          <div style={{fontSize:"10px",color:"#b8962e",fontWeight:600,textTransform:"uppercase",letterSpacing:"2.5px",marginBottom:"20px"}}>Our services include</div>
+          <div style={{fontSize:"10px",color:"#b8962e",fontWeight:600,textTransform:"uppercase",letterSpacing:"2.5px",marginBottom:"20px"}}>Why clients choose us</div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0"}}>
-            {services.map(s => (
-              <div key={s.title} style={{display:"flex",alignItems:"center",gap:"12px",padding:"10px 0",borderBottom:"1px solid #f0ede6"}}>
+            {highlights.map(h => (
+              <div key={h} style={{display:"flex",alignItems:"center",gap:"12px",padding:"10px 0",borderBottom:"1px solid #f0ede6"}}>
                 <div style={{width:"6px",height:"6px",borderRadius:"50%",background:"#b8962e",flexShrink:0}}/>
-                <span style={{fontSize:"13px",fontWeight:500,color:"#1a2e4a"}}>{s.title}</span>
+                <span style={{fontSize:"13px",fontWeight:500,color:"#1a2e4a"}}>{h}</span>
               </div>
             ))}
           </div>
@@ -58,14 +67,16 @@ export default function Services() {
 
       {/* Service cards */}
       <section style={{padding:"56px 44px",background:"#fff"}}>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"16px"}}>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"16px",marginBottom:"36px"}}>
           {services.map(s => (
             <div key={s.title} style={{background:"#faf9f6",borderRadius:"10px",padding:"24px",border:"1px solid #f0ede6"}}>
               <h3 style={{fontSize:"14px",fontWeight:600,color:"#1a2e4a",marginBottom:"8px"}}>{s.title}</h3>
-              <p style={{fontSize:"12px",color:"#555",lineHeight:1.6,marginBottom:"14px"}}>{s.desc}</p>
-              <Link href={s.href} aria-label={`Get a quote for ${s.title}`} style={{fontSize:"12px",fontWeight:600,color:"#b8962e",textDecoration:"none",padding:"8px 0",display:"inline-block"}}>Get a quote →</Link>
+              <p style={{fontSize:"12px",color:"#555",lineHeight:1.6,margin:0}}>{s.desc}</p>
             </div>
           ))}
+        </div>
+        <div style={{textAlign:"center"}}>
+          <Link href="/tax-intake" style={{display:"inline-block",background:"#b8962e",color:"white",fontSize:"13px",fontWeight:700,padding:"13px 32px",borderRadius:"7px",textDecoration:"none"}}>Get a Free Quote</Link>
         </div>
       </section>
 
