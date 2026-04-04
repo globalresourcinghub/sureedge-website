@@ -19,18 +19,17 @@ const ipRequestCounts = new Map<string, { count: number; resetTime: number }>();
 const SESSION_LIMIT = 10;
 const IP_DAILY_LIMIT = 30;
 
-async function getLocationFromIP(ip: string): Promise<{ city: string; country: string; region: string }> {
+async function getLocationFromIP(ip: string) {
   try {
-    if (ip === 'unknown' || ip === '127.0.0.1' || ip.startsWith('192.168') || ip.startsWith('10.')) {
+    if (!ip || ip === 'unknown' || ip === '127.0.0.1' || ip.startsWith('192.168') || ip.startsWith('10.') || ip.startsWith('::1')) {
       return { city: 'Local', country: 'Local', region: 'Local' };
     }
-    const r = await fetch(`https://ipapi.co/${ip}/json/`, { signal: AbortSignal.timeout(2000) });
-    const data = await r.json();
-    return {
-      city: data.city || 'Unknown',
-      country: data.country_name || 'Unknown',
-      region: data.region || 'Unknown',
-    };
+    const r = await fetch(`http://ip-api.com/json/${ip}?fields=status,city,regionName,country`, { signal: AbortSignal.timeout(3000) });
+    const d = await r.json();
+    if (d.status === 'success') {
+      return { city: d.city || 'Unknown', country: d.country || 'Unknown', region: d.regionName || 'Unknown' };
+    }
+    return { city: 'Unknown', country: 'Unknown', region: 'Unknown' };
   } catch {
     return { city: 'Unknown', country: 'Unknown', region: 'Unknown' };
   }
