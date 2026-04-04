@@ -69,6 +69,14 @@ export default function ChatWidget() {
         }
       } else if (data.reply) {
         setMessages(prev => [...prev, { role: "assistant", text: stripMarkdown(data.reply) }]);
+      // Fire GA event
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'chatbot_message', {
+          event_category: 'Chatbot',
+          event_label: msg.substring(0, 100),
+          value: newCount,
+        });
+      }
       } else {
         setMessages(prev => [...prev, { role: "assistant", text: "Sorry, something went wrong. Please try again." }]);
       }
