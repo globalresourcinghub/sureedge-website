@@ -15,23 +15,62 @@ STRICT RULES:
 
 You represent a professional CPA firm. Maintain accuracy and professionalism at all times.`;
 
-// Simple in-memory rate limiting (resets on server restart)
 const ipRequestCounts = new Map<string, { count: number; resetTime: number }>();
-const SESSION_LIMIT = 10; // messages per session
-const IP_DAILY_LIMIT = 30; // messages per IP per day
+const SESSION_LIMIT = 10;
+const IP_DAILY_LIMIT = 30;
+
+async function getLocationFromIP(ip: string): Promise<{ city: string; country: string; region: string }> {
+  try {
+    if (ip === 'unknown' || ip === '127.0.0.1' || ip.startsWith('192.168') || ip.startsWith('10.')) {
+      return { city: 'Local', country: 'Local', region: 'Local' };
+    }
+    const r = await fetch(`https://ipapi.co/${ip}/json/`, { signal: AbortSignal.timeout(2000) });
+    const data = await r.json();
+    return {
+      city: data.city || 'Unknown',
+      country: data.country_name || 'Unknown',
+      region: data.region || 'Unknown',
+    };
+  } catch {
+    return { city: 'Unknown', country: 'Unknown', region: 'Unknown' };
+  }
+}
+
+async function logToSupabase(data: {
+  ip: string; city: string; country: string; region: string;
+  question: string; response_length: number; session_count: number;
+}) {
+  const supabaseUrl = process.env.SUPABASE_URL;
+  const supabaseKey = process.env.SUPABASE_ANON_KEY;
+  if (!supabaseUrl || !supabaseKey) return;
+  try {
+    await fetch(`${supabaseUrl}/rest/v1/chatbot_logs`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': supabaseKey,
+        'Authorization': `Bearer ${supabaseKey}`,
+        'Prefer': 'return=minimal',
+      },
+      body: JSON.stringify(data),
+      signal: AbortSignal.timeout(3000),
+    });
+  } catch {
+    // Silent fail — don't break chatbot if logging fails
+  }
+}
 
 export async function POST(req: NextRequest) {
   try {
-    const ip = req.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown';
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
     const now = Date.now();
     const dayMs = 24 * 60 * 60 * 1000;
 
-    // IP rate limiting
     const ipData = ipRequestCounts.get(ip);
     if (ipData) {
       if (now < ipData.resetTime) {
         if (ipData.count >= IP_DAILY_LIMIT) {
-          return NextResponse.json({ error: 'Daily limit reached. Please try again tomorrow or book a consultation.' }, { status: 429 });
+          return NextResponse.json({ error: 'Daily limit reached. Please try again tomorrow or reach us at contact@sureedgetax.com.' }, { status: 429 });
         }
         ipData.count++;
       } else {
@@ -43,12 +82,10 @@ export async function POST(req: NextRequest) {
 
     const { message, sessionCount } = await req.json();
 
-    // Session limit check
     if (sessionCount >= SESSION_LIMIT) {
       return NextResponse.json({ error: 'SESSION_LIMIT' }, { status: 429 });
     }
 
-    // Input validation
     if (!message || typeof message !== 'string') {
       return NextResponse.json({ error: 'Invalid message' }, { status: 400 });
     }
@@ -61,29 +98,44 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Service temporarily unavailable.' }, { status: 500 });
     }
 
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-      },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 300,
-        system: SYSTEM_PROMPT,
-        messages: [{ role: 'user', content: message }],
-      }),
-    });
+    // Get location and call Claude in parallel
+    const [location, claudeResponse] = await Promise.all([
+      getLocationFromIP(ip),
+      fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': apiKey,
+          'anthropic-version': '2023-06-01',
+        },
+        body: JSON.stringify({
+          model: 'claude-haiku-4-5-20251001',
+          max_tokens: 300,
+          system: SYSTEM_PROMPT,
+          messages: [{ role: 'user', content: message }],
+        }),
+      })
+    ]);
 
-    if (!response.ok) {
+    if (!claudeResponse.ok) {
       return NextResponse.json({ error: 'Service temporarily unavailable.' }, { status: 500 });
     }
 
-    const data = await response.json();
+    const data = await claudeResponse.json();
     const reply = data.content?.[0]?.text || 'Sorry, I could not process that. Please try again.';
 
-    return NextResponse.json({ reply });
+    // Log to Supabase (non-blocking)
+    logToSupabase({
+      ip,
+      city: location.city,
+      country: location.country,
+      region: location.region,
+      question: message.substring(0, 500),
+      response_length: reply.length,
+      session_count: sessionCount,
+    });
+
+    return NextResponse.json({ reply, location });
   } catch {
     return NextResponse.json({ error: 'Service temporarily unavailable.' }, { status: 500 });
   }
