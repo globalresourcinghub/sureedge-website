@@ -8,6 +8,20 @@ const SUGGESTIONS = [
   "Do I need to pay quarterly taxes?",
 ];
 
+
+function stripMarkdown(text: string): string {
+  return text
+    .replace(/\*\*([^*]+)\*\*/g, '$1')  // bold
+    .replace(/\*([^*]+)\*/g, '$1')          // italic
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // links → just text
+    .replace(/\[([^\]]+)\]\(javascript:[^)]*\)/g, '$1') // js links
+    .replace(/#{1,6}\s/g, '')               // headers
+    .replace(/^[-*+]\s/gm, '')              // bullet points
+    .replace(/^\d+\.\s/gm, '')            // numbered lists
+    .replace(/`([^`]+)`/g, '$1')          // inline code
+    .trim();
+}
+
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<{ role: "user" | "assistant"; text: string }[]>([
@@ -54,7 +68,7 @@ export default function ChatWidget() {
           setMessages(prev => [...prev, { role: "assistant", text: data.error }]);
         }
       } else if (data.reply) {
-        setMessages(prev => [...prev, { role: "assistant", text: data.reply }]);
+        setMessages(prev => [...prev, { role: "assistant", text: stripMarkdown(data.reply) }]);
       } else {
         setMessages(prev => [...prev, { role: "assistant", text: "Sorry, something went wrong. Please try again." }]);
       }
