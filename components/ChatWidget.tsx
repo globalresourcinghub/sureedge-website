@@ -40,11 +40,7 @@ export default function ChatWidget() {
     }
   }, [messages, open]);
 
-  // Hide label after 8 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => setShowLabel(false), 8000);
-    return () => clearTimeout(timer);
-  }, []);
+  // Label stays visible until user closes it or opens chat
 
   const send = async (text?: string) => {
     const msg = (text || input).trim();
@@ -92,17 +88,27 @@ export default function ChatWidget() {
 
   return (
     <>
-      {/* Label shown next to bubble before first open */}
+      {/* Label shown next to bubble — persistent until user closes it */}
       {!open && showLabel && (
         <div style={{
           position: "fixed", bottom: "32px", right: "90px", zIndex: 9999,
           background: navy, color: "#fff", fontSize: "12px", fontWeight: 600,
-          padding: "8px 14px", borderRadius: "20px", boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
-          display: "flex", alignItems: "center", gap: "6px", whiteSpace: "nowrap",
+          padding: "8px 12px 8px 14px", borderRadius: "20px", boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
+          display: "flex", alignItems: "center", gap: "8px", whiteSpace: "nowrap",
           animation: "fadeInLabel 0.4s ease",
         }}>
           <span style={{background: gold, color: "#fff", fontSize: "9px", fontWeight: 700, padding: "2px 6px", borderRadius: "8px", letterSpacing: "0.5px"}}>AI</span>
           Ask our tax assistant
+          <button
+            onClick={e => { e.stopPropagation(); setShowLabel(false); }}
+            aria-label="Dismiss chat prompt"
+            style={{
+              background: "rgba(255,255,255,0.2)", border: "none", borderRadius: "50%",
+              width: "18px", height: "18px", cursor: "pointer", display: "flex",
+              alignItems: "center", justifyContent: "center", padding: 0, flexShrink: 0,
+              color: "#fff", fontSize: "11px", lineHeight: 1,
+            }}
+          >&#x2715;</button>
           <div style={{
             position: "absolute", right: "-6px", top: "50%", transform: "translateY(-50%)",
             width: 0, height: 0, borderTop: "6px solid transparent",
