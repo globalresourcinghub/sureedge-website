@@ -23,6 +23,13 @@ function NewspaperBg() {
   );
 }
 
+const topics = [
+  { category: "Tax Tips", desc: "Filing deadlines, deductions, and what to do when things go wrong" },
+  { category: "Small Business", desc: "Entity structure, bookkeeping, and year-round tax strategy" },
+  { category: "IRS & Compliance", desc: "How to read IRS notices and what your response options are" },
+  { category: "Financial Planning", desc: "Retirement accounts, self-employment income, and long-term planning" },
+];
+
 export default function Blog() {
   return (
     <>
@@ -38,12 +45,12 @@ export default function Blog() {
           </div>
         </div>
         <div style={{flex:1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
-          <div style={{fontSize:"10px",color:"#b8962e",fontWeight:600,textTransform:"uppercase",letterSpacing:"2.5px",marginBottom:"20px"}}>Latest articles</div>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0"}}>
-            {posts.map(p => (
-              <div key={p.slug} style={{display:"flex",alignItems:"flex-start",gap:"10px",padding:"10px 12px 10px 0",borderBottom:"1px solid #f0ede6"}}>
-                <div style={{fontSize:"10px",color:"#b8962e",width:"80px",flexShrink:0,fontWeight:500,paddingTop:"1px"}}>{p.category}</div>
-                <Link href={`/blog/${p.slug}`} style={{fontSize:"12px",fontWeight:500,color:"#1a2e4a",textDecoration:"none",lineHeight:1.4}}>{p.title}</Link>
+          <div style={{fontSize:"10px",color:"#b8962e",fontWeight:600,textTransform:"uppercase",letterSpacing:"2.5px",marginBottom:"20px"}}>What we write about</div>
+          <div style={{display:"flex",flexDirection:"column",gap:"0"}}>
+            {topics.map(t => (
+              <div key={t.category} style={{padding:"14px 0",borderBottom:"1px solid #f0ede6"}}>
+                <div style={{fontSize:"12px",fontWeight:700,color:"#1a2e4a",marginBottom:"4px"}}>{t.category}</div>
+                <div style={{fontSize:"12px",color:"#666",lineHeight:1.5}}>{t.desc}</div>
               </div>
             ))}
           </div>
