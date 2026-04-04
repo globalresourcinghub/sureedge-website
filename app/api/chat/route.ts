@@ -38,7 +38,7 @@ async function getLocationFromIP(ip: string): Promise<{ city: string; country: s
 
 async function logToSupabase(data: {
   ip: string; city: string; country: string; region: string;
-  question: string; response_length: number; session_count: number;
+  question: string; response_text: string; response_length: number; session_count: number;
 }) {
   const supabaseUrl = process.env.SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_ANON_KEY;
@@ -131,6 +131,7 @@ export async function POST(req: NextRequest) {
       country: location.country,
       region: location.region,
       question: message.substring(0, 500),
+      response_text: reply.substring(0, 1000),
       response_length: reply.length,
       session_count: sessionCount,
     });
