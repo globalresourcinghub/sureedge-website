@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ChatWidget from "@/components/ChatWidget";
+import VisitTracker from "@/components/VisitTracker";
 
 export const metadata: Metadata = {
   title: "SureEdge Tax & Accounting | CPA Firm Texas",
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <Footer />
         <ChatWidget />
+        <VisitTracker />
       </body>
     </html>
   );
