@@ -5,9 +5,12 @@ async function getLocation(ip: string) {
     if (!ip || ip === 'unknown' || ip === '127.0.0.1' || ip.startsWith('192.168') || ip.startsWith('10.') || ip.startsWith('::1')) {
       return { city: 'Local', country: 'Local', region: 'Local' };
     }
-    const r = await fetch(`https://ipapi.co/${ip}/json/`, { signal: AbortSignal.timeout(2000) });
+    const r = await fetch(`http://ip-api.com/json/${ip}?fields=status,city,regionName,country`, { signal: AbortSignal.timeout(3000) });
     const d = await r.json();
-    return { city: d.city || 'Unknown', country: d.country_name || 'Unknown', region: d.region || 'Unknown' };
+    if (d.status === 'success') {
+      return { city: d.city || 'Unknown', country: d.country || 'Unknown', region: d.regionName || 'Unknown' };
+    }
+    return { city: 'Unknown', country: 'Unknown', region: 'Unknown' };
   } catch {
     return { city: 'Unknown', country: 'Unknown', region: 'Unknown' };
   }
