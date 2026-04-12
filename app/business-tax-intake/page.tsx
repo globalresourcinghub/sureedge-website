@@ -60,13 +60,6 @@ function GroupCheckboxes({ name, options }: { name: string; options: string[] })
   );
 }
 
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Business Tax Return Quote",
-  description: "Fill out our business tax intake form and receive a personalized fee quote within 2 business days.",
-};
-
 export default function BusinessTaxIntakePage() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorDetail, setErrorDetail] = useState<string | null>(null);
