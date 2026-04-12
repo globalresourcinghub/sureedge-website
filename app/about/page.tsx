@@ -18,6 +18,13 @@ function PeopleBg() {
   );
 }
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us | Licensed CPA & EA Firm",
+  description: "Meet the team behind SureEdge — licensed CPA and Enrolled Agent professionals based in Texas serving clients nationwide.",
+};
+
 export default function About() {
   return (
     <>

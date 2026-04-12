@@ -1,4 +1,10 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Our Services | CPA, Tax & Accounting",
+  description: "Full-service tax and accounting for individuals and small businesses. CPA and EA licensed professionals serving clients nationwide.",
+};
 
 function DocsBg() {
   return (

@@ -30,7 +30,23 @@ If you owe money and cannot pay the full amount by the deadline, file anyway. Th
 
 Tax law changes every year. What applied last year may not apply this year. If your return involves anything beyond a straightforward W-2 situation, such as self-employment income, rental property, investments, or multiple states, it is worth having a professional review it.
 
+<<<<<<< Updated upstream
 At SureEdge Tax & Accounting, we handle returns of all complexity levels. Reach out if you would like a second set of eyes on yours.`
+=======
+**Don't leave money on the table**
+
+Many taxpayers miss credits and deductions they are fully entitled to. Common ones include the Child Tax Credit, the Earned Income Tax Credit for lower and moderate income earners, the Child and Dependent Care Credit, education credits, and contributions to retirement accounts. A licensed CPA or Enrolled Agent reviews your full situation and catches these — tax software often does not.
+
+**File on time, even if you can't pay**
+
+If you owe taxes and cannot pay the full amount, file your return anyway. The penalty for failing to file is much steeper than the penalty for failing to pay. You can request a payment plan from the IRS. Filing late without an extension triggers an immediate 5% per month penalty on the unpaid balance.
+
+**Work with a professional**
+
+Tax law changes every year. A licensed CPA or Enrolled Agent stays current on those changes and applies them to your specific situation. If your return involves self-employment, investments, rental income, or multiple states, professional preparation more than pays for itself in accuracy and missed deductions recovered.
+
+At SureEdge Tax & Accounting, we handle individual returns of all complexity levels. Reach out to schedule your free consultation.`
+>>>>>>> Stashed changes
   },
   {
     slug: "maximizing-tax-refunds",
@@ -76,7 +92,23 @@ There is also the planning component. Most small businesses only think about tax
 
 Entity structure is another area where early decisions matter. The difference between operating as a sole proprietor and electing S-Corp status can mean thousands of dollars in annual savings once your net income crosses a certain threshold. That analysis should happen before you are locked into a structure that does not serve you.
 
+<<<<<<< Updated upstream
 At SureEdge Tax & Accounting, we work with small businesses year-round on bookkeeping, payroll, and tax strategy. If you are not sure whether your current setup is working for you, we are glad to take a look.`
+=======
+Together, a CPA and EA team handles entity structure advice, quarterly estimated taxes, payroll compliance, financial statement preparation, and tax planning throughout the year — not just a return filed in April.
+
+**Tax planning vs tax preparation**
+
+Most small business owners only think about taxes when it's time to file. That's reactive. Proactive tax planning happens throughout the year and identifies opportunities before the year closes. Timing income and deductions, maximizing retirement contributions, choosing the right depreciation method, and structuring owner compensation correctly can each save thousands annually.
+
+A business that waits until tax season to think about taxes leaves planning opportunities permanently closed.
+
+**Entity structure matters more than most owners realize**
+
+The choice between operating as a sole proprietor, LLC, S-Corp, or C-Corp has significant tax implications. An S-Corp election, for example, can reduce self-employment tax for profitable businesses by paying the owner a reasonable salary and taking the remainder as a distribution. Getting this right from the start — or restructuring at the right time — is one of the highest-value decisions a business owner can make.
+
+At SureEdge Tax & Accounting, we work with small businesses year-round on bookkeeping, payroll, and tax strategy. Contact us for a free consultation to discuss your situation.`
+>>>>>>> Stashed changes
   },
   {
     slug: "personalized-solutions-entrepreneurs",
@@ -103,8 +135,13 @@ Beyond taxes, entrepreneurs often focus on the business and neglect the personal
     title: "Navigating Tax Season with SureEdge Professionals",
     date: "December 30, 2025",
     category: "Tax Tips",
+<<<<<<< Updated upstream
     excerpt: "A look at how our team approaches tax season to deliver accurate, timely returns for every client.",
     content: `Tax season officially runs from January through April, but our preparation starts well before the first document arrives. Here is how we approach it and what clients can expect when they work with us.
+=======
+    excerpt: "A behind-the-scenes look at how our team approaches tax season to deliver accurate, timely returns for every client.",
+    content: `Tax season runs from January through April, but at SureEdge Tax & Accounting, preparation begins long before the first document arrives. Here's how we approach the season to ensure every client receives an accurate, thorough return filed on time.
+>>>>>>> Stashed changes
 
 In January, before any client documents come in, we review each client's prior year return. We look for carry-forward items, capital loss carryovers, prior year credits, and any notes from the previous filing. We also flag life changes the client mentioned during the year, a new job, a home purchase, a business started, a child born. By the time their documents arrive, we already know what we are looking for and what questions we need to ask.
 
@@ -136,7 +173,31 @@ On pricing: flat-fee arrangements are generally better for small businesses than
 
 The practical questions are also worth asking. Who will handle your account specifically? What is the turnaround time? How do you handle IRS notices? Can I reach someone with questions during the year?
 
+<<<<<<< Updated upstream
 At SureEdge Tax & Accounting, we are a CPA and EA firm with flat-fee pricing and year-round availability. We are glad to answer these questions for any business considering working with us.`
+=======
+Ask any firm you consider how much of their practice serves businesses like yours. Their answer tells you how quickly they will understand your situation and how well they will know the specific rules that apply to you.
+
+**Proactive vs reactive service**
+
+Many accounting firms are reactive — they process your documents and file your return. A proactive firm contacts you before the year ends to discuss tax planning, reminds you of contribution deadlines, flags changes in tax law that affect your situation, and meets with you regularly to review your numbers.
+
+The difference in tax savings between reactive and proactive service is often significant. Ask any firm you consider how they communicate during the year, not just at tax time.
+
+**Technology and security**
+
+Any firm handling your business's financial information should use encrypted portals for document exchange, not email. Ask how they store client data, who has access to it, and what their security protocols are. A firm that accepts tax documents by email or stores client files on unencrypted local drives is not meeting modern security standards for sensitive financial information.
+
+**Pricing transparency**
+
+Some firms bill hourly with no ceiling. Others offer flat fees. For a small business, flat fee pricing is generally preferable — you know what you'll pay, and the firm has an incentive to be efficient. Ask for a clear fee schedule before engaging.
+
+**Questions to ask before you hire**
+
+Who specifically will handle my account? What is the turnaround time for returns? How do you handle IRS notices? Can I reach someone directly with questions during the year? Do you offer any tax planning beyond the annual return?
+
+At SureEdge Tax & Accounting, we are a CPA and EA firm offering flat-fee pricing, a secure client portal, and year-round availability. Contact us to discuss your business's needs.`
+>>>>>>> Stashed changes
   },
   {
     slug: "irs-notices-explained",
@@ -158,7 +219,25 @@ The CP05 simply means the IRS is reviewing your return before issuing your refun
 
 If you receive a Letter 531 or CP3219A, also called a Statutory Notice of Deficiency, you have 90 days to dispute the proposed changes in Tax Court. This is a hard deadline. Missing it means the IRS assesses the additional tax automatically.
 
+<<<<<<< Updated upstream
 When you work with a CPA or Enrolled Agent, they review the notice, identify the issue, and develop a response strategy. In many cases, a well-written letter with documentation resolves it completely. In more complex situations, direct representation before the IRS may be needed. At SureEdge Tax & Accounting, we handle IRS notices and representation for our clients. If you received something and are not sure what it means, we are happy to help.`
+=======
+**LT11 or Letter 1058 — Final notice of intent to levy.** This is serious. The IRS is preparing to seize wages, bank accounts, or other assets. You have 30 days to respond and request a Collection Due Process hearing. Do not wait.
+
+**CP90 — Notice of intent to seize property.** Similar urgency to LT11. Respond immediately and engage a tax professional with IRS representation experience.
+
+**CP05 — Your return is being reviewed.** This notice says the IRS is reviewing your return before issuing your refund. It does not mean you are being audited. The review typically resolves within 60 days without any action required from you.
+
+**Letter 531 or CP3219A — Statutory Notice of Deficiency.** This notice gives you 90 days to dispute the proposed tax changes in Tax Court. If you don't respond within 90 days, the IRS will assess the additional tax. This is a critical deadline.
+
+**What a tax professional does when you receive a notice**
+
+A CPA or Enrolled Agent reviews the notice, identifies the issue, and develops a response strategy. In many cases, the response is a simple letter with supporting documentation. In more complex cases — audits, collection actions, offers in compromise — representation before the IRS is essential.
+
+Enrolled Agents have unlimited practice rights before the IRS, meaning they can represent you in any matter at any IRS office. This is a meaningful advantage when your situation requires direct IRS interaction.
+
+At SureEdge Tax & Accounting, we handle IRS notices and representation for our clients. If you've received a notice and are unsure how to respond, contact us for guidance.`
+>>>>>>> Stashed changes
   },
   {
     slug: "s-corp-vs-llc-tax",
@@ -184,7 +263,29 @@ One more thing worth knowing: an LLC and an S-Corp are not mutually exclusive. T
 
 State rules matter too. Some states impose additional fees or taxes on S-Corps that can offset the federal savings. That analysis needs to be run for your specific state before making any decision.
 
+<<<<<<< Updated upstream
 At SureEdge Tax & Accounting, we provide entity structure analysis as part of our business consulting work. If you are not sure whether your current structure is the most tax-efficient option for your income level, we are glad to run the numbers.`
+=======
+**When an S-Corp makes sense**
+
+The S-Corp election typically makes sense when net business profit exceeds $40,000 to $50,000 annually. Below that threshold, the administrative costs of running an S-Corp — payroll processing, additional tax filings, state fees — often exceed the tax savings.
+
+Above $50,000 in net profit, the math generally favors an S-Corp election. At $100,000 in net profit, the annual tax savings can exceed $5,000. At $200,000, savings can exceed $12,000.
+
+**LLC vs S-Corp: the key distinctions**
+
+An LLC is a state law entity that provides liability protection. For federal tax purposes, a single-member LLC is treated as a sole proprietorship by default, and a multi-member LLC is treated as a partnership. An LLC can elect to be taxed as an S-Corp by filing Form 2553.
+
+The most common structure for profitable small businesses is an LLC that has elected S-Corp tax treatment — you get the liability protection of the LLC with the tax advantages of the S-Corp.
+
+**State considerations**
+
+Some states impose additional franchise taxes or fees on S-Corps that can offset the federal tax savings. California, for example, imposes a 1.5% franchise tax on S-Corp net income with a minimum of $800. Your CPA should run the analysis for your specific state before recommending the election.
+
+**Getting the analysis done right**
+
+Entity structure decisions have long-term consequences and should be made with a CPA who runs the numbers for your specific income level, state, and business structure. At SureEdge Tax & Accounting, we provide entity structure analysis as part of our business consulting services. Contact us to discuss whether an S-Corp election makes sense for your business.`
+>>>>>>> Stashed changes
   },
 ];
 

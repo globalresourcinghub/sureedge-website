@@ -6,7 +6,10 @@ import ChatWidget from "@/components/ChatWidget";
 import VisitTracker from "@/components/VisitTracker";
 
 export const metadata: Metadata = {
-  title: "SureEdge Tax & Accounting | CPA Firm Texas",
+  title: {
+    default: "SureEdge Tax & Accounting | CPA Firm Texas",
+    template: "%s | SureEdge Tax & Accounting",
+  },
   description: "Licensed CPA and Enrolled Agent firm based in Texas. Individual and business tax returns, bookkeeping, payroll, and IRS representation. 100% virtual, serving clients nationwide.",
 };
 

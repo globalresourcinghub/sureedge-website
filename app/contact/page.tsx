@@ -20,6 +20,13 @@ function EnvelopeBg() {
 const inputStyle = {width:"100%",border:"1px solid #e5e7eb",borderRadius:"6px",padding:"10px 12px",fontSize:"13px",outline:"none",background:"#fff"} as const;
 const selectStyle = {width:"100%",border:"1px solid #e5e7eb",borderRadius:"6px",padding:"10px 12px",fontSize:"13px",outline:"none",background:"#fff",color:"#374151",appearance:"none" as const};
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact Us | Get In Touch",
+  description: "Reach out to SureEdge Tax & Accounting with any questions. We respond within 2 business days.",
+};
+
 export default function Contact() {
   const [form, setForm] = useState({firstname:"",lastname:"",email:"",phone:"",helpTopic:"",message:""});
   const [status, setStatus] = useState<"idle"|"sending"|"sent"|"error">("idle");
