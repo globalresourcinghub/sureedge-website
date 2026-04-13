@@ -68,6 +68,17 @@ export default function Header() {
               }}>{l.label}</Link>
             );
           })}
+          <a href="https://portal.sureedgetax.com" style={{
+            fontSize: "13px", fontWeight: 500, color: "#1a2e4a",
+            textDecoration: "none", display: "flex", alignItems: "center", gap: "5px",
+          }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a2e4a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+              <polyline points="10 17 15 12 10 7"/>
+              <line x1="15" y1="12" x2="3" y2="12"/>
+            </svg>
+            Client Portal
+          </a>
           <Link href="/tax-intake" style={{
             fontSize: "13px", fontWeight: 600, color: "#fff",
             background: "#b8962e", padding: "8px 18px", borderRadius: "6px", textDecoration: "none",
@@ -116,6 +127,23 @@ export default function Header() {
               >{l.label}</Link>
             );
           })}
+          <a
+            href="https://portal.sureedgetax.com"
+            onClick={() => setMenuOpen(false)}
+            style={{
+              fontSize: "15px", fontWeight: 400,
+              color: "#1a2e4a", textDecoration: "none",
+              padding: "14px 0", borderBottom: "1px solid #f5f3ee",
+              display: "flex", alignItems: "center", gap: "8px",
+            }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a2e4a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+              <polyline points="10 17 15 12 10 7"/>
+              <line x1="15" y1="12" x2="3" y2="12"/>
+            </svg>
+            Client Portal
+          </a>
           <Link
             href="/tax-intake"
             onClick={() => setMenuOpen(false)}
