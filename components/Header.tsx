@@ -14,11 +14,11 @@ function HeaderLogo() {
   return (
     <Link href="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
       <div style={{ width: 36, height: 36, background: "#1a2e4a", borderRadius: "7px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-        <svg width="22" height="22" viewBox="0 0 48 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M24 2L3 10v17c0 14 10 23 21 27 11-4 21-13 21-27V10L24 2z" fill="#1a2e4a" stroke="#b8962e" strokeWidth="2.5"/>
-          <rect x="12" y="30" width="6" height="14" rx="1" fill="white" opacity="0.25"/>
-          <rect x="20" y="22" width="6" height="22" rx="1" fill="white" opacity="0.5"/>
-          <rect x="28" y="12" width="6" height="32" rx="1" fill="#b8962e"/>
+        <svg width="22" height="22" viewBox="0 0 76 76" fill="none">
+          <path d="M38 8 L15 18 L15 38 C15 52 25 62 38 66 C51 62 61 52 61 38 L61 18 Z" fill="rgba(184,150,46,0.10)" stroke="#b8962e" strokeWidth="2.2" strokeLinejoin="round"/>
+          <rect x="22" y="42" width="7" height="12" rx="1.5" fill="#7a8fa8"/>
+          <rect x="34" y="30" width="8" height="24" rx="1.5" fill="#b8962e"/>
+          <rect x="47" y="36" width="7" height="18" rx="1.5" fill="#7a8fa8"/>
         </svg>
       </div>
       <div style={{ display: "flex", flexDirection: "column", lineHeight: 1 }}>
