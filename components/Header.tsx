@@ -25,7 +25,7 @@ function HeaderLogo() {
         <span style={{ fontSize: "15px", fontWeight: 700, color: "#1a2e4a", letterSpacing: "-0.2px" }}>
           Sure<span style={{ color: "#b8962e" }}>Edge</span>
         </span>
-        <span style={{ fontSize: "9px", color: "#aaa", letterSpacing: "1.8px", textTransform: "uppercase", marginTop: "3px" }}>
+        <span style={{ fontSize: "9px", color: "#666", letterSpacing: "1.8px", textTransform: "uppercase", marginTop: "3px" }}>
           Tax &amp; Accounting
         </span>
       </div>

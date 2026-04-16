@@ -15,7 +15,7 @@ export default function Privacy() {
   return (
     <div style={{maxWidth:"780px",margin:"0 auto",padding:"64px 24px"}}>
       <h1 style={{fontSize:"28px",fontWeight:700,color:"#1a2e4a",marginBottom:"6px"}}>Privacy Policy</h1>
-      <p style={{fontSize:"12px",color:"#888",marginBottom:"40px"}}>Last updated: April 4, 2026</p>
+      <p style={{fontSize:"12px",color:"#555",marginBottom:"40px"}}>Last updated: April 4, 2026</p>
 
       <div style={{display:"flex",flexDirection:"column",gap:"32px",fontSize:"13px",color:"#444",lineHeight:1.8}}>
 

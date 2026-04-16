@@ -16,7 +16,7 @@ function FooterLogo() {
         <span style={{ fontSize: "13px", fontWeight: 700, color: "#1a2e4a", letterSpacing: "-0.2px" }}>
           Sure<span style={{ color: "#b8962e" }}>Edge</span>
         </span>
-        <span style={{ fontSize: "8px", color: "#aaa", letterSpacing: "1.5px", textTransform: "uppercase", marginTop: "3px" }}>
+        <span style={{ fontSize: "8px", color: "#666", letterSpacing: "1.5px", textTransform: "uppercase", marginTop: "3px" }}>
           Tax &amp; Accounting
         </span>
       </div>
@@ -35,10 +35,10 @@ export default function Footer() {
             <div style={{ marginBottom: "14px" }}>
               <FooterLogo />
             </div>
-            <p style={{ fontSize: "11px", color: "#888", lineHeight: 1.7, maxWidth: "240px", margin: 0 }}>
+            <p style={{ fontSize: "11px", color: "#666", lineHeight: 1.7, maxWidth: "240px", margin: 0 }}>
               Licensed CPA &amp; EA firm based in Texas. Serving individuals and small businesses nationwide. 100% virtual.
             </p>
-            <p style={{ fontSize: "11px", color: "#bbb", marginTop: "10px" }}>
+            <p style={{ fontSize: "11px", color: "#666", marginTop: "10px" }}>
               contact@sureedgetax.com · Mon–Fri 9am–6pm CT
             </p>
           </div>
@@ -73,8 +73,8 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div style={{ borderTop: "1px solid #f0ede6", paddingTop: "16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <span style={{ fontSize: "11px", color: "#bbb" }}>© 2026 SureEdge Tax &amp; Accounting. All rights reserved.</span>
-          <Link href="/privacy" style={{ fontSize: "11px", color: "#bbb", textDecoration: "none" }}>Privacy Policy</Link>
+          <span style={{ fontSize: "11px", color: "#666" }}>© 2026 SureEdge Tax &amp; Accounting. All rights reserved.</span>
+          <Link href="/privacy" style={{ fontSize: "11px", color: "#666", textDecoration: "none" }}>Privacy Policy</Link>
         </div>
       </div>
     </footer>

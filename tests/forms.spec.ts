@@ -14,10 +14,12 @@ test.describe('Contact form', () => {
   test('form is visible with all expected fields', async ({ page }) => {
     await page.goto('/contact');
     await waitForPageLoad(page);
-    // Fields per app/contact/page.tsx: firstname, lastname, email, phone, helpTopic, message
-    await expect(page.locator('input[name="firstname"], input[name="firstName"], input#firstname')).toHaveCount(1);
-    await expect(page.locator('input[name="lastname"], input[name="lastName"], input#lastname')).toHaveCount(1);
+    // Fields per app/contact/page.tsx — identified by placeholder text
+    await expect(page.getByPlaceholder('First Name')).toBeVisible();
+    await expect(page.getByPlaceholder('Last Name')).toBeVisible();
     await expect(page.locator('input[type="email"]').first()).toBeVisible();
+    await expect(page.locator('input[type="tel"]').first()).toBeVisible();
+    await expect(page.locator('select').first()).toBeVisible();
   });
 
   test('empty submit does not send (browser required validation)', async ({ page }) => {
@@ -57,28 +59,15 @@ test.describe('Contact form', () => {
     await page.goto('/contact');
     await waitForPageLoad(page);
 
-    // Fill whatever names Playwright can discover
-    const textInputs = page.locator('input[type="text"]');
-    const count = await textInputs.count();
-    if (count >= 2) {
-      await textInputs.nth(0).fill('Playwright');
-      await textInputs.nth(1).fill('Test');
-    }
+    await page.getByPlaceholder('First Name').fill('Playwright');
+    await page.getByPlaceholder('Last Name').fill('Test');
     await page.locator('input[type="email"]').first().fill(`playwright-${Date.now()}@test.example.com`);
+    await page.locator('input[type="tel"]').first().fill('5125551234');
 
-    // Phone (optional, may be type=tel)
-    const phone = page.locator('input[type="tel"]').first();
-    if (await phone.isVisible().catch(() => false)) {
-      await phone.fill('5125551234');
-    }
-
-    // Select any dropdown
+    // Pick a real (non-disabled, non-empty) option — avoid the default
+    // "What do you need help with?" placeholder option
     const select = page.locator('select').first();
-    if (await select.isVisible().catch(() => false)) {
-      const options = await select.locator('option').allInnerTexts();
-      const valid = options.find((o) => o && !/select|choose/i.test(o));
-      if (valid) await select.selectOption({ label: valid });
-    }
+    await select.selectOption('Other');
 
     // Message with test tag so you can filter the email
     await page.locator('textarea').first().fill(
@@ -87,12 +76,8 @@ test.describe('Contact form', () => {
 
     await page.locator('button[type="submit"]').first().click();
 
-    // Wait for a success indicator — text like "thanks", "sent", or a status
-    // Success copy in app/contact/page.tsx happens via setStatus("sent")
-    await page.waitForTimeout(5000);
-    const body = await page.locator('body').textContent();
-    const success = /thank|received|sent|got it|we'll be in touch/i.test(body || '');
-    expect(success, 'no success message after contact form submit').toBe(true);
+    // "Message Sent!" is the success heading in app/contact/page.tsx
+    await expect(page.locator('text=Message Sent')).toBeVisible({ timeout: 15000 });
   });
 });
 
