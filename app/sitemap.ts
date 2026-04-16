@@ -2,7 +2,9 @@ import { posts } from "@/lib/posts";
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://sureedgetax.com";
+  // Use canonical www hostname — apex redirects to www, so listing apex URLs
+  // in the sitemap forces Google to follow a 301 for every crawl.
+  const baseUrl = "https://www.sureedgetax.com";
   const now = new Date();
 
   const staticPages: MetadataRoute.Sitemap = [

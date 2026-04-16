@@ -13,6 +13,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${post.title} | SureEdge Tax & Accounting`,
     description: post.excerpt,
+    alternates: { canonical: `/blog/${slug}` },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      url: `/blog/${slug}`,
+      publishedTime: post.date,
+      authors: ["SureEdge Tax & Accounting"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+    },
   };
 }
 
@@ -50,8 +64,39 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     });
   };
 
+  const articleLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      "@type": "Organization",
+      name: "SureEdge Tax & Accounting",
+      url: "https://www.sureedgetax.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "SureEdge Tax & Accounting",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.sureedgetax.com/sureedge-logo-whatsapp.png",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.sureedgetax.com/blog/${post.slug}`,
+    },
+    articleSection: post.category,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
+      />
       {/* Header bar */}
       <div style={{ background: "#1a2e4a", padding: "48px 44px 0" }}>
         <div style={{ maxWidth: "1440px", margin: "0 auto" }}>

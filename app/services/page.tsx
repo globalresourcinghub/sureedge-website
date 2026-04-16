@@ -4,6 +4,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Our Services | CPA, Tax & Accounting",
   description: "Full-service tax and accounting for individuals and small businesses. CPA and EA licensed professionals serving clients nationwide.",
+  alternates: { canonical: "/services" },
+  openGraph: {
+    title: "Our Services | CPA, Tax & Accounting",
+    description: "Full-service tax and accounting for individuals and small businesses. CPA and EA licensed professionals serving clients nationwide.",
+    url: "/services",
+  },
 };
 
 function DocsBg() {

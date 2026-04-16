@@ -23,6 +23,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us | Licensed CPA & EA Firm",
   description: "Meet the team behind SureEdge — licensed CPA and Enrolled Agent professionals based in Texas serving clients nationwide.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Us | Licensed CPA & EA Firm",
+    description: "Meet the team behind SureEdge — licensed CPA and Enrolled Agent professionals based in Texas serving clients nationwide.",
+    url: "/about",
+  },
 };
 
 export default function About() {
@@ -48,8 +54,8 @@ export default function About() {
             {[
               ["CPA","Certified Public Accountant licensed for full accounting and tax services."],
               ["Enrolled Agent","IRS-licensed to represent clients in all tax matters, including audits."],
-              ["ChFC Candidate","Chartered Financial Consultant â advanced financial planning in progress."],
-              ["CFP Certification Candidate","Certified Financial Planner â comprehensive financial planning in progress."],
+              ["Ongoing Education","Pursuing advanced credentials in financial planning and consulting."],
+              ["Client-First","Transparent pricing, clear communication, no aggressive upselling ever."],
               ["100% Virtual","Serving clients nationwide from Texas. No office visit required."],
               ["Year-Round","Available all year, not just at tax time. We plan proactively."],
             ].map(([t,d]) => (
