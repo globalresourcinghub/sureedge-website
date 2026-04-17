@@ -197,8 +197,8 @@ export default function Home() {
               <Link href="/tax-intake" style={{ background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "13px 28px", borderRadius: "7px", textDecoration: "none", letterSpacing: "0.2px" }}>
                 Get Your Free Quote →
               </Link>
-              <Link href="/booking" style={{ background: "transparent", color: "#fff", fontSize: "13px", fontWeight: 500, padding: "12px 28px", borderRadius: "7px", border: "1.5px solid rgba(255,255,255,0.7)", textDecoration: "none" }}>
-                Book a Free Consultation
+              <Link href="/contact" style={{ background: "transparent", color: "#fff", fontSize: "13px", fontWeight: 500, padding: "12px 28px", borderRadius: "7px", border: "1.5px solid rgba(255,255,255,0.7)", textDecoration: "none" }}>
+                Contact Us
               </Link>
             </div>
           </div>
@@ -253,10 +253,10 @@ export default function Home() {
       <section style={{ background: "#f5f3ee", padding: "52px 44px", borderTop: "1px solid #ede9e0", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "24px" }}>
         <div>
           <h2 style={{ fontSize: "22px", fontWeight: 700, color: "#1a2e4a", marginBottom: "6px", letterSpacing: "-0.3px" }}>Ready to get started?</h2>
-          <p style={{ fontSize: "13px", color: "#555" }}>Book a free 30-minute consultation with no commitment required.</p>
+          <p style={{ fontSize: "13px", color: "#555" }}>Get a free, personalized quote within 2 business days — no commitment required.</p>
         </div>
-        <Link href="/booking" style={{ background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "13px 28px", borderRadius: "7px", textDecoration: "none", whiteSpace: "nowrap" }}>
-          Book a Free Call →
+        <Link href="/tax-intake" style={{ background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "13px 28px", borderRadius: "7px", textDecoration: "none", whiteSpace: "nowrap" }}>
+          Get a Free Quote →
         </Link>
       </section>
     </>

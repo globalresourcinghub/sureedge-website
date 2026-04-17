@@ -96,9 +96,9 @@ export default function Services() {
       <section style={{background:"#1a2e4a",padding:"52px 44px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:"24px"}}>
         <div>
           <h2 style={{fontSize:"22px",fontWeight:700,color:"white",marginBottom:"6px"}}>Not sure which service you need?</h2>
-          <p style={{fontSize:"13px",color:"rgba(255,255,255,0.88)"}}>Book a free 30-minute consultation and we will guide you.</p>
+          <p style={{fontSize:"13px",color:"rgba(255,255,255,0.88)"}}>Reach out — we will guide you to the right fit.</p>
         </div>
-        <Link href="/booking" style={{color:"white",fontSize:"13px",fontWeight:700,padding:"13px 28px",borderRadius:"7px",background:"#b8962e",textDecoration:"none",whiteSpace:"nowrap"}}>Book a Free Call</Link>
+        <Link href="/contact" style={{color:"white",fontSize:"13px",fontWeight:700,padding:"13px 28px",borderRadius:"7px",background:"#b8962e",textDecoration:"none",whiteSpace:"nowrap"}}>Contact Us</Link>
       </section>
     </>
   );

@@ -133,13 +133,13 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             <div style={{ background: "#1a2e4a", borderRadius: "12px", padding: "28px", marginBottom: "28px" }}>
               <h3 style={{ fontSize: "16px", fontWeight: 700, color: "white", marginBottom: "8px" }}>Ready to get started?</h3>
               <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.6, marginBottom: "20px" }}>
-                Book a free 30-minute consultation with a licensed CPA or EA. No commitment required.
+                Get a free, personalized quote from a licensed CPA or EA. No commitment required.
               </p>
-              <Link href="/booking" style={{ display: "block", textAlign: "center", background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 700, padding: "12px 20px", borderRadius: "7px", textDecoration: "none" }}>
-                Book a Free Call
+              <Link href="/tax-intake" style={{ display: "block", textAlign: "center", background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 700, padding: "12px 20px", borderRadius: "7px", textDecoration: "none" }}>
+                Get a Free Quote
               </Link>
-              <Link href="/tax-intake" style={{ display: "block", textAlign: "center", background: "transparent", color: "rgba(255,255,255,0.7)", fontSize: "12px", fontWeight: 500, padding: "10px 20px", borderRadius: "7px", textDecoration: "none", marginTop: "8px", border: "1px solid rgba(255,255,255,0.2)" }}>
-                Get a Quote
+              <Link href="/contact" style={{ display: "block", textAlign: "center", background: "transparent", color: "rgba(255,255,255,0.7)", fontSize: "12px", fontWeight: 500, padding: "10px 20px", borderRadius: "7px", textDecoration: "none", marginTop: "8px", border: "1px solid rgba(255,255,255,0.2)" }}>
+                Contact Us
               </Link>
             </div>
 

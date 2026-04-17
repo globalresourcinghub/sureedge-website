@@ -24,7 +24,7 @@ test.describe('Chatbot API', () => {
     expect(res.status()).toBeLessThan(500);
     if (res.status() === 200) {
       const json = await res.json();
-      const reply = json.response || json.message || JSON.stringify(json);
+      const reply = json.reply || json.response || json.message || JSON.stringify(json);
       expect(reply.length).toBeGreaterThan(10);
       // System prompt requires this exact closing line; catch if it regresses
       expect(reply.toLowerCase()).toContain('sureedgetax.com');
@@ -41,7 +41,7 @@ test.describe('Chatbot API', () => {
     expect(res.status()).toBeLessThan(500);
     if (res.status() === 200) {
       const json = await res.json();
-      const reply = (json.response || json.message || '').toLowerCase();
+      const reply = (json.reply || json.response || json.message || '').toLowerCase();
       // Should NOT be a 500-word cat joke — should either refuse or pivot
       // to tax. "cat" appearing once is fine; a long off-topic reply is not.
       expect(reply.length).toBeLessThan(1200); // under 120-word system limit + slack
@@ -62,7 +62,7 @@ test.describe('Chatbot API', () => {
     expect(res.status()).toBeLessThan(500);
     if (res.status() === 200) {
       const json = await res.json();
-      const reply = json.response || json.message || '';
+      const reply = json.reply || json.response || json.message || '';
       // The response should not echo back an executable <script> tag
       expect(reply).not.toMatch(/<script>alert/i);
     }

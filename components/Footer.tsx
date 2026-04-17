@@ -61,7 +61,7 @@ export default function Footer() {
                 { label: "About Us", href: "/about" },
                 { label: "Blog", href: "/blog" },
                 { label: "Get a Quote", href: "/tax-intake" },
-                { label: "Book a Consultation", href: "/booking" },
+                { label: "Business Tax Quote", href: "/business-tax-intake" },
                 { label: "Contact", href: "/contact" },
                 { label: "Privacy Policy", href: "/privacy" },
               ].map(l => (

@@ -103,9 +103,9 @@ export default function About() {
       <section style={{background:"#1a2e4a",padding:"52px 44px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:"24px"}}>
         <div>
           <h2 style={{fontSize:"22px",fontWeight:700,color:"white",marginBottom:"6px"}}>Ready to work together?</h2>
-          <p style={{fontSize:"13px",color:"rgba(255,255,255,0.88)"}}>Start with a free 30-minute consultation.</p>
+          <p style={{fontSize:"13px",color:"rgba(255,255,255,0.88)"}}>Get a free, personalized quote within 2 business days.</p>
         </div>
-        <Link href="/booking" style={{color:"white",fontSize:"13px",fontWeight:700,padding:"13px 28px",borderRadius:"7px",background:"#b8962e",textDecoration:"none",whiteSpace:"nowrap"}}>Book a Free Call</Link>
+        <Link href="/tax-intake" style={{color:"white",fontSize:"13px",fontWeight:700,padding:"13px 28px",borderRadius:"7px",background:"#b8962e",textDecoration:"none",whiteSpace:"nowrap"}}>Get a Free Quote</Link>
       </section>
     </>
   );

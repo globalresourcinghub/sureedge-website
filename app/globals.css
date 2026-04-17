@@ -37,17 +37,21 @@ a {
     padding: 0 20px !important;
   }
 
-  /* Stack all split hero panels vertically */
+  /* Stack all split hero panels vertically.
+     React renders inline style object `minHeight` as the kebab-case
+     `min-height` attribute — selectors must match that, not the JS key. */
   section[style*="display: flex"],
-  div[style*="display:flex"][style*="minHeight"],
-  div[style*="display: flex"][style*="minHeight"] {
+  section[style*="display:flex"],
+  div[style*="display:flex"][style*="min-height"],
+  div[style*="display: flex"][style*="min-height"] {
     flex-direction: column !important;
   }
 
   /* Full width on both panels */
   section[style*="display: flex"] > div,
-  div[style*="display:flex"][style*="minHeight"] > div,
-  div[style*="display: flex"][style*="minHeight"] > div {
+  section[style*="display:flex"] > div,
+  div[style*="display:flex"][style*="min-height"] > div,
+  div[style*="display: flex"][style*="min-height"] > div {
     flex: none !important;
     width: 100% !important;
     min-height: unset !important;
