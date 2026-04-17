@@ -68,7 +68,7 @@ export default function Header() {
               }}>{l.label}</Link>
             );
           })}
-          <a href="https://portal.sureedgetax.com" style={{
+          <a href="https://portal.sureedgetax.com/login" style={{
             fontSize: "13px", fontWeight: 500, color: "#1a2e4a",
             textDecoration: "none", display: "flex", alignItems: "center", gap: "5px",
           }}>
@@ -128,7 +128,7 @@ export default function Header() {
             );
           })}
           <a
-            href="https://portal.sureedgetax.com"
+            href="https://portal.sureedgetax.com/login"
             onClick={() => setMenuOpen(false)}
             style={{
               fontSize: "15px", fontWeight: 400,
