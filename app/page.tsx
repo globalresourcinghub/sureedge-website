@@ -185,13 +185,13 @@ export default function Home() {
           <div style={{ position: "relative", zIndex: 2, padding: "52px 44px", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(184,150,46,0.15)", border: "1px solid rgba(184,150,46,0.4)", color: "#b8962e", fontSize: "10px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", padding: "4px 12px", borderRadius: "20px", marginBottom: "22px", width: "fit-content" }}>
               <div style={{ width: "5px", height: "5px", background: "#b8962e", borderRadius: "50%" }}/>
-              Licensed CPA &amp; EA · Texas
+              CPA &amp; EA on our team · Texas
             </div>
             <h1 style={{ fontSize: "clamp(28px,3vw,38px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "16px", letterSpacing: "-0.5px" }}>
               Tax &amp; Accounting<br/>Done <span style={{ color: "#b8962e" }}>Right</span>
             </h1>
             <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.88)", lineHeight: 1.75, marginBottom: "32px", maxWidth: "360px" }}>
-              Virtual CPA &amp; Enrolled Agent firm serving individuals and small businesses nationwide. Expert guidance, personal service, year-round support.
+              Virtual tax services prepared by a licensed CPA and Enrolled Agent, serving individuals and small businesses nationwide. Expert guidance, personal service, year-round support.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px", alignItems: "flex-start" }}>
               <Link href="/tax-intake" style={{ background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "13px 28px", borderRadius: "7px", textDecoration: "none", letterSpacing: "0.2px" }}>

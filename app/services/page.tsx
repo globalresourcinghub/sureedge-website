@@ -2,12 +2,12 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Services | CPA, Tax & Accounting",
-  description: "Full-service tax and accounting for individuals and small businesses. CPA and EA licensed professionals serving clients nationwide.",
+  title: "Our Services | Tax & Accounting",
+  description: "Full-service tax and accounting for individuals and small businesses. Prepared by a licensed CPA and Enrolled Agent on our team, serving clients nationwide.",
   alternates: { canonical: "/services" },
   openGraph: {
-    title: "Our Services | CPA, Tax & Accounting",
-    description: "Full-service tax and accounting for individuals and small businesses. CPA and EA licensed professionals serving clients nationwide.",
+    title: "Our Services | Tax & Accounting",
+    description: "Full-service tax and accounting for individuals and small businesses. Prepared by a licensed CPA and Enrolled Agent on our team, serving clients nationwide.",
     url: "/services",
   },
 };
@@ -42,7 +42,7 @@ const services = [
 ];
 
 const highlights = [
-  "Licensed CPA and Enrolled Agent on every return",
+  "Every return reviewed and signed by a licensed CPA and Enrolled Agent",
   "Federal and state filings for all 50 states",
   "Individuals, freelancers, and small businesses",
   "Year-round support, not just tax season",
@@ -61,7 +61,7 @@ export default function Services() {
           <div style={{position:"relative",zIndex:10,padding:"52px 48px",height:"100%",display:"flex",flexDirection:"column",justifyContent:"center"}}>
             <div style={{display:"inline-block",color:"white",fontSize:"10px",fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",padding:"4px 12px",borderRadius:"20px",marginBottom:"20px",background:"#b8962e",width:"fit-content"}}>What We Offer</div>
             <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px",textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>Full-Service Tax<br/>&amp; Accounting</h1>
-            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.92)",lineHeight:1.7,maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>From individual returns to complex small business accounting, handled with precision by licensed CPA &amp; EA professionals.</p>
+            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.92)",lineHeight:1.7,maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>From individual returns to complex small business accounting, prepared by our licensed CPA and Enrolled Agent.</p>
           </div>
         </div>
         <div style={{flex:1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>

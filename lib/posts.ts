@@ -134,7 +134,7 @@ In January, before any client documents come in, we review each client's prior y
 
 We give each client a personalized document checklist based on their specific situation. A straightforward W-2 employee gets a short list. A self-employed client with rental income and investments gets a comprehensive one that covers every income source and deduction category. Everything is collected through a secure portal. We do not accept tax documents by email.
 
-Once all documents are in, preparation begins. Every return at SureEdge goes through a two-step process: one CPA prepares and the other reviews before anything goes to the client. This two-set-of-eyes approach catches errors that a single preparer working alone would miss. We verify mathematical accuracy, confirm all income is reported, check that every deduction is properly supported, and run diagnostics for IRS matching issues.
+Once all documents are in, preparation begins. Every return at SureEdge is prepared and then reviewed by our licensed CPA before it goes to the client. That review pass catches errors that a single-pass workflow would miss. We verify mathematical accuracy, confirm all income is reported, check that every deduction is properly supported, and run diagnostics for IRS matching issues.
 
 Before we file anything, we walk the client through what was reported, what was claimed, and why. Clients sign Form 8879 electronically to authorize e-filing. We do not rush signatures.
 
@@ -180,7 +180,7 @@ Some firms bill hourly with no ceiling. Others offer flat fees. For a small busi
 
 Who specifically will handle my account? What is the turnaround time for returns? How do you handle IRS notices? Can I reach someone directly with questions during the year? Do you offer any tax planning beyond the annual return?
 
-At SureEdge Tax & Accounting, we are a CPA and EA firm offering flat-fee pricing, a secure client portal, and year-round availability. Contact us to discuss your business's needs.`
+At SureEdge Tax & Accounting, our team includes a licensed CPA and Enrolled Agent. We offer flat-fee pricing, a secure client portal, and year-round availability. Contact us to discuss your business's needs.`
   },
   {
     slug: "irs-notices-explained",

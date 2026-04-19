@@ -21,12 +21,12 @@ function PeopleBg() {
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Licensed CPA & EA Firm",
-  description: "Meet the team behind SureEdge — licensed CPA and Enrolled Agent professionals based in Texas serving clients nationwide.",
+  title: "About Us | Virtual Tax Services",
+  description: "Meet the team behind SureEdge — a Texas-based tax services business with a licensed Certified Public Accountant and Enrolled Agent on our team, serving clients nationwide.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About Us | Licensed CPA & EA Firm",
-    description: "Meet the team behind SureEdge — licensed CPA and Enrolled Agent professionals based in Texas serving clients nationwide.",
+    title: "About Us | Virtual Tax Services",
+    description: "Meet the team behind SureEdge — a Texas-based tax services business with a licensed Certified Public Accountant and Enrolled Agent on our team, serving clients nationwide.",
     url: "/about",
   },
 };
@@ -41,8 +41,8 @@ export default function About() {
           <div style={{position:"absolute",inset:0,background:"linear-gradient(to right,rgba(8,18,32,0.65) 0%,rgba(8,18,32,0.4) 100%)"}}/>
           <div style={{position:"relative",zIndex:10,padding:"52px 48px",height:"100%",display:"flex",flexDirection:"column",justifyContent:"center"}}>
             <div style={{display:"inline-block",color:"white",fontSize:"10px",fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",padding:"4px 12px",borderRadius:"20px",marginBottom:"20px",background:"#b8962e",width:"fit-content"}}>About Us</div>
-            <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px",textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>A CPA Firm Built<br/>for Real People</h1>
-            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.92)",lineHeight:1.7,marginBottom:"20px",maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Based in Texas, serving individuals and small businesses nationwide with licensed CPA &amp; EA credentials.</p>
+            <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px",textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>Tax Services Built<br/>for Real People</h1>
+            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.92)",lineHeight:1.7,marginBottom:"20px",maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Based in Texas, serving individuals and small businesses nationwide — with a licensed CPA and EA on our team.</p>
             <div style={{padding:"12px 16px",borderLeft:"2px solid #b8962e",background:"rgba(184,150,46,0.12)",borderRadius:"0 6px 6px 0"}}>
               <p style={{fontSize:"12px",fontStyle:"italic",color:"rgba(255,255,255,0.95)"}}>Delivered personally, accessibly, and affordably.</p>
             </div>
