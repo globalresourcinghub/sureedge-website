@@ -74,7 +74,7 @@ export default function About() {
           <div>
             <h2 style={{fontSize:"24px",fontWeight:700,color:"#1a2e4a",marginBottom:"16px"}}>Our Story</h2>
             <p style={{fontSize:"14px",color:"#555",lineHeight:1.75,marginBottom:"14px"}}>SureEdge Tax &amp; Accounting was founded on a simple belief: every individual and small business deserves the same quality of tax and accounting services that larger firms provide their biggest clients.</p>
-            <p style={{fontSize:"14px",color:"#555",lineHeight:1.75,marginBottom:"14px"}}>We are a family-run practice based in Texas, bringing together CPA and Enrolled Agent expertise to serve our clients as a true partner, not just a once-a-year tax preparer.</p>
+            <p style={{fontSize:"14px",color:"#555",lineHeight:1.75,marginBottom:"14px"}}>We are a family-run practice based in Texas, with a licensed CPA and Enrolled Agent on our team. We serve our clients as a true partner, not just a once-a-year tax preparer.</p>
             <p style={{fontSize:"14px",color:"#555",lineHeight:1.75}}>We operate 100% virtually, which means we can serve clients across the entire country while keeping our overhead low and passing those savings on to you.</p>
           </div>
           <div>

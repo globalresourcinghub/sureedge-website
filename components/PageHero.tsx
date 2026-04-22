@@ -31,7 +31,7 @@ export default function PageHero({ badge, title, subtitle, background, children,
         <div style={{ fontSize: "10px", color: "#b8962e", fontWeight: 600, textTransform: "uppercase", letterSpacing: "2.5px", marginBottom: "20px" }}>Why clients choose us</div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
           {[
-            ["CPA & Enrolled Agent", "Dual credentials for full tax preparation and IRS representation, all under one roof."],
+            ["CPA & Enrolled Agent", "Licensed CPA and EA on our team — full tax preparation and IRS representation in one place."],
             ["Direct Access to Your CPA", "You speak directly with us. No call centers or junior staffers."],
             ["100% Virtual, Nationwide", "Based in Texas, serving clients across the entire country."],
             ["Year-Round Support", "We are available all year, not just at tax time."],

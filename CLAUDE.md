@@ -6,7 +6,7 @@
 
 ## Project Overview
 - **Site:** https://sureedgetax.com
-- **Type:** Marketing website for SureEdge Tax & Accounting (virtual CPA firm)
+- **Type:** Marketing website for SureEdge Tax & Accounting (virtual tax services business; not a CPA firm — Strivix LLC is owned by a non-CPA, so all marketing uses person-centric "licensed CPA and EA on our team" language rather than firm-level claims)
 - **Framework:** Next.js 16.2.2 + TypeScript (Turbopack)
 - **Styling:** Inline styles only — no Tailwind
 - **Deployment:** Vercel — auto-deploys on push to main (bizgales-projects/sureedge-website)
@@ -18,11 +18,17 @@
 ## Git Workflow
 ```bash
 npx next build          # always run before pushing to catch errors
-git add .
+git add <files>
 git commit -m "message"
-git push                # Vercel auto-deploys on push
 ```
-- GitHub token stored in Mac Keychain: `security find-generic-password -a sureedge -s "GitHub PAT" -w`
+
+### Pushing to GitHub
+GitHub HTTPS does NOT accept tokens in the URL. Must use Base64 Authorization header:
+```bash
+git -c http.extraHeader="Authorization: Basic $(echo -n 'globalresourcinghub:TOKEN' | base64)" push origin main
+```
+Replace TOKEN with the current PAT from https://github.com/settings/tokens (classic, repo scope).
+
 - **Rotate token after every session**
 
 ---
@@ -110,7 +116,7 @@ git push                # Vercel auto-deploys on push
 
 ## Business Context
 - **Entity:** Strivix LLC (DBA: SureEdge Tax & Accounting) — Wyoming LLC, Texas conversion in progress
-- **Credentials:** CPA + EA (husband), CFP candidate (wife)
+- **Credentials:** CPA + EA (wife — the licensed professional), ChFC-in-progress (husband — operations/business owner; ChFC candidacy cannot be advertised per American College / CFP Board rules)
 - **Services:** Tax prep, bookkeeping, payroll, tax planning, IRS representation, business returns
 - **Email:** contact@sureedgetax.com (M365)
 - **Business Gmail:** sureedgetax@gmail.com

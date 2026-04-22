@@ -24,7 +24,7 @@ function stripMarkdown(text: string): string {
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<{ role: "user" | "assistant"; text: string }[]>([
-    { role: "assistant", text: "Hi! I am an AI tax assistant trained to answer general US tax and accounting questions. Ask me anything and I will do my best to help. For advice specific to your situation, our CPA team is here too." }
+    { role: "assistant", text: "Hi! I am an AI tax assistant trained to answer general US tax and accounting questions. Ask me anything and I will do my best to help. For advice specific to your situation, our licensed CPA and EA are here too." }
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -61,7 +61,7 @@ export default function ChatWidget() {
       if (res.status === 429) {
         if (data.error === "SESSION_LIMIT") {
           setLimitReached(true);
-          setMessages(prev => [...prev, { role: "assistant", text: "You have reached the limit for this session. For more help, please contact our CPA team at contact@sureedgetax.com." }]);
+          setMessages(prev => [...prev, { role: "assistant", text: "You have reached the limit for this session. For more help, please reach out to us at contact@sureedgetax.com." }]);
         } else {
           setMessages(prev => [...prev, { role: "assistant", text: data.error }]);
         }
@@ -171,7 +171,7 @@ export default function ChatWidget() {
           {/* AI notice bar */}
           <div style={{ background: "#fffbeb", padding: "7px 14px", fontSize: "11px", color: "#92400e", borderBottom: "1px solid #fde68a", display: "flex", alignItems: "center", gap: "6px" }}>
             <span>&#x26A0;&#xFE0F;</span>
-            This is an AI chatbot, not a human. For personal tax advice, contact our CPA team.
+            This is an AI chatbot, not a human. For personal tax advice, contact our licensed CPA and EA.
           </div>
 
           {/* Messages */}
