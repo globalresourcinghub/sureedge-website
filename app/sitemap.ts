@@ -17,6 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/tax-intake`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/business-tax-intake`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${baseUrl}/tools`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/tools/roth-vs-traditional`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
+    { url: `${baseUrl}/tools/tax-bracket`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
   ];
 
   const blogPages: MetadataRoute.Sitemap = posts.map(post => ({
