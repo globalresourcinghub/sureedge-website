@@ -79,19 +79,42 @@ function computeTax(taxableIncome: number, filing: string): { totalTax: number; 
   return { totalTax, marginalRate, brackets };
 }
 
+// 2025 contribution limits
+const LIMITS_401K = 23500;        // employee elective deferral
+const LIMITS_401K_CATCHUP = 31000; // age 50+ (extra $7,500)
+const LIMITS_IRA = 7000;
+const LIMITS_IRA_CATCHUP = 8000;   // age 50+
+const LIMITS_HSA_SINGLE = 4300;
+const LIMITS_HSA_FAMILY = 8550;
+const LIMITS_HSA_CATCHUP = 1000;   // age 55+ add-on
+
 export default function TaxBracketPage() {
   const [filing, setFiling] = useState("single");
   const [grossIncome, setGrossIncome] = useState(85000);
+  const [age, setAge] = useState(35);
   const [deductionType, setDeductionType] = useState<"standard" | "itemize">("standard");
   const [itemizedAmount, setItemizedAmount] = useState(18000);
-  const [calculated, setCalculated] = useState(false);
+  const [contrib401k, setContrib401k] = useState(0);
+  const [contribIra, setContribIra] = useState(0);
+  const [contribHsa, setContribHsa] = useState(0);
+  const [hsaCoverage, setHsaCoverage] = useState<"single" | "family">("single");
+  const [calcCount, setCalcCount] = useState(0);
+  const calculated = calcCount > 0;
 
+  const catchup = age >= 50;
+  const max401k = catchup ? LIMITS_401K_CATCHUP : LIMITS_401K;
+  const maxIra = catchup ? LIMITS_IRA_CATCHUP : LIMITS_IRA;
+  const maxHsa = (hsaCoverage === "family" ? LIMITS_HSA_FAMILY : LIMITS_HSA_SINGLE) + (age >= 55 ? LIMITS_HSA_CATCHUP : 0);
+
+  const pretaxContribs = contrib401k + contribIra + contribHsa;
+  const agi = Math.max(0, grossIncome - pretaxContribs);
   const stdDeduction = STD_DEDUCTION[filing];
   const deduction = deductionType === "standard" ? stdDeduction : Math.max(itemizedAmount, 0);
-  const taxableIncome = Math.max(0, grossIncome - deduction);
+  const taxableIncome = Math.max(0, agi - deduction);
   const { totalTax, marginalRate, brackets } = computeTax(taxableIncome, filing);
   const effectiveRate = grossIncome > 0 ? totalTax / grossIncome : 0;
   const afterTaxIncome = grossIncome - totalTax;
+  const taxSavingsFromContribs = pretaxContribs > 0 ? computeTax(Math.max(0, agi + pretaxContribs - deduction), filing).totalTax - totalTax : 0;
 
   const inputStyle: React.CSSProperties = {
     padding: "9px 12px",
@@ -144,14 +167,20 @@ export default function TaxBracketPage() {
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
 
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <label style={labelStyle}>Filing Status</label>
-                <select value={filing} onChange={e => setFiling(e.target.value)} style={inputStyle}>
-                  <option value="single">Single</option>
-                  <option value="mfj">Married Filing Jointly</option>
-                  <option value="mfs">Married Filing Separately</option>
-                  <option value="hoh">Head of Household</option>
-                </select>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <label style={labelStyle}>Filing Status</label>
+                  <select value={filing} onChange={e => setFiling(e.target.value)} style={inputStyle}>
+                    <option value="single">Single</option>
+                    <option value="mfj">Married Filing Jointly</option>
+                    <option value="mfs">Married Filing Separately</option>
+                    <option value="hoh">Head of Household</option>
+                  </select>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <label style={labelStyle}>Age</label>
+                  <input type="number" min={18} max={90} value={age} onChange={e => setAge(Number(e.target.value))} style={inputStyle} />
+                </div>
               </div>
 
               <div style={{ display: "flex", flexDirection: "column" }}>
@@ -166,7 +195,66 @@ export default function TaxBracketPage() {
                 </div>
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              {/* Pre-tax contributions */}
+              <div style={{ borderTop: "1px solid #f0ede6", paddingTop: "14px" }}>
+                <div style={{ fontSize: "11px", fontWeight: 700, color: "#1a2e4a", letterSpacing: "0.5px", textTransform: "uppercase", marginBottom: "12px" }}>
+                  Pre-Tax Contributions <span style={{ fontSize: "10px", color: "#aaa", fontWeight: 400, textTransform: "none", letterSpacing: 0 }}>(reduce taxable income)</span>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <label style={labelStyle}>401(k) / 403(b) Contribution <span style={{ color: "#aaa", fontWeight: 400 }}>max {fmt(max401k)}</span></label>
+                    <div style={{ position: "relative" }}>
+                      <span style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", fontSize: "13px", color: "#888" }}>$</span>
+                      <input
+                        type="number" min={0} max={max401k} value={contrib401k}
+                        onChange={e => setContrib401k(Math.min(Number(e.target.value), max401k))}
+                        style={{ ...inputStyle, paddingLeft: "24px" }}
+                      />
+                    </div>
+                  </div>
+
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <label style={labelStyle}>Traditional IRA Contribution <span style={{ color: "#aaa", fontWeight: 400 }}>max {fmt(maxIra)}</span></label>
+                    <div style={{ position: "relative" }}>
+                      <span style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", fontSize: "13px", color: "#888" }}>$</span>
+                      <input
+                        type="number" min={0} max={maxIra} value={contribIra}
+                        onChange={e => setContribIra(Math.min(Number(e.target.value), maxIra))}
+                        style={{ ...inputStyle, paddingLeft: "24px" }}
+                      />
+                    </div>
+                    <span style={{ fontSize: "10px", color: "#aaa", marginTop: "3px" }}>Deductibility may phase out — see income limits</span>
+                  </div>
+
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <label style={labelStyle}>HSA Contribution <span style={{ color: "#aaa", fontWeight: 400 }}>max {fmt(maxHsa)}</span></label>
+                    <div style={{ display: "flex", gap: "8px", marginBottom: "8px" }}>
+                      {(["single", "family"] as const).map(t => (
+                        <button key={t} onClick={() => setHsaCoverage(t)} style={{
+                          flex: 1, padding: "6px", borderRadius: "6px", fontSize: "11px", fontWeight: 600, cursor: "pointer", border: "1.5px solid",
+                          borderColor: hsaCoverage === t ? "#b8962e" : "#e0ddd6",
+                          background: hsaCoverage === t ? "rgba(184,150,46,0.08)" : "#fff",
+                          color: hsaCoverage === t ? "#b8962e" : "#777",
+                        }}>
+                          {t === "single" ? "Self-only" : "Family"}
+                        </button>
+                      ))}
+                    </div>
+                    <div style={{ position: "relative" }}>
+                      <span style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", fontSize: "13px", color: "#888" }}>$</span>
+                      <input
+                        type="number" min={0} max={maxHsa} value={contribHsa}
+                        onChange={e => setContribHsa(Math.min(Number(e.target.value), maxHsa))}
+                        style={{ ...inputStyle, paddingLeft: "24px" }}
+                      />
+                    </div>
+                    <span style={{ fontSize: "10px", color: "#aaa", marginTop: "3px" }}>Requires a High Deductible Health Plan (HDHP)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", borderTop: "1px solid #f0ede6", paddingTop: "14px" }}>
                 <label style={labelStyle}>Deduction Type</label>
                 <div style={{ display: "flex", gap: "8px" }}>
                   {(["standard", "itemize"] as const).map(t => (
@@ -206,7 +294,7 @@ export default function TaxBracketPage() {
               )}
 
               <button
-                onClick={() => setCalculated(true)}
+                onClick={() => setCalcCount(c => c + 1)}
                 style={{ background: "#b8962e", color: "#fff", border: "none", borderRadius: "8px", padding: "13px", fontSize: "14px", fontWeight: 700, cursor: "pointer", marginTop: "4px" }}
               >
                 Calculate →
@@ -241,17 +329,41 @@ export default function TaxBracketPage() {
                   ))}
                 </div>
 
+                {/* Pre-tax contribution savings callout */}
+                {pretaxContribs > 0 && (
+                  <div style={{ background: "rgba(184,150,46,0.08)", border: "1.5px solid #b8962e", borderRadius: "10px", padding: "14px 16px" }}>
+                    <div style={{ fontSize: "11px", fontWeight: 700, color: "#b8962e", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "8px" }}>
+                      Pre-Tax Contribution Savings
+                    </div>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
+                      <div style={{ fontSize: "12px", color: "#555" }}>
+                        {fmt(pretaxContribs)} in contributions reduced your AGI from {fmt(grossIncome)} to {fmt(agi)}
+                      </div>
+                      <div style={{ fontSize: "18px", fontWeight: 700, color: "#1a2e4a" }}>
+                        {fmt(taxSavingsFromContribs)} saved
+                      </div>
+                    </div>
+                    <div style={{ display: "flex", gap: "16px", marginTop: "10px", flexWrap: "wrap" }}>
+                      {contrib401k > 0 && <span style={{ fontSize: "11px", color: "#666" }}>401(k): {fmt(contrib401k)}</span>}
+                      {contribIra > 0 && <span style={{ fontSize: "11px", color: "#666" }}>IRA: {fmt(contribIra)}</span>}
+                      {contribHsa > 0 && <span style={{ fontSize: "11px", color: "#666" }}>HSA: {fmt(contribHsa)}</span>}
+                    </div>
+                  </div>
+                )}
+
                 {/* Income breakdown bar */}
                 <div style={{ background: "#fff", borderRadius: "12px", padding: "20px", border: "1px solid #f0ede6" }}>
                   <div style={{ fontSize: "12px", fontWeight: 700, color: "#1a2e4a", marginBottom: "14px" }}>Income Breakdown</div>
                   <div style={{ display: "flex", height: "28px", borderRadius: "6px", overflow: "hidden", marginBottom: "10px" }}>
                     <div style={{ width: `${(totalTax / barMax) * 100}%`, background: "#1a2e4a", minWidth: totalTax > 0 ? "4px" : "0" }} title={`Tax: ${fmt(totalTax)}`}/>
+                    {pretaxContribs > 0 && <div style={{ width: `${(pretaxContribs / barMax) * 100}%`, background: "#2ecc71", opacity: 0.6, minWidth: "4px" }} title={`Pre-tax contributions: ${fmt(pretaxContribs)}`}/>}
                     <div style={{ width: `${(deduction / barMax) * 100}%`, background: "#b8962e", opacity: 0.4, minWidth: deduction > 0 ? "4px" : "0" }} title={`Deduction: ${fmt(deduction)}`}/>
                     <div style={{ flex: 1, background: "#d4edda" }} title={`After-tax: ${fmt(afterTaxIncome)}`}/>
                   </div>
                   <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
                     {[
                       { color: "#1a2e4a", label: `Tax: ${fmt(totalTax)}` },
+                      ...(pretaxContribs > 0 ? [{ color: "rgba(46,204,113,0.6)", label: `Pre-tax contribs: ${fmt(pretaxContribs)}`, border: "1px solid #27ae60" }] : []),
                       { color: "rgba(184,150,46,0.6)", label: `Deduction: ${fmt(deduction)}` },
                       { color: "#d4edda", label: `After-tax: ${fmt(afterTaxIncome)}`, border: "1px solid #a8d5b5" },
                     ].map(item => (

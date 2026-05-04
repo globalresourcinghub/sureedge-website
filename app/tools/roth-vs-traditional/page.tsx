@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 // ── 2025 Federal Tax Brackets ──────────────────────────────────────────────
@@ -135,7 +135,8 @@ export default function RothVsTraditionalPage() {
   const [returnRate, setReturnRate] = useState(7);
   const [stateTaxRate, setStateTaxRate] = useState(0);
   const [showEmail, setShowEmail] = useState(false);
-  const [calculated, setCalculated] = useState(false);
+  const [calcCount, setCalcCount] = useState(0);
+  const calculated = calcCount > 0;
 
   const maxContrib = age >= 50 ? 8000 : 7000;
   const years = Math.max(retirementAge - age, 1);
@@ -317,7 +318,7 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
               </div>
 
               <button
-                onClick={() => setCalculated(true)}
+                onClick={() => setCalcCount(c => c + 1)}
                 style={{ background: "#b8962e", color: "#fff", border: "none", borderRadius: "8px", padding: "13px", fontSize: "14px", fontWeight: 700, cursor: "pointer", marginTop: "4px", letterSpacing: "0.1px" }}
               >
                 Calculate →
