@@ -2,59 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-
-// ── 2025 Federal Tax Brackets ──────────────────────────────────────────────
-const BRACKETS: Record<string, { rate: number; min: number; max: number }[]> = {
-  single: [
-    { rate: 0.10, min: 0,       max: 11925 },
-    { rate: 0.12, min: 11925,   max: 48475 },
-    { rate: 0.22, min: 48475,   max: 103350 },
-    { rate: 0.24, min: 103350,  max: 197300 },
-    { rate: 0.32, min: 197300,  max: 250525 },
-    { rate: 0.35, min: 250525,  max: 626350 },
-    { rate: 0.37, min: 626350,  max: Infinity },
-  ],
-  mfj: [
-    { rate: 0.10, min: 0,       max: 23850 },
-    { rate: 0.12, min: 23850,   max: 96950 },
-    { rate: 0.22, min: 96950,   max: 206700 },
-    { rate: 0.24, min: 206700,  max: 394600 },
-    { rate: 0.32, min: 394600,  max: 501050 },
-    { rate: 0.35, min: 501050,  max: 751600 },
-    { rate: 0.37, min: 751600,  max: Infinity },
-  ],
-  hoh: [
-    { rate: 0.10, min: 0,       max: 17000 },
-    { rate: 0.12, min: 17000,   max: 64850 },
-    { rate: 0.22, min: 64850,   max: 103350 },
-    { rate: 0.24, min: 103350,  max: 197300 },
-    { rate: 0.32, min: 197300,  max: 250500 },
-    { rate: 0.35, min: 250500,  max: 626350 },
-    { rate: 0.37, min: 626350,  max: Infinity },
-  ],
-};
-
-const STD_DEDUCTION: Record<string, number> = { single: 15000, mfj: 30000, hoh: 22500 };
-
-function getMarginalRate(taxableIncome: number, filing: string): number {
-  const brackets = BRACKETS[filing];
-  for (let i = brackets.length - 1; i >= 0; i--) {
-    if (taxableIncome > brackets[i].min) return brackets[i].rate;
-  }
-  return 0.10;
-}
-
-function fv(pv: number, rate: number, years: number): number {
-  return pv * Math.pow(1 + rate, years);
-}
-
-function fmt(n: number): string {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n);
-}
-
-function pct(n: number): string {
-  return (n * 100).toFixed(0) + "%";
-}
+import {
+  TAX_YEARS, TaxYear, FilingStatus,
+  fmt, pct, fv, getMarginalRate, getIraMax,
+} from "@/lib/tax-data";
 
 // ── Email results modal ────────────────────────────────────────────────────
 function EmailModal({ onClose, resultsSummary }: { onClose: () => void; resultsSummary: string }) {
@@ -72,16 +23,12 @@ function EmailModal({ onClose, resultsSummary }: { onClose: () => void; resultsS
         body: JSON.stringify({
           access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
           subject: `Roth vs Traditional IRA Results — ${name}`,
-          name,
-          email,
+          name, email,
           message: `Calculator results requested by ${name} (${email}):\n\n${resultsSummary}\n\nSent from: sureedgetax.com/tools/roth-vs-traditional`,
         }),
       });
-      if (res.ok) setStatus("sent");
-      else setStatus("error");
-    } catch {
-      setStatus("error");
-    }
+      if (res.ok) setStatus("sent"); else setStatus("error");
+    } catch { setStatus("error"); }
   }
 
   return (
@@ -99,16 +46,8 @@ function EmailModal({ onClose, resultsSummary }: { onClose: () => void; resultsS
             <h3 style={{ fontSize: "17px", fontWeight: 700, color: "#1a2e4a", marginBottom: "6px" }}>Email my results</h3>
             <p style={{ fontSize: "12px", color: "#777", marginBottom: "20px" }}>We&apos;ll send a summary to your inbox — no spam, no obligation.</p>
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-              <input
-                required value={name} onChange={e => setName(e.target.value)}
-                placeholder="Your name"
-                style={{ padding: "10px 12px", border: "1px solid #e0ddd6", borderRadius: "7px", fontSize: "13px", outline: "none" }}
-              />
-              <input
-                required type="email" value={email} onChange={e => setEmail(e.target.value)}
-                placeholder="Email address"
-                style={{ padding: "10px 12px", border: "1px solid #e0ddd6", borderRadius: "7px", fontSize: "13px", outline: "none" }}
-              />
+              <input required value={name} onChange={e => setName(e.target.value)} placeholder="Your name" style={{ padding: "10px 12px", border: "1px solid #e0ddd6", borderRadius: "7px", fontSize: "13px", outline: "none" }}/>
+              <input required type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email address" style={{ padding: "10px 12px", border: "1px solid #e0ddd6", borderRadius: "7px", fontSize: "13px", outline: "none" }}/>
               {status === "error" && <p style={{ fontSize: "12px", color: "#c0392b" }}>Something went wrong. Please try again.</p>}
               <div style={{ display: "flex", gap: "10px", marginTop: "4px" }}>
                 <button type="button" onClick={onClose} style={{ flex: 1, background: "#f5f3ee", color: "#555", border: "none", borderRadius: "7px", padding: "11px", fontSize: "13px", fontWeight: 500, cursor: "pointer" }}>Cancel</button>
@@ -126,7 +65,8 @@ function EmailModal({ onClose, resultsSummary }: { onClose: () => void; resultsS
 
 // ── Main calculator ────────────────────────────────────────────────────────
 export default function RothVsTraditionalPage() {
-  const [filing, setFiling] = useState("single");
+  const [taxYear, setTaxYear] = useState<TaxYear>(2026);
+  const [filing, setFiling] = useState<FilingStatus>("single");
   const [grossIncome, setGrossIncome] = useState(75000);
   const [age, setAge] = useState(35);
   const [contribution, setContribution] = useState(7000);
@@ -139,45 +79,57 @@ export default function RothVsTraditionalPage() {
   const [consented, setConsented] = useState(false);
   const calculated = calcCount > 0;
 
-  const maxContrib = age >= 50 ? 8000 : 7000;
+  const yd = TAX_YEARS[taxYear];
+  const limits = yd.limits;
+  const maxContrib = getIraMax(age, limits);
   const years = Math.max(retirementAge - age, 1);
 
-  // ── Compute results ──────────────────────────────────────────────────────
-  const taxableNow = Math.max(0, grossIncome - STD_DEDUCTION[filing]);
-  const marginalNow = getMarginalRate(taxableNow, filing);
+  // ── Compute ──────────────────────────────────────────────────────────────
+  const taxableNow = Math.max(0, grossIncome - yd.stdDeduction[filing]);
+  const marginalNow = getMarginalRate(taxableNow, yd.brackets[filing]);
   const effectiveTotalNow = marginalNow + stateTaxRate / 100;
 
-  const retirementTaxable = Math.max(0, retirementIncome - STD_DEDUCTION[filing]);
-  const marginalRetirement = getMarginalRate(retirementTaxable, filing);
+  const retirementTaxable = Math.max(0, retirementIncome - yd.stdDeduction[filing]);
+  const marginalRetirement = getMarginalRate(retirementTaxable, yd.brackets[filing]);
 
-  // Traditional: tax deduction now, taxed at withdrawal
+  // Apples-to-apples: contribute $X to EITHER account.
+  // Traditional gets a tax deduction today — to compare fairly, assume the saver
+  // invests those tax savings in a taxable brokerage account at the same return rate,
+  // taxed at long-term capital gains (15%) at withdrawal.
+  const LTCG_RATE = 0.15;
+
   const traditionalTaxSavingNow = contribution * effectiveTotalNow;
-  const traditionalBalance = fv(contribution, returnRate / 100, years);
+  const traditionalBalance = fv(contribution, returnRate, years);
   const traditionalTaxAtWithdrawal = traditionalBalance * marginalRetirement;
-  const traditionalNet = traditionalBalance - traditionalTaxAtWithdrawal;
+  const traditionalAccountNet = traditionalBalance - traditionalTaxAtWithdrawal;
 
-  // Roth: no deduction now, tax-free at withdrawal
-  const rothAfterTaxCost = contribution * (1 - effectiveTotalNow);
-  const rothBalance = fv(contribution, returnRate / 100, years);
+  // Tax savings invested in side taxable account
+  const sideAccountBalance = fv(traditionalTaxSavingNow, returnRate, years);
+  const sideAccountGain = Math.max(0, sideAccountBalance - traditionalTaxSavingNow);
+  const sideAccountTax = sideAccountGain * LTCG_RATE;
+  const sideAccountNet = sideAccountBalance - sideAccountTax;
+
+  const traditionalNet = traditionalAccountNet + sideAccountNet;
+
+  const rothBalance = fv(contribution, returnRate, years);
   const rothNet = rothBalance;
 
   const rothWins = rothNet > traditionalNet;
   const netDifference = Math.abs(rothNet - traditionalNet);
-
-  // Breakeven retirement rate = current marginal rate
+  // Breakeven (simplified): retirement marginal rate where the two paths converge,
+  // approximately equal to current marginal when ignoring cap gains drag.
   const breakevenRate = marginalNow;
 
-  // Income limit warnings
-  const rothIncomeLimit = filing === "mfj" ? 246000 : 165000;
-  const rothPhaseoutStart = filing === "mfj" ? 236000 : 150000;
-  const traditionalPhaseoutStart = filing === "mfj" ? 126000 : 79000;
-  const traditionalPhaseoutEnd = filing === "mfj" ? 146000 : 89000;
-
-  const showRothWarning = grossIncome > rothPhaseoutStart;
-  const showTraditionalWarning = grossIncome > traditionalPhaseoutStart;
+  // Income limit warnings — pulled from shared data
+  const rothPO = yd.rothPhaseOut[filing];
+  const iraDeductPO = yd.iraDeductPhaseOut[filing];
+  const showRothFullyOut = grossIncome >= rothPO.end;
+  const showRothPhaseOut = grossIncome >= rothPO.start && grossIncome < rothPO.end;
+  const showTraditionalDeductPhaseOut = grossIncome > iraDeductPO.start;
 
   const resultsSummary = `
-Filing Status: ${filing === "mfj" ? "Married Filing Jointly" : filing === "hoh" ? "Head of Household" : "Single"}
+Tax Year: ${taxYear}
+Filing Status: ${filing === "mfj" ? "Married Filing Jointly" : filing === "hoh" ? "Head of Household" : filing === "mfs" ? "Married Filing Separately" : "Single"}
 Gross Income: ${fmt(grossIncome)} | Age: ${age} | Contribution: ${fmt(contribution)}
 Return Rate: ${returnRate}% | Years to Retirement: ${years}
 
@@ -197,32 +149,14 @@ VERDICT: ${rothWins ? "Roth" : "Traditional"} wins by ${fmt(netDifference)}
 Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins.
 `.trim();
 
-  const inputStyle: React.CSSProperties = {
-    padding: "9px 12px",
-    border: "1px solid #e0ddd6",
-    borderRadius: "7px",
-    fontSize: "13px",
-    width: "100%",
-    background: "#fff",
-    outline: "none",
-    boxSizing: "border-box",
-  };
-  const labelStyle: React.CSSProperties = {
-    fontSize: "11px",
-    fontWeight: 600,
-    color: "#555",
-    textTransform: "uppercase",
-    letterSpacing: "0.8px",
-    marginBottom: "5px",
-    display: "block",
-  };
+  const inputStyle: React.CSSProperties = { padding: "9px 12px", border: "1px solid #e0ddd6", borderRadius: "7px", fontSize: "13px", width: "100%", background: "#fff", outline: "none", boxSizing: "border-box" };
+  const labelStyle: React.CSSProperties = { fontSize: "11px", fontWeight: 600, color: "#555", textTransform: "uppercase", letterSpacing: "0.8px", marginBottom: "5px", display: "block" };
   const fieldStyle: React.CSSProperties = { display: "flex", flexDirection: "column" };
 
   return (
     <>
       {showEmail && <EmailModal onClose={() => setShowEmail(false)} resultsSummary={resultsSummary} />}
 
-      {/* BREADCRUMB + HERO */}
       <section style={{ background: "#1a2e4a", padding: "40px 44px 36px" }}>
         <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.5)", marginBottom: "14px" }}>
           <Link href="/tools" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Free Tools</Link>
@@ -233,26 +167,37 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
           Roth vs Traditional IRA Calculator
         </h1>
         <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.75)", maxWidth: "560px", lineHeight: 1.7 }}>
-          Enter your details to see which IRA puts more money in your pocket after taxes — based on 2025 federal brackets.
+          Compare after-tax retirement value side-by-side. Supports 2025 and 2026 tax year data including contribution limits and Roth phase-outs.
         </p>
       </section>
 
-      {/* CALCULATOR */}
       <section style={{ padding: "40px 44px", background: "#faf9f6" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "28px", maxWidth: "1000px", alignItems: "start" }}>
 
-          {/* LEFT — Inputs */}
           <div style={{ background: "#fff", borderRadius: "14px", padding: "28px", border: "1px solid #f0ede6", boxShadow: "0 1px 4px rgba(0,0,0,0.05)" }}>
-            <div style={{ fontSize: "13px", fontWeight: 700, color: "#1a2e4a", marginBottom: "20px", paddingBottom: "12px", borderBottom: "1px solid #f0ede6" }}>
-              Your Information
+
+            <div style={{ marginBottom: "20px", paddingBottom: "16px", borderBottom: "1px solid #f0ede6" }}>
+              <label style={labelStyle}>Tax Year</label>
+              <div style={{ display: "flex", gap: "8px" }}>
+                {([2025, 2026] as const).map(y => (
+                  <button key={y} onClick={() => setTaxYear(y)} style={{
+                    flex: 1, padding: "10px", borderRadius: "8px", fontSize: "14px", fontWeight: 700, cursor: "pointer", border: "2px solid",
+                    borderColor: taxYear === y ? "#b8962e" : "#e0ddd6",
+                    background: taxYear === y ? "#b8962e" : "#fff",
+                    color: taxYear === y ? "#fff" : "#999",
+                    transition: "all 0.12s",
+                  }}>{y}</button>
+                ))}
+              </div>
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               <div style={fieldStyle}>
                 <label style={labelStyle}>Filing Status</label>
-                <select value={filing} onChange={e => setFiling(e.target.value)} style={inputStyle}>
+                <select value={filing} onChange={e => setFiling(e.target.value as FilingStatus)} style={inputStyle}>
                   <option value="single">Single</option>
                   <option value="mfj">Married Filing Jointly</option>
+                  <option value="mfs">Married Filing Separately</option>
                   <option value="hoh">Head of Household</option>
                 </select>
               </div>
@@ -261,11 +206,7 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
                 <label style={labelStyle}>Gross Annual Income</label>
                 <div style={{ position: "relative" }}>
                   <span style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", fontSize: "13px", color: "#888" }}>$</span>
-                  <input
-                    type="number" min={0} max={2000000} value={grossIncome}
-                    onChange={e => setGrossIncome(Number(e.target.value))}
-                    style={{ ...inputStyle, paddingLeft: "24px" }}
-                  />
+                  <input type="number" min={0} max={2000000} value={grossIncome} onChange={e => setGrossIncome(Number(e.target.value))} style={{ ...inputStyle, paddingLeft: "24px" }}/>
                 </div>
               </div>
 
@@ -281,16 +222,11 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
               </div>
 
               <div style={fieldStyle}>
-                <label style={labelStyle}>Annual IRA Contribution (max {fmt(maxContrib)})</label>
+                <label style={labelStyle}>Annual IRA Contribution <span style={{ color: "#aaa", fontWeight: 400 }}>max {fmt(maxContrib)}{age >= 50 ? " (catch-up)" : ""}</span></label>
                 <div style={{ position: "relative" }}>
                   <span style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", fontSize: "13px", color: "#888" }}>$</span>
-                  <input
-                    type="number" min={1} max={maxContrib} value={contribution}
-                    onChange={e => setContribution(Math.min(Number(e.target.value), maxContrib))}
-                    style={{ ...inputStyle, paddingLeft: "24px" }}
-                  />
+                  <input type="number" min={1} max={maxContrib} value={contribution} onChange={e => setContribution(Math.min(Number(e.target.value), maxContrib))} style={{ ...inputStyle, paddingLeft: "24px" }}/>
                 </div>
-                {age >= 50 && <span style={{ fontSize: "11px", color: "#b8962e", marginTop: "4px" }}>Age 50+ catch-up limit: $8,000</span>}
               </div>
 
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
@@ -309,40 +245,26 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
                 <label style={labelStyle}>Expected Retirement Annual Income</label>
                 <div style={{ position: "relative" }}>
                   <span style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", fontSize: "13px", color: "#888" }}>$</span>
-                  <input
-                    type="number" min={0} max={1000000} value={retirementIncome}
-                    onChange={e => setRetirementIncome(Number(e.target.value))}
-                    style={{ ...inputStyle, paddingLeft: "24px" }}
-                  />
+                  <input type="number" min={0} max={1000000} value={retirementIncome} onChange={e => setRetirementIncome(Number(e.target.value))} style={{ ...inputStyle, paddingLeft: "24px" }}/>
                 </div>
                 <span style={{ fontSize: "10px", color: "#aaa", marginTop: "3px" }}>Used to estimate your retirement tax bracket</span>
               </div>
 
-              {/* Consent checkbox */}
               <label style={{ display: "flex", alignItems: "flex-start", gap: "10px", cursor: "pointer", marginTop: "4px" }}>
-                <input
-                  type="checkbox"
-                  checked={consented}
-                  onChange={e => setConsented(e.target.checked)}
-                  style={{ marginTop: "2px", accentColor: "#b8962e", flexShrink: 0, width: "15px", height: "15px" }}
-                />
+                <input type="checkbox" checked={consented} onChange={e => setConsented(e.target.checked)} style={{ marginTop: "2px", accentColor: "#b8962e", flexShrink: 0, width: "15px", height: "15px" }}/>
                 <span style={{ fontSize: "11px", color: "#777", lineHeight: 1.6 }}>
                   I understand these results are for <strong>high-level estimation only</strong> and do not constitute tax or financial advice. SureEdge Tax &amp; Accounting and its team are not liable for any decisions made based on these calculations.{" "}
                   <a href="/privacy" style={{ color: "#b8962e", textDecoration: "underline" }}>Privacy Policy</a>
                 </span>
               </label>
 
-              <button
-                onClick={() => setCalcCount(c => c + 1)}
-                disabled={!consented}
-                style={{ background: consented ? "#b8962e" : "#d5c9b0", color: "#fff", border: "none", borderRadius: "8px", padding: "13px", fontSize: "14px", fontWeight: 700, cursor: consented ? "pointer" : "not-allowed", marginTop: "4px", letterSpacing: "0.1px", transition: "background 0.15s" }}
-              >
-                Calculate →
+              <button onClick={() => setCalcCount(c => c + 1)} disabled={!consented}
+                style={{ background: consented ? "#b8962e" : "#d5c9b0", color: "#fff", border: "none", borderRadius: "8px", padding: "13px", fontSize: "14px", fontWeight: 700, cursor: consented ? "pointer" : "not-allowed", marginTop: "4px", letterSpacing: "0.1px", transition: "background 0.15s" }}>
+                Calculate {taxYear} →
               </button>
             </div>
           </div>
 
-          {/* RIGHT — Results */}
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             {!calculated ? (
               <div style={{ background: "#fff", borderRadius: "14px", padding: "40px 28px", border: "1px solid #f0ede6", textAlign: "center", color: "#aaa" }}>
@@ -354,27 +276,22 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
               </div>
             ) : (
               <>
-                {/* Income warnings */}
-                {(showRothWarning || showTraditionalWarning) && (
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                  <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "#b8962e" }}>{taxYear} Comparison Results</span>
+                  <div style={{ flex: 1, height: "1px", background: "#f0ede6" }}/>
+                </div>
+
+                {(showRothFullyOut || showRothPhaseOut || showTraditionalDeductPhaseOut) && (
                   <div style={{ background: "#fffbf0", border: "1px solid #f0d98a", borderRadius: "10px", padding: "14px 16px", fontSize: "12px", color: "#7a6010", lineHeight: 1.6 }}>
-                    <strong>⚠ Income limits apply:</strong>
-                    {showRothWarning && grossIncome >= rothIncomeLimit && (
-                      <div>• Your income exceeds the Roth IRA limit ({fmt(rothIncomeLimit)} for {filing === "mfj" ? "MFJ" : "Single"}). Consider a Backdoor Roth.</div>
-                    )}
-                    {showRothWarning && grossIncome < rothIncomeLimit && (
-                      <div>• Your income is in the Roth IRA phase-out range ({fmt(rothPhaseoutStart)}–{fmt(rothIncomeLimit)}). Your contribution limit may be reduced.</div>
-                    )}
-                    {showTraditionalWarning && (
-                      <div>• Above ${(traditionalPhaseoutStart / 1000).toFixed(0)}K, Traditional IRA deductibility phases out if you have a workplace plan.</div>
-                    )}
+                    <strong>⚠ Income limits apply ({taxYear}):</strong>
+                    {showRothFullyOut && <div>• Your income exceeds the Roth IRA limit ({fmt(rothPO.end)}). Consider a Backdoor Roth conversion.</div>}
+                    {showRothPhaseOut && <div>• You&apos;re in the Roth IRA phase-out range ({fmt(rothPO.start)}–{fmt(rothPO.end)}). Your Roth contribution limit may be reduced.</div>}
+                    {showTraditionalDeductPhaseOut && <div>• Above {fmt(iraDeductPO.start)}, Traditional IRA deductibility phases out if you&apos;re covered by a workplace plan (full phase-out at {fmt(iraDeductPO.end)}).</div>}
                   </div>
                 )}
 
-                {/* Verdict banner */}
                 <div style={{ background: rothWins ? "rgba(184,150,46,0.1)" : "#1a2e4a", border: `1.5px solid ${rothWins ? "#b8962e" : "#1a2e4a"}`, borderRadius: "12px", padding: "20px 22px" }}>
-                  <div style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: rothWins ? "#b8962e" : "rgba(255,255,255,0.6)", marginBottom: "6px" }}>
-                    Verdict for your situation
-                  </div>
+                  <div style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: rothWins ? "#b8962e" : "rgba(255,255,255,0.6)", marginBottom: "6px" }}>Verdict for your situation</div>
                   <div style={{ fontSize: "20px", fontWeight: 700, color: rothWins ? "#1a2e4a" : "#fff", marginBottom: "4px" }}>
                     {rothWins ? "Roth IRA wins" : "Traditional IRA wins"} by {fmt(netDifference)}
                   </div>
@@ -383,20 +300,21 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
                   </div>
                 </div>
 
-                {/* Side-by-side comparison */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
                   {[
-                    { label: "Traditional IRA", color: "#1a2e4a", rows: [
+                    { label: "Traditional IRA + Tax Savings Invested", color: "#1a2e4a", rows: [
                       ["Tax savings today", fmt(traditionalTaxSavingNow)],
-                      ["Balance at retirement", fmt(traditionalBalance)],
+                      ["IRA balance at retirement", fmt(traditionalBalance)],
                       [`Tax at withdrawal (${pct(marginalRetirement)})`, `-${fmt(traditionalTaxAtWithdrawal)}`],
-                      ["Net after-tax value", fmt(traditionalNet)],
+                      ["Side account net (15% LTCG)", fmt(sideAccountNet)],
+                      ["Total net after-tax value", fmt(traditionalNet)],
                     ]},
                     { label: "Roth IRA", color: "#b8962e", rows: [
-                      ["After-tax cost today", fmt(contribution - rothAfterTaxCost)],
+                      ["After-tax cost today", fmt(contribution)],
                       ["Balance at retirement", fmt(rothBalance)],
                       ["Tax at withdrawal", "$0"],
-                      ["Net after-tax value", fmt(rothNet)],
+                      ["Side account", "—"],
+                      ["Total net after-tax value", fmt(rothNet)],
                     ]},
                   ].map(col => (
                     <div key={col.label} style={{ background: "#fff", borderRadius: "12px", padding: "18px", border: `1.5px solid ${col.color === "#b8962e" ? "#f0d98a" : "#e8eef5"}` }}>
@@ -411,23 +329,15 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
                   ))}
                 </div>
 
-                {/* Assumptions */}
                 <div style={{ background: "#f5f3ee", borderRadius: "10px", padding: "14px 16px", fontSize: "11px", color: "#888", lineHeight: 1.7 }}>
-                  <strong style={{ color: "#555" }}>Assumptions:</strong> {years} years to retirement · {returnRate}% annual return · 2025 standard deduction · Current marginal rate {pct(marginalNow)} · Retirement marginal rate {pct(marginalRetirement)} · Results are estimates only, not tax advice.
+                  <strong style={{ color: "#555" }}>How we compare:</strong> Both scenarios contribute {fmt(contribution)} to the IRA. The Traditional saver also gets a tax deduction today, which we assume is invested in a taxable brokerage account at {returnRate}% return and taxed at 15% long-term capital gains at withdrawal. Without this assumption, the comparison is unfair because Traditional has lower out-of-pocket cost. {years} years to retirement · current marginal {pct(marginalNow)} · retirement marginal {pct(marginalRetirement)}.
                 </div>
 
-                {/* Action buttons */}
                 <div style={{ display: "flex", gap: "10px" }}>
-                  <button
-                    onClick={() => setShowEmail(true)}
-                    style={{ flex: 1, background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}
-                  >
+                  <button onClick={() => setShowEmail(true)} style={{ flex: 1, background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}>
                     Email my results
                   </button>
-                  <a
-                    href="https://portal.sureedgetax.com/register?source=tool&tool=roth-vs-traditional"
-                    style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, cursor: "pointer", textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}
-                  >
+                  <a href="https://portal.sureedgetax.com/register?source=tool&tool=roth-vs-traditional" style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     Save &amp; track over time
                   </a>
                 </div>
@@ -437,7 +347,6 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
         </div>
       </section>
 
-      {/* DISCLAIMER + CTA */}
       <section style={{ background: "#fff", padding: "36px 44px", borderTop: "1px solid #f0ede6" }}>
         <div style={{ maxWidth: "720px" }}>
           <div style={{ background: "#fff8e6", border: "1px solid #f0d98a", borderRadius: "10px", padding: "14px 18px", marginBottom: "24px", display: "flex", gap: "12px", alignItems: "flex-start" }}>
@@ -446,7 +355,7 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
               <path d="M12 9v5M12 16.5v.5" stroke="#b8962e" strokeWidth="1.8" strokeLinecap="round"/>
             </svg>
             <p style={{ fontSize: "11px", color: "#7a6010", lineHeight: 1.8, margin: 0 }}>
-              <strong>For high-level estimation only.</strong> Results are based on simplified assumptions and 2025 federal brackets. They do not account for state taxes, income phase-outs, workplace plan coverage, AMT, or future tax law changes. This tool does not constitute tax or financial advice. SureEdge Tax &amp; Accounting and its team are <strong>not liable</strong> for any decisions made based on these results. Consult a licensed CPA or EA before making contribution decisions.
+              <strong>For high-level estimation only.</strong> Results are based on simplified assumptions. They do not account for income phase-outs in detail, workplace plan coverage, AMT, or future tax law changes. This tool does not constitute tax or financial advice. SureEdge Tax &amp; Accounting and its team are <strong>not liable</strong> for any decisions made based on these results. Consult a licensed CPA or EA before making contribution decisions.
             </p>
           </div>
           <div style={{ background: "#faf9f6", borderRadius: "12px", padding: "24px 28px", border: "1px solid #f0ede6", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px", flexWrap: "wrap" }}>

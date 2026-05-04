@@ -37,11 +37,11 @@ const tools = [
     ),
   },
   {
-    href: "#",
-    badge: "Coming Soon",
+    href: "/tools/quarterly-tax",
+    badge: "For Self-Employed",
     title: "Quarterly Tax Estimator",
-    desc: "Self-employed or have freelance income? Calculate your estimated quarterly tax payments to avoid underpayment penalties.",
-    tags: ["Self-Employed", "Estimated Tax"],
+    desc: "Self-employed or freelancer? Calculate your federal estimated quarterly payment including SE tax, with safe-harbor protection from IRS penalties.",
+    tags: ["Self-Employed", "2025 / 2026"],
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
         <rect x="3" y="4" width="18" height="17" rx="2" stroke="#b8962e" strokeWidth="1.8"/>
@@ -52,10 +52,10 @@ const tools = [
     ),
   },
   {
-    href: "#",
-    badge: "Coming Soon",
+    href: "/tools/retirement-projector",
+    badge: "Long-Term Planning",
     title: "Retirement Savings Projector",
-    desc: "Project your 401(k) or IRA balance at retirement based on current savings, contributions, and assumed growth rate.",
+    desc: "Project your 401(k) or IRA balance at retirement. See growth chart, monthly retirement income at the 4% rule, and the impact of contributing more.",
     tags: ["Retirement", "Projections"],
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
