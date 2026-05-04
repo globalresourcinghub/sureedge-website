@@ -136,6 +136,7 @@ export default function RothVsTraditionalPage() {
   const [stateTaxRate, setStateTaxRate] = useState(0);
   const [showEmail, setShowEmail] = useState(false);
   const [calcCount, setCalcCount] = useState(0);
+  const [consented, setConsented] = useState(false);
   const calculated = calcCount > 0;
 
   const maxContrib = age >= 50 ? 8000 : 7000;
@@ -317,9 +318,24 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
                 <span style={{ fontSize: "10px", color: "#aaa", marginTop: "3px" }}>Used to estimate your retirement tax bracket</span>
               </div>
 
+              {/* Consent checkbox */}
+              <label style={{ display: "flex", alignItems: "flex-start", gap: "10px", cursor: "pointer", marginTop: "4px" }}>
+                <input
+                  type="checkbox"
+                  checked={consented}
+                  onChange={e => setConsented(e.target.checked)}
+                  style={{ marginTop: "2px", accentColor: "#b8962e", flexShrink: 0, width: "15px", height: "15px" }}
+                />
+                <span style={{ fontSize: "11px", color: "#777", lineHeight: 1.6 }}>
+                  I understand these results are for <strong>high-level estimation only</strong> and do not constitute tax or financial advice. SureEdge Tax &amp; Accounting and its team are not liable for any decisions made based on these calculations.{" "}
+                  <a href="/privacy" style={{ color: "#b8962e", textDecoration: "underline" }}>Privacy Policy</a>
+                </span>
+              </label>
+
               <button
                 onClick={() => setCalcCount(c => c + 1)}
-                style={{ background: "#b8962e", color: "#fff", border: "none", borderRadius: "8px", padding: "13px", fontSize: "14px", fontWeight: 700, cursor: "pointer", marginTop: "4px", letterSpacing: "0.1px" }}
+                disabled={!consented}
+                style={{ background: consented ? "#b8962e" : "#d5c9b0", color: "#fff", border: "none", borderRadius: "8px", padding: "13px", fontSize: "14px", fontWeight: 700, cursor: consented ? "pointer" : "not-allowed", marginTop: "4px", letterSpacing: "0.1px", transition: "background 0.15s" }}
               >
                 Calculate →
               </button>
@@ -424,9 +440,15 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
       {/* DISCLAIMER + CTA */}
       <section style={{ background: "#fff", padding: "36px 44px", borderTop: "1px solid #f0ede6" }}>
         <div style={{ maxWidth: "720px" }}>
-          <p style={{ fontSize: "11px", color: "#aaa", lineHeight: 1.8, marginBottom: "28px" }}>
-            This calculator provides estimates for educational purposes only and does not constitute tax or financial advice. Results depend on many factors not captured here including state taxes, income phase-outs, workplace plan coverage, and future tax law changes. Consult a licensed CPA or EA before making contribution decisions.
-          </p>
+          <div style={{ background: "#fff8e6", border: "1px solid #f0d98a", borderRadius: "10px", padding: "14px 18px", marginBottom: "24px", display: "flex", gap: "12px", alignItems: "flex-start" }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: "1px" }}>
+              <path d="M12 2L2 20h20L12 2z" stroke="#b8962e" strokeWidth="1.8" strokeLinejoin="round"/>
+              <path d="M12 9v5M12 16.5v.5" stroke="#b8962e" strokeWidth="1.8" strokeLinecap="round"/>
+            </svg>
+            <p style={{ fontSize: "11px", color: "#7a6010", lineHeight: 1.8, margin: 0 }}>
+              <strong>For high-level estimation only.</strong> Results are based on simplified assumptions and 2025 federal brackets. They do not account for state taxes, income phase-outs, workplace plan coverage, AMT, or future tax law changes. This tool does not constitute tax or financial advice. SureEdge Tax &amp; Accounting and its team are <strong>not liable</strong> for any decisions made based on these results. Consult a licensed CPA or EA before making contribution decisions.
+            </p>
+          </div>
           <div style={{ background: "#faf9f6", borderRadius: "12px", padding: "24px 28px", border: "1px solid #f0ede6", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px", flexWrap: "wrap" }}>
             <div>
               <div style={{ fontSize: "14px", fontWeight: 700, color: "#1a2e4a", marginBottom: "4px" }}>Want a real Roth conversion strategy?</div>

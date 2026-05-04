@@ -112,6 +112,17 @@ export default function ToolsPage() {
         </div>
       </section>
 
+      {/* DISCLAIMER BANNER */}
+      <div style={{ background: "#fff8e6", borderBottom: "1px solid #f0d98a", padding: "12px 44px", display: "flex", gap: "10px", alignItems: "flex-start" }}>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: "2px" }}>
+          <path d="M12 2L2 20h20L12 2z" stroke="#b8962e" strokeWidth="2" strokeLinejoin="round"/>
+          <path d="M12 9v5M12 16.5v.5" stroke="#b8962e" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+        <p style={{ fontSize: "11px", color: "#7a6010", lineHeight: 1.7, margin: 0 }}>
+          <strong>For high-level estimation only.</strong> All tools on this page provide general estimates for educational purposes and do not constitute tax, financial, or legal advice. SureEdge Tax &amp; Accounting and its team are not liable for any decisions made based on these calculations. Results may not reflect your actual tax liability. Consult a licensed CPA or EA for advice specific to your situation.
+        </p>
+      </div>
+
       {/* TOOLS GRID */}
       <section style={{ padding: "52px 44px", background: "#faf9f6" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "18px", maxWidth: "1100px" }}>
