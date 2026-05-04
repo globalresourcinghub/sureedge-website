@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import {
-  TAX_YEARS, TaxYear, FilingStatus,
-  fmt, computeTax, computeSeTax,
+  TAX_YEARS, TaxYear, FilingStatus, US_STATES,
+  fmt, computeTax, computeSeTax, getStateRate,
 } from "@/lib/tax-data";
 
 const QUARTER_DUE_DATES: Record<TaxYear, string[]> = {
@@ -19,12 +19,17 @@ export default function QuarterlyTaxPage() {
   const [otherWages, setOtherWages] = useState(0);
   const [w2Withholding, setW2Withholding] = useState(0);
   const [otherDeductions, setOtherDeductions] = useState(0);
-  const [stateTaxRate, setStateTaxRate] = useState(0);
+  const [stateCode, setStateCode] = useState("TX");
+  const [stateRateOverride, setStateRateOverride] = useState<number | null>(null);
   const [priorYearTax, setPriorYearTax] = useState(0);
   const [priorYearAgi, setPriorYearAgi] = useState(0);
+  const [paidQ1, setPaidQ1] = useState(0);
+  const [paidQ2, setPaidQ2] = useState(0);
+  const [paidQ3, setPaidQ3] = useState(0);
   const [calcCount, setCalcCount] = useState(0);
   const [consented, setConsented] = useState(false);
   const calculated = calcCount > 0;
+  const stateTaxRate = stateRateOverride !== null ? stateRateOverride : getStateRate(stateCode);
 
   const yd = TAX_YEARS[taxYear];
   const stdDeduction = yd.stdDeduction[filing];
@@ -50,6 +55,16 @@ export default function QuarterlyTaxPage() {
 
   // Use the lower of: actual estimate or safe harbor (if prior year data provided)
   const recommendedQuarterly = priorYearTax > 0 ? Math.min(quarterlyPayment, safeHarborQuarterly) : quarterlyPayment;
+
+  // Already paid this year — recompute remaining quarters
+  const alreadyPaid = paidQ1 + paidQ2 + paidQ3;
+  const targetTotal = recommendedQuarterly * 4;
+  const remainingDue = Math.max(0, targetTotal - alreadyPaid);
+  // How many quarters remain unpaid
+  const quartersPaid = (paidQ1 > 0 ? 1 : 0) + (paidQ2 > 0 ? 1 : 0) + (paidQ3 > 0 ? 1 : 0);
+  const quartersRemaining = Math.max(1, 4 - quartersPaid);
+  const adjustedQuarterly = remainingDue / quartersRemaining;
+  const isUnderpaying = alreadyPaid < (recommendedQuarterly * quartersPaid * 0.9);
 
   const inputStyle: React.CSSProperties = { padding: "9px 12px", border: "1px solid #e0ddd6", borderRadius: "7px", fontSize: "13px", width: "100%", background: "#fff", outline: "none", boxSizing: "border-box" };
   const labelStyle: React.CSSProperties = { fontSize: "11px", fontWeight: 600, color: "#555", textTransform: "uppercase", letterSpacing: "0.8px", marginBottom: "5px", display: "block" };
@@ -134,10 +149,41 @@ export default function QuarterlyTaxPage() {
                     {moneyInput(otherDeductions, 200000, setOtherDeductions)}
                     <span style={{ fontSize: "10px", color: "#aaa", marginTop: "3px" }}>HSA, SEP-IRA, Solo 401(k), self-employed health insurance, etc.</span>
                   </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "12px", alignItems: "end" }}>
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                      <label style={labelStyle}>State</label>
+                      <select value={stateCode} onChange={e => { setStateCode(e.target.value); setStateRateOverride(null); }} style={inputStyle}>
+                        {US_STATES.map(s => (
+                          <option key={s.code} value={s.code}>{s.name}{s.type === "none" ? " (no tax)" : ` (~${s.rate}%)`}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", width: "85px" }}>
+                      <label style={labelStyle}>Override %</label>
+                      <input type="number" min={0} max={20} step={0.1} placeholder={String(getStateRate(stateCode))}
+                        value={stateRateOverride ?? ""}
+                        onChange={e => setStateRateOverride(e.target.value === "" ? null : Number(e.target.value))}
+                        style={inputStyle} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ borderTop: "1px solid #f0ede6", paddingTop: "14px" }}>
+                <div style={{ fontSize: "11px", fontWeight: 700, color: "#1a2e4a", letterSpacing: "0.5px", textTransform: "uppercase", marginBottom: "4px" }}>Already Paid This Year (Optional)</div>
+                <p style={{ fontSize: "11px", color: "#888", marginBottom: "12px", lineHeight: 1.5 }}>If you already paid earlier quarters, we&apos;ll recompute remaining quarters.</p>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "8px" }}>
                   <div style={{ display: "flex", flexDirection: "column" }}>
-                    <label style={labelStyle}>State Tax Rate (%)</label>
-                    <input type="number" min={0} max={15} step={0.1} value={stateTaxRate} onChange={e => setStateTaxRate(Number(e.target.value))} style={inputStyle} />
-                    <span style={{ fontSize: "10px", color: "#aaa", marginTop: "3px" }}>TX, FL = 0%. Add to quarterly if your state requires estimates.</span>
+                    <label style={labelStyle}>Q1 Paid</label>
+                    {moneyInput(paidQ1, 1000000, setPaidQ1)}
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <label style={labelStyle}>Q2 Paid</label>
+                    {moneyInput(paidQ2, 1000000, setPaidQ2)}
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <label style={labelStyle}>Q3 Paid</label>
+                    {moneyInput(paidQ3, 1000000, setPaidQ3)}
                   </div>
                 </div>
               </div>
@@ -190,25 +236,43 @@ export default function QuarterlyTaxPage() {
 
                 {/* Hero quarterly amount */}
                 <div style={{ background: "#1a2e4a", borderRadius: "12px", padding: "24px", color: "#fff" }}>
-                  <div style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", marginBottom: "8px" }}>Pay each quarter</div>
-                  <div style={{ fontSize: "32px", fontWeight: 700, color: "#b8962e", letterSpacing: "-0.5px", marginBottom: "4px" }}>{fmt(recommendedQuarterly)}</div>
+                  <div style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", marginBottom: "8px" }}>
+                    {alreadyPaid > 0 ? `Pay each remaining quarter (${quartersRemaining} left)` : "Pay each quarter"}
+                  </div>
+                  <div style={{ fontSize: "32px", fontWeight: 700, color: "#b8962e", letterSpacing: "-0.5px", marginBottom: "4px" }}>
+                    {fmt(alreadyPaid > 0 ? adjustedQuarterly : recommendedQuarterly)}
+                  </div>
                   <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.7)" }}>
-                    Total annual: {fmt(recommendedQuarterly * 4)}
+                    Total annual: {fmt(targetTotal)}
+                    {alreadyPaid > 0 && <> · already paid {fmt(alreadyPaid)} · {fmt(remainingDue)} remaining</>}
                     {priorYearTax > 0 && recommendedQuarterly === safeHarborQuarterly && <span style={{ color: "#b8962e" }}> · using safe harbor</span>}
                   </div>
                 </div>
+
+                {isUnderpaying && alreadyPaid > 0 && (
+                  <div style={{ background: "#fdecea", border: "1.5px solid #c0392b", borderRadius: "10px", padding: "12px 16px", fontSize: "12px", color: "#7a2e22" }}>
+                    <strong>⚠ Possible underpayment penalty risk.</strong> You&apos;ve paid less than 90% of what was due through the quarters paid so far. The remaining {quartersRemaining} payments shown above are increased to catch up by year-end.
+                  </div>
+                )}
 
                 {/* Quarterly schedule */}
                 <div style={{ background: "#fff", borderRadius: "12px", padding: "20px", border: "1px solid #f0ede6" }}>
                   <div style={{ fontSize: "12px", fontWeight: 700, color: "#1a2e4a", marginBottom: "14px" }}>Payment Schedule</div>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
-                    {QUARTER_DUE_DATES[taxYear].map((date, i) => (
-                      <div key={i} style={{ background: "#faf9f6", borderRadius: "8px", padding: "12px 14px", border: "1px solid #f0ede6" }}>
-                        <div style={{ fontSize: "10px", fontWeight: 700, color: "#b8962e", letterSpacing: "1px", textTransform: "uppercase" }}>Q{i + 1}</div>
-                        <div style={{ fontSize: "16px", fontWeight: 700, color: "#1a2e4a", margin: "4px 0" }}>{fmt(recommendedQuarterly)}</div>
-                        <div style={{ fontSize: "11px", color: "#888" }}>Due {date}</div>
-                      </div>
-                    ))}
+                    {QUARTER_DUE_DATES[taxYear].map((date, i) => {
+                      const paid = i === 0 ? paidQ1 : i === 1 ? paidQ2 : i === 2 ? paidQ3 : 0;
+                      const isPast = paid > 0;
+                      const amount = isPast ? paid : (alreadyPaid > 0 ? adjustedQuarterly : recommendedQuarterly);
+                      return (
+                        <div key={i} style={{ background: isPast ? "rgba(46,204,113,0.06)" : "#faf9f6", borderRadius: "8px", padding: "12px 14px", border: `1px solid ${isPast ? "rgba(46,204,113,0.3)" : "#f0ede6"}` }}>
+                          <div style={{ fontSize: "10px", fontWeight: 700, color: isPast ? "#27ae60" : "#b8962e", letterSpacing: "1px", textTransform: "uppercase" }}>
+                            Q{i + 1} {isPast && "✓ Paid"}
+                          </div>
+                          <div style={{ fontSize: "16px", fontWeight: 700, color: "#1a2e4a", margin: "4px 0" }}>{fmt(amount)}</div>
+                          <div style={{ fontSize: "11px", color: "#888" }}>Due {date}</div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
 

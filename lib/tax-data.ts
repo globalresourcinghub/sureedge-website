@@ -255,3 +255,87 @@ export function fvWithContrib(initial: number, annualContrib: number, ratePct: n
 export function fv(pv: number, ratePct: number, years: number): number {
   return pv * Math.pow(1 + ratePct / 100, years);
 }
+
+// ── State tax (simplified flat rates) ──────────────────────────────────────
+// Using top marginal rate or single flat rate. For high earners this approximates
+// well; for low earners these can overstate state tax. Users can override.
+// Sources: state DOR sites + Tax Foundation, 2025 figures.
+export interface StateInfo {
+  code: string;
+  name: string;
+  rate: number;  // percent, e.g., 5.0 = 5%
+  type: "flat" | "top" | "none";
+}
+
+export const US_STATES: StateInfo[] = [
+  { code: "AL", name: "Alabama",       rate: 5.0,  type: "top"  },
+  { code: "AK", name: "Alaska",        rate: 0,    type: "none" },
+  { code: "AZ", name: "Arizona",       rate: 2.5,  type: "flat" },
+  { code: "AR", name: "Arkansas",      rate: 4.4,  type: "top"  },
+  { code: "CA", name: "California",    rate: 9.3,  type: "top"  },
+  { code: "CO", name: "Colorado",      rate: 4.4,  type: "flat" },
+  { code: "CT", name: "Connecticut",   rate: 6.99, type: "top"  },
+  { code: "DE", name: "Delaware",      rate: 6.6,  type: "top"  },
+  { code: "DC", name: "D.C.",          rate: 9.75, type: "top"  },
+  { code: "FL", name: "Florida",       rate: 0,    type: "none" },
+  { code: "GA", name: "Georgia",       rate: 5.39, type: "flat" },
+  { code: "HI", name: "Hawaii",        rate: 11.0, type: "top"  },
+  { code: "ID", name: "Idaho",         rate: 5.8,  type: "flat" },
+  { code: "IL", name: "Illinois",      rate: 4.95, type: "flat" },
+  { code: "IN", name: "Indiana",       rate: 3.0,  type: "flat" },
+  { code: "IA", name: "Iowa",          rate: 3.8,  type: "flat" },
+  { code: "KS", name: "Kansas",        rate: 5.7,  type: "top"  },
+  { code: "KY", name: "Kentucky",      rate: 4.0,  type: "flat" },
+  { code: "LA", name: "Louisiana",     rate: 3.0,  type: "flat" },
+  { code: "ME", name: "Maine",         rate: 7.15, type: "top"  },
+  { code: "MD", name: "Maryland",      rate: 5.75, type: "top"  },
+  { code: "MA", name: "Massachusetts", rate: 5.0,  type: "flat" },
+  { code: "MI", name: "Michigan",      rate: 4.25, type: "flat" },
+  { code: "MN", name: "Minnesota",     rate: 9.85, type: "top"  },
+  { code: "MS", name: "Mississippi",   rate: 4.4,  type: "flat" },
+  { code: "MO", name: "Missouri",      rate: 4.7,  type: "top"  },
+  { code: "MT", name: "Montana",       rate: 5.9,  type: "top"  },
+  { code: "NE", name: "Nebraska",      rate: 5.2,  type: "top"  },
+  { code: "NV", name: "Nevada",        rate: 0,    type: "none" },
+  { code: "NH", name: "New Hampshire", rate: 0,    type: "none" },
+  { code: "NJ", name: "New Jersey",    rate: 8.97, type: "top"  },
+  { code: "NM", name: "New Mexico",    rate: 5.9,  type: "top"  },
+  { code: "NY", name: "New York",      rate: 6.85, type: "top"  },
+  { code: "NC", name: "North Carolina", rate: 4.5, type: "flat" },
+  { code: "ND", name: "North Dakota",  rate: 2.5,  type: "top"  },
+  { code: "OH", name: "Ohio",          rate: 3.5,  type: "top"  },
+  { code: "OK", name: "Oklahoma",      rate: 4.75, type: "top"  },
+  { code: "OR", name: "Oregon",        rate: 9.9,  type: "top"  },
+  { code: "PA", name: "Pennsylvania",  rate: 3.07, type: "flat" },
+  { code: "RI", name: "Rhode Island",  rate: 5.99, type: "top"  },
+  { code: "SC", name: "South Carolina", rate: 6.2, type: "top"  },
+  { code: "SD", name: "South Dakota",  rate: 0,    type: "none" },
+  { code: "TN", name: "Tennessee",     rate: 0,    type: "none" },
+  { code: "TX", name: "Texas",         rate: 0,    type: "none" },
+  { code: "UT", name: "Utah",          rate: 4.55, type: "flat" },
+  { code: "VT", name: "Vermont",       rate: 8.75, type: "top"  },
+  { code: "VA", name: "Virginia",      rate: 5.75, type: "top"  },
+  { code: "WA", name: "Washington",    rate: 0,    type: "none" },
+  { code: "WV", name: "West Virginia", rate: 4.82, type: "top"  },
+  { code: "WI", name: "Wisconsin",     rate: 5.3,  type: "top"  },
+  { code: "WY", name: "Wyoming",       rate: 0,    type: "none" },
+];
+
+export function getStateRate(code: string): number {
+  return US_STATES.find(s => s.code === code)?.rate ?? 0;
+}
+
+// FICA: Social Security 6.2% + Medicare 1.45% = 7.65% (employee side)
+// SS is capped at the wage base; Medicare has no cap; +0.9% over thresholds.
+export function computeFica(wages: number, filing: FilingStatus, limits: YearData["limits"]): {
+  socialSecurity: number;
+  medicare: number;
+  addlMedicare: number;
+  total: number;
+} {
+  const socialSecurity = Math.min(wages, limits.ssWageBase) * (limits.ssRate / 2); // 6.2% employee
+  const medicare = wages * (limits.medicareRate / 2); // 1.45% employee
+  const addlThreshold = filing === "mfj" ? 250000 : (filing === "mfs" ? 125000 : 200000);
+  const addlMedicare = Math.max(0, wages - addlThreshold) * limits.addlMedicareRate;
+  return { socialSecurity, medicare, addlMedicare, total: socialSecurity + medicare + addlMedicare };
+}

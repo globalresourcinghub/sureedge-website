@@ -72,6 +72,7 @@ export default function RothVsTraditionalPage() {
   const [contribution, setContribution] = useState(7000);
   const [retirementAge, setRetirementAge] = useState(65);
   const [retirementIncome, setRetirementIncome] = useState(60000);
+  const [retirementRateOverride, setRetirementRateOverride] = useState<number | null>(null);
   const [returnRate, setReturnRate] = useState(7);
   const [stateTaxRate, setStateTaxRate] = useState(0);
   const [showEmail, setShowEmail] = useState(false);
@@ -90,7 +91,8 @@ export default function RothVsTraditionalPage() {
   const effectiveTotalNow = marginalNow + stateTaxRate / 100;
 
   const retirementTaxable = Math.max(0, retirementIncome - yd.stdDeduction[filing]);
-  const marginalRetirement = getMarginalRate(retirementTaxable, yd.brackets[filing]);
+  const marginalRetirementInferred = getMarginalRate(retirementTaxable, yd.brackets[filing]);
+  const marginalRetirement = retirementRateOverride !== null ? retirementRateOverride / 100 : marginalRetirementInferred;
 
   // Apples-to-apples: contribute $X to EITHER account.
   // Traditional gets a tax deduction today — to compare fairly, assume the saver
@@ -241,13 +243,26 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
                 </div>
               </div>
 
-              <div style={fieldStyle}>
-                <label style={labelStyle}>Expected Retirement Annual Income</label>
-                <div style={{ position: "relative" }}>
-                  <span style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", fontSize: "13px", color: "#888" }}>$</span>
-                  <input type="number" min={0} max={1000000} value={retirementIncome} onChange={e => setRetirementIncome(Number(e.target.value))} style={{ ...inputStyle, paddingLeft: "24px" }}/>
+              <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "12px", alignItems: "end" }}>
+                <div style={fieldStyle}>
+                  <label style={labelStyle}>Expected Retirement Annual Income</label>
+                  <div style={{ position: "relative" }}>
+                    <span style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", fontSize: "13px", color: "#888" }}>$</span>
+                    <input type="number" min={0} max={1000000} value={retirementIncome}
+                      onChange={e => { setRetirementIncome(Number(e.target.value)); setRetirementRateOverride(null); }}
+                      style={{ ...inputStyle, paddingLeft: "24px" }}/>
+                  </div>
+                  <span style={{ fontSize: "10px", color: "#aaa", marginTop: "3px" }}>Auto-estimates retirement bracket → {pct(marginalRetirementInferred)}</span>
                 </div>
-                <span style={{ fontSize: "10px", color: "#aaa", marginTop: "3px" }}>Used to estimate your retirement tax bracket</span>
+                <div style={fieldStyle}>
+                  <label style={labelStyle}>Or override %</label>
+                  <input type="number" min={0} max={50} step={1}
+                    placeholder={String(Math.round(marginalRetirementInferred * 100))}
+                    value={retirementRateOverride ?? ""}
+                    onChange={e => setRetirementRateOverride(e.target.value === "" ? null : Number(e.target.value))}
+                    style={inputStyle} />
+                  <span style={{ fontSize: "10px", color: "#aaa", marginTop: "3px" }}>Bracket if known</span>
+                </div>
               </div>
 
               <label style={{ display: "flex", alignItems: "flex-start", gap: "10px", cursor: "pointer", marginTop: "4px" }}>
