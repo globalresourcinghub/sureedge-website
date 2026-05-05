@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { fmt, fvWithContrib } from "@/lib/tax-data";
+import { fmt, fvWithContrib, buildPortalSaveUrl } from "@/lib/tax-data";
 
 const SAFE_WITHDRAWAL_RATE = 0.04; // 4% rule
 
@@ -338,7 +338,10 @@ export default function RetirementProjectorPage() {
                 </div>
 
                 <div style={{ display: "flex", gap: "10px" }}>
-                  <a href="https://portal.sureedgetax.com/register?source=tool&tool=retirement-projector" style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <a href={buildPortalSaveUrl('retirement-projector', {
+                    inputs: { age, retirementAge, currentBalance, annualContribution, employerMatch, returnRate, inflationRate, monthlySpendingNeed, ssMonthlyBenefit, ssClaimAge },
+                    outputs: { futureBalance, realValue, totalContributed, totalGrowth, monthlyIncome: totalMonthlyIncome, monthlyShortfall, hasShortfall },
+                  })} style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     Save &amp; track over time
                   </a>
                   <Link href="/booking" style={{ flex: 1, background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>

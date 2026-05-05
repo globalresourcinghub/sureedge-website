@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { fmt } from "@/lib/tax-data";
+import { fmt, buildPortalSaveUrl } from "@/lib/tax-data";
 
 // SSA reduction/credit factors. FRA depends on birth year.
 // For people born 1960 or later, FRA = 67.
@@ -282,7 +282,10 @@ export default function SocialSecurityPage() {
                 </div>
 
                 <div style={{ display: "flex", gap: "10px" }}>
-                  <a href="https://portal.sureedgetax.com/register?source=tool&tool=social-security" style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <a href={buildPortalSaveUrl('social-security', {
+                    inputs: { birthYear, fraBenefit, lifeExpectancy, colaRate },
+                    outputs: { bestStrategy: strategies[winnerIdx].age, fra, totalAtLE: totalAtLE[winnerIdx], breakeven62vsFra, breakevenFraVs70, breakeven62vs70 },
+                  })} style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     Save &amp; track over time
                   </a>
                   <Link href="/booking" style={{ flex: 1, background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>

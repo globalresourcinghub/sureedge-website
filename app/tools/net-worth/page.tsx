@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { fmt } from "@/lib/tax-data";
+import { fmt, buildPortalSaveUrl } from "@/lib/tax-data";
 
 interface LineItem { key: string; label: string; value: number }
 
@@ -295,7 +295,10 @@ export default function NetWorthPage() {
                 </div>
 
                 <div style={{ display: "flex", gap: "10px" }}>
-                  <a href="https://portal.sureedgetax.com/register?source=tool&tool=net-worth" style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <a href={buildPortalSaveUrl('net-worth', {
+                    inputs: { age, cash, retirement, taxable, realEstate, vehicles, otherAsset, mortgage, auto, student, creditCard, otherLiability },
+                    outputs: { netWorth, totalAssets, totalLiabilities, liquidNetWorth, homeEquity, vsMedian, vsTop25 },
+                  })} style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     Save &amp; track over time
                   </a>
                   <Link href="/booking" style={{ flex: 1, background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>

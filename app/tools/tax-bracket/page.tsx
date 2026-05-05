@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   TAX_YEARS, TaxYear, FilingStatus, US_STATES,
-  fmt, fmtRange, computeTax, computeFica, get401kMax, getIraMax, getHsaMax, getStateRate,
+  fmt, fmtRange, computeTax, computeFica, get401kMax, getIraMax, getHsaMax, getStateRate, buildPortalSaveUrl,
 } from "@/lib/tax-data";
 
 export default function TaxBracketPage() {
@@ -397,7 +397,11 @@ export default function TaxBracketPage() {
                 </div>
 
                 <div style={{ display: "flex", gap: "10px" }}>
-                  <a href="https://portal.sureedgetax.com/register?source=tool&tool=tax-bracket" style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <a href={buildPortalSaveUrl('tax-bracket', {
+                    inputs: { taxYear, filing, age, grossIncome, withholding, stateCode, stateRate, contrib401k, contribIra, contribHsa, hsaCoverage, deductionType, itemizedAmount },
+                    outputs: { totalTax: totalTaxAll, fedTax, ficaTotal: fica.total, stateTax, marginalRate, effectiveRate, refundOrOwed, isRefund },
+                    taxYear,
+                  })} style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     Save &amp; track over time
                   </a>
                   <Link href="/booking" style={{ flex: 1, background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>

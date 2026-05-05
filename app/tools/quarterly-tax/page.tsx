@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   TAX_YEARS, TaxYear, FilingStatus, US_STATES,
-  fmt, computeTax, computeSeTax, getStateRate,
+  fmt, computeTax, computeSeTax, getStateRate, buildPortalSaveUrl,
 } from "@/lib/tax-data";
 
 const QUARTER_DUE_DATES: Record<TaxYear, string[]> = {
@@ -319,7 +319,11 @@ export default function QuarterlyTaxPage() {
                 )}
 
                 <div style={{ display: "flex", gap: "10px" }}>
-                  <a href="https://portal.sureedgetax.com/register?source=tool&tool=quarterly-tax" style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <a href={buildPortalSaveUrl('quarterly-tax', {
+                    inputs: { taxYear, filing, seIncome, otherWages, w2Withholding, otherDeductions, stateCode, stateTaxRate, priorYearTax, priorYearAgi, paidQ1, paidQ2, paidQ3 },
+                    outputs: { quarterlyAmount: alreadyPaid > 0 ? adjustedQuarterly : recommendedQuarterly, totalAnnualTax, fedTax: fedTax.totalTax, seTax: seTax.totalSeTax, stateTax, isUnderpaying },
+                    taxYear,
+                  })} style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     Save &amp; track over time
                   </a>
                   <Link href="/booking" style={{ flex: 1, background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>

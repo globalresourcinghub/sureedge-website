@@ -325,6 +325,25 @@ export function getStateRate(code: string): number {
   return US_STATES.find(s => s.code === code)?.rate ?? 0;
 }
 
+// Build the "Save & track over time" portal URL with the calculation payload
+// base64-encoded into the URL hash. The portal /tools page reads the hash and
+// auto-saves the calculation after the user signs in / registers.
+//
+// Format: https://portal.sureedgetax.com/register?source=tool&tool=<slug>#<base64-json>
+//   payload = { toolSlug, inputs, outputs, taxYear?, label? }
+export function buildPortalSaveUrl(toolSlug: string, payload: { inputs: unknown; outputs: unknown; taxYear?: number; label?: string }): string {
+  const body = { toolSlug, ...payload };
+  let hash = "";
+  try {
+    const json = JSON.stringify(body);
+    // btoa is safe here — JSON contains no chars outside Latin-1 unless someone names
+    // their label with emoji. encodeURIComponent → unescape avoids that edge case.
+    hash = btoa(unescape(encodeURIComponent(json)));
+  } catch { hash = ""; }
+  const base = `https://portal.sureedgetax.com/register?source=tool&tool=${encodeURIComponent(toolSlug)}`;
+  return hash ? `${base}#${hash}` : base;
+}
+
 // FICA: Social Security 6.2% + Medicare 1.45% = 7.65% (employee side)
 // SS is capped at the wage base; Medicare has no cap; +0.9% over thresholds.
 export function computeFica(wages: number, filing: FilingStatus, limits: YearData["limits"]): {

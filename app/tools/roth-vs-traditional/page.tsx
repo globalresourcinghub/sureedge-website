@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   TAX_YEARS, TaxYear, FilingStatus,
-  fmt, pct, fv, getMarginalRate, getIraMax,
+  fmt, pct, fv, getMarginalRate, getIraMax, buildPortalSaveUrl,
 } from "@/lib/tax-data";
 
 // ── Email results modal ────────────────────────────────────────────────────
@@ -352,7 +352,11 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
                   <button onClick={() => setShowEmail(true)} style={{ flex: 1, background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}>
                     Email my results
                   </button>
-                  <a href="https://portal.sureedgetax.com/register?source=tool&tool=roth-vs-traditional" style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <a href={buildPortalSaveUrl('roth-vs-traditional', {
+                    inputs: { taxYear, filing, grossIncome, age, contribution, retirementAge, retirementIncome, returnRate, stateTaxRate, retirementRateOverride },
+                    outputs: { verdict: rothWins ? 'Roth' : 'Traditional', netDifference, traditionalNet, rothNet, marginalNow, marginalRetirement, traditionalBalance, rothBalance },
+                    taxYear,
+                  })} style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     Save &amp; track over time
                   </a>
                 </div>
