@@ -22,6 +22,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/tools/tax-bracket`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
     { url: `${baseUrl}/tools/quarterly-tax`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
     { url: `${baseUrl}/tools/retirement-projector`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
+    { url: `${baseUrl}/tools/social-security`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
+    { url: `${baseUrl}/tools/net-worth`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
   ];
 
   const blogPages: MetadataRoute.Sitemap = posts.map(post => ({

@@ -65,10 +65,10 @@ const tools = [
     ),
   },
   {
-    href: "#",
-    badge: "Coming Soon",
+    href: "/tools/social-security",
+    badge: "Pre-Retirees",
     title: "Social Security Breakeven",
-    desc: "Find out at what age claiming Social Security early vs. waiting until 70 breaks even — based on your expected benefit amount.",
+    desc: "Find out when waiting until 70 beats claiming at 62. See breakeven ages and lifetime totals based on your expected benefit and life expectancy.",
     tags: ["Social Security", "Retirement"],
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -78,10 +78,10 @@ const tools = [
     ),
   },
   {
-    href: "#",
-    badge: "Coming Soon",
+    href: "/tools/net-worth",
+    badge: "Quick Snapshot",
     title: "Net Worth Tracker",
-    desc: "Enter your assets and liabilities to calculate your net worth and see a simple snapshot of your financial position.",
+    desc: "Add up your assets and debts to see your net worth, asset allocation, and how you compare to others your age.",
     tags: ["Net Worth", "Planning"],
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">

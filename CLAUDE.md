@@ -1,5 +1,5 @@
 # SureEdge Tax & Accounting — Marketing Website
-# Claude Code Context File | Last updated: May 4, 2026
+# Claude Code Context File | Last updated: May 4, 2026 (later session)
 # Place this file at: /Users/BG/github/sureedge/sureedge-website/CLAUDE.md
 
 ---
@@ -56,9 +56,13 @@ Replace TOKEN with the current PAT from https://github.com/settings/tokens (clas
 | Business Intake | /business-tax-intake/ | Business tax quote form |
 | Privacy | /privacy/ | Updated Apr 1, 2026 |
 | Banner | /banner.html | WhatsApp promotional banner (in /public/) |
-| **Tools Hub** | **/tools/** | **Free financial planning tools index — 2 live, 4 coming soon** |
+| **Tools Hub** | **/tools/** | **Free financial planning tools index — 6 live** |
 | **Roth vs Traditional IRA** | **/tools/roth-vs-traditional/** | **Client-side IRA calculator — see section below** |
-| **Tax Bracket Estimator** | **/tools/tax-bracket/** | **Client-side tax estimator — see section below** |
+| **Tax Bracket Estimator** | **/tools/tax-bracket/** | **Federal+state+FICA estimator with refund/owed — see below** |
+| **Quarterly Tax Estimator** | **/tools/quarterly-tax/** | **Self-employed estimated quarterly payments incl. SE tax — see below** |
+| **Retirement Projector** | **/tools/retirement-projector/** | **Balance, monthly income, shortfall analysis — see below** |
+| **Social Security Breakeven** | **/tools/social-security/** | **62 vs FRA vs 70 lifetime comparison with chart — see below** |
+| **Net Worth Tracker** | **/tools/net-worth/** | **Assets minus liabilities with age-based benchmarks + donut charts — see below** |
 
 ---
 
@@ -77,27 +81,64 @@ Strategy: public SEO-indexed calculators → lead capture → portal signup. No 
 - Site-wide amber disclaimer banner below hero
 - Coming-soon cards: Quarterly Tax Estimator, Retirement Savings Projector, Social Security Breakeven, Net Worth Tracker
 
+### Shared library (`lib/tax-data.ts`)
+All tools import tax brackets, standard deductions, contribution limits, state tax rates, and helper functions from this single source of truth. **Update yearly each October** when the IRS announces new figures. Includes:
+- `TAX_YEARS[2025|2026]` — full bracket + std deduction + contribution limits + Roth/IRA phase-outs + SS wage base
+- `US_STATES` — flat-rate state tax approximations (top marginal or flat rate per state, override available)
+- Helpers: `computeTax`, `computeFica`, `computeSeTax`, `getMarginalRate`, `get401kMax`, `getIraMax`, `getHsaMax`, `getStateRate`, `fv`, `fvWithContrib`
+
 ### Roth vs Traditional IRA Calculator (`app/tools/roth-vs-traditional/page.tsx`)
-- **"use client"** — fully client-side, no API
-- **2025 federal brackets only** (year selector not yet added — add when updating)
-- Inputs: filing status, gross income, age, contribution, retirement age, retirement income, return rate, state tax %
-- Outputs: tax savings today, balance at retirement, tax at withdrawal, net after-tax value, breakeven retirement rate
-- Warns on Roth income phase-outs ($150K–$165K single / $236K–$246K MFJ) and Traditional deductibility phase-outs
-- "Email my results" modal → Web3Forms submission
-- "Save & track over time" → portal register with source params
-- **Consent checkbox** gates the Calculate button — must be checked before calculating
-- Disclaimer: amber warning box above bottom CTA
+- "use client" — uses shared `lib/tax-data` (year selector 2025/2026)
+- Inputs: tax year, filing, gross income, age, contribution, retirement age, retirement income, **retirement bracket override**, return rate, state tax %
+- **Apples-to-apples math (May 2026 fix):** Both scenarios contribute $X to the IRA. Traditional's tax savings ($X × marginal_now) are invested in a side taxable brokerage at same return, taxed at 15% LTCG at withdrawal. Without this side account, Roth always artificially won.
+- Warns on Roth income phase-outs (year-aware: 2025 vs 2026) and Traditional deductibility phase-outs
+- "Email my results" → Web3Forms; "Save & track" → portal `?source=tool&tool=roth-vs-traditional`
+- Consent checkbox + amber disclaimer
 
 ### Tax Bracket Estimator (`app/tools/tax-bracket/page.tsx`)
-- **"use client"** — fully client-side, no API
-- **Tax year selector: 2025 or 2026** (prominent toggle at top of form, defaults to 2026)
-- All brackets, standard deductions, and contribution limits switch with selected year
-- **2026 data source:** IRS Rev. Proc. 2025-38 (brackets) + IRS Notice 2025-67 (retirement limits)
-- Inputs: tax year, filing status, age, gross income, 401k/IRA/HSA contributions, deduction type
-- 401k limits handle SECURE 2.0 super catch-up for ages 60–63 separately from standard 50+ catch-up
-- Outputs: tax owed, effective rate, marginal bracket, pre-tax contribution savings callout, income bar chart, bracket table
-- **Consent checkbox** gates the Calculate button
-- Disclaimer: amber warning box above bottom CTA
+- "use client" — refactored to use shared `lib/tax-data`
+- Tax year selector: 2025 or 2026 (defaults to 2026)
+- Inputs: year, filing, age, **W-2 wages, federal withholding, state dropdown (50 states + DC) with override %**, 401k/IRA/HSA contributions, deduction type
+- Outputs: **federal tax + FICA + state tax + total** quad cards, **refund-or-owed banner** (when withholding entered), effective rate, marginal bracket, take-home, FICA breakdown, pre-tax savings callout, income bar chart with state segment, bracket-by-bracket table
+- FICA: SS 6.2% capped at wage base + Medicare 1.45% + 0.9% additional over thresholds
+- Consent checkbox + amber disclaimer
+
+### Quarterly Tax Estimator (`app/tools/quarterly-tax/page.tsx`)
+- "use client" — for self-employed / freelancers
+- Tax year selector: 2025 or 2026
+- Inputs: year, filing, **net SE income, other W-2 wages, W-2 withholding, above-the-line deductions, state dropdown with override, prior year tax+AGI (safe harbor), Q1/Q2/Q3 already-paid amounts**
+- SE tax math: 12.4% SS up to wage base + 2.9% Medicare + 0.9% additional, half deductible, net earnings × 0.9235
+- **Already-paid logic**: if Q1/Q2/Q3 entered, recomputes only remaining quarters and shows underpayment warning if behind by >10%
+- Safe harbor: 110% of prior year tax if AGI > $150K ($75K MFS), else 100%
+- Outputs: hero quarterly amount, payment schedule with paid quarters marked ✓, full annual tax breakdown, SE tax detail card, safe harbor note
+- Quarterly due dates hardcoded for 2025/2026 (Jun 16, 2025 falls on weekend)
+- Consent checkbox + amber disclaimer
+
+### Retirement Savings Projector (`app/tools/retirement-projector/page.tsx`)
+- "use client" — long-term planning tool
+- Inputs: current age, retirement age, current balance, annual contribution, employer match, return %, inflation %, **monthly spending need (today's $)**, **monthly Social Security benefit + claim age**
+- **Today's dollars / Future dollars toggle** on the hero number (default Today's $)
+- Computes: future balance, real (inflation-adjusted) value, total contributed vs growth, monthly portfolio income at 4% safe withdrawal rate, total monthly income (portfolio + SS)
+- **Shortfall analysis**: compares total monthly income vs spending need; if short, calculates additional annual savings needed to close gap
+- Growth chart: SVG showing balance line + contribution line over time
+- "What if +$100/mo" callout shows the magic of small extra savings
+- Consent checkbox + amber disclaimer
+
+### Social Security Breakeven (`app/tools/social-security/page.tsx`)
+- "use client" — pre-retiree claiming-strategy tool
+- Inputs: birth year (auto-derives FRA), estimated FRA monthly benefit, life expectancy, COLA %
+- SSA reduction math: 5/9 of 1%/month for first 36 months early + 5/12 of 1%/month beyond. Delayed Retirement Credit: 8%/year past FRA.
+- Shows three strategies: 62 (early, ~70-75% of FRA), FRA (100%), 70 (124% of FRA)
+- Outputs: winner-strategy banner based on life expectancy, three strategy cards, breakeven ages between each pair, **cumulative lifetime benefit chart** (SVG, 62-100) with life-expectancy marker
+- Consent checkbox + amber disclaimer
+- Disclaimer notes the tool excludes spousal/survivor benefits, earnings test, taxation of benefits, IRMAA
+
+### Net Worth Tracker (`app/tools/net-worth/page.tsx`)
+- "use client" — snapshot tool, no year-specific data
+- Inputs: age + 6 asset categories (cash/savings, retirement, taxable investments, real estate, vehicles, other) + 5 liability categories (mortgage, auto, student, credit card, other)
+- Outputs: hero net worth (negative shown red), age-based benchmark comparison (median + top 25% per Fed SCF medians), liquid net worth, home equity, debt-to-asset ratio, **SVG donut charts** for asset and liability breakdowns
+- Benchmark data: hardcoded SCF medians per age group (under 35, 35-44, 45-54, 55-64, 65-74, 75+)
+- Consent checkbox + amber disclaimer
 
 ### Tax year data (keep updated each October when IRS announces)
 | | 2025 | 2026 |
@@ -113,6 +154,11 @@ Strategy: public SEO-indexed calculators → lead capture → portal signup. No 
 | HSA self-only | $4,300 | $4,400 |
 | HSA family | $8,550 | $8,750 |
 | HSA catch-up 55+ | +$1,000 | +$1,000 |
+| SS wage base | $176,100 | $184,500 |
+| Roth phase-out (single) | $150K–$165K | $153K–$168K |
+| Roth phase-out (MFJ) | $236K–$246K | $242K–$252K |
+| Trad. IRA deduct phase-out (single, covered) | $79K–$89K | $81K–$91K |
+| Trad. IRA deduct phase-out (MFJ, covered) | $126K–$146K | $129K–$149K |
 
 ### Important rules for tools
 - All tools must have the amber disclaimer banner and consent checkbox — never remove these
@@ -156,11 +202,16 @@ Strategy: public SEO-indexed calculators → lead capture → portal signup. No 
 - ✅ M365 trial converted to paid
 - ✅ admin@sureedgetax.com added as M365 alias
 - ✅ WhatsApp banner at /banner.html with OG meta tags
-- ✅ **Free Tools section** — `/tools/` hub + 2 live calculators (Roth vs Traditional, Tax Bracket Estimator)
+- ✅ **Free Tools section** — `/tools/` hub + **6 live calculators** (Roth vs Traditional, Tax Bracket, Quarterly Tax, Retirement Projector, Social Security Breakeven, Net Worth Tracker)
 - ✅ **Lead capture** — "Email my results" via Web3Forms + "Save & track" portal signup links on every tool
-- ✅ **2025/2026 tax year selector** on Tax Bracket Estimator (brackets + contribution limits)
+- ✅ **2025/2026 tax year selector** on all year-aware tools
 - ✅ **Consent checkbox + disclaimer banners** on all tool pages (liability protection)
 - ✅ **"Free Tools" nav link** added to Header (desktop + mobile)
+- ✅ **Shared tax data library** (`lib/tax-data.ts`) — single source of truth for brackets, limits, state rates, FICA helpers
+- ✅ **Tax Bracket: state tax + FICA + refund/owed** — full federal+state+FICA estimator
+- ✅ **Quarterly Tax: already-paid logic + state lookup** — recomputes remaining quarters, underpayment warning
+- ✅ **Retirement Projector: spending need + Social Security + shortfall** — answers "will I have enough?"
+- ✅ **Roth fix**: side-account methodology so Traditional+invested-tax-savings is fairly compared to Roth (was always favoring Roth)
 
 ---
 
@@ -182,9 +233,11 @@ Strategy: public SEO-indexed calculators → lead capture → portal signup. No 
 - [ ] Portal: create `tool_calculations` DB table — store tool type, inputs JSON, outputs JSON, user_id
 - [ ] Portal: `/tools/` page — logged-in users see their saved calculations with "Book consultation" CTA
 - [ ] Portal: admin panel shows which tool drove each signup
-- [ ] Website: add Quarterly Tax Estimator (`/tools/quarterly-tax/`)
-- [ ] Website: add Retirement Savings Projector (`/tools/retirement-projector/`)
-- [ ] Website: add Roth year selector (currently 2025 brackets only — mirror what Tax Bracket does)
+- [x] ~~Website: add Quarterly Tax Estimator~~ — shipped
+- [x] ~~Website: add Retirement Savings Projector~~ — shipped
+- [x] ~~Website: add Roth year selector~~ — shipped
+- [x] ~~Website: add Social Security Breakeven~~ — shipped
+- [x] ~~Website: add Net Worth Tracker~~ — shipped
 
 ---
 
