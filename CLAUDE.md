@@ -228,16 +228,25 @@ All tools import tax brackets, standard deductions, contribution limits, state t
 - [ ] Set Anthropic spending limit to $20/month (currently $10)
 - [ ] Calendly paid upgrade — remove "Powered by Calendly" ($10/mo)
 
-### Tools — Phase 2 (Portal Integration)
-- [ ] Portal: add `registration_source` column to users table — tag signups that come from `/tools/` pages
-- [ ] Portal: create `tool_calculations` DB table — store tool type, inputs JSON, outputs JSON, user_id
-- [ ] Portal: `/tools/` page — logged-in users see their saved calculations with "Book consultation" CTA
-- [ ] Portal: admin panel shows which tool drove each signup
+### Tools — Phase 2 (Portal Integration) — COMPLETE
+- [x] ~~Portal: add `registration_source` + `registration_tool` columns to users~~ — shipped
+- [x] ~~Portal: create `tool_calculations` DB table~~ — shipped
+- [x] ~~Portal: `/tools/` page — saved calculations + auto-save from URL hash~~ — shipped
+- [x] ~~Portal: admin Tool Leads view (per-tool stats + click-to-filter)~~ — shipped
+- [x] ~~Website: encode calculation as base64 in URL hash on "Save & track" buttons~~ — shipped
 - [x] ~~Website: add Quarterly Tax Estimator~~ — shipped
 - [x] ~~Website: add Retirement Savings Projector~~ — shipped
 - [x] ~~Website: add Roth year selector~~ — shipped
 - [x] ~~Website: add Social Security Breakeven~~ — shipped
 - [x] ~~Website: add Net Worth Tracker~~ — shipped
+
+### Lead capture flow (current state, May 2026)
+1. User uses tool on `sureedgetax.com/tools/<slug>` → fills inputs → clicks Calculate
+2. Result page shows "Save & track over time" link to `portal.sureedgetax.com/register?source=tool&tool=<slug>#<base64-encoded-JSON>`
+3. Portal `/register` reads hash, stashes in sessionStorage, captures `?source=tool&tool=<slug>` query params
+4. After successful registration, portal API persists `users.registration_source='tool'` + `users.registration_tool=<slug>`
+5. Register page redirects to `/tools` carrying the hash; portal `/tools` page useEffect base64-decodes + POSTs to `/api/tool-calculations`
+6. Admin sees the user in `/admin` with a "🛠 <Tool Name>" Source badge AND in the dedicated Tool Leads section showing per-tool stats
 
 ---
 
