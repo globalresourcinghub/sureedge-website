@@ -2,66 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import EmailResultsModal from "@/components/EmailResultsModal";
 import {
   TAX_YEARS, TaxYear, FilingStatus,
   fmt, pct, fv, getMarginalRate, getIraMax, buildPortalSaveUrl,
 } from "@/lib/tax-data";
-
-// ── Email results modal ────────────────────────────────────────────────────
-function EmailModal({ onClose, resultsSummary }: { onClose: () => void; resultsSummary: string }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setStatus("sending");
-    try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-          subject: `Roth vs Traditional IRA Results — ${name}`,
-          name, email,
-          message: `Calculator results requested by ${name} (${email}):\n\n${resultsSummary}\n\nSent from: sureedgetax.com/tools/roth-vs-traditional`,
-        }),
-      });
-      if (res.ok) setStatus("sent"); else setStatus("error");
-    } catch { setStatus("error"); }
-  }
-
-  return (
-    <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.45)", zIndex: 100, display: "flex", alignItems: "center", justifyContent: "center", padding: "24px" }}>
-      <div style={{ background: "#fff", borderRadius: "14px", padding: "32px", maxWidth: "420px", width: "100%", boxShadow: "0 8px 40px rgba(0,0,0,0.18)" }}>
-        {status === "sent" ? (
-          <>
-            <div style={{ fontSize: "32px", marginBottom: "12px", textAlign: "center" }}>✓</div>
-            <h3 style={{ fontSize: "17px", fontWeight: 700, color: "#1a2e4a", textAlign: "center", marginBottom: "8px" }}>Results sent!</h3>
-            <p style={{ fontSize: "13px", color: "#666", textAlign: "center", marginBottom: "24px" }}>Check your inbox. Our team may follow up with additional tax-saving ideas.</p>
-            <button onClick={onClose} style={{ width: "100%", background: "#b8962e", color: "#fff", border: "none", borderRadius: "7px", padding: "12px", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}>Close</button>
-          </>
-        ) : (
-          <>
-            <h3 style={{ fontSize: "17px", fontWeight: 700, color: "#1a2e4a", marginBottom: "6px" }}>Email my results</h3>
-            <p style={{ fontSize: "12px", color: "#777", marginBottom: "20px" }}>We&apos;ll send a summary to your inbox — no spam, no obligation.</p>
-            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-              <input required value={name} onChange={e => setName(e.target.value)} placeholder="Your name" style={{ padding: "10px 12px", border: "1px solid #e0ddd6", borderRadius: "7px", fontSize: "13px", outline: "none" }}/>
-              <input required type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email address" style={{ padding: "10px 12px", border: "1px solid #e0ddd6", borderRadius: "7px", fontSize: "13px", outline: "none" }}/>
-              {status === "error" && <p style={{ fontSize: "12px", color: "#c0392b" }}>Something went wrong. Please try again.</p>}
-              <div style={{ display: "flex", gap: "10px", marginTop: "4px" }}>
-                <button type="button" onClick={onClose} style={{ flex: 1, background: "#f5f3ee", color: "#555", border: "none", borderRadius: "7px", padding: "11px", fontSize: "13px", fontWeight: 500, cursor: "pointer" }}>Cancel</button>
-                <button type="submit" disabled={status === "sending"} style={{ flex: 2, background: "#b8962e", color: "#fff", border: "none", borderRadius: "7px", padding: "11px", fontSize: "13px", fontWeight: 600, cursor: "pointer", opacity: status === "sending" ? 0.7 : 1 }}>
-                  {status === "sending" ? "Sending…" : "Send results"}
-                </button>
-              </div>
-            </form>
-          </>
-        )}
-      </div>
-    </div>
-  );
-}
 
 // ── Main calculator ────────────────────────────────────────────────────────
 export default function RothVsTraditionalPage() {
@@ -157,7 +102,15 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
 
   return (
     <>
-      {showEmail && <EmailModal onClose={() => setShowEmail(false)} resultsSummary={resultsSummary} />}
+      {showEmail && <EmailResultsModal
+        onClose={() => setShowEmail(false)}
+        toolSlug="roth-vs-traditional"
+        toolName="Roth vs Traditional IRA"
+        resultsSummary={resultsSummary}
+        inputs={{ taxYear, filing, grossIncome, age, contribution, retirementAge, retirementIncome, returnRate, stateTaxRate, retirementRateOverride }}
+        outputs={{ verdict: rothWins ? 'Roth' : 'Traditional', netDifference, traditionalNet, rothNet, marginalNow, marginalRetirement }}
+        taxYear={taxYear}
+      />}
 
       <section style={{ background: "#1a2e4a", padding: "40px 44px 36px" }}>
         <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.5)", marginBottom: "14px" }}>

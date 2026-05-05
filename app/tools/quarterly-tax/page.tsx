@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import EmailResultsModal from "@/components/EmailResultsModal";
 import {
   TAX_YEARS, TaxYear, FilingStatus, US_STATES,
   fmt, computeTax, computeSeTax, getStateRate, buildPortalSaveUrl,
@@ -28,6 +29,7 @@ export default function QuarterlyTaxPage() {
   const [paidQ3, setPaidQ3] = useState(0);
   const [calcCount, setCalcCount] = useState(0);
   const [consented, setConsented] = useState(false);
+  const [showEmail, setShowEmail] = useState(false);
   const calculated = calcCount > 0;
   const stateTaxRate = stateRateOverride !== null ? stateRateOverride : getStateRate(stateCode);
 
@@ -77,6 +79,15 @@ export default function QuarterlyTaxPage() {
 
   return (
     <>
+      {showEmail && <EmailResultsModal
+        onClose={() => setShowEmail(false)}
+        toolSlug="quarterly-tax"
+        toolName="Quarterly Tax Estimator"
+        resultsSummary={`Tax Year ${taxYear} · ${filing.toUpperCase()}\nSE income: ${fmt(seIncome)} · W-2: ${fmt(otherWages)}\nFederal tax: ${fmt(fedTax.totalTax)} · SE tax: ${fmt(seTax.totalSeTax)} · State: ${fmt(stateTax)}\nQuarterly payment: ${fmt(alreadyPaid > 0 ? adjustedQuarterly : recommendedQuarterly)}\nTotal annual: ${fmt(targetTotal)}`}
+        inputs={{ taxYear, filing, seIncome, otherWages, w2Withholding, otherDeductions, stateCode, stateTaxRate, priorYearTax, priorYearAgi, paidQ1, paidQ2, paidQ3 }}
+        outputs={{ quarterlyAmount: alreadyPaid > 0 ? adjustedQuarterly : recommendedQuarterly, totalAnnualTax, fedTax: fedTax.totalTax, seTax: seTax.totalSeTax, stateTax, isUnderpaying }}
+        taxYear={taxYear}
+      />}
       <section style={{ background: "#1a2e4a", padding: "40px 44px 36px" }}>
         <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.5)", marginBottom: "14px" }}>
           <Link href="/tools" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Free Tools</Link>
@@ -318,15 +329,18 @@ export default function QuarterlyTaxPage() {
                   </div>
                 )}
 
-                <div style={{ display: "flex", gap: "10px" }}>
+                <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                  <button onClick={() => setShowEmail(true)} style={{ flex: 1, minWidth: "140px", background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}>
+                    Email my results
+                  </button>
                   <a href={buildPortalSaveUrl('quarterly-tax', {
                     inputs: { taxYear, filing, seIncome, otherWages, w2Withholding, otherDeductions, stateCode, stateTaxRate, priorYearTax, priorYearAgi, paidQ1, paidQ2, paidQ3 },
                     outputs: { quarterlyAmount: alreadyPaid > 0 ? adjustedQuarterly : recommendedQuarterly, totalAnnualTax, fedTax: fedTax.totalTax, seTax: seTax.totalSeTax, stateTax, isUnderpaying },
                     taxYear,
-                  })} style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  })} style={{ flex: 1, minWidth: "140px", background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     Save &amp; track over time
                   </a>
-                  <Link href="/booking" style={{ flex: 1, background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Link href="/booking" style={{ flex: 1, minWidth: "140px", background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     Get tax planning →
                   </Link>
                 </div>

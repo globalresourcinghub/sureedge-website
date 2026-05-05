@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import EmailResultsModal from "@/components/EmailResultsModal";
 import {
   TAX_YEARS, TaxYear, FilingStatus, US_STATES,
   fmt, fmtRange, computeTax, computeFica, get401kMax, getIraMax, getHsaMax, getStateRate, buildPortalSaveUrl,
@@ -23,6 +24,7 @@ export default function TaxBracketPage() {
   const [hsaCoverage, setHsaCoverage]   = useState<"single" | "family">("single");
   const [calcCount, setCalcCount]       = useState(0);
   const [consented, setConsented]       = useState(false);
+  const [showEmail, setShowEmail]       = useState(false);
   const calculated = calcCount > 0;
 
   const yd      = TAX_YEARS[taxYear];
@@ -88,6 +90,15 @@ export default function TaxBracketPage() {
 
   return (
     <>
+      {showEmail && <EmailResultsModal
+        onClose={() => setShowEmail(false)}
+        toolSlug="tax-bracket"
+        toolName="Tax Bracket Estimator"
+        resultsSummary={`Tax Year: ${taxYear} · ${filing.toUpperCase()}\nGross income: ${fmt(grossIncome)} · State: ${stateCode}\nFederal tax: ${fmt(fedTax)} · FICA: ${fmt(fica.total)} · State: ${fmt(stateTax)}\nTotal: ${fmt(totalTaxAll)} · Effective: ${(effectiveRate * 100).toFixed(1)}% · Marginal: ${(marginalRate * 100).toFixed(0)}%${withholding > 0 ? `\nRefund/owed: ${isRefund ? '+' : '-'}${fmt(Math.abs(refundOrOwed))}` : ''}`}
+        inputs={{ taxYear, filing, age, grossIncome, withholding, stateCode, stateRate, contrib401k, contribIra, contribHsa, hsaCoverage, deductionType, itemizedAmount }}
+        outputs={{ totalTax: totalTaxAll, fedTax, ficaTotal: fica.total, stateTax, marginalRate, effectiveRate, refundOrOwed, isRefund }}
+        taxYear={taxYear}
+      />}
       <section style={{ background: "#1a2e4a", padding: "40px 44px 36px" }}>
         <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.5)", marginBottom: "14px" }}>
           <Link href="/tools" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Free Tools</Link>
@@ -396,15 +407,18 @@ export default function TaxBracketPage() {
                   </div>
                 </div>
 
-                <div style={{ display: "flex", gap: "10px" }}>
+                <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                  <button onClick={() => setShowEmail(true)} style={{ flex: 1, minWidth: "140px", background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}>
+                    Email my results
+                  </button>
                   <a href={buildPortalSaveUrl('tax-bracket', {
                     inputs: { taxYear, filing, age, grossIncome, withholding, stateCode, stateRate, contrib401k, contribIra, contribHsa, hsaCoverage, deductionType, itemizedAmount },
                     outputs: { totalTax: totalTaxAll, fedTax, ficaTotal: fica.total, stateTax, marginalRate, effectiveRate, refundOrOwed, isRefund },
                     taxYear,
-                  })} style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  })} style={{ flex: 1, minWidth: "140px", background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     Save &amp; track over time
                   </a>
-                  <Link href="/booking" style={{ flex: 1, background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Link href="/booking" style={{ flex: 1, minWidth: "140px", background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     Reduce my tax bill →
                   </Link>
                 </div>

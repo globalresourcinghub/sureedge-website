@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import EmailResultsModal from "@/components/EmailResultsModal";
 import { fmt, buildPortalSaveUrl } from "@/lib/tax-data";
 
 // SSA reduction/credit factors. FRA depends on birth year.
@@ -45,6 +46,7 @@ export default function SocialSecurityPage() {
   const [colaRate, setColaRate] = useState(2.5);
   const [calcCount, setCalcCount] = useState(0);
   const [consented, setConsented] = useState(false);
+  const [showEmail, setShowEmail] = useState(false);
   const calculated = calcCount > 0;
 
   const fra = getFRA(birthYear);
@@ -114,6 +116,14 @@ export default function SocialSecurityPage() {
 
   return (
     <>
+      {showEmail && <EmailResultsModal
+        onClose={() => setShowEmail(false)}
+        toolSlug="social-security"
+        toolName="Social Security Breakeven"
+        resultsSummary={`Born ${birthYear} · FRA ${fra.toFixed(fra % 1 === 0 ? 0 : 1)} · Life expectancy ${lifeExpectancy} · COLA ${colaRate}%\nFRA monthly benefit: ${fmt(fraBenefit)}\nBest strategy: ${strategies[winnerIdx].label}\nLifetime total: ${fmt(totalAtLE[winnerIdx])}\nBreakeven (FRA vs 70): ${breakevenFraVs70 ? `Age ${breakevenFraVs70}` : 'Never'}\nBreakeven (62 vs 70): ${breakeven62vs70 ? `Age ${breakeven62vs70}` : 'Never'}`}
+        inputs={{ birthYear, fraBenefit, lifeExpectancy, colaRate }}
+        outputs={{ bestStrategy: strategies[winnerIdx].age, fra, totalAtLE: totalAtLE[winnerIdx], breakeven62vsFra, breakevenFraVs70, breakeven62vs70 }}
+      />}
       <section style={{ background: "#1a2e4a", padding: "40px 44px 36px" }}>
         <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.5)", marginBottom: "14px" }}>
           <Link href="/tools" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Free Tools</Link>
@@ -281,14 +291,17 @@ export default function SocialSecurityPage() {
                   <strong style={{ color: "#1a2e4a" }}>Note:</strong> Other factors matter too — current health, spouse&apos;s benefit, work income (earnings test before FRA), and tax situation. This is the pure breakeven math; a real claiming strategy considers more.
                 </div>
 
-                <div style={{ display: "flex", gap: "10px" }}>
+                <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                  <button onClick={() => setShowEmail(true)} style={{ flex: 1, minWidth: "140px", background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}>
+                    Email my results
+                  </button>
                   <a href={buildPortalSaveUrl('social-security', {
                     inputs: { birthYear, fraBenefit, lifeExpectancy, colaRate },
                     outputs: { bestStrategy: strategies[winnerIdx].age, fra, totalAtLE: totalAtLE[winnerIdx], breakeven62vsFra, breakevenFraVs70, breakeven62vs70 },
-                  })} style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  })} style={{ flex: 1, minWidth: "140px", background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     Save &amp; track over time
                   </a>
-                  <Link href="/booking" style={{ flex: 1, background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Link href="/booking" style={{ flex: 1, minWidth: "140px", background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     Plan my claim →
                   </Link>
                 </div>

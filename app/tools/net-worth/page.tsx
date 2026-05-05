@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import EmailResultsModal from "@/components/EmailResultsModal";
 import { fmt, buildPortalSaveUrl } from "@/lib/tax-data";
 
 interface LineItem { key: string; label: string; value: number }
@@ -40,6 +41,7 @@ export default function NetWorthPage() {
   const [otherLiability, setOtherLiability] = useState(0);
   const [calcCount, setCalcCount] = useState(0);
   const [consented, setConsented] = useState(false);
+  const [showEmail, setShowEmail] = useState(false);
   const calculated = calcCount > 0;
 
   const assets: LineItem[] = [
@@ -109,6 +111,14 @@ export default function NetWorthPage() {
 
   return (
     <>
+      {showEmail && <EmailResultsModal
+        onClose={() => setShowEmail(false)}
+        toolSlug="net-worth"
+        toolName="Net Worth Tracker"
+        resultsSummary={`Age ${age}\nTotal assets: ${fmt(totalAssets)} · Total liabilities: ${fmt(totalLiabilities)}\nNet worth: ${fmt(netWorth)}\nLiquid net worth: ${fmt(liquidNetWorth)} · Home equity: ${fmt(homeEquity)}\nVs median for age group: ${vsMedian >= 0 ? '+' : ''}${fmt(vsMedian)}`}
+        inputs={{ age, cash, retirement, taxable, realEstate, vehicles, otherAsset, mortgage, auto, student, creditCard, otherLiability }}
+        outputs={{ netWorth, totalAssets, totalLiabilities, liquidNetWorth, homeEquity, vsMedian, vsTop25 }}
+      />}
       <section style={{ background: "#1a2e4a", padding: "40px 44px 36px" }}>
         <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.5)", marginBottom: "14px" }}>
           <Link href="/tools" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Free Tools</Link>
@@ -294,14 +304,17 @@ export default function NetWorthPage() {
                   </div>
                 </div>
 
-                <div style={{ display: "flex", gap: "10px" }}>
+                <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                  <button onClick={() => setShowEmail(true)} style={{ flex: 1, minWidth: "140px", background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}>
+                    Email my results
+                  </button>
                   <a href={buildPortalSaveUrl('net-worth', {
                     inputs: { age, cash, retirement, taxable, realEstate, vehicles, otherAsset, mortgage, auto, student, creditCard, otherLiability },
                     outputs: { netWorth, totalAssets, totalLiabilities, liquidNetWorth, homeEquity, vsMedian, vsTop25 },
-                  })} style={{ flex: 1, background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  })} style={{ flex: 1, minWidth: "140px", background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     Save &amp; track over time
                   </a>
-                  <Link href="/booking" style={{ flex: 1, background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Link href="/booking" style={{ flex: 1, minWidth: "140px", background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     Get a financial review →
                   </Link>
                 </div>
