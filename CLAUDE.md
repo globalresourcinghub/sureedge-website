@@ -241,12 +241,22 @@ All tools import tax brackets, standard deductions, contribution limits, state t
 - [x] ~~Website: add Net Worth Tracker~~ — shipped
 
 ### Lead capture flow (current state, May 2026)
-1. User uses tool on `sureedgetax.com/tools/<slug>` → fills inputs → clicks Calculate
-2. Result page shows "Save & track over time" link to `portal.sureedgetax.com/register?source=tool&tool=<slug>#<base64-encoded-JSON>`
-3. Portal `/register` reads hash, stashes in sessionStorage, captures `?source=tool&tool=<slug>` query params
-4. After successful registration, portal API persists `users.registration_source='tool'` + `users.registration_tool=<slug>`
-5. Register page redirects to `/tools` carrying the hash; portal `/tools` page useEffect base64-decodes + POSTs to `/api/tool-calculations`
-6. Admin sees the user in `/admin` with a "🛠 <Tool Name>" Source badge AND in the dedicated Tool Leads section showing per-tool stats
+
+**Two parallel capture channels** on every tool's results screen:
+
+1. **"Email my results"** button → opens `EmailResultsModal` (shared component at `components/EmailResultsModal.tsx`):
+   - Posts to Web3Forms (existing — sends an email summary)
+   - **AND** posts to `https://portal.sureedgetax.com/api/public/tool-email-leads` (new — durable DB record). CORS configured on the portal endpoint.
+   - Either success = treated as success (best-effort dual-channel).
+   - Anonymous; captures name, email, inputs, outputs, taxYear.
+
+2. **"Save & track over time"** button → redirects to portal:
+   - URL: `portal.sureedgetax.com/register?source=tool&tool=<slug>#<base64-encoded-JSON>`
+   - Portal `/register` stashes hash in sessionStorage, captures `?source=&tool=` query params
+   - Post-registration, portal API persists `users.registration_source='tool'` + `users.registration_tool=<slug>`
+   - Register redirects to `/tools` carrying the hash; portal `/tools` page useEffect base64-decodes + POSTs to `/api/tool-calculations`
+
+**Admin views these at `portal.sureedgetax.com/admin/tools`**: per-tool stat cards (signups | calcs | emails), Registered/Email tabs, drill-down drawer showing full inputs/outputs.
 
 ---
 
