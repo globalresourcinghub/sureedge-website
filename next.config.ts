@@ -44,6 +44,15 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "www.sureedgetax.com" },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/personalized-financial-solutions-for-modern-entrepreneurs",
+        destination: "/services",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
