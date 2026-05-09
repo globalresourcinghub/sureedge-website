@@ -1,16 +1,36 @@
 import Link from "next/link";
+import ScrollReveal from "@/components/ScrollReveal";
+import HeroParallax from "@/components/HeroParallax";
+import InteractiveShowcase from "@/components/InteractiveShowcase";
 
-const serviceCards = [
+/* ── Design tokens ─────────────────────────────── */
+const C = {
+  dark:       "#0B1929",
+  darkMid:    "#0f2035",
+  navy:       "#1a2e4a",
+  gold:       "#C9A84C",
+  goldSoft:   "rgba(201,168,76,0.12)",
+  goldBorder: "rgba(201,168,76,0.28)",
+  offWhite:   "#F8F7F4",
+  white:      "#FFFFFF",
+  muted:      "#8A9BB0",
+  textDark:   "#1a2e4a",
+  borderDark: "rgba(255,255,255,0.08)",
+  borderLight:"#EDEAE3",
+};
+
+/* ── Data ───────────────────────────────────────── */
+const services = [
   {
     title: "Individual Tax Preparation",
-    desc: "Federal and state returns for W-2 employees, freelancers, investors, retirees, and multi-state filers.",
+    desc: "Federal & state returns for W-2 employees, freelancers, investors, retirees, and multi-state filers.",
     href: "/tax-intake",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <rect x="3" y="1" width="11" height="16" rx="2" stroke="#b8962e" strokeWidth="1.5"/>
-        <line x1="6" y1="6" x2="11" y2="6" stroke="#b8962e" strokeWidth="1.2" strokeLinecap="round"/>
-        <line x1="6" y1="9" x2="11" y2="9" stroke="#b8962e" strokeWidth="1.2" strokeLinecap="round"/>
-        <line x1="6" y1="12" x2="9" y2="12" stroke="#b8962e" strokeWidth="1.2" strokeLinecap="round"/>
+      <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
+        <rect x="3" y="1" width="11" height="16" rx="2" stroke={C.gold} strokeWidth="1.5"/>
+        <line x1="6" y1="6" x2="11" y2="6" stroke={C.gold} strokeWidth="1.2" strokeLinecap="round"/>
+        <line x1="6" y1="9" x2="11" y2="9" stroke={C.gold} strokeWidth="1.2" strokeLinecap="round"/>
+        <line x1="6" y1="12" x2="9" y2="12" stroke={C.gold} strokeWidth="1.2" strokeLinecap="round"/>
       </svg>
     ),
   },
@@ -19,9 +39,9 @@ const serviceCards = [
     desc: "Schedule C, S-Corp, and Partnership returns for LLCs, sole proprietors, and corporations.",
     href: "/business-tax-intake",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <rect x="2" y="8" width="16" height="10" rx="2" stroke="#b8962e" strokeWidth="1.5"/>
-        <path d="M6 8V6a4 4 0 018 0v2" stroke="#b8962e" strokeWidth="1.5" strokeLinecap="round"/>
+      <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
+        <rect x="2" y="8" width="16" height="10" rx="2" stroke={C.gold} strokeWidth="1.5"/>
+        <path d="M6 8V6a4 4 0 018 0v2" stroke={C.gold} strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     ),
   },
@@ -30,10 +50,10 @@ const serviceCards = [
     desc: "Monthly reconciliation, categorization, and financial statements via QuickBooks.",
     href: "/business-tax-intake",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <rect x="1" y="12" width="4" height="7" rx="1" fill="#b8962e" opacity="0.4"/>
-        <rect x="8" y="7" width="4" height="12" rx="1" fill="#b8962e" opacity="0.7"/>
-        <rect x="15" y="2" width="4" height="17" rx="1" fill="#b8962e"/>
+      <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
+        <rect x="1" y="12" width="4" height="7" rx="1" fill={C.gold} opacity="0.4"/>
+        <rect x="8" y="7" width="4" height="12" rx="1" fill={C.gold} opacity="0.7"/>
+        <rect x="15" y="2" width="4" height="17" rx="1" fill={C.gold}/>
       </svg>
     ),
   },
@@ -42,9 +62,9 @@ const serviceCards = [
     desc: "End-to-end payroll, quarterly filings, W-2 and 1099 preparation.",
     href: "/business-tax-intake",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <circle cx="10" cy="10" r="8" stroke="#b8962e" strokeWidth="1.5"/>
-        <path d="M10 6v4l3 2" stroke="#b8962e" strokeWidth="1.5" strokeLinecap="round"/>
+      <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
+        <circle cx="10" cy="10" r="8" stroke={C.gold} strokeWidth="1.5"/>
+        <path d="M10 6v4l3 2" stroke={C.gold} strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     ),
   },
@@ -53,9 +73,9 @@ const serviceCards = [
     desc: "Year-round proactive planning to legally minimize your tax liability.",
     href: "/tax-intake",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <path d="M10 2L3 7v10h14V7L10 2z" stroke="#b8962e" strokeWidth="1.5" strokeLinejoin="round"/>
-        <rect x="7" y="11" width="6" height="6" rx="1" stroke="#b8962e" strokeWidth="1.2"/>
+      <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
+        <path d="M10 2L3 7v10h14V7L10 2z" stroke={C.gold} strokeWidth="1.5" strokeLinejoin="round"/>
+        <rect x="7" y="11" width="6" height="6" rx="1" stroke={C.gold} strokeWidth="1.2"/>
       </svg>
     ),
   },
@@ -64,200 +84,496 @@ const serviceCards = [
     desc: "Audit support and IRS notice response by a licensed Enrolled Agent.",
     href: "/contact",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <path d="M10 2l2.5 5h5l-4 3.5 1.5 5L10 13l-5 2.5 1.5-5L2.5 7h5z" stroke="#b8962e" strokeWidth="1.5" strokeLinejoin="round"/>
+      <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
+        <path d="M10 2l2.5 5h5l-4 3.5 1.5 5L10 13l-5 2.5 1.5-5L2.5 7h5z" stroke={C.gold} strokeWidth="1.5" strokeLinejoin="round"/>
       </svg>
     ),
   },
 ];
 
-const featureCards = [
-  { title: "CPA & Enrolled Agent", desc: "Dual credentials for full tax preparation and IRS representation, all under one roof." },
-  { title: "Direct Access to Your CPA", desc: "Speak directly with us. No call centers, no junior staff, no waiting." },
-  { title: "100% Virtual, Nationwide", desc: "Based in Texas, serving clients across the country. No office visit required." },
-  { title: "Year-Round Support", desc: "We are here all year for proactive planning, not just at tax time." },
+const features = [
+  {
+    title: "CPA & Enrolled Agent",
+    desc: "Dual credentials covering every aspect of tax preparation and IRS representation.",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+  },
+  {
+    title: "Direct Access",
+    desc: "You talk to the CPA directly. No call centers, no junior staff, no waiting.",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+    ),
+  },
+  {
+    title: "100% Virtual",
+    desc: "Based in Texas, serving clients nationwide. No office visit ever required.",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+    ),
+  },
+  {
+    title: "Year-Round Support",
+    desc: "We are here all year for proactive planning — not just at tax time.",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+    ),
+  },
 ];
 
 const stats = [
-  { val: "CPA & EA", lbl: "Dual Credentials" },
-  { val: "100%", lbl: "Virtual Service" },
-  { val: "Nationwide", lbl: "Client Coverage" },
-  { val: "2 Days", lbl: "Quote Response" },
+  { val: "CPA & EA",    lbl: "Dual Credentials" },
+  { val: "100%",        lbl: "Virtual Service"   },
+  { val: "Nationwide",  lbl: "Client Coverage"   },
+  { val: "2 Days",      lbl: "Quote Response"    },
 ];
 
+const testimonials = [
+  {
+    quote: "SureEdge made my first year as a freelancer completely stress-free. They explained everything clearly and saved me more than I expected.",
+    name: "Marcus T.",
+    title: "Freelance Designer, Austin TX",
+    initials: "MT",
+  },
+  {
+    quote: "Finally a CPA who actually answers the phone. We've worked with SureEdge for our S-Corp for two years and couldn't be happier.",
+    name: "Priya & Raj S.",
+    title: "Small Business Owners",
+    initials: "PS",
+  },
+  {
+    quote: "Got an IRS notice and was in a panic. SureEdge handled everything from start to finish — resolved in 3 weeks.",
+    name: "Daniel K.",
+    title: "Real Estate Investor",
+    initials: "DK",
+  },
+];
+
+/* ── Page ───────────────────────────────────────── */
 export default function Home() {
   return (
     <>
-      {/* HERO */}
-      <section style={{ display: "flex", minHeight: "420px" }}>
-        {/* Left , dark city skyline */}
-        <div style={{ flex: 1, background: "#0d1928", position: "relative", overflow: "hidden" }}>
-          {/* City skyline SVG */}
-          <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 480 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="skyg" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#050e1c"/>
-                <stop offset="100%" stopColor="#0d1f35"/>
-              </linearGradient>
-            </defs>
-            <rect width="480" height="420" fill="url(#skyg)"/>
-            {/* Stars */}
-            <circle cx="60" cy="30" r="1" fill="#fff" opacity="0.4"/>
-            <circle cx="120" cy="18" r="1.2" fill="#fff" opacity="0.5"/>
-            <circle cx="200" cy="25" r="0.8" fill="#fff" opacity="0.35"/>
-            <circle cx="310" cy="15" r="1" fill="#fff" opacity="0.45"/>
-            <circle cx="390" cy="35" r="0.8" fill="#fff" opacity="0.3"/>
-            <circle cx="450" cy="20" r="1" fill="#fff" opacity="0.4"/>
-            <circle cx="170" cy="10" r="0.8" fill="#fff" opacity="0.3"/>
-            <circle cx="260" cy="8" r="1" fill="#fff" opacity="0.4"/>
-            <circle cx="420" cy="12" r="0.7" fill="#fff" opacity="0.35"/>
-            {/* Buildings */}
-            <rect x="0" y="200" width="42" height="220" fill="#152336"/>
-            <rect x="8" y="188" width="26" height="16" fill="#152336"/>
-            <rect x="4" y="210" width="7" height="7" fill="#f5d060" opacity="0.9"/>
-            <rect x="18" y="210" width="7" height="7" fill="#f5d060" opacity="0.6"/>
-            <rect x="4" y="226" width="7" height="7" fill="#f5d060" opacity="0.4"/>
-            <rect x="18" y="226" width="7" height="7" fill="#f5d060" opacity="0.85"/>
-            <rect x="4" y="242" width="7" height="7" fill="#f5d060" opacity="0.7"/>
-            <rect x="18" y="242" width="7" height="7" fill="#f5d060" opacity="0.3"/>
-            <rect x="52" y="230" width="32" height="190" fill="#112030"/>
-            <rect x="56" y="240" width="8" height="8" fill="#f5d060" opacity="0.8"/>
-            <rect x="70" y="240" width="8" height="8" fill="#f5d060" opacity="0.5"/>
-            <rect x="56" y="256" width="8" height="8" fill="#f5d060" opacity="0.35"/>
-            <rect x="70" y="256" width="8" height="8" fill="#f5d060" opacity="0.9"/>
-            <rect x="94" y="155" width="54" height="265" fill="#1a3255"/>
-            <rect x="104" y="140" width="34" height="20" fill="#1a3255"/>
-            <rect x="98" y="168" width="10" height="10" fill="#f5d060" opacity="0.95"/>
-            <rect x="114" y="168" width="10" height="10" fill="#f5d060" opacity="0.6"/>
-            <rect x="130" y="168" width="10" height="10" fill="#f5d060" opacity="0.8"/>
-            <rect x="98" y="186" width="10" height="10" fill="#f5d060" opacity="0.45"/>
-            <rect x="114" y="186" width="10" height="10" fill="#f5d060" opacity="0.9"/>
-            <rect x="130" y="186" width="10" height="10" fill="#f5d060" opacity="0.65"/>
-            <rect x="98" y="204" width="10" height="10" fill="#f5d060" opacity="0.75"/>
-            <rect x="114" y="204" width="10" height="10" fill="#f5d060" opacity="0.35"/>
-            <rect x="130" y="204" width="10" height="10" fill="#f5d060" opacity="0.9"/>
-            <rect x="158" y="210" width="26" height="210" fill="#112030"/>
-            <rect x="162" y="220" width="8" height="8" fill="#f5d060" opacity="0.85"/>
-            <rect x="176" y="220" width="8" height="8" fill="#f5d060" opacity="0.5"/>
-            <rect x="162" y="236" width="8" height="8" fill="#f5d060" opacity="0.7"/>
-            <rect x="194" y="105" width="66" height="315" fill="#203f68"/>
-            <rect x="206" y="88" width="42" height="22" fill="#203f68"/>
-            <rect x="198" y="118" width="11" height="11" fill="#f5d060" opacity="0.95"/>
-            <rect x="216" y="118" width="11" height="11" fill="#f5d060" opacity="0.65"/>
-            <rect x="234" y="118" width="11" height="11" fill="#f5d060" opacity="0.85"/>
-            <rect x="198" y="138" width="11" height="11" fill="#f5d060" opacity="0.45"/>
-            <rect x="216" y="138" width="11" height="11" fill="#f5d060" opacity="0.95"/>
-            <rect x="234" y="138" width="11" height="11" fill="#f5d060" opacity="0.6"/>
-            <rect x="198" y="158" width="11" height="11" fill="#f5d060" opacity="0.8"/>
-            <rect x="216" y="158" width="11" height="11" fill="#f5d060" opacity="0.35"/>
-            <rect x="234" y="158" width="11" height="11" fill="#f5d060" opacity="0.95"/>
-            <rect x="198" y="178" width="11" height="11" fill="#f5d060" opacity="0.65"/>
-            <rect x="216" y="178" width="11" height="11" fill="#f5d060" opacity="0.85"/>
-            <rect x="234" y="178" width="11" height="11" fill="#f5d060" opacity="0.5"/>
-            <rect x="270" y="178" width="44" height="242" fill="#1a3255"/>
-            <rect x="278" y="164" width="28" height="18" fill="#1a3255"/>
-            <rect x="274" y="190" width="9" height="9" fill="#f5d060" opacity="0.9"/>
-            <rect x="290" y="190" width="9" height="9" fill="#f5d060" opacity="0.55"/>
-            <rect x="306" y="190" width="9" height="9" fill="#f5d060" opacity="0.8"/>
-            <rect x="274" y="208" width="9" height="9" fill="#f5d060" opacity="0.4"/>
-            <rect x="290" y="208" width="9" height="9" fill="#f5d060" opacity="0.9"/>
-            <rect x="324" y="218" width="30" height="202" fill="#112030"/>
-            <rect x="328" y="226" width="8" height="8" fill="#f5d060" opacity="0.85"/>
-            <rect x="342" y="226" width="8" height="8" fill="#f5d060" opacity="0.5"/>
-            <rect x="364" y="148" width="56" height="272" fill="#1a3255"/>
-            <rect x="374" y="132" width="36" height="20" fill="#1a3255"/>
-            <rect x="368" y="160" width="10" height="10" fill="#f5d060" opacity="0.9"/>
-            <rect x="386" y="160" width="10" height="10" fill="#f5d060" opacity="0.6"/>
-            <rect x="404" y="160" width="10" height="10" fill="#f5d060" opacity="0.85"/>
-            <rect x="368" y="180" width="10" height="10" fill="#f5d060" opacity="0.5"/>
-            <rect x="386" y="180" width="10" height="10" fill="#f5d060" opacity="0.9"/>
-            <rect x="404" y="180" width="10" height="10" fill="#f5d060" opacity="0.4"/>
-            <rect x="430" y="200" width="50" height="220" fill="#152336"/>
-            <rect x="438" y="208" width="9" height="9" fill="#f5d060" opacity="0.9"/>
-            <rect x="454" y="208" width="9" height="9" fill="#f5d060" opacity="0.55"/>
-            <rect x="438" y="226" width="9" height="9" fill="#f5d060" opacity="0.7"/>
-            <rect x="454" y="226" width="9" height="9" fill="#f5d060" opacity="0.85"/>
-            <line x1="0" y1="395" x2="480" y2="395" stroke="#b8962e" strokeWidth="1" opacity="0.3"/>
-          </svg>
-          {/* Overlay */}
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(10,20,38,0.65) 0%, rgba(14,26,44,0.4) 100%)" }}/>
-          {/* Content */}
-          <div style={{ position: "relative", zIndex: 2, padding: "52px 44px", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(184,150,46,0.15)", border: "1px solid rgba(184,150,46,0.4)", color: "#b8962e", fontSize: "10px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", padding: "4px 12px", borderRadius: "20px", marginBottom: "22px", width: "fit-content" }}>
-              <div style={{ width: "5px", height: "5px", background: "#b8962e", borderRadius: "50%" }}/>
-              CPA &amp; EA on our team · Texas
-            </div>
-            <h1 style={{ fontSize: "clamp(28px,3vw,38px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "16px", letterSpacing: "-0.5px" }}>
-              Tax &amp; Accounting<br/>Done <span style={{ color: "#b8962e" }}>Right</span>
-            </h1>
-            <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.88)", lineHeight: 1.75, marginBottom: "32px", maxWidth: "360px" }}>
-              Virtual tax services prepared by a licensed CPA and Enrolled Agent, serving individuals and small businesses nationwide. Expert guidance, personal service, year-round support.
-            </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px", alignItems: "flex-start" }}>
-              <Link href="/tax-intake" style={{ background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "13px 28px", borderRadius: "7px", textDecoration: "none", letterSpacing: "0.2px" }}>
-                Get Your Free Quote →
-              </Link>
-              <Link href="/contact" style={{ background: "transparent", color: "#fff", fontSize: "13px", fontWeight: 500, padding: "12px 28px", borderRadius: "7px", border: "1.5px solid rgba(255,255,255,0.7)", textDecoration: "none" }}>
-                Contact Us
-              </Link>
-            </div>
+      {/* ══ HERO ══════════════════════════════════════════════════════ */}
+      <HeroParallax>
+      <section
+        className="hero-gradient"
+        style={{ position: "relative", minHeight: "92vh", display: "flex", alignItems: "center", overflow: "hidden" }}
+      >
+        {/* Dot grid overlay */}
+        <div
+          className="hero-dot-grid"
+          style={{ position: "absolute", inset: 0, pointerEvents: "none" }}
+        />
+
+        {/* Gold radial glow */}
+        <div style={{
+          position: "absolute", top: "-10%", left: "60%",
+          width: "600px", height: "600px",
+          background: "radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%)",
+          pointerEvents: "none",
+        }} />
+        <div style={{
+          position: "absolute", bottom: "0", left: "20%",
+          width: "400px", height: "400px",
+          background: "radial-gradient(circle, rgba(29,78,216,0.06) 0%, transparent 65%)",
+          pointerEvents: "none",
+        }} />
+
+        {/* Content */}
+        <div style={{ position: "relative", zIndex: 2, width: "100%", maxWidth: "1200px", margin: "0 auto", padding: "80px 44px" }}>
+
+          {/* Badge */}
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: "8px",
+            background: C.goldSoft, border: `1px solid ${C.goldBorder}`,
+            color: C.gold, fontSize: "11px", fontWeight: 600,
+            letterSpacing: "2px", textTransform: "uppercase",
+            padding: "6px 14px", borderRadius: "20px", marginBottom: "32px",
+            animation: "fadeIn 0.6s ease forwards",
+          }}>
+            <span style={{ width: "6px", height: "6px", background: C.gold, borderRadius: "50%", display: "inline-block" }} />
+            CPA &amp; EA · Virtual · Nationwide
+          </div>
+
+          {/* Headline */}
+          <h1
+            className="hero-headline"
+            style={{
+              fontSize: "clamp(44px, 6.5vw, 84px)",
+              fontWeight: 800,
+              color: C.white,
+              lineHeight: 1.05,
+              letterSpacing: "-2.5px",
+              marginBottom: "24px",
+              maxWidth: "740px",
+              animation: "fadeIn 0.7s 0.1s ease both",
+            }}
+          >
+            Tax &amp; Accounting<br />
+            Done{" "}
+            <span style={{ color: C.gold, position: "relative" }}>
+              Right.
+              {/* Underline accent */}
+              <svg
+                style={{ position: "absolute", bottom: "-4px", left: 0, width: "100%" }}
+                viewBox="0 0 120 8" preserveAspectRatio="none"
+                fill="none" xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M2 5.5 C30 2, 90 2, 118 5.5" stroke={C.gold} strokeWidth="2.5" strokeLinecap="round" opacity="0.5"/>
+              </svg>
+            </span>
+          </h1>
+
+          {/* Subtext */}
+          <p style={{
+            fontSize: "clamp(15px, 1.4vw, 18px)",
+            color: C.muted,
+            lineHeight: 1.75,
+            maxWidth: "500px",
+            marginBottom: "44px",
+            animation: "fadeIn 0.7s 0.2s ease both",
+          }}>
+            Virtual tax services by a licensed CPA and Enrolled Agent.
+            Expert guidance, personal service, year-round support — for
+            individuals and small businesses nationwide.
+          </p>
+
+          {/* CTAs */}
+          <div style={{
+            display: "flex", flexWrap: "wrap", gap: "12px",
+            animation: "fadeIn 0.7s 0.3s ease both",
+          }}>
+            <Link
+              href="/tax-intake"
+              className="btn-gold"
+              style={{
+                background: C.gold, color: C.dark,
+                fontSize: "14px", fontWeight: 700,
+                padding: "14px 32px", borderRadius: "8px",
+                letterSpacing: "0.1px",
+              }}
+            >
+              Get Your Free Quote
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </Link>
+            <Link
+              href="/services"
+              className="btn-ghost"
+              style={{
+                background: "transparent", color: C.white,
+                fontSize: "14px", fontWeight: 500,
+                padding: "14px 32px", borderRadius: "8px",
+                border: `1.5px solid rgba(255,255,255,0.25)`,
+              }}
+            >
+              See Our Services
+            </Link>
+          </div>
+
+          {/* Trust micro-markers */}
+          <div style={{
+            display: "flex", flexWrap: "wrap", gap: "24px",
+            marginTop: "48px",
+            animation: "fadeIn 0.7s 0.45s ease both",
+          }}>
+            {[
+              { icon: "✓", label: "Licensed CPA & Enrolled Agent" },
+              { icon: "✓", label: "No office visit required" },
+              { icon: "✓", label: "Response within 2 business days" },
+            ].map((t) => (
+              <span key={t.label} style={{
+                display: "flex", alignItems: "center", gap: "7px",
+                fontSize: "12px", color: "rgba(255,255,255,0.55)",
+              }}>
+                <span style={{ color: C.gold, fontWeight: 700, fontSize: "13px" }}>{t.icon}</span>
+                {t.label}
+              </span>
+            ))}
           </div>
         </div>
 
-        {/* Right , feature cards on warm off-white */}
-        <div style={{ flex: 1, background: "#faf9f6", display: "flex", flexDirection: "column", justifyContent: "center", padding: "44px 48px" }}>
-          <div style={{ fontSize: "10px", fontWeight: 600, color: "#b8962e", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "20px" }}>
-            Why clients choose us
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-          {featureCards.map((fc, i) => (
-            <div key={i} style={{ background: "#fff", borderRadius: "10px", padding: "16px 18px", borderLeft: "3px solid #b8962e", boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04)" }}>
-              <div style={{ fontSize: "13px", fontWeight: 600, color: "#1a2e4a", marginBottom: "4px" }}>{fc.title}</div>
-              <div style={{ fontSize: "12px", color: "#777", lineHeight: 1.55 }}>{fc.desc}</div>
-            </div>
-          ))}
-          </div>
-        </div>
+        {/* Bottom fade */}
+        <div style={{
+          position: "absolute", bottom: 0, left: 0, right: 0, height: "80px",
+          background: "linear-gradient(to bottom, transparent, rgba(11,25,41,0.6))",
+          pointerEvents: "none",
+        }} />
       </section>
+      </HeroParallax>
 
-      {/* TRUST BAR */}
-      <div style={{ background: "#1a2e4a", display: "flex" }}>
+      {/* ══ STATS BAR ════════════════════════════════════════════════ */}
+      <div
+        className="stats-bar"
+        style={{ background: C.navy, display: "flex", borderBottom: `1px solid ${C.borderDark}` }}
+      >
         {stats.map((s, i) => (
-          <div key={i} style={{ flex: 1, textAlign: "center", padding: "18px 12px", borderRight: i < stats.length - 1 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
-            <div style={{ fontSize: "20px", fontWeight: 700, color: "#b8962e", letterSpacing: "-0.3px" }}>{s.val}</div>
-            <div style={{ fontSize: "10px", color: "rgba(255,255,255,0.75)", marginTop: "3px", letterSpacing: "0.5px" }}>{s.lbl}</div>
+          <div
+            key={i}
+            className="stat-item"
+            style={{
+              flex: 1, textAlign: "center",
+              padding: "22px 16px",
+              borderRight: i < stats.length - 1 ? `1px solid ${C.borderDark}` : "none",
+            }}
+          >
+            <div style={{ fontSize: "22px", fontWeight: 800, color: C.gold, letterSpacing: "-0.5px" }}>{s.val}</div>
+            <div style={{ fontSize: "11px", color: C.muted, marginTop: "4px", letterSpacing: "0.4px" }}>{s.lbl}</div>
           </div>
         ))}
       </div>
 
-      {/* SERVICES */}
-      <section style={{ padding: "56px 44px", background: "#fff", margin: 0 }}>
-        <div style={{ fontSize: "10px", fontWeight: 600, color: "#b8962e", letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "8px" }}>What We Offer</div>
-        <h2 style={{ fontSize: "26px", fontWeight: 700, color: "#1a2e4a", marginBottom: "6px", letterSpacing: "-0.4px" }}>Full-Service Tax &amp; Accounting</h2>
-        <p style={{ fontSize: "13px", color: "#555", marginBottom: "36px", lineHeight: 1.6 }}>From individual returns to complex small business accounting, all handled with precision.</p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px" }}>
-          {serviceCards.map((svc) => (
-            <div key={svc.title} style={{ background: "#faf9f6", borderRadius: "10px", padding: "20px", border: "1px solid #f0ede6" }}>
-              <div style={{ width: "36px", height: "36px", background: "rgba(184,150,46,0.1)", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "12px" }}>
-                {svc.icon}
-              </div>
-              <div style={{ fontSize: "13px", fontWeight: 600, color: "#1a2e4a", marginBottom: "6px" }}>{svc.title}</div>
-              <div style={{ fontSize: "11px", color: "#555", lineHeight: 1.55 }}>{svc.desc}</div>
-              <Link href={svc.href} style={{ fontSize: "11px", color: "#b8962e", fontWeight: 600, marginTop: "10px", display: "block", textDecoration: "none" }}>Get a quote →</Link>
+      {/* ══ INTERACTIVE SHOWCASE ══════════════════════════════════════ */}
+      <InteractiveShowcase />
+
+      {/* ══ WHY US ═══════════════════════════════════════════════════ */}
+      <section className="section-pad" style={{ padding: "96px 44px", background: C.offWhite }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          <ScrollReveal>
+            <div style={{ fontSize: "11px", fontWeight: 600, color: C.gold, letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "12px" }}>
+              Why clients choose us
             </div>
-          ))}
+            <h2 style={{ fontSize: "clamp(28px, 3vw, 40px)", fontWeight: 800, color: C.textDark, letterSpacing: "-1px", marginBottom: "48px", maxWidth: "480px", lineHeight: 1.15 }}>
+              Expert service, without the big-firm runaround.
+            </h2>
+          </ScrollReveal>
+
+          <div className="features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "20px" }}>
+            {features.map((f, i) => (
+              <ScrollReveal key={f.title} delay={i * 80}>
+                <div
+                  className="feature-card"
+                  style={{
+                    background: C.white, borderRadius: "14px",
+                    padding: "28px 24px",
+                    border: `1px solid ${C.borderLight}`,
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                    height: "100%",
+                  }}
+                >
+                  <div style={{
+                    width: "44px", height: "44px",
+                    background: C.goldSoft, borderRadius: "10px",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    marginBottom: "16px",
+                    border: `1px solid ${C.goldBorder}`,
+                  }}>
+                    {f.icon}
+                  </div>
+                  <div style={{ fontSize: "15px", fontWeight: 700, color: C.textDark, marginBottom: "8px" }}>{f.title}</div>
+                  <div style={{ fontSize: "13px", color: "#666", lineHeight: 1.65 }}>{f.desc}</div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* CTA SECTION */}
-      <section style={{ background: "#f5f3ee", padding: "52px 44px", borderTop: "1px solid #ede9e0", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "24px" }}>
-        <div>
-          <h2 style={{ fontSize: "22px", fontWeight: 700, color: "#1a2e4a", marginBottom: "6px", letterSpacing: "-0.3px" }}>Ready to get started?</h2>
-          <p style={{ fontSize: "13px", color: "#555" }}>Get a free, personalized quote within 2 business days — no commitment required.</p>
+      {/* ══ SERVICES ═════════════════════════════════════════════════ */}
+      <section className="section-pad" style={{ padding: "96px 44px", background: C.dark }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          <ScrollReveal>
+            <div style={{ fontSize: "11px", fontWeight: 600, color: C.gold, letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "12px" }}>
+              What we offer
+            </div>
+            <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "16px", marginBottom: "48px" }}>
+              <h2 style={{ fontSize: "clamp(28px, 3vw, 40px)", fontWeight: 800, color: C.white, letterSpacing: "-1px", lineHeight: 1.15, margin: 0, maxWidth: "460px" }}>
+                Full-service tax &amp; accounting.
+              </h2>
+              <Link
+                href="/services"
+                className="btn-ghost"
+                style={{
+                  color: C.muted, fontSize: "13px", fontWeight: 500,
+                  padding: "10px 20px", borderRadius: "8px",
+                  border: `1px solid ${C.borderDark}`,
+                  display: "inline-flex", alignItems: "center", gap: "6px",
+                }}
+              >
+                View all services
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </Link>
+            </div>
+          </ScrollReveal>
+
+          <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px" }}>
+            {services.map((svc, i) => (
+              <ScrollReveal key={svc.title} delay={i * 60}>
+                <div
+                  className="service-card"
+                  style={{
+                    background: C.darkMid, borderRadius: "14px",
+                    padding: "28px 24px",
+                    border: `1px solid ${C.borderDark}`,
+                    height: "100%", display: "flex", flexDirection: "column",
+                  }}
+                >
+                  <div style={{
+                    width: "44px", height: "44px",
+                    background: C.goldSoft, borderRadius: "10px",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    marginBottom: "18px",
+                    border: `1px solid ${C.goldBorder}`,
+                  }}>
+                    {svc.icon}
+                  </div>
+                  <div style={{ fontSize: "15px", fontWeight: 700, color: C.white, marginBottom: "8px" }}>{svc.title}</div>
+                  <div style={{ fontSize: "13px", color: C.muted, lineHeight: 1.65, flex: 1 }}>{svc.desc}</div>
+                  <Link
+                    href={svc.href}
+                    style={{
+                      marginTop: "20px", fontSize: "12px", fontWeight: 600,
+                      color: C.gold, display: "inline-flex", alignItems: "center", gap: "5px",
+                      transition: "gap 0.15s ease",
+                    }}
+                  >
+                    Get a quote
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                  </Link>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
-        <Link href="/tax-intake" style={{ background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "13px 28px", borderRadius: "7px", textDecoration: "none", whiteSpace: "nowrap" }}>
-          Get a Free Quote →
-        </Link>
+      </section>
+
+      {/* ══ TESTIMONIALS ═════════════════════════════════════════════ */}
+      <section className="section-pad" style={{ padding: "96px 44px", background: C.offWhite }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          <ScrollReveal>
+            <div style={{ textAlign: "center", marginBottom: "56px" }}>
+              <div style={{ fontSize: "11px", fontWeight: 600, color: C.gold, letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "12px" }}>
+                Client stories
+              </div>
+              <h2 style={{ fontSize: "clamp(28px, 3vw, 40px)", fontWeight: 800, color: C.textDark, letterSpacing: "-1px", lineHeight: 1.15, margin: 0 }}>
+                Trusted by individuals &amp; businesses.
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="testimonials-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
+            {testimonials.map((t, i) => (
+              <ScrollReveal key={t.name} delay={i * 100}>
+                <div
+                  className="testimonial-card"
+                  style={{
+                    background: C.white, borderRadius: "16px",
+                    padding: "32px 28px",
+                    border: `1px solid ${C.borderLight}`,
+                    boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
+                    height: "100%", display: "flex", flexDirection: "column",
+                  }}
+                >
+                  {/* Stars */}
+                  <div style={{ display: "flex", gap: "3px", marginBottom: "20px" }}>
+                    {[...Array(5)].map((_, j) => (
+                      <svg key={j} width="14" height="14" viewBox="0 0 24 24" fill={C.gold}>
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                      </svg>
+                    ))}
+                  </div>
+
+                  {/* Quote */}
+                  <p style={{ fontSize: "14px", color: "#444", lineHeight: 1.72, flex: 1, margin: 0, fontStyle: "italic" }}>
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+
+                  {/* Author */}
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px", marginTop: "24px", paddingTop: "20px", borderTop: `1px solid ${C.borderLight}` }}>
+                    <div style={{
+                      width: "38px", height: "38px", borderRadius: "50%",
+                      background: C.goldSoft, border: `1px solid ${C.goldBorder}`,
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      fontSize: "11px", fontWeight: 700, color: C.gold,
+                      flexShrink: 0,
+                    }}>
+                      {t.initials}
+                    </div>
+                    <div>
+                      <div style={{ fontSize: "13px", fontWeight: 700, color: C.textDark }}>{t.name}</div>
+                      <div style={{ fontSize: "11px", color: "#888", marginTop: "1px" }}>{t.title}</div>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ CTA ══════════════════════════════════════════════════════ */}
+      <section
+        className="hero-gradient"
+        style={{ padding: "96px 44px", position: "relative", overflow: "hidden" }}
+      >
+        <div style={{
+          position: "absolute", top: "-20%", right: "10%",
+          width: "500px", height: "500px",
+          background: "radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 65%)",
+          pointerEvents: "none",
+        }} />
+        <div style={{ maxWidth: "720px", margin: "0 auto", textAlign: "center", position: "relative", zIndex: 2 }}>
+          <ScrollReveal>
+            <div style={{ fontSize: "11px", fontWeight: 600, color: C.gold, letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "16px" }}>
+              Get started today
+            </div>
+            <h2 style={{ fontSize: "clamp(28px, 4vw, 52px)", fontWeight: 800, color: C.white, letterSpacing: "-1.5px", lineHeight: 1.1, marginBottom: "16px" }}>
+              Ready to stop stressing about taxes?
+            </h2>
+            <p style={{ fontSize: "16px", color: C.muted, lineHeight: 1.7, marginBottom: "40px", maxWidth: "480px", margin: "0 auto 40px" }}>
+              Get a free, personalized quote within 2 business days. No commitment required.
+            </p>
+            <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "12px" }}>
+              <Link
+                href="/tax-intake"
+                className="btn-gold"
+                style={{
+                  background: C.gold, color: C.dark,
+                  fontSize: "15px", fontWeight: 700,
+                  padding: "16px 40px", borderRadius: "9px",
+                  letterSpacing: "0.1px",
+                }}
+              >
+                Get a Free Quote
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </Link>
+              <Link
+                href="/contact"
+                className="btn-ghost"
+                style={{
+                  background: "transparent", color: C.white,
+                  fontSize: "15px", fontWeight: 500,
+                  padding: "16px 40px", borderRadius: "9px",
+                  border: `1.5px solid rgba(255,255,255,0.22)`,
+                }}
+              >
+                Contact Us
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
       </section>
     </>
   );

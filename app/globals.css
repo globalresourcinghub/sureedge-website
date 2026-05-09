@@ -2,13 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Fonts ── */
+:root {
+  --font-inter: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif;
+  font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   margin: 0;
 }
 
@@ -16,93 +22,198 @@ a {
   text-decoration: none;
 }
 
+/* ── Keyframe animations ── */
+@keyframes gradientDrift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatUp {
+  0%   { transform: translateY(0px);  }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0px);  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); }
+  50%       { box-shadow: 0 0 32px 4px rgba(201,168,76,0.18); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Hero background ── */
+.hero-gradient {
+  background: linear-gradient(-45deg, #0B1929, #0d2236, #122944, #0B1929);
+  background-size: 400% 400%;
+  animation: gradientDrift 14s ease infinite;
+}
+
+.hero-dot-grid {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── Scroll reveal ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Hover cards ── */
+.service-card {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.22s ease;
+  cursor: default;
+}
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 64px rgba(13,27,42,0.22), 0 0 0 1px rgba(201,168,76,0.25) !important;
+  border-color: rgba(201,168,76,0.3) !important;
+}
+
+.feature-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(13,27,42,0.1) !important;
+}
+
+.testimonial-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.18) !important;
+}
+
+/* ── Buttons ── */
+.btn-gold {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(201,168,76,0.45);
+  background: #d4af52 !important;
+}
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.08) !important;
+  border-color: rgba(255,255,255,0.5) !important;
+}
+
+/* ── Nav links ── */
+.nav-link {
+  position: relative;
+  transition: color 0.15s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #C9A84C;
+  transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 2px;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+.nav-link:hover {
+  color: #C9A84C !important;
+}
+
+/* ── Service icon float ── */
+.icon-float {
+  animation: floatUp 3.5s ease-in-out infinite;
+}
+
+/* ── Stats counter ── */
+.stat-item {
+  transition: transform 0.2s ease;
+}
+.stat-item:hover {
+  transform: scale(1.04);
+}
+
 /* ── Mobile responsive ── */
 @media (max-width: 768px) {
+  .desktop-nav { display: none !important; }
+  .hamburger   { display: flex !important; }
+  .mobile-menu { display: flex !important; }
 
-  /* Hide desktop nav, show hamburger */
-  .desktop-nav {
-    display: none !important;
-  }
+  header > div { padding: 0 20px !important; }
 
-  .hamburger {
-    display: flex !important;
-  }
-
-  .mobile-menu {
-    display: flex !important;
-  }
-
-  /* Header padding tighter on mobile */
-  header > div {
-    padding: 0 20px !important;
-  }
-
-  /* Stack all split hero panels vertically.
-     React renders inline style object `minHeight` as the kebab-case
-     `min-height` attribute — selectors must match that, not the JS key. */
-  section[style*="display: flex"],
-  section[style*="display:flex"],
-  div[style*="display:flex"][style*="min-height"],
-  div[style*="display: flex"][style*="min-height"] {
+  .hero-section {
     flex-direction: column !important;
-  }
-
-  /* Full width on both panels */
-  section[style*="display: flex"] > div,
-  section[style*="display:flex"] > div,
-  div[style*="display:flex"][style*="min-height"] > div,
-  div[style*="display: flex"][style*="min-height"] > div {
-    flex: none !important;
-    width: 100% !important;
     min-height: unset !important;
   }
 
-  /* Section padding tighter on mobile */
-  section[style*="padding: 56px 44px"],
-  section[style*="padding:56px 44px"],
-  section[style*="padding: 52px 44px"],
-  section[style*="padding:52px 44px"],
-  section[style*="padding: 64px 44px"],
-  section[style*="padding:64px 44px"] {
-    padding: 40px 20px !important;
+  .hero-section > div {
+    flex: none !important;
+    width: 100% !important;
   }
 
-  /* Services grid — 1 col on mobile */
-  div[style*="gridTemplateColumns: repeat(3"] {
+  .services-grid {
     grid-template-columns: 1fr !important;
   }
 
-  /* Blog post grid — 1 col on mobile */
-  div[style*="gridTemplateColumns: repeat(3,1fr)"],
-  div[style*="gridTemplateColumns:repeat(3,1fr)"] {
+  .features-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .testimonials-grid {
     grid-template-columns: 1fr !important;
   }
 
-  /* Blog post sidebar — hide on mobile */
-  article + aside {
-    display: none !important;
+  .section-pad {
+    padding: 60px 20px !important;
   }
 
-  /* Footer grid — 1 col on mobile */
+  .hero-headline {
+    font-size: clamp(36px, 9vw, 56px) !important;
+  }
+
+  .cta-section {
+    flex-direction: column !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .stats-bar {
+    flex-wrap: wrap !important;
+  }
+  .stats-bar > div {
+    flex: 0 0 50% !important;
+  }
+
   footer div[style*="gridTemplateColumns"] {
     grid-template-columns: 1fr !important;
   }
-
-  /* Hero content padding tighter */
-  div[style*="padding: 52px 48px"],
-  div[style*="padding:52px 48px"],
-  div[style*="padding: 44px 48px"],
-  div[style*="padding:44px 48px"] {
-    padding: 32px 20px !important;
-  }
-
-  /* Trust bar — 2 col on mobile */
-  div[style*="background: #1a2e4a"] > div[style*="display: flex"] {
-    flex-wrap: wrap !important;
-  }
-
-  div[style*="background: #1a2e4a"] > div > div[style*="flex: 1"] {
-    flex: 0 0 50% !important;
-  }
 }
-

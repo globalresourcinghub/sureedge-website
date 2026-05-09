@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 import Footer from "@/components/Footer";
 import ChatWidget from "@/components/ChatWidget";
 import VisitTracker from "@/components/VisitTracker";
@@ -94,7 +97,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <body className="font-sans">
         <Header />
         <main>{children}</main>
