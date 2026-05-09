@@ -8,6 +8,14 @@ export const metadata: Metadata = {
   alternates: { canonical: "/tools" },
 };
 
+const C = {
+  navy: "#1a2e4a", gold: "#C9A84C",
+  goldSoft: "rgba(201,168,76,0.12)", goldBorder: "rgba(201,168,76,0.28)",
+  offWhite: "#F8F7F4", white: "#FFFFFF",
+  muted: "#8A9BB0", mutedDark: "#6b7a8d",
+  borderLight: "#EDEAE3",
+};
+
 const tools = [
   {
     href: "/tools/roth-vs-traditional",
@@ -15,26 +23,17 @@ const tools = [
     title: "Roth vs Traditional IRA",
     desc: "Compare after-tax value side-by-side based on your income, tax bracket, and retirement timeline. Instantly see which account puts more money in your pocket.",
     tags: ["Retirement", "Tax Savings"],
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="9" stroke="#b8962e" strokeWidth="1.8"/>
-        <path d="M12 7v5l3 3" stroke="#b8962e" strokeWidth="1.8" strokeLinecap="round"/>
-      </svg>
-    ),
+    img: "https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=480&h=200&fit=crop&auto=format&q=70",
+    imgAlt: "Retirement investment planning",
   },
   {
     href: "/tools/tax-bracket",
     badge: "Quick Estimate",
     title: "Tax Bracket Estimator",
-    desc: "Enter your income and filing status to see your effective tax rate, marginal bracket, and a full breakdown of what you owe across each federal bracket for 2025.",
-    tags: ["Federal Tax", "2025"],
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <rect x="3" y="3" width="7" height="18" rx="1.5" fill="#b8962e" opacity="0.35"/>
-        <rect x="13" y="8" width="8" height="13" rx="1.5" fill="#b8962e" opacity="0.65"/>
-        <rect x="3" y="3" width="18" height="2" rx="1" fill="#b8962e"/>
-      </svg>
-    ),
+    desc: "Enter your income and filing status to see your effective tax rate, marginal bracket, and a full breakdown of what you owe across each federal bracket.",
+    tags: ["Federal Tax", "2025 / 2026"],
+    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=480&h=200&fit=crop&auto=format&q=70",
+    imgAlt: "Tax documents and calculator",
   },
   {
     href: "/tools/quarterly-tax",
@@ -42,14 +41,8 @@ const tools = [
     title: "Quarterly Tax Estimator",
     desc: "Self-employed or freelancer? Calculate your federal estimated quarterly payment including SE tax, with safe-harbor protection from IRS penalties.",
     tags: ["Self-Employed", "2025 / 2026"],
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <rect x="3" y="4" width="18" height="17" rx="2" stroke="#b8962e" strokeWidth="1.8"/>
-        <path d="M3 9h18" stroke="#b8962e" strokeWidth="1.5"/>
-        <path d="M8 2v4M16 2v4" stroke="#b8962e" strokeWidth="1.8" strokeLinecap="round"/>
-        <path d="M7 14h4M7 17h6" stroke="#b8962e" strokeWidth="1.5" strokeLinecap="round"/>
-      </svg>
-    ),
+    img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=480&h=200&fit=crop&auto=format&q=70",
+    imgAlt: "Freelancer working at desk",
   },
   {
     href: "/tools/retirement-projector",
@@ -57,12 +50,8 @@ const tools = [
     title: "Retirement Savings Projector",
     desc: "Project your 401(k) or IRA balance at retirement. See growth chart, monthly retirement income at the 4% rule, and the impact of contributing more.",
     tags: ["Retirement", "Projections"],
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <polyline points="3 17 8 12 13 15 21 7" stroke="#b8962e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-        <polyline points="17 7 21 7 21 11" stroke="#b8962e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
+    img: "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=480&h=200&fit=crop&auto=format&q=70",
+    imgAlt: "Retirement planning by the ocean",
   },
   {
     href: "/tools/social-security",
@@ -70,26 +59,17 @@ const tools = [
     title: "Social Security Breakeven",
     desc: "Find out when waiting until 70 beats claiming at 62. See breakeven ages and lifetime totals based on your expected benefit and life expectancy.",
     tags: ["Social Security", "Retirement"],
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="#b8962e" strokeWidth="1.8"/>
-        <path d="M12 6v6l4 2" stroke="#b8962e" strokeWidth="1.8" strokeLinecap="round"/>
-      </svg>
-    ),
+    img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=480&h=200&fit=crop&crop=top&auto=format&q=70",
+    imgAlt: "Couple planning retirement",
   },
   {
     href: "/tools/net-worth",
     badge: "Quick Snapshot",
     title: "Net Worth Tracker",
-    desc: "Add up your assets and debts to see your net worth, asset allocation, and how you compare to others your age.",
+    desc: "Add up your assets and debts to see your net worth, asset allocation, and how you compare to others your age based on Federal Reserve data.",
     tags: ["Net Worth", "Planning"],
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <rect x="2" y="7" width="5" height="14" rx="1" fill="#b8962e" opacity="0.4"/>
-        <rect x="9.5" y="3" width="5" height="18" rx="1" fill="#b8962e" opacity="0.7"/>
-        <rect x="17" y="10" width="5" height="11" rx="1" fill="#b8962e"/>
-      </svg>
-    ),
+    img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=480&h=200&fit=crop&auto=format&q=70",
+    imgAlt: "Financial dashboard and charts",
   },
 ];
 
@@ -97,16 +77,16 @@ export default function ToolsPage() {
   return (
     <>
       {/* HERO */}
-      <section style={{ background: "#1a2e4a", padding: "56px 44px 52px" }}>
-        <div style={{ maxWidth: "720px" }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(184,150,46,0.15)", border: "1px solid rgba(184,150,46,0.4)", color: "#b8962e", fontSize: "10px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", padding: "4px 12px", borderRadius: "20px", marginBottom: "20px" }}>
-            <div style={{ width: 5, height: 5, background: "#b8962e", borderRadius: "50%" }}/>
+      <section style={{ background: C.navy, padding: "64px 44px 56px" }}>
+        <div style={{ maxWidth: "760px" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.28)", color: C.gold, fontSize: "10px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", padding: "4px 12px", borderRadius: "20px", marginBottom: "20px" }}>
+            <div style={{ width: 5, height: 5, background: C.gold, borderRadius: "50%" }}/>
             Free · No account required
           </div>
-          <h1 style={{ fontSize: "clamp(26px,3vw,36px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: "14px", letterSpacing: "-0.5px" }}>
+          <h1 style={{ fontSize: "clamp(26px,3vw,40px)", fontWeight: 800, color: "#fff", lineHeight: 1.15, marginBottom: "14px", letterSpacing: "-1px" }}>
             Free Financial Planning Tools
           </h1>
-          <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.8)", lineHeight: 1.75, maxWidth: "560px" }}>
+          <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.65)", lineHeight: 1.75, maxWidth: "560px" }}>
             Tax-focused calculators built by a CPA &amp; EA team. Use them free — no email, no sign-up. When you&apos;re ready to turn the numbers into a real plan, we&apos;re one click away.
           </p>
         </div>
@@ -124,75 +104,60 @@ export default function ToolsPage() {
       </div>
 
       {/* TOOLS GRID */}
-      <section style={{ padding: "52px 44px", background: "#faf9f6" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "18px", maxWidth: "1100px" }}>
-          {tools.map((tool) => {
-            const isLive = tool.href !== "#";
-            const card = (
-              <div style={{
-                background: "#fff",
-                borderRadius: "12px",
-                padding: "24px",
-                border: "1px solid #f0ede6",
-                boxShadow: "0 1px 4px rgba(0,0,0,0.05)",
-                display: "flex",
-                flexDirection: "column",
-                gap: "12px",
-                opacity: isLive ? 1 : 0.6,
-                transition: "box-shadow 0.15s, transform 0.15s",
-                cursor: isLive ? "pointer" : "default",
-                textDecoration: "none",
-              }}>
-                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "12px" }}>
-                  <div style={{ width: 44, height: 44, background: "rgba(184,150,46,0.1)", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    {tool.icon}
-                  </div>
-                  <span style={{
-                    fontSize: "10px", fontWeight: 700, letterSpacing: "1.2px", textTransform: "uppercase",
-                    padding: "3px 9px", borderRadius: "20px",
-                    background: isLive ? "rgba(184,150,46,0.12)" : "rgba(0,0,0,0.06)",
-                    color: isLive ? "#b8962e" : "#999",
-                  }}>{tool.badge}</span>
-                </div>
-                <div>
-                  <div style={{ fontSize: "15px", fontWeight: 700, color: "#1a2e4a", marginBottom: "6px" }}>{tool.title}</div>
-                  <div style={{ fontSize: "12px", color: "#666", lineHeight: 1.65 }}>{tool.desc}</div>
-                </div>
+      <section style={{ padding: "60px 44px", background: C.offWhite }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: "24px" }}>
+          {tools.map((tool) => (
+            <Link key={tool.href} href={tool.href} style={{ textDecoration: "none", display: "flex", flexDirection: "column", background: C.white, borderRadius: "16px", border: `1px solid ${C.borderLight}`, overflow: "hidden", boxShadow: "0 2px 10px rgba(26,46,74,0.06)", transition: "transform 0.2s ease, box-shadow 0.2s ease" }}>
+              {/* Image */}
+              <div style={{ position: "relative", height: "160px", overflow: "hidden", flexShrink: 0 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={tool.img}
+                  alt={tool.imgAlt}
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                />
+                {/* Overlay with badge */}
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(11,25,41,0.15) 0%, rgba(11,25,41,0.55) 100%)" }} />
+                <span style={{
+                  position: "absolute", top: "12px", right: "12px",
+                  fontSize: "10px", fontWeight: 700, letterSpacing: "0.8px",
+                  padding: "4px 10px", borderRadius: "20px",
+                  background: C.goldSoft, border: `1px solid ${C.goldBorder}`, color: C.gold,
+                }}>
+                  {tool.badge}
+                </span>
+              </div>
+
+              {/* Content */}
+              <div style={{ padding: "20px 22px 22px", flex: 1, display: "flex", flexDirection: "column", gap: "10px" }}>
+                <div style={{ fontSize: "15px", fontWeight: 700, color: C.navy, lineHeight: 1.35 }}>{tool.title}</div>
+                <div style={{ fontSize: "12px", color: C.mutedDark, lineHeight: 1.65, flex: 1 }}>{tool.desc}</div>
                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
                   {tool.tags.map(tag => (
-                    <span key={tag} style={{ fontSize: "10px", color: "#888", background: "#f5f3ee", borderRadius: "20px", padding: "2px 9px" }}>{tag}</span>
+                    <span key={tag} style={{ fontSize: "10px", color: C.mutedDark, background: C.offWhite, border: `1px solid ${C.borderLight}`, borderRadius: "20px", padding: "2px 9px" }}>{tag}</span>
                   ))}
                 </div>
-                {isLive && (
-                  <div style={{ fontSize: "12px", color: "#b8962e", fontWeight: 600, marginTop: "4px" }}>
-                    Open calculator →
-                  </div>
-                )}
+                <div style={{ fontSize: "12px", color: C.gold, fontWeight: 600, display: "flex", alignItems: "center", gap: "4px", marginTop: "2px" }}>
+                  Open calculator
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
               </div>
-            );
-
-            return isLive ? (
-              <Link key={tool.href} href={tool.href} style={{ textDecoration: "none" }}>
-                {card}
-              </Link>
-            ) : (
-              <div key={tool.title}>{card}</div>
-            );
-          })}
+            </Link>
+          ))}
         </div>
       </section>
 
       {/* BOTTOM CTA */}
-      <section style={{ background: "#fff", padding: "52px 44px", borderTop: "1px solid #f0ede6", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "24px", flexWrap: "wrap" }}>
+      <section style={{ background: C.white, padding: "52px 44px", borderTop: `1px solid ${C.borderLight}`, display: "flex", alignItems: "center", justifyContent: "space-between", gap: "24px", flexWrap: "wrap" }}>
         <div>
-          <h2 style={{ fontSize: "20px", fontWeight: 700, color: "#1a2e4a", marginBottom: "6px", letterSpacing: "-0.3px" }}>
+          <h2 style={{ fontSize: "20px", fontWeight: 800, color: C.navy, marginBottom: "6px", letterSpacing: "-0.3px" }}>
             Want a real tax strategy behind the numbers?
           </h2>
-          <p style={{ fontSize: "13px", color: "#555" }}>
+          <p style={{ fontSize: "13px", color: C.mutedDark }}>
             Our CPA &amp; EA team reviews your full picture and builds a plan — not just a calculator result.
           </p>
         </div>
-        <Link href="/booking" style={{ background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "13px 28px", borderRadius: "7px", textDecoration: "none", whiteSpace: "nowrap" }}>
+        <Link href="/booking" style={{ background: C.gold, color: "#0B1929", fontSize: "13px", fontWeight: 700, padding: "13px 28px", borderRadius: "7px", textDecoration: "none", whiteSpace: "nowrap" }}>
           Book a Free Consultation →
         </Link>
       </section>

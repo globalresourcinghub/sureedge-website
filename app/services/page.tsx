@@ -343,16 +343,15 @@ export default function Services() {
       {/* ── Hero ── */}
       <section className="hero-gradient" style={{ padding: "80px 44px 72px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: "-10%", right: "5%", width: "500px", height: "500px", background: "radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%)", pointerEvents: "none" }} />
-        <div style={{ maxWidth: "1200px", margin: "0 auto", position: "relative", zIndex: 2, display: "grid", gridTemplateColumns: "1fr auto", gap: "48px", alignItems: "center" }}>
-          <div>
+        <div style={{ maxWidth: "860px", margin: "0 auto", position: "relative", zIndex: 2 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: C.goldSoft, border: `1px solid ${C.goldBorder}`, color: C.gold, fontSize: "11px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", padding: "5px 12px", borderRadius: "20px", marginBottom: "24px" }}>
               <span style={{ width: "6px", height: "6px", background: C.gold, borderRadius: "50%" }} />
               What We Offer
             </div>
-            <h1 style={{ fontSize: "clamp(32px,4.5vw,60px)", fontWeight: 800, color: C.white, letterSpacing: "-2px", lineHeight: 1.05, marginBottom: "16px", maxWidth: "560px" }}>
+            <h1 style={{ fontSize: "clamp(32px,4.5vw,60px)", fontWeight: 800, color: C.white, letterSpacing: "-2px", lineHeight: 1.05, marginBottom: "16px", maxWidth: "640px" }}>
               Full-Service Tax<br />&amp; Accounting.
             </h1>
-            <p style={{ fontSize: "16px", color: C.muted, lineHeight: 1.75, maxWidth: "480px", marginBottom: "32px" }}>
+            <p style={{ fontSize: "16px", color: C.muted, lineHeight: 1.75, maxWidth: "520px", marginBottom: "32px" }}>
               From individual returns to complex small business accounting — all prepared by a licensed CPA and Enrolled Agent on our team.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
@@ -364,21 +363,6 @@ export default function Services() {
                 Ask a Question
               </Link>
             </div>
-          </div>
-          {/* Human element — professional photo */}
-          <div className="hero-advisor-card" style={{ flexShrink: 0 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=280&h=320&fit=crop&crop=top&auto=format&q=80"
-              alt="Tax professional"
-              width={200} height={240}
-              style={{ width: 200, height: 240, objectFit: "cover", borderRadius: "16px", border: `2px solid rgba(201,168,76,0.3)`, boxShadow: "0 20px 60px rgba(0,0,0,0.4)", display: "block" }}
-            />
-            <div style={{ marginTop: "10px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "10px", padding: "10px 14px", textAlign: "center" }}>
-              <div style={{ fontSize: "11px", fontWeight: 700, color: C.white }}>Licensed CPA &amp; EA</div>
-              <div style={{ fontSize: "10px", color: "rgba(255,255,255,0.45)", marginTop: "2px" }}>Nationwide · All 50 states</div>
-            </div>
-          </div>
         </div>
       </section>
 

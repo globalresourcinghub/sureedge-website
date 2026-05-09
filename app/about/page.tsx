@@ -188,27 +188,19 @@ export default function About() {
                   border: `1px solid rgba(255,255,255,0.08)`,
                 }}
               />
-              {/* Floating credential badge */}
+              {/* Online / availability badge */}
               <div style={{
-                position: "absolute", bottom: "24px", left: "-20px",
+                position: "absolute", bottom: "24px", left: "-16px",
                 background: C.white, borderRadius: "12px",
-                padding: "14px 18px",
-                boxShadow: "0 12px 40px rgba(0,0,0,0.25)",
-                display: "flex", alignItems: "center", gap: "12px",
+                padding: "10px 16px",
+                boxShadow: "0 12px 40px rgba(0,0,0,0.2)",
+                display: "flex", alignItems: "center", gap: "10px",
+                border: `1px solid ${C.borderLight}`,
               }}>
-                <div style={{
-                  width: "42px", height: "42px", borderRadius: "10px",
-                  background: C.goldSoft, border: `1px solid ${C.goldBorder}`,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  flexShrink: 0,
-                }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
-                  </svg>
-                </div>
+                <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#6ee7b7", boxShadow: "0 0 8px #6ee7b7", flexShrink: 0 }} />
                 <div>
-                  <div style={{ fontSize: "13px", fontWeight: 700, color: C.textDark }}>CPA &amp; Enrolled Agent</div>
-                  <div style={{ fontSize: "11px", color: C.mutedDark, marginTop: "2px" }}>Licensed · Texas-based · Nationwide</div>
+                  <div style={{ fontSize: "12px", fontWeight: 700, color: C.textDark }}>Currently accepting clients</div>
+                  <div style={{ fontSize: "10px", color: C.mutedDark, marginTop: "1px" }}>Free quote in 2 business days</div>
                 </div>
               </div>
             </div>

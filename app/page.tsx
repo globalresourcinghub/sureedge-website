@@ -65,6 +65,8 @@ export default function Home() {
 
         {/* Content */}
         <div style={{ position: "relative", zIndex: 2, width: "100%", maxWidth: "1200px", margin: "0 auto", padding: "80px 44px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 360px", gap: "64px", alignItems: "center" }}>
+          <div>
 
           {/* Badge */}
           <div style={{
@@ -198,7 +200,73 @@ export default function Home() {
               </span>
             ))}
           </div>
-        </div>
+        </div>{/* end left col */}
+
+          {/* Right: animated floating dashboard */}
+          <div className="hero-right-panel" style={{ animation: "fadeIn 0.9s 0.5s ease both, floatUp 5s 1.5s ease-in-out infinite" }}>
+            {/* Main card */}
+            <div style={{
+              background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.09)",
+              borderRadius: "20px", padding: "24px",
+              backdropFilter: "blur(8px)",
+              animation: "fadeIn 0.7s 0.5s ease both",
+            }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
+                <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.45)", letterSpacing: "1px", textTransform: "uppercase" }}>Tax Year 2024</span>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: "5px", background: "rgba(110,231,183,0.1)", border: "1px solid rgba(110,231,183,0.25)", padding: "3px 9px", borderRadius: "20px" }}>
+                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#6ee7b7", animation: "pulseGlow 2s ease-in-out infinite" }} />
+                  <span style={{ fontSize: "10px", fontWeight: 600, color: "#6ee7b7" }}>Filed &amp; Accepted</span>
+                </div>
+              </div>
+              <div style={{ marginBottom: "18px", animation: "fadeIn 0.6s 0.8s ease both" }}>
+                <div style={{ fontSize: "10px", color: "rgba(255,255,255,0.35)", letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: "5px" }}>Federal Refund</div>
+                <div style={{ fontSize: "42px", fontWeight: 800, color: C.gold, letterSpacing: "-2px", lineHeight: 1 }}>$3,240</div>
+                <div style={{ fontSize: "11px", color: "#6ee7b7", marginTop: "4px" }}>↑ $412 more than last year</div>
+              </div>
+              <div style={{ marginBottom: "18px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px" }}>
+                  <span style={{ fontSize: "10px", color: "rgba(255,255,255,0.4)" }}>Return progress</span>
+                  <span style={{ fontSize: "10px", fontWeight: 700, color: C.gold }}>94%</span>
+                </div>
+                <div style={{ height: "4px", background: "rgba(255,255,255,0.07)", borderRadius: "2px", overflow: "hidden" }}>
+                  <div className="hero-bar-fill" style={{ height: "100%", background: `linear-gradient(90deg, ${C.gold}, #e8c56a)`, borderRadius: "2px" }} />
+                </div>
+              </div>
+              {[
+                { text: "W-2 &amp; 1099s uploaded", delay: "1.0s" },
+                { text: "All deductions reviewed", delay: "1.2s" },
+                { text: "Licensed CPA review", delay: "1.4s" },
+                { text: "E-filed &amp; accepted", delay: "1.6s" },
+              ].map((item, i) => (
+                <div key={i} style={{
+                  display: "flex", alignItems: "center", gap: "9px", padding: "8px 0",
+                  borderBottom: i < 3 ? "1px solid rgba(255,255,255,0.05)" : "none",
+                  animation: `fadeIn 0.5s ${item.delay} ease both`,
+                }}>
+                  <div style={{ width: 16, height: 16, borderRadius: "50%", background: "rgba(110,231,183,0.1)", border: "1px solid rgba(110,231,183,0.3)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <span style={{ fontSize: "8px", color: "#6ee7b7" }}>✓</span>
+                  </div>
+                  <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.55)" }} dangerouslySetInnerHTML={{ __html: item.text }} />
+                </div>
+              ))}
+            </div>
+            {/* Mini savings card */}
+            <div style={{
+              marginTop: "12px", background: C.goldSoft,
+              border: `1px solid ${C.goldBorder}`, borderRadius: "14px",
+              padding: "14px 18px", display: "flex", alignItems: "center", gap: "14px",
+              animation: "fadeIn 0.7s 1.9s ease both",
+            }}>
+              <div style={{ fontSize: "24px", fontWeight: 800, color: C.gold, letterSpacing: "-1px", flexShrink: 0 }}>$10K+</div>
+              <div>
+                <div style={{ fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.85)" }}>Average savings identified</div>
+                <div style={{ fontSize: "10px", color: "rgba(255,255,255,0.4)", marginTop: "2px" }}>For small business clients</div>
+              </div>
+            </div>
+          </div>
+
+          </div>{/* end grid */}
+        </div>{/* end content wrapper */}
 
         {/* Bottom fade */}
         <div style={{

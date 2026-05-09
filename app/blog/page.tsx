@@ -13,73 +13,117 @@ export const metadata: Metadata = {
   },
 };
 
-function NewspaperBg() {
-  return (
-    <svg style={{position:"absolute",inset:0,width:"100%",height:"100%"}} viewBox="0 0 280 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <rect width="280" height="300" fill="#0d1f35"/>
-      <rect x="20" y="20" width="110" height="8" rx="2" fill="#b8962e" opacity="0.7"/>
-      <rect x="20" y="36" width="90" height="4" rx="1" fill="#fff" opacity="0.15"/>
-      <rect x="20" y="46" width="100" height="4" rx="1" fill="#fff" opacity="0.15"/>
-      <rect x="20" y="56" width="75" height="4" rx="1" fill="#fff" opacity="0.15"/>
-      <rect x="20" y="74" width="110" height="8" rx="2" fill="#b8962e" opacity="0.5"/>
-      <rect x="20" y="90" width="80" height="4" rx="1" fill="#fff" opacity="0.12"/>
-      <rect x="20" y="100" width="95" height="4" rx="1" fill="#fff" opacity="0.12"/>
-      <rect x="20" y="118" width="110" height="8" rx="2" fill="#b8962e" opacity="0.4"/>
-      <rect x="148" y="20" width="1" height="160" fill="#b8962e" opacity="0.2"/>
-      <rect x="160" y="20" width="100" height="60" rx="4" fill="#1a3255" opacity="0.6"/>
-      <rect x="168" y="28" width="84" height="4" rx="1" fill="#b8962e" opacity="0.5"/>
-      <rect x="168" y="38" width="70" height="3" rx="1" fill="#fff" opacity="0.12"/>
-      <rect x="160" y="92" width="100" height="50" rx="4" fill="#162c4a" opacity="0.6"/>
-      <rect x="168" y="100" width="84" height="4" rx="1" fill="#b8962e" opacity="0.4"/>
-    </svg>
-  );
-}
+const C = {
+  navy: "#1a2e4a", gold: "#C9A84C",
+  goldSoft: "rgba(201,168,76,0.12)", goldBorder: "rgba(201,168,76,0.28)",
+  offWhite: "#F8F7F4", white: "#FFFFFF",
+  muted: "#8A9BB0", mutedDark: "#6b7a8d",
+  borderLight: "#EDEAE3",
+};
 
-const topics = [
-  { category: "Tax Tips", desc: "Filing deadlines, deductions, and what to do when things go wrong" },
-  { category: "Small Business", desc: "Entity structure, bookkeeping, and year-round tax strategy" },
-  { category: "IRS & Compliance", desc: "How to read IRS notices and what your response options are" },
-  { category: "Financial Planning", desc: "Retirement accounts, self-employment income, and long-term planning" },
-];
+/* Assign a thematic Unsplash image to each post by slug */
+const POST_IMAGES: Record<string, string> = {
+  "stress-free-tax-filing":          "https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=520&h=280&fit=crop&auto=format&q=70",
+  "maximizing-tax-refunds":          "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=520&h=280&fit=crop&auto=format&q=70",
+  "small-business-financial-support":"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=520&h=280&fit=crop&auto=format&q=70",
+  "personalized-solutions-entrepreneurs":"https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=520&h=280&fit=crop&auto=format&q=70",
+  "navigating-tax-season":           "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=520&h=280&fit=crop&auto=format&q=70",
+  "choosing-accounting-service":     "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=520&h=280&fit=crop&auto=format&q=70",
+  "irs-notices-explained":           "https://images.unsplash.com/photo-1589578527966-fdac0f44566c?w=520&h=280&fit=crop&auto=format&q=70",
+  "s-corp-vs-llc-tax":               "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=520&h=280&fit=crop&auto=format&q=70",
+};
+
+const CATEGORY_COLORS: Record<string, string> = {
+  "Tax Tips":          "#C9A84C",
+  "Small Business":    "#93c5fd",
+  "IRS & Compliance":  "#fca5a5",
+  "Financial Planning":"#6ee7b7",
+};
 
 export default function Blog() {
   return (
     <>
       {/* Hero */}
-      <div style={{display:"flex",minHeight:"300px"}}>
-        <div style={{flex:1,position:"relative",overflow:"hidden",minWidth:0}}>
-          <NewspaperBg/>
-          <div style={{position:"absolute",inset:0,background:"linear-gradient(to right,rgba(8,18,32,0.65) 0%,rgba(8,18,32,0.4) 100%)"}}/>
-          <div style={{position:"relative",zIndex:10,padding:"52px 48px",height:"100%",display:"flex",flexDirection:"column",justifyContent:"center"}}>
-            <div style={{display:"inline-block",color:"white",fontSize:"10px",fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",padding:"4px 12px",borderRadius:"20px",marginBottom:"20px",background:"#b8962e",width:"fit-content"}}>Tax &amp; Accounting Insights</div>
-            <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px",textShadow:"0 2px 8px rgba(0,0,0,0.9)"}}>Tips from Our<br/>CPA &amp; EA Team</h1>
-            <p style={{fontSize:"14px",color:"rgba(255,255,255,0.92)",lineHeight:1.7,maxWidth:"380px",textShadow:"0 1px 4px rgba(0,0,0,0.8)"}}>Practical tax tips and financial guidance written by licensed professionals, not algorithms.</p>
+      <section style={{ background: C.navy, padding: "72px 44px 60px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", top: "-20%", right: "5%", width: "400px", height: "400px", background: "radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%)", pointerEvents: "none" }} />
+        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 420px", gap: "64px", alignItems: "center", position: "relative", zIndex: 2 }}>
+          {/* Left */}
+          <div>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: C.goldSoft, border: `1px solid ${C.goldBorder}`, color: C.gold, fontSize: "10px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", padding: "4px 12px", borderRadius: "20px", marginBottom: "20px" }}>
+              <span style={{ width: 5, height: 5, background: C.gold, borderRadius: "50%", display: "inline-block" }} />
+              Tax &amp; Accounting Insights
+            </div>
+            <h1 style={{ fontSize: "clamp(28px,3.5vw,48px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, marginBottom: "16px", letterSpacing: "-1.2px" }}>
+              Tips from our<br />
+              <span style={{ color: C.gold }}>CPA &amp; EA team.</span>
+            </h1>
+            <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.75, maxWidth: "420px", marginBottom: "32px" }}>
+              Practical tax tips and financial guidance written by licensed professionals, not algorithms.
+            </p>
+            {/* Topics */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+              {["Tax Tips", "Small Business", "IRS & Compliance", "Financial Planning"].map(cat => (
+                <span key={cat} style={{
+                  fontSize: "11px", fontWeight: 600,
+                  padding: "5px 12px", borderRadius: "20px",
+                  background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)",
+                  color: "rgba(255,255,255,0.65)",
+                }}>{cat}</span>
+              ))}
+            </div>
+          </div>
+
+          {/* Right — featured photo */}
+          <div style={{ position: "relative" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=560&h=380&fit=crop&auto=format&q=75"
+              alt="Professional reviewing tax documents"
+              width={420} height={320}
+              style={{ width: "100%", height: "300px", objectFit: "cover", borderRadius: "16px", display: "block", border: "1px solid rgba(255,255,255,0.08)" }}
+            />
+            <div style={{ position: "absolute", bottom: "16px", left: "16px", background: "rgba(11,25,41,0.85)", backdropFilter: "blur(8px)", borderRadius: "10px", padding: "10px 14px", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <div style={{ fontSize: "12px", fontWeight: 700, color: "#fff" }}>8 articles published</div>
+              <div style={{ fontSize: "10px", color: "rgba(255,255,255,0.5)", marginTop: "2px" }}>Updated through March 2026</div>
+            </div>
           </div>
         </div>
-        <div style={{flex:1,background:"#faf9f6",display:"flex",flexDirection:"column",justifyContent:"center",padding:"44px 48px"}}>
-          <div style={{fontSize:"10px",color:"#b8962e",fontWeight:600,textTransform:"uppercase",letterSpacing:"2.5px",marginBottom:"20px"}}>What we write about</div>
-          <div style={{display:"flex",flexDirection:"column",gap:"0"}}>
-            {topics.map(t => (
-              <div key={t.category} style={{padding:"14px 0",borderBottom:"1px solid #f0ede6"}}>
-                <div style={{fontSize:"12px",fontWeight:700,color:"#1a2e4a",marginBottom:"4px"}}>{t.category}</div>
-                <div style={{fontSize:"12px",color:"#666",lineHeight:1.5}}>{t.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      </section>
 
       {/* Post grid */}
-      <section style={{padding:"56px 44px",background:"#fff"}}>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"16px"}}>
-          {posts.map(p => (
-            <div key={p.slug} style={{background:"#faf9f6",borderRadius:"10px",padding:"24px",border:"1px solid #f0ede6"}}>
-              <div style={{fontSize:"10px",fontWeight:600,textTransform:"uppercase",letterSpacing:"1.5px",color:"#b8962e",marginBottom:"10px"}}>{p.category} · {p.date}</div>
-              <h3 style={{fontSize:"14px",fontWeight:600,color:"#1a2e4a",marginBottom:"8px",lineHeight:1.4}}>{p.title}</h3>
-              <p style={{fontSize:"12px",color:"#555",lineHeight:1.6,marginBottom:"14px"}}>{p.excerpt}</p>
-              <Link href={`/blog/${p.slug}`} style={{fontSize:"12px",fontWeight:600,color:"#b8962e",textDecoration:"none"}}>Read more →</Link>
-            </div>
-          ))}
+      <section style={{ padding: "64px 44px", background: C.offWhite }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: "24px" }}>
+          {posts.map(p => {
+            const imgSrc = POST_IMAGES[p.slug];
+            const catColor = CATEGORY_COLORS[p.category] ?? C.gold;
+            return (
+              <Link key={p.slug} href={`/blog/${p.slug}`} style={{ textDecoration: "none", display: "flex", flexDirection: "column", background: C.white, borderRadius: "16px", border: `1px solid ${C.borderLight}`, overflow: "hidden", boxShadow: "0 2px 10px rgba(26,46,74,0.06)", transition: "transform 0.2s ease, box-shadow 0.2s ease" }}>
+                {imgSrc && (
+                  <div style={{ height: "180px", overflow: "hidden", flexShrink: 0, position: "relative" }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={imgSrc}
+                      alt={p.title}
+                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                    />
+                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, rgba(11,25,41,0.35) 100%)" }} />
+                    <span style={{ position: "absolute", top: "12px", left: "12px", fontSize: "10px", fontWeight: 700, letterSpacing: "0.5px", padding: "3px 9px", borderRadius: "12px", background: `${catColor}22`, border: `1px solid ${catColor}44`, color: catColor }}>
+                      {p.category}
+                    </span>
+                  </div>
+                )}
+                <div style={{ padding: "20px 22px 22px", flex: 1, display: "flex", flexDirection: "column", gap: "8px" }}>
+                  <div style={{ fontSize: "10px", color: C.muted, letterSpacing: "0.5px" }}>{p.date}</div>
+                  <h3 style={{ fontSize: "14px", fontWeight: 700, color: C.navy, lineHeight: 1.45, margin: 0 }}>{p.title}</h3>
+                  <p style={{ fontSize: "12px", color: C.mutedDark, lineHeight: 1.65, flex: 1, margin: 0 }}>{p.excerpt}</p>
+                  <div style={{ fontSize: "12px", fontWeight: 600, color: C.gold, display: "flex", alignItems: "center", gap: "4px", marginTop: "4px" }}>
+                    Read article
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
     </>
