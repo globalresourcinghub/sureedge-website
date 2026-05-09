@@ -135,13 +135,13 @@ export default function Home() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=faces&auto=format&q=80"
-              alt="Your CPA"
+              alt="Tax professional"
               width={40} height={40}
               style={{ width: 40, height: 40, borderRadius: "50%", objectFit: "cover", border: `2px solid rgba(201,168,76,0.45)`, flexShrink: 0 }}
             />
             <div>
-              <div style={{ fontSize: "12px", fontWeight: 700, color: C.white, marginBottom: "2px" }}>Your CPA &amp; EA is ready</div>
-              <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.45)" }}>Licensed professional, nationwide</div>
+              <div style={{ fontSize: "12px", fontWeight: 700, color: C.white, marginBottom: "2px" }}>Licensed CPA &amp; EA on our team</div>
+              <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.45)" }}>Virtual · Nationwide · Flat-fee pricing</div>
             </div>
             <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#6ee7b7", boxShadow: "0 0 6px #6ee7b7", flexShrink: 0 }} />
           </div>

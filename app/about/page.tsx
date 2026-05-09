@@ -178,7 +178,7 @@ export default function About() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=560&h=640&fit=crop&crop=top&auto=format&q=80"
-                alt="Your CPA and EA"
+                alt="Tax professional at work"
                 width={420}
                 height={480}
                 style={{
@@ -414,7 +414,7 @@ export default function About() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&h=500&fit=crop&crop=center&auto=format&q=80"
-                  alt="CPA working with a client"
+                  alt="Professional tax consultation"
                   width={600}
                   height={460}
                   style={{
