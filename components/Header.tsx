@@ -69,7 +69,7 @@ export default function Header() {
               }}>{l.label}</Link>
             );
           })}
-          <a href="https://portal.sureedgetax.com/login" style={{
+          <Link href="/portal" style={{
             fontSize: "13px", fontWeight: 500, color: "#1a2e4a",
             textDecoration: "none", display: "flex", alignItems: "center", gap: "5px",
           }}>
@@ -79,7 +79,7 @@ export default function Header() {
               <line x1="15" y1="12" x2="3" y2="12"/>
             </svg>
             Client Portal
-          </a>
+          </Link>
           <Link href="/tax-intake" style={{
             fontSize: "13px", fontWeight: 600, color: "#fff",
             background: "#b8962e", padding: "8px 18px", borderRadius: "6px", textDecoration: "none",
@@ -128,8 +128,8 @@ export default function Header() {
               >{l.label}</Link>
             );
           })}
-          <a
-            href="https://portal.sureedgetax.com/login"
+          <Link
+            href="/portal"
             onClick={() => setMenuOpen(false)}
             style={{
               fontSize: "15px", fontWeight: 400,
@@ -144,7 +144,7 @@ export default function Header() {
               <line x1="15" y1="12" x2="3" y2="12"/>
             </svg>
             Client Portal
-          </a>
+          </Link>
           <Link
             href="/tax-intake"
             onClick={() => setMenuOpen(false)}

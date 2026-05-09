@@ -3,7 +3,6 @@ import ScrollReveal from "@/components/ScrollReveal";
 import HeroParallax from "@/components/HeroParallax";
 import InteractiveShowcase from "@/components/InteractiveShowcase";
 import StickyFeatures from "@/components/StickyFeatures";
-import ServiceFeatures from "@/components/ServiceFeatures";
 import PortalFeatures from "@/components/PortalFeatures";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 
@@ -27,10 +26,10 @@ const C = {
 
 
 const stats = [
-  { val: "CPA & EA",    lbl: "Dual Credentials" },
-  { val: "100%",        lbl: "Virtual Service"   },
-  { val: "Nationwide",  lbl: "Client Coverage"   },
-  { val: "2 Days",      lbl: "Quote Response"    },
+  { val: "Flat Fee",  lbl: "No surprise billing"  },
+  { val: "100%",      lbl: "Virtual service"       },
+  { val: "6",         lbl: "Free planning tools"   },
+  { val: "2 Days",    lbl: "Quote response"        },
 ];
 
 
@@ -123,6 +122,28 @@ export default function Home() {
             individuals and small businesses nationwide.
           </p>
 
+          {/* Advisor card */}
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: "12px",
+            background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)",
+            borderRadius: "12px", padding: "10px 16px",
+            marginBottom: "28px",
+            animation: "fadeIn 0.7s 0.25s ease both",
+          }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=faces&auto=format&q=80"
+              alt="Your CPA"
+              width={40} height={40}
+              style={{ width: 40, height: 40, borderRadius: "50%", objectFit: "cover", border: `2px solid rgba(201,168,76,0.45)`, flexShrink: 0 }}
+            />
+            <div>
+              <div style={{ fontSize: "12px", fontWeight: 700, color: C.white, marginBottom: "2px" }}>Your CPA &amp; EA is ready</div>
+              <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.45)" }}>Licensed professional, nationwide</div>
+            </div>
+            <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#6ee7b7", boxShadow: "0 0 6px #6ee7b7", flexShrink: 0 }} />
+          </div>
+
           {/* CTAs */}
           <div style={{
             display: "flex", flexWrap: "wrap", gap: "12px",
@@ -211,9 +232,6 @@ export default function Home() {
 
       {/* ══ INTERACTIVE SHOWCASE ══════════════════════════════════════ */}
       <InteractiveShowcase />
-
-      {/* ══ SERVICE FEATURES (pilot.com alternating) ═════════════════ */}
-      <ServiceFeatures />
 
       {/* ══ STICKY FEATURES (collective.com peace of mind) ═══════════ */}
       <StickyFeatures />

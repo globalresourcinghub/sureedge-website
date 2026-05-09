@@ -126,7 +126,7 @@ const FEATURES = [
       </svg>
     ),
     title: "Real-time return tracking",
-    desc: "See exactly where your return stands — documents received, under review, e-filed — without calling us.",
+    desc: "See every step — intake, CPA review, e-filed, accepted — without calling. Estimated refund visible from day one.",
   },
   {
     icon: (
@@ -134,17 +134,8 @@ const FEATURES = [
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
       </svg>
     ),
-    title: "Secure document upload",
-    desc: "Snap a photo of your W-2 or 1099 from your phone. Documents go straight to your CPA, encrypted.",
-  },
-  {
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-      </svg>
-    ),
-    title: "6 free financial calculators",
-    desc: "Tax Bracket, Roth vs Traditional, Quarterly Tax, Retirement Projector, Social Security, and Net Worth — all built in.",
+    title: "Upload from any device",
+    desc: "Drag & drop from your laptop or snap a photo from your phone. Encrypted, auto-organized by year and type.",
   },
   {
     icon: (
@@ -152,17 +143,8 @@ const FEATURES = [
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
       </svg>
     ),
-    title: "Direct CPA messaging",
-    desc: "Message your CPA directly inside the portal. No phone tag, no email chains, no third-party apps.",
-  },
-  {
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-      </svg>
-    ),
-    title: "Year-over-year history",
-    desc: "Every return, every bookkeeping report, every IRS case — organized in one place, available any time.",
+    title: "Message your CPA directly",
+    desc: "No phone tag, no email chains. Direct messaging with your CPA inside the portal, with full conversation history.",
   },
 ];
 
@@ -180,11 +162,11 @@ export default function PortalFeatures() {
                 Your finances,<br />always within reach.
               </h2>
               <Link
-                href="https://portal.sureedgetax.com/register"
+                href="/portal"
                 className="btn-gold"
                 style={{ background: C.gold, color: C.dark, fontSize: "13px", fontWeight: 700, padding: "12px 24px", borderRadius: "8px", display: "inline-flex", alignItems: "center", gap: "6px" }}
               >
-                Access your portal
+                Explore the portal
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
                 </svg>
@@ -220,9 +202,9 @@ export default function PortalFeatures() {
 
             <ScrollReveal delay={300}>
               <div style={{ marginTop: "36px", paddingTop: "28px", borderTop: `1px solid ${C.borderLight}`, display: "flex", alignItems: "center", gap: "12px" }}>
-                <div style={{ fontSize: "13px", color: C.mutedDark }}>Already a client?</div>
-                <Link href="https://portal.sureedgetax.com/login" style={{ fontSize: "13px", fontWeight: 600, color: C.gold, display: "inline-flex", alignItems: "center", gap: "4px" }}>
-                  Log in to your portal
+                <div style={{ fontSize: "13px", color: C.mutedDark }}>See document upload, identity verification, messaging &amp; more.</div>
+                <Link href="/portal" style={{ fontSize: "13px", fontWeight: 600, color: C.gold, display: "inline-flex", alignItems: "center", gap: "4px", whiteSpace: "nowrap" }}>
+                  Full portal overview
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
                   </svg>
