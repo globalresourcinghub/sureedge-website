@@ -4,6 +4,7 @@ import HeroParallax from "@/components/HeroParallax";
 import InteractiveShowcase from "@/components/InteractiveShowcase";
 import StickyFeatures from "@/components/StickyFeatures";
 import ServiceFeatures from "@/components/ServiceFeatures";
+import PortalFeatures from "@/components/PortalFeatures";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 
 /* ── Design tokens ─────────────────────────────── */
@@ -24,50 +25,6 @@ const C = {
 
 /* ── Data ───────────────────────────────────────── */
 
-const features = [
-  {
-    title: "CPA & Enrolled Agent",
-    desc: "Dual credentials covering every aspect of tax preparation and IRS representation.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      </svg>
-    ),
-  },
-  {
-    title: "Direct Access",
-    desc: "You talk to the CPA directly. No call centers, no junior staff, no waiting.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-        <circle cx="12" cy="7" r="4"/>
-      </svg>
-    ),
-  },
-  {
-    title: "100% Virtual",
-    desc: "Based in Texas, serving clients nationwide. No office visit ever required.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"/>
-        <line x1="2" y1="12" x2="22" y2="12"/>
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-      </svg>
-    ),
-  },
-  {
-    title: "Year-Round Support",
-    desc: "We are here all year for proactive planning — not just at tax time.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-        <line x1="16" y1="2" x2="16" y2="6"/>
-        <line x1="8" y1="2" x2="8" y2="6"/>
-        <line x1="3" y1="10" x2="21" y2="10"/>
-      </svg>
-    ),
-  },
-];
 
 const stats = [
   { val: "CPA & EA",    lbl: "Dual Credentials" },
@@ -261,48 +218,8 @@ export default function Home() {
       {/* ══ STICKY FEATURES (collective.com peace of mind) ═══════════ */}
       <StickyFeatures />
 
-      {/* ══ WHY US ═══════════════════════════════════════════════════ */}
-      <section className="section-pad" style={{ padding: "96px 44px", background: C.offWhite }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <ScrollReveal>
-            <div style={{ fontSize: "11px", fontWeight: 600, color: C.gold, letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "12px" }}>
-              Why clients choose us
-            </div>
-            <h2 style={{ fontSize: "clamp(28px, 3vw, 40px)", fontWeight: 800, color: C.textDark, letterSpacing: "-1px", marginBottom: "48px", maxWidth: "480px", lineHeight: 1.15 }}>
-              Expert service, without the big-firm runaround.
-            </h2>
-          </ScrollReveal>
-
-          <div className="features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "20px" }}>
-            {features.map((f, i) => (
-              <ScrollReveal key={f.title} delay={i * 80}>
-                <div
-                  className="feature-card"
-                  style={{
-                    background: C.white, borderRadius: "14px",
-                    padding: "28px 24px",
-                    border: `1px solid ${C.borderLight}`,
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-                    height: "100%",
-                  }}
-                >
-                  <div style={{
-                    width: "44px", height: "44px",
-                    background: C.goldSoft, borderRadius: "10px",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    marginBottom: "16px",
-                    border: `1px solid ${C.goldBorder}`,
-                  }}>
-                    {f.icon}
-                  </div>
-                  <div style={{ fontSize: "15px", fontWeight: 700, color: C.textDark, marginBottom: "8px" }}>{f.title}</div>
-                  <div style={{ fontSize: "13px", color: "#666", lineHeight: 1.65 }}>{f.desc}</div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ══ PORTAL FEATURES ══════════════════════════════════════════ */}
+      <PortalFeatures />
 
 
       {/* ══ TESTIMONIALS MARQUEE ═════════════════════════════════════ */}

@@ -22,7 +22,7 @@ const BAR_DATA: Record<ServiceId, { vals: number[]; label: string; color: string
   individual:  { vals: [42, 68, 55, 82, 64, 91], label: "Avg. Refund Trend",  color: C.gold },
   business:    { vals: [58, 73, 88, 62, 95, 78], label: "Revenue Recognized", color: "#6ee7b7" },
   bookkeeping: { vals: [33, 52, 71, 89, 67, 84], label: "Books Reconciled",   color: "#93c5fd" },
-  irs:         { vals: [85, 44, 63, 32, 57, 74], label: "Cases Resolved",     color: "#f9a8d4" },
+  irs:         { vals: [85, 44, 63, 32, 57, 74], label: "Cases Resolved",     color: "#c4b5fd" },
 };
 const MONTHS = ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 

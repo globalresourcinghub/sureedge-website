@@ -5,7 +5,7 @@ const C = {
   dark: "#0B1929", darkMid: "#0f2035", navy: "#1a2e4a",
   gold: "#C9A84C", goldSoft: "rgba(201,168,76,0.12)", goldBorder: "rgba(201,168,76,0.28)",
   muted: "#8A9BB0", border: "rgba(255,255,255,0.08)", white: "#fff",
-  green: "#6ee7b7", blue: "#93c5fd", pink: "#f9a8d4",
+  green: "#6ee7b7", blue: "#93c5fd", violet: "#c4b5fd",
 };
 
 function TaxMock() {
@@ -141,8 +141,8 @@ function IrsMock() {
 
       <div style={{ padding: "24px 28px" }}>
         {/* Resolved badge */}
-        <div style={{ display: "inline-flex", alignItems: "center", gap: "7px", background: "rgba(249,168,212,0.1)", border: "1px solid rgba(249,168,212,0.25)", color: C.pink, fontSize: "12px", fontWeight: 600, padding: "5px 12px", borderRadius: "20px", marginBottom: "20px" }}>
-          <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: C.pink }} />
+        <div style={{ display: "inline-flex", alignItems: "center", gap: "7px", background: "rgba(196,181,253,0.1)", border: "1px solid rgba(196,181,253,0.25)", color: C.violet, fontSize: "12px", fontWeight: 600, padding: "5px 12px", borderRadius: "20px", marginBottom: "20px" }}>
+          <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: C.violet }} />
           Resolved · 18 days
         </div>
 
@@ -153,11 +153,11 @@ function IrsMock() {
             <div key={step} style={{ display: "flex", gap: "12px", marginBottom: i < steps.length - 1 ? "0" : "0" }}>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "20px", flexShrink: 0 }}>
                 <div style={{ width: "20px", height: "20px", borderRadius: "50%", background: "rgba(249,168,212,0.15)", border: "1px solid rgba(249,168,212,0.4)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke={C.pink} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke={C.violet} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12"/>
                   </svg>
                 </div>
-                {i < steps.length - 1 && <div style={{ width: "1px", flex: 1, minHeight: "20px", background: "rgba(249,168,212,0.2)", marginTop: "3px", marginBottom: "3px" }} />}
+                {i < steps.length - 1 && <div style={{ width: "1px", flex: 1, minHeight: "20px", background: "rgba(196,181,253,0.2)", marginTop: "3px", marginBottom: "3px" }} />}
               </div>
               <div style={{ paddingBottom: i < steps.length - 1 ? "12px" : "0" }}>
                 <div style={{ fontSize: "12px", color: C.white, fontWeight: 500 }}>{step}</div>
@@ -172,9 +172,9 @@ function IrsMock() {
             <div style={{ fontSize: "10px", color: C.muted, marginBottom: "4px" }}>Proposed Amount</div>
             <div style={{ fontSize: "20px", fontWeight: 700, color: C.white, letterSpacing: "-0.5px" }}>$4,800</div>
           </div>
-          <div style={{ background: "rgba(249,168,212,0.06)", borderRadius: "10px", padding: "14px", border: "1px solid rgba(249,168,212,0.2)" }}>
+          <div style={{ background: "rgba(249,168,212,0.06)", borderRadius: "10px", padding: "14px", border: "1px solid rgba(196,181,253,0.2)" }}>
             <div style={{ fontSize: "10px", color: C.muted, marginBottom: "4px" }}>Final Amount Owed</div>
-            <div style={{ fontSize: "20px", fontWeight: 700, color: C.pink, letterSpacing: "-0.5px" }}>$0</div>
+            <div style={{ fontSize: "20px", fontWeight: 700, color: C.violet, letterSpacing: "-0.5px" }}>$0</div>
           </div>
         </div>
 

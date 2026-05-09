@@ -256,7 +256,7 @@ const SERVICES = [
 
 export default function ServiceFeatures() {
   return (
-    <section style={{ background: C.dark, padding: "96px 44px" }}>
+    <section style={{ background: C.offWhite, padding: "96px 44px" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <ScrollReveal>
           <div style={{ marginBottom: "64px" }}>
@@ -264,10 +264,10 @@ export default function ServiceFeatures() {
               What we offer
             </div>
             <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "16px" }}>
-              <h2 style={{ fontSize: "clamp(28px,3vw,40px)", fontWeight: 800, color: C.white, letterSpacing: "-1px", lineHeight: 1.15, margin: 0, maxWidth: "440px" }}>
+              <h2 style={{ fontSize: "clamp(28px,3vw,40px)", fontWeight: 800, color: C.textDark, letterSpacing: "-1px", lineHeight: 1.15, margin: 0, maxWidth: "440px" }}>
                 Full-service tax &amp; accounting.
               </h2>
-              <Link href="/services" className="btn-ghost" style={{ color: C.muted, fontSize: "13px", fontWeight: 500, padding: "10px 20px", borderRadius: "8px", border: `1px solid ${C.border}`, display: "inline-flex", alignItems: "center", gap: "6px" }}>
+              <Link href="/services" className="btn-ghost" style={{ color: C.mutedDark, fontSize: "13px", fontWeight: 500, padding: "10px 20px", borderRadius: "8px", border: `1px solid ${C.borderLight}`, display: "inline-flex", alignItems: "center", gap: "6px" }}>
                 View all services
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
@@ -289,15 +289,15 @@ export default function ServiceFeatures() {
                   <div style={{ fontSize: "11px", fontWeight: 600, color: C.gold, letterSpacing: "2px", textTransform: "uppercase", marginBottom: "12px" }}>
                     {svc.label}
                   </div>
-                  <h3 style={{ fontSize: "clamp(22px,2.5vw,32px)", fontWeight: 800, color: C.white, letterSpacing: "-0.8px", lineHeight: 1.2, marginBottom: "16px", margin: "0 0 16px" }}>
+                  <h3 style={{ fontSize: "clamp(22px,2.5vw,32px)", fontWeight: 800, color: C.textDark, letterSpacing: "-0.8px", lineHeight: 1.2, marginBottom: "16px", margin: "0 0 16px" }}>
                     {svc.title}
                   </h3>
-                  <p style={{ fontSize: "15px", color: C.muted, lineHeight: 1.75, marginBottom: "24px", margin: "0 0 24px" }}>
+                  <p style={{ fontSize: "15px", color: C.mutedDark, lineHeight: 1.75, marginBottom: "24px", margin: "0 0 24px" }}>
                     {svc.desc}
                   </p>
                   <ul style={{ listStyle: "none", padding: 0, margin: "0 0 32px", display: "flex", flexDirection: "column", gap: "10px" }}>
                     {svc.bullets.map(b => (
-                      <li key={b} style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: C.muted }}>
+                      <li key={b} style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: C.mutedDark }}>
                         <div style={{ width: "18px", height: "18px", borderRadius: "50%", background: C.goldSoft, border: `1px solid ${C.goldBorder}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                           <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                             <polyline points="20 6 9 17 4 12"/>
