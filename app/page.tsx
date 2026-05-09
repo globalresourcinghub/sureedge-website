@@ -2,6 +2,9 @@ import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import HeroParallax from "@/components/HeroParallax";
 import InteractiveShowcase from "@/components/InteractiveShowcase";
+import StickyFeatures from "@/components/StickyFeatures";
+import ServiceFeatures from "@/components/ServiceFeatures";
+import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 
 /* ── Design tokens ─────────────────────────────── */
 const C = {
@@ -20,76 +23,6 @@ const C = {
 };
 
 /* ── Data ───────────────────────────────────────── */
-const services = [
-  {
-    title: "Individual Tax Preparation",
-    desc: "Federal & state returns for W-2 employees, freelancers, investors, retirees, and multi-state filers.",
-    href: "/tax-intake",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
-        <rect x="3" y="1" width="11" height="16" rx="2" stroke={C.gold} strokeWidth="1.5"/>
-        <line x1="6" y1="6" x2="11" y2="6" stroke={C.gold} strokeWidth="1.2" strokeLinecap="round"/>
-        <line x1="6" y1="9" x2="11" y2="9" stroke={C.gold} strokeWidth="1.2" strokeLinecap="round"/>
-        <line x1="6" y1="12" x2="9" y2="12" stroke={C.gold} strokeWidth="1.2" strokeLinecap="round"/>
-      </svg>
-    ),
-  },
-  {
-    title: "Small Business Tax",
-    desc: "Schedule C, S-Corp, and Partnership returns for LLCs, sole proprietors, and corporations.",
-    href: "/business-tax-intake",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
-        <rect x="2" y="8" width="16" height="10" rx="2" stroke={C.gold} strokeWidth="1.5"/>
-        <path d="M6 8V6a4 4 0 018 0v2" stroke={C.gold} strokeWidth="1.5" strokeLinecap="round"/>
-      </svg>
-    ),
-  },
-  {
-    title: "Bookkeeping",
-    desc: "Monthly reconciliation, categorization, and financial statements via QuickBooks.",
-    href: "/business-tax-intake",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
-        <rect x="1" y="12" width="4" height="7" rx="1" fill={C.gold} opacity="0.4"/>
-        <rect x="8" y="7" width="4" height="12" rx="1" fill={C.gold} opacity="0.7"/>
-        <rect x="15" y="2" width="4" height="17" rx="1" fill={C.gold}/>
-      </svg>
-    ),
-  },
-  {
-    title: "Payroll Services",
-    desc: "End-to-end payroll, quarterly filings, W-2 and 1099 preparation.",
-    href: "/business-tax-intake",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
-        <circle cx="10" cy="10" r="8" stroke={C.gold} strokeWidth="1.5"/>
-        <path d="M10 6v4l3 2" stroke={C.gold} strokeWidth="1.5" strokeLinecap="round"/>
-      </svg>
-    ),
-  },
-  {
-    title: "Tax Planning & Strategy",
-    desc: "Year-round proactive planning to legally minimize your tax liability.",
-    href: "/tax-intake",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
-        <path d="M10 2L3 7v10h14V7L10 2z" stroke={C.gold} strokeWidth="1.5" strokeLinejoin="round"/>
-        <rect x="7" y="11" width="6" height="6" rx="1" stroke={C.gold} strokeWidth="1.2"/>
-      </svg>
-    ),
-  },
-  {
-    title: "IRS Representation",
-    desc: "Audit support and IRS notice response by a licensed Enrolled Agent.",
-    href: "/contact",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
-        <path d="M10 2l2.5 5h5l-4 3.5 1.5 5L10 13l-5 2.5 1.5-5L2.5 7h5z" stroke={C.gold} strokeWidth="1.5" strokeLinejoin="round"/>
-      </svg>
-    ),
-  },
-];
 
 const features = [
   {
@@ -143,26 +76,6 @@ const stats = [
   { val: "2 Days",      lbl: "Quote Response"    },
 ];
 
-const testimonials = [
-  {
-    quote: "SureEdge made my first year as a freelancer completely stress-free. They explained everything clearly and saved me more than I expected.",
-    name: "Marcus T.",
-    title: "Freelance Designer, Austin TX",
-    initials: "MT",
-  },
-  {
-    quote: "Finally a CPA who actually answers the phone. We've worked with SureEdge for our S-Corp for two years and couldn't be happier.",
-    name: "Priya & Raj S.",
-    title: "Small Business Owners",
-    initials: "PS",
-  },
-  {
-    quote: "Got an IRS notice and was in a panic. SureEdge handled everything from start to finish — resolved in 3 weeks.",
-    name: "Daniel K.",
-    title: "Real Estate Investor",
-    initials: "DK",
-  },
-];
 
 /* ── Page ───────────────────────────────────────── */
 export default function Home() {
@@ -342,6 +255,12 @@ export default function Home() {
       {/* ══ INTERACTIVE SHOWCASE ══════════════════════════════════════ */}
       <InteractiveShowcase />
 
+      {/* ══ SERVICE FEATURES (pilot.com alternating) ═════════════════ */}
+      <ServiceFeatures />
+
+      {/* ══ STICKY FEATURES (collective.com peace of mind) ═══════════ */}
+      <StickyFeatures />
+
       {/* ══ WHY US ═══════════════════════════════════════════════════ */}
       <section className="section-pad" style={{ padding: "96px 44px", background: C.offWhite }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
@@ -385,141 +304,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══ SERVICES ═════════════════════════════════════════════════ */}
-      <section className="section-pad" style={{ padding: "96px 44px", background: C.dark }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <ScrollReveal>
-            <div style={{ fontSize: "11px", fontWeight: 600, color: C.gold, letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "12px" }}>
-              What we offer
-            </div>
-            <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "16px", marginBottom: "48px" }}>
-              <h2 style={{ fontSize: "clamp(28px, 3vw, 40px)", fontWeight: 800, color: C.white, letterSpacing: "-1px", lineHeight: 1.15, margin: 0, maxWidth: "460px" }}>
-                Full-service tax &amp; accounting.
-              </h2>
-              <Link
-                href="/services"
-                className="btn-ghost"
-                style={{
-                  color: C.muted, fontSize: "13px", fontWeight: 500,
-                  padding: "10px 20px", borderRadius: "8px",
-                  border: `1px solid ${C.borderDark}`,
-                  display: "inline-flex", alignItems: "center", gap: "6px",
-                }}
-              >
-                View all services
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-                </svg>
-              </Link>
-            </div>
-          </ScrollReveal>
 
-          <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px" }}>
-            {services.map((svc, i) => (
-              <ScrollReveal key={svc.title} delay={i * 60}>
-                <div
-                  className="service-card"
-                  style={{
-                    background: C.darkMid, borderRadius: "14px",
-                    padding: "28px 24px",
-                    border: `1px solid ${C.borderDark}`,
-                    height: "100%", display: "flex", flexDirection: "column",
-                  }}
-                >
-                  <div style={{
-                    width: "44px", height: "44px",
-                    background: C.goldSoft, borderRadius: "10px",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    marginBottom: "18px",
-                    border: `1px solid ${C.goldBorder}`,
-                  }}>
-                    {svc.icon}
-                  </div>
-                  <div style={{ fontSize: "15px", fontWeight: 700, color: C.white, marginBottom: "8px" }}>{svc.title}</div>
-                  <div style={{ fontSize: "13px", color: C.muted, lineHeight: 1.65, flex: 1 }}>{svc.desc}</div>
-                  <Link
-                    href={svc.href}
-                    style={{
-                      marginTop: "20px", fontSize: "12px", fontWeight: 600,
-                      color: C.gold, display: "inline-flex", alignItems: "center", gap: "5px",
-                      transition: "gap 0.15s ease",
-                    }}
-                  >
-                    Get a quote
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-                    </svg>
-                  </Link>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══ TESTIMONIALS ═════════════════════════════════════════════ */}
-      <section className="section-pad" style={{ padding: "96px 44px", background: C.offWhite }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <ScrollReveal>
-            <div style={{ textAlign: "center", marginBottom: "56px" }}>
-              <div style={{ fontSize: "11px", fontWeight: 600, color: C.gold, letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "12px" }}>
-                Client stories
-              </div>
-              <h2 style={{ fontSize: "clamp(28px, 3vw, 40px)", fontWeight: 800, color: C.textDark, letterSpacing: "-1px", lineHeight: 1.15, margin: 0 }}>
-                Trusted by individuals &amp; businesses.
-              </h2>
-            </div>
-          </ScrollReveal>
-
-          <div className="testimonials-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
-            {testimonials.map((t, i) => (
-              <ScrollReveal key={t.name} delay={i * 100}>
-                <div
-                  className="testimonial-card"
-                  style={{
-                    background: C.white, borderRadius: "16px",
-                    padding: "32px 28px",
-                    border: `1px solid ${C.borderLight}`,
-                    boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
-                    height: "100%", display: "flex", flexDirection: "column",
-                  }}
-                >
-                  {/* Stars */}
-                  <div style={{ display: "flex", gap: "3px", marginBottom: "20px" }}>
-                    {[...Array(5)].map((_, j) => (
-                      <svg key={j} width="14" height="14" viewBox="0 0 24 24" fill={C.gold}>
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                      </svg>
-                    ))}
-                  </div>
-
-                  {/* Quote */}
-                  <p style={{ fontSize: "14px", color: "#444", lineHeight: 1.72, flex: 1, margin: 0, fontStyle: "italic" }}>
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-
-                  {/* Author */}
-                  <div style={{ display: "flex", alignItems: "center", gap: "12px", marginTop: "24px", paddingTop: "20px", borderTop: `1px solid ${C.borderLight}` }}>
-                    <div style={{
-                      width: "38px", height: "38px", borderRadius: "50%",
-                      background: C.goldSoft, border: `1px solid ${C.goldBorder}`,
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: "11px", fontWeight: 700, color: C.gold,
-                      flexShrink: 0,
-                    }}>
-                      {t.initials}
-                    </div>
-                    <div>
-                      <div style={{ fontSize: "13px", fontWeight: 700, color: C.textDark }}>{t.name}</div>
-                      <div style={{ fontSize: "11px", color: "#888", marginTop: "1px" }}>{t.title}</div>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ══ TESTIMONIALS MARQUEE ═════════════════════════════════════ */}
+      <TestimonialsMarquee />
 
       {/* ══ CTA ══════════════════════════════════════════════════════ */}
       <section
