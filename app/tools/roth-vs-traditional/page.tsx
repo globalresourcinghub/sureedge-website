@@ -221,7 +221,7 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
               <label style={{ display: "flex", alignItems: "flex-start", gap: "10px", cursor: "pointer", marginTop: "4px" }}>
                 <input type="checkbox" checked={consented} onChange={e => setConsented(e.target.checked)} style={{ marginTop: "2px", accentColor: "#b8962e", flexShrink: 0, width: "15px", height: "15px" }}/>
                 <span style={{ fontSize: "11px", color: "#777", lineHeight: 1.6 }}>
-                  I understand these results are for <strong>high-level estimation only</strong> and do not constitute tax or financial advice. SureEdge Tax &amp; Accounting and its team are not liable for any decisions made based on these calculations.{" "}
+                  These are general estimates for reference only, not tax or financial advice.{" "}
                   <a href="/privacy" style={{ color: "#b8962e", textDecoration: "underline" }}>Privacy Policy</a>
                 </span>
               </label>
@@ -327,7 +327,7 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
               <path d="M12 9v5M12 16.5v.5" stroke="#b8962e" strokeWidth="1.8" strokeLinecap="round"/>
             </svg>
             <p style={{ fontSize: "11px", color: "#7a6010", lineHeight: 1.8, margin: 0 }}>
-              <strong>For high-level estimation only.</strong> Results are based on simplified assumptions. They do not account for income phase-outs in detail, workplace plan coverage, AMT, or future tax law changes. This tool does not constitute tax or financial advice. SureEdge Tax &amp; Accounting and its team are <strong>not liable</strong> for any decisions made based on these results. Consult a licensed CPA or EA before making contribution decisions.
+              General estimate for reference only, not tax or financial advice. Based on simplified assumptions; does not account for workplace plan coverage, AMT, or future tax law changes. Consult a licensed CPA or EA before making contribution decisions.
             </p>
           </div>
           <div style={{ background: "#faf9f6", borderRadius: "12px", padding: "24px 28px", border: "1px solid #f0ede6", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px", flexWrap: "wrap" }}>

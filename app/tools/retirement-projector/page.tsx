@@ -188,7 +188,7 @@ export default function RetirementProjectorPage() {
               <label style={{ display: "flex", alignItems: "flex-start", gap: "10px", cursor: "pointer", marginTop: "4px" }}>
                 <input type="checkbox" checked={consented} onChange={e => setConsented(e.target.checked)} style={{ marginTop: "2px", accentColor: "#b8962e", flexShrink: 0, width: "15px", height: "15px" }}/>
                 <span style={{ fontSize: "11px", color: "#777", lineHeight: 1.6 }}>
-                  I understand these results are for <strong>high-level estimation only</strong> and do not constitute financial advice. SureEdge is not liable for any decisions based on these results.{" "}
+                  These are general estimates for reference only, not financial advice.{" "}
                   <a href="/privacy" style={{ color: "#b8962e", textDecoration: "underline" }}>Privacy</a>
                 </span>
               </label>
@@ -375,7 +375,7 @@ export default function RetirementProjectorPage() {
               <path d="M12 9v5M12 16.5v.5" stroke="#b8962e" strokeWidth="1.8" strokeLinecap="round"/>
             </svg>
             <p style={{ fontSize: "11px", color: "#7a6010", lineHeight: 1.8, margin: 0 }}>
-              <strong>For high-level estimation only.</strong> Projections assume constant return and contribution rates and do not account for market volatility, sequence-of-returns risk, fees, or taxes on withdrawals. Past performance does not guarantee future results. SureEdge Tax &amp; Accounting is <strong>not liable</strong> for any decisions based on these projections.
+              General estimate for reference only, not financial advice. Assumes constant return and contribution rates; does not account for market volatility, fees, or taxes on withdrawals. Past performance does not guarantee future results.
             </p>
           </div>
           <div style={{ background: "#faf9f6", borderRadius: "12px", padding: "24px 28px", border: "1px solid #f0ede6", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px", flexWrap: "wrap" }}>
