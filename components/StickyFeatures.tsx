@@ -190,8 +190,8 @@ const FEATURES = [
   {
     id: "tax",
     label: "01",
-    title: "Your return, done right — every deduction found.",
-    desc: "A licensed CPA reviews every line of your return — not a software algorithm. You get your maximum refund and never have to refile.",
+    title: "Your return, done right. Every deduction found.",
+    desc: "A licensed CPA reviews every line of your return, not a software algorithm. You get your maximum refund and never have to refile.",
     bullets: ["All types: W-2, freelance, rental, investor", "Multi-state returns handled", "Tracked step-by-step to IRS acceptance"],
     mock: <TaxMock />,
   },
@@ -207,8 +207,8 @@ const FEATURES = [
     id: "irs",
     label: "03",
     title: "You focus on your life. We handle the IRS.",
-    desc: "Received a notice? Our Enrolled Agent steps in and deals directly with the IRS on your behalf — so you never have to face them alone.",
-    bullets: ["Direct EA representation — unlimited rights", "Audits, CP notices & appeals", "Average resolution: 18 days"],
+    desc: "Received a notice? Our Enrolled Agent steps in and deals directly with the IRS on your behalf so you never have to face them alone.",
+    bullets: ["Direct EA representation. Unlimited rights.", "Audits, CP notices & appeals", "Average resolution: 18 days"],
     mock: <IrsMock />,
   },
 ];

@@ -242,7 +242,7 @@ const SERVICES = [
   {
     eyebrow: "Individual returns",
     title: "Personal Tax Preparation",
-    desc: "Federal and state returns for W-2 employees, freelancers, investors, rental owners, and retirees. Every deduction reviewed by a licensed CPA — nothing left on the table.",
+    desc: "Federal and state returns for W-2 employees, freelancers, investors, rental owners, and retirees. Every deduction reviewed by a licensed CPA. Nothing left on the table.",
     bullets: [
       "W-2, 1099, freelance, rental, and investment income",
       "Multi-state filers handled",
@@ -274,7 +274,7 @@ const SERVICES = [
   {
     eyebrow: "Monthly bookkeeping",
     title: "Bookkeeping & Financial Statements",
-    desc: "Monthly reconciliation and categorization via QuickBooks. Clean books you can actually use to run your business — delivered with P&L, balance sheet, and cash flow every month.",
+    desc: "Monthly reconciliation and categorization via QuickBooks. Clean books you can actually use to run your business, delivered with P&L, balance sheet, and cash flow every month.",
     bullets: [
       "Monthly transaction reconciliation",
       "QuickBooks managed for you",
@@ -290,7 +290,7 @@ const SERVICES = [
   {
     eyebrow: "IRS representation",
     title: "IRS Defense & Representation",
-    desc: "Received a notice or facing an audit? Our licensed Enrolled Agent represents you directly before the IRS with unlimited practice rights — so you never face them alone.",
+    desc: "Received a notice or facing an audit? Our licensed Enrolled Agent represents you directly before the IRS with unlimited practice rights so you never face them alone.",
     bullets: [
       "CP notices, audits, and appeals",
       "Enrolled Agent with unlimited IRS practice rights",
@@ -322,7 +322,7 @@ const SERVICES = [
   {
     eyebrow: "Year-round planning",
     title: "Tax Planning & Strategy",
-    desc: "Proactive, year-round strategies to legally reduce what you owe. We identify deductions and savings opportunities before the year closes — not after it's too late.",
+    desc: "Proactive, year-round strategies to legally reduce what you owe. We identify deductions and savings opportunities before the year closes, not after it's too late.",
     bullets: [
       "Retirement account contribution optimization",
       "Business structure and entity selection",
@@ -352,7 +352,7 @@ export default function Services() {
               Full-Service Tax<br />&amp; Accounting.
             </h1>
             <p style={{ fontSize: "16px", color: C.muted, lineHeight: 1.75, maxWidth: "520px", marginBottom: "32px" }}>
-              From individual returns to complex small business accounting — all prepared by a licensed CPA and Enrolled Agent on our team.
+              From individual returns to complex small business accounting, all prepared by a licensed CPA and Enrolled Agent on our team.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
               <Link href="/tax-intake" className="btn-gold" style={{ background: C.gold, color: C.dark, fontSize: "13px", fontWeight: 700, padding: "12px 28px", borderRadius: "7px" }}>
@@ -371,7 +371,7 @@ export default function Services() {
         {[
           "Licensed CPA & Enrolled Agent on our team",
           "Federal + state returns for all 50 states",
-          "Flat-fee pricing — no surprise billing",
+          "Flat-fee pricing. No surprise billing.",
           "Year-round support, not just April",
         ].map((item, i) => (
           <div key={i} style={{ flex: 1, textAlign: "center", padding: "14px 12px", borderRight: i < 3 ? `1px solid ${C.border}` : "none", display: "flex", alignItems: "center", justifyContent: "center", gap: "7px" }}>
@@ -444,7 +444,7 @@ export default function Services() {
       <section className="hero-gradient" style={{ padding: "80px 44px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "24px", flexWrap: "wrap" }}>
         <div>
           <h2 style={{ fontSize: "clamp(22px,2.5vw,32px)", fontWeight: 800, color: C.white, letterSpacing: "-0.8px", marginBottom: "8px" }}>Not sure which service fits?</h2>
-          <p style={{ fontSize: "14px", color: C.muted }}>Reach out — we&apos;ll guide you to the right solution with no commitment.</p>
+          <p style={{ fontSize: "14px", color: C.muted }}>Reach out and we&apos;ll guide you to the right solution with no commitment.</p>
         </div>
         <Link href="/contact" style={{ flexShrink: 0, background: C.gold, color: C.dark, fontSize: "14px", fontWeight: 700, padding: "14px 32px", borderRadius: "8px", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "7px" }}>
           Contact Us

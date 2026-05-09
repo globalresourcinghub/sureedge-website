@@ -120,7 +120,7 @@ export default function Home() {
             animation: "fadeIn 0.7s 0.2s ease both",
           }}>
             Virtual tax services by a licensed CPA and Enrolled Agent.
-            Expert guidance, personal service, year-round support — for
+            Expert guidance, personal service, year-round support for
             individuals and small businesses nationwide.
           </p>
 

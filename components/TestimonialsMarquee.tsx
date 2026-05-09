@@ -12,7 +12,7 @@ const C = {
 
 const ALL = [
   {
-    quote: "First year freelancing? SureEdge walks you through every deduction, every quarterly payment — and finds savings you didn't know existed.",
+    quote: "First year freelancing? SureEdge walks you through every deduction, every quarterly payment and finds savings you didn't know existed.",
     tag: "Freelancer",
   },
   {
@@ -20,23 +20,23 @@ const ALL = [
     tag: "S-Corp Owner",
   },
   {
-    quote: "IRS notice? SureEdge handles the response, the paperwork, and the follow-up — most cases resolved in weeks, not months.",
+    quote: "IRS notice? SureEdge handles the response, the paperwork, and the follow-up. Most cases resolved in weeks, not months.",
     tag: "IRS Notice",
   },
   {
-    quote: "Big-box prep means a different preparer every year. SureEdge knows your situation and builds on it — year after year.",
+    quote: "Big-box prep means a different preparer every year. SureEdge knows your situation and builds on it, year after year.",
     tag: "Individual Filer",
   },
   {
-    quote: "Sole proprietor with no idea where to start? Quarterly taxes, SE tax, write-offs — explained in plain language, set up right.",
+    quote: "Sole proprietor with no idea where to start? Quarterly taxes, SE tax, write-offs explained in plain language and set up right.",
     tag: "Sole Proprietor",
   },
   {
-    quote: "Clean books aren't just for tax time. SureEdge bookkeeping means you understand your P&L every month — not just in April.",
+    quote: "Clean books aren't just for tax time. SureEdge bookkeeping means you understand your P&L every month, not just in April.",
     tag: "Small Business",
   },
   {
-    quote: "Multiple states and a rental property — SureEdge handles it all in one place. No more juggling preparers.",
+    quote: "Multiple states and a rental property? SureEdge handles it all in one place. No more juggling preparers.",
     tag: "Multi-State Filing",
   },
 ];

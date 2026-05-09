@@ -4,11 +4,11 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Meet the team behind SureEdge — a Texas-based virtual tax services business with a licensed CPA and Enrolled Agent, serving individuals and small businesses nationwide.",
+  description: "Meet the team behind SureEdge, a Texas-based virtual tax services business with a licensed CPA and Enrolled Agent, serving individuals and small businesses nationwide.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About Us | SureEdge Tax & Accounting",
-    description: "Meet the team behind SureEdge — a Texas-based virtual tax services business with a licensed CPA and Enrolled Agent, serving individuals and small businesses nationwide.",
+    description: "Meet the team behind SureEdge, a Texas-based virtual tax services business with a licensed CPA and Enrolled Agent, serving individuals and small businesses nationwide.",
     url: "/about",
   },
 };
@@ -32,7 +32,7 @@ const CREDENTIALS = [
   {
     abbr: "CPA",
     title: "Certified Public Accountant",
-    desc: "Licensed for full accounting and tax services — the highest standard in the profession.",
+    desc: "Licensed for full accounting and tax services. The highest standard in the profession.",
   },
   {
     abbr: "EA",
@@ -47,7 +47,7 @@ const CREDENTIALS = [
   {
     abbr: "∞",
     title: "Year-Round Access",
-    desc: "Available all year — not just at tax time. We plan proactively so surprises don't happen.",
+    desc: "Available all year, not just at tax time. We plan proactively so surprises don't happen.",
   },
 ];
 
@@ -63,7 +63,7 @@ const VALUES = [
   },
   {
     title: "Accessibility",
-    desc: "You get direct access — email and phone, no phone trees or voicemail loops. Real people, real answers.",
+    desc: "You get direct access: email and phone, no phone trees or voicemail loops. Real people, real answers.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.19h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.07 6.07l1.04-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -146,7 +146,7 @@ export default function About() {
               }}>
                 SureEdge was founded on a simple belief: every individual and small
                 business deserves the quality of tax services that big firms reserve for
-                their largest clients. We deliver that — virtually, nationwide, at a fair flat fee.
+                their largest clients. We deliver that, virtually, nationwide, at a fair flat fee.
               </p>
 
               {/* Trust pills */}
@@ -292,7 +292,7 @@ export default function About() {
                 </p>
                 <p style={{ fontSize: "15px", color: C.mutedDark, lineHeight: 1.75, marginBottom: "16px" }}>
                   We are a family-run practice based in Texas, with a licensed CPA and Enrolled
-                  Agent on our team. We serve our clients as a true partner — not just a
+                  Agent on our team. We serve our clients as a true partner, not just a
                   once-a-year tax preparer.
                 </p>
                 <p style={{ fontSize: "15px", color: C.mutedDark, lineHeight: 1.75, marginBottom: "32px" }}>
@@ -312,7 +312,7 @@ export default function About() {
                   borderRadius: "0 12px 12px 0",
                 }}>
                   <p style={{ fontSize: "14px", fontStyle: "italic", color: C.textDark, lineHeight: 1.6, margin: 0 }}>
-                    "Delivered personally, accessibly, and affordably — every client, every time."
+                    "Delivered personally, accessibly, and affordably. Every client, every time."
                   </p>
                 </div>
               </ScrollReveal>
@@ -384,10 +384,10 @@ export default function About() {
               <ScrollReveal delay={60}>
                 <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                   {[
-                    { step: "01", title: "Free quote in 2 business days", desc: "Tell us about your situation — we respond fast with a clear, flat-fee proposal." },
+                    { step: "01", title: "Free quote in 2 business days", desc: "Tell us about your situation. We respond fast with a clear, flat-fee proposal." },
                     { step: "02", title: "Secure document upload", desc: "Upload your documents from any device via our encrypted client portal." },
                     { step: "03", title: "CPA review & preparation", desc: "Your licensed CPA reviews everything, identifies every deduction, and prepares your return." },
-                    { step: "04", title: "Review, sign, and file", desc: "You review your return, e-sign in the portal, and we file electronically — done." },
+                    { step: "04", title: "Review, sign, and file", desc: "You review your return, e-sign in the portal, and we file electronically. Done." },
                   ].map((s, i) => (
                     <div key={s.step} style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
                       <div style={{

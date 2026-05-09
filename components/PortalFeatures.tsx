@@ -126,7 +126,7 @@ const FEATURES = [
       </svg>
     ),
     title: "Real-time return tracking",
-    desc: "See every step — intake, CPA review, e-filed, accepted — without calling. Estimated refund visible from day one.",
+    desc: "See every step: intake, CPA review, e-filed, accepted. No calling required. Estimated refund visible from day one.",
   },
   {
     icon: (

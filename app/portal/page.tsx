@@ -4,11 +4,11 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Client Portal",
-  description: "Manage your return, upload documents from any device, message your CPA directly, and access 6 free financial tools — all in the SureEdge client portal.",
+  description: "Manage your return, upload documents from any device, message your CPA directly, and access 6 free financial tools. All in the SureEdge client portal.",
   alternates: { canonical: "/portal" },
   openGraph: {
     title: "Client Portal | SureEdge Tax & Accounting",
-    description: "Upload documents, message your CPA, track your return, and access 6 free financial tools — all in one secure place.",
+    description: "Upload documents, message your CPA, track your return, and access 6 free financial tools. All in one secure place.",
     url: "/portal",
   },
 };
@@ -266,7 +266,7 @@ export default function PortalPage() {
               Everything you need,<br />in one secure place.
             </h1>
             <p style={{ fontSize: "clamp(15px,1.4vw,18px)", color: C.muted, lineHeight: 1.75, maxWidth: "560px", margin: "0 auto 40px" }}>
-              Manage your return, upload documents from any device, message your CPA directly, and access 6 free financial tools — all in one place.
+              Manage your return, upload documents from any device, message your CPA directly, and access 6 free financial tools. All in one place.
             </p>
             <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "12px" }}>
               <Link href="https://portal.sureedgetax.com/register" className="btn-gold" style={{ background: C.gold, color: C.dark, fontSize: "14px", fontWeight: 700, padding: "14px 32px", borderRadius: "8px" }}>
@@ -308,7 +308,7 @@ export default function PortalPage() {
                   Know exactly where<br />your return stands.
                 </h2>
                 <p style={{ fontSize: "15px", color: C.mutedDark, lineHeight: 1.75, marginBottom: "24px" }}>
-                  See every step from intake to IRS acceptance — without calling or waiting for a reply. Your estimated refund is visible the moment your CPA starts.
+                  See every step from intake to IRS acceptance, without calling or waiting for a reply. Your estimated refund is visible the moment your CPA starts.
                 </p>
                 {[
                   "Step-by-step timeline: intake → review → e-filed → accepted",
@@ -333,11 +333,11 @@ export default function PortalPage() {
                   Upload from your laptop,<br />phone, or tablet.
                 </h2>
                 <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.75, marginBottom: "24px" }}>
-                  Snap a photo of your W-2 or 1099 on your phone and it goes straight to your CPA — no scanner, no fax, no printing anything. We accept PDFs, photos, and scans.
+                  Snap a photo of your W-2 or 1099 on your phone and it goes straight to your CPA. No scanner, no fax, no printing anything. We accept PDFs, photos, and scans.
                 </p>
                 {[
                   "Drag & drop or browse files from your computer",
-                  "Snap & upload from your phone — no scanner needed",
+                  "Snap & upload from your phone. No scanner needed.",
                   "All file types accepted: PDF, JPG, PNG, HEIC",
                   "Auto-organized by tax year and document type",
                   "256-bit AES encrypted in transit and at rest",
@@ -387,10 +387,10 @@ export default function PortalPage() {
                   Talk to your CPA,<br />not a phone tree.
                 </h2>
                 <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.75, marginBottom: "24px" }}>
-                  Message your CPA directly inside the portal. Ask questions, share context, get answers — with full conversation history always at your fingertips.
+                  Message your CPA directly inside the portal. Ask questions, share context, get answers with full conversation history always at your fingertips.
                 </p>
                 {[
-                  "Direct line to your CPA — no call centers or assistants",
+                  "Direct line to your CPA. No call centers or assistants.",
                   "Attach documents or photos directly in a message",
                   "Full conversation history, always searchable",
                   "Average CPA response within one business day",

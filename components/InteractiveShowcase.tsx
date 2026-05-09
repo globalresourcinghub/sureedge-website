@@ -13,7 +13,7 @@ const C = {
 const TABS: { id: ServiceId; label: string; desc: string; href: string }[] = [
   { id: "individual", label: "Individual Tax", desc: "Federal & state returns for W-2 employees, freelancers, retirees, and investors.", href: "/tax-intake" },
   { id: "business",   label: "Small Business", desc: "S-Corp, Partnership, and Schedule C returns filed accurately, on time.", href: "/business-tax-intake" },
-  { id: "bookkeeping",label: "Bookkeeping",    desc: "Monthly reconciliation and clean financials via QuickBooks — year-round.", href: "/business-tax-intake" },
+  { id: "bookkeeping",label: "Bookkeeping",    desc: "Monthly reconciliation and clean financials via QuickBooks, year-round.", href: "/business-tax-intake" },
   { id: "irs",        label: "IRS Defense",    desc: "Enrolled Agent represents you before the IRS. Audits, notices, appeals.", href: "/contact" },
 ];
 

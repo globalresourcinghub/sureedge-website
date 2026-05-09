@@ -164,7 +164,7 @@ export default function ChatWidget() {
                 SureEdge Tax Assistant
                 <span style={{ background: gold, color: "#fff", fontSize: "9px", fontWeight: 700, padding: "2px 6px", borderRadius: "8px", letterSpacing: "0.5px" }}>AI</span>
               </div>
-              <div style={{ color: "rgba(255,255,255,0.7)", fontSize: "11px", marginTop: "2px" }}>Powered by AI — general tax questions only</div>
+              <div style={{ color: "rgba(255,255,255,0.7)", fontSize: "11px", marginTop: "2px" }}>Powered by AI. General tax questions only.</div>
             </div>
           </div>
 

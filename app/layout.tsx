@@ -11,7 +11,7 @@ import VisitTracker from "@/components/VisitTracker";
 const SITE_URL = "https://www.sureedgetax.com";
 const DEFAULT_TITLE = "SureEdge Tax & Accounting | Tax Services by a Licensed CPA & EA";
 const DEFAULT_DESCRIPTION =
-  "Virtual tax preparation, bookkeeping, payroll, and IRS representation — prepared by a licensed Certified Public Accountant and Enrolled Agent on our team. Based in Texas, serving individuals and small businesses nationwide.";
+  "Virtual tax preparation, bookkeeping, payroll, and IRS representation by a licensed CPA and Enrolled Agent on our team. Based in Texas, serving individuals and small businesses nationwide.";
 const DEFAULT_OG_IMAGE = "/sureedge-logo-whatsapp.png"; // 1200x630 preferred
 
 export const metadata: Metadata = {

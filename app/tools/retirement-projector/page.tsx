@@ -250,7 +250,7 @@ export default function RetirementProjectorPage() {
                 {monthlySpendingNeed > 0 && (
                   <div style={{ background: hasShortfall ? "#fdecea" : "#dff5e0", border: `1.5px solid ${hasShortfall ? "#c0392b" : "#27ae60"}`, borderRadius: "12px", padding: "18px 22px" }}>
                     <div style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: hasShortfall ? "#c0392b" : "#27ae60", marginBottom: "6px" }}>
-                      {hasShortfall ? "Income Shortfall" : "Will You Have Enough? — YES"}
+                      {hasShortfall ? "Income Shortfall" : "Will You Have Enough? Yes."}
                     </div>
                     {hasShortfall ? (
                       <>
