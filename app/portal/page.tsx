@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Client Portal | SureEdge Tax & Accounting",
+  title: "Client Portal",
   description: "Manage your return, upload documents from any device, message your CPA directly, and access 6 free financial tools — all in the SureEdge client portal.",
   alternates: { canonical: "/portal" },
   openGraph: {

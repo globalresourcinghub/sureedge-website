@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 import { posts } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "Blog | Tax Tips & Accounting Insights",
+  title: "Tax & Accounting Blog",
   description: "Practical tax tips, small-business accounting advice, and IRS compliance guidance from licensed CPA and Enrolled Agent professionals.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "Blog | Tax Tips & Accounting Insights",
+    title: "Tax Tips & Accounting Insights | SureEdge",
     description: "Practical tax tips, small-business accounting advice, and IRS compliance guidance.",
     url: "/blog",
   },

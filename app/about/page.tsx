@@ -3,7 +3,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | SureEdge Tax & Accounting",
+  title: "About Us",
   description: "Meet the team behind SureEdge — a Texas-based virtual tax services business with a licensed CPA and Enrolled Agent, serving individuals and small businesses nationwide.",
   alternates: { canonical: "/about" },
   openGraph: {

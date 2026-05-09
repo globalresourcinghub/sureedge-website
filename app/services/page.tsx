@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Our Services | Tax & Accounting",
+  title: "Our Services",
   description: "Full-service tax and accounting for individuals and small businesses. Prepared by a licensed CPA and Enrolled Agent, serving clients nationwide.",
   alternates: { canonical: "/services" },
   openGraph: {
-    title: "Our Services | Tax & Accounting",
+    title: "Our Services | SureEdge Tax & Accounting",
     description: "Full-service tax and accounting for individuals and small businesses. Prepared by a licensed CPA and Enrolled Agent, serving clients nationwide.",
     url: "/services",
   },

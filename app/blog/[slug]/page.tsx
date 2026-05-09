@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = getPostBySlug(slug);
   if (!post) return {};
   return {
-    title: `${post.title} | SureEdge Tax & Accounting`,
+    title: post.title,
     description: post.excerpt,
     alternates: { canonical: `/blog/${slug}` },
     openGraph: {
