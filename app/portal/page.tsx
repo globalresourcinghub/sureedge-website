@@ -4,7 +4,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Client Portal",
-  description: "Manage your return, upload documents from any device, message your CPA directly, and access 6 free financial tools. All in the SureEdge client portal.",
+  description: "Manage your return, upload documents from any device, message your CPA directly, and access a free financial planning dashboard. All in the SureEdge client portal.",
   alternates: { canonical: "/portal" },
   openGraph: {
     title: "Client Portal | SureEdge Tax & Accounting",
@@ -183,6 +183,77 @@ function IdentityMock() {
   );
 }
 
+function PlannerMock() {
+  const stats = [
+    { label: "NET WORTH",        val: "$284,200",  color: "#b8962e" },
+    { label: "ANNUAL INCOME",   val: "$124,000",  color: C.textDark },
+    { label: "ANNUAL EXPENSES", val: "$89,400",   color: C.textDark },
+    { label: "TOTAL ASSETS",    val: "$318,500",  color: C.textDark },
+    { label: "GOALS SET",       val: "4",         color: C.textDark },
+    { label: "CASH FLOW",       val: "+$34,600",  color: "#16a34a"  },
+  ];
+  const navItems = ["Dashboard", "Income", "Expenses", "Assets & Debts", "Goals", "Scenarios"];
+  return (
+    <div style={{ background: C.white, borderRadius: "16px", border: `1px solid ${C.borderLight}`, boxShadow: "0 24px 80px rgba(26,46,74,0.16)", overflow: "hidden" }}>
+      <PortalNav active={-1} />
+      {/* Planner sub-nav */}
+      <div style={{ background: C.offWhite, borderBottom: `1px solid ${C.borderLight}`, padding: "8px 18px", display: "flex", gap: "12px", overflow: "hidden" }}>
+        {navItems.map((item, i) => (
+          <span key={item} style={{
+            fontSize: "10px", fontWeight: i === 0 ? 700 : 400,
+            color: i === 0 ? C.gold : C.muted,
+            borderBottom: i === 0 ? `2px solid ${C.gold}` : "2px solid transparent",
+            paddingBottom: "4px", whiteSpace: "nowrap", cursor: "pointer",
+          }}>{item}</span>
+        ))}
+      </div>
+      <div style={{ padding: "18px 20px" }}>
+        {/* Header */}
+        <div style={{ marginBottom: "14px" }}>
+          <div style={{ fontSize: "15px", fontWeight: 800, color: C.textDark }}>Your Household</div>
+          <div style={{ fontSize: "10px", color: C.muted, marginTop: "1px" }}>Financial Planning Dashboard</div>
+        </div>
+        {/* Onboarding banner */}
+        <div style={{ background: C.navy, borderRadius: "8px", padding: "10px 14px", marginBottom: "14px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "10px" }}>
+          <div>
+            <div style={{ fontSize: "10px", fontWeight: 700, color: C.white, marginBottom: "1px" }}>Set up your plan in 5 minutes</div>
+            <div style={{ fontSize: "9px", color: "rgba(255,255,255,0.45)" }}>Answer a few questions and we&apos;ll build your first financial projection.</div>
+          </div>
+          <div style={{ background: C.gold, color: C.dark, fontSize: "9px", fontWeight: 700, padding: "5px 10px", borderRadius: "5px", flexShrink: 0 }}>
+            Start Setup →
+          </div>
+        </div>
+        {/* Stats grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "7px", marginBottom: "12px" }}>
+          {stats.map((s) => (
+            <div key={s.label} style={{ background: C.offWhite, borderRadius: "7px", padding: "9px 10px", border: `1px solid ${C.borderLight}` }}>
+              <div style={{ fontSize: "7px", color: C.muted, letterSpacing: "0.6px", textTransform: "uppercase", marginBottom: "3px" }}>{s.label}</div>
+              <div style={{ fontSize: "13px", fontWeight: 800, color: s.color, letterSpacing: "-0.3px", lineHeight: 1 }}>{s.val}</div>
+            </div>
+          ))}
+        </div>
+        {/* Quick-start checklist */}
+        <div style={{ background: C.offWhite, borderRadius: "7px", padding: "10px 12px", border: `1px solid ${C.borderLight}` }}>
+          <div style={{ fontSize: "8px", fontWeight: 700, color: C.textDark, letterSpacing: "0.8px", textTransform: "uppercase", marginBottom: "7px" }}>Quick-Start Checklist</div>
+          {[
+            "Add your income sources",
+            "Add your expenses",
+            "Add your assets & debts",
+            "Set your financial goals",
+          ].map((item) => (
+            <div key={item} style={{ display: "flex", alignItems: "center", gap: "7px", padding: "3px 0" }}>
+              <div style={{ width: "12px", height: "12px", borderRadius: "50%", border: `1.5px solid ${C.gold}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <div style={{ width: "4px", height: "4px", borderRadius: "50%", background: C.gold }} />
+              </div>
+              <span style={{ fontSize: "10px", color: C.gold }}>{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function MessagesMock() {
   return (
     <div style={{ background: C.darkMid, borderRadius: "16px", border: `1px solid ${C.border}`, boxShadow: "0 24px 80px rgba(0,0,0,0.35)", overflow: "hidden" }}>
@@ -266,7 +337,7 @@ export default function PortalPage() {
               Everything you need,<br />in one secure place.
             </h1>
             <p style={{ fontSize: "clamp(15px,1.4vw,18px)", color: C.muted, lineHeight: 1.75, maxWidth: "560px", margin: "0 auto 40px" }}>
-              Manage your return, upload documents from any device, message your CPA directly, and access 6 free financial tools. All in one place.
+              Track your return, upload documents from any device, message your CPA directly, and access a free financial planning dashboard. All in one place.
             </p>
             <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "12px" }}>
               <Link href="https://portal.sureedgetax.com/register" className="btn-gold" style={{ background: C.gold, color: C.dark, fontSize: "14px", fontWeight: 700, padding: "14px 32px", borderRadius: "8px" }}>
@@ -287,7 +358,7 @@ export default function PortalPage() {
           { icon: "🔒", label: "Bank-level encryption" },
           { icon: "📱", label: "Upload from any device" },
           { icon: "💬", label: "Direct CPA messaging" },
-          { icon: "🧮", label: "6 free planning tools" },
+          { icon: "📊", label: "Financial planning dashboard" },
         ].map((item, i) => (
           <div key={i} style={{ flex: 1, textAlign: "center", padding: "18px 16px", borderRight: i < 3 ? `1px solid ${C.border}` : "none", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}>
             <span style={{ fontSize: "14px" }}>{item.icon}</span>
@@ -398,6 +469,33 @@ export default function PortalPage() {
                 ].map((b, i) => <Bullet key={i} text={b} dark={true} />)}
               </div>
               <MessagesMock />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ── Section 5: Financial Planning Dashboard ── */}
+      <section style={{ background: C.offWhite, padding: "96px 44px" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          <ScrollReveal>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center" }}>
+              <PlannerMock />
+              <div>
+                <div style={{ fontSize: "11px", fontWeight: 600, color: C.gold, letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "14px" }}>Financial planning</div>
+                <h2 style={{ fontSize: "clamp(26px,3vw,40px)", fontWeight: 800, color: C.textDark, letterSpacing: "-1px", lineHeight: 1.15, marginBottom: "16px" }}>
+                  Your complete financial<br />picture, in one place.
+                </h2>
+                <p style={{ fontSize: "15px", color: C.mutedDark, lineHeight: 1.75, marginBottom: "24px" }}>
+                  Every client account includes a full household financial planning dashboard. Track your net worth, set goals, model retirement scenarios, and understand your financial picture — all without a separate subscription or advisor fee.
+                </p>
+                {[
+                  "Net worth and total asset tracking",
+                  "Budget categories and monthly cash flow",
+                  "Goal projections and retirement scenarios",
+                  "Social Security claiming strategy estimator",
+                  "College savings planner",
+                ].map((b, i) => <Bullet key={i} text={b} dark={false} />)}
+              </div>
             </div>
           </ScrollReveal>
         </div>
