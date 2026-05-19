@@ -92,36 +92,36 @@ function SmallBizPanel() {
 }
 
 function BookkeepingPanel() {
-  const rows = [
-    { label: "Stripe — Client Revenue", amount: "+$8,400", pos: true },
-    { label: "AWS Infrastructure",       amount: "−$312",   pos: false },
-    { label: "Contractor Payment",       amount: "−$2,500", pos: false },
-    { label: "Office Supplies",          amount: "−$156",   pos: false },
-  ];
   return (
     <div style={{ background: C.darkMid, borderRadius: "16px", border: `1px solid ${C.border}`, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
       <div style={{ background: C.navy, padding: "12px 18px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <span style={{ fontSize: "11px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>April 2025 · Books</span>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(147,197,253,0.1)", border: "1px solid rgba(147,197,253,0.25)", color: "#93c5fd", fontSize: "10px", fontWeight: 600, padding: "3px 8px", borderRadius: "12px" }}>
-          All Transactions Reconciled
+        <span style={{ fontSize: "11px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>April 2025 · Monthly Report</span>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(110,231,183,0.1)", border: "1px solid rgba(110,231,183,0.25)", color: C.green, fontSize: "10px", fontWeight: 600, padding: "3px 8px", borderRadius: "12px" }}>
+          Report Ready ✓
         </div>
       </div>
       <div style={{ padding: "24px" }}>
-        {rows.map((r, i) => (
-          <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "9px 0", borderBottom: i < rows.length - 1 ? `1px solid ${C.border}` : "none" }}>
-            <span style={{ fontSize: "12px", color: C.muted }}>{r.label}</span>
-            <span style={{ fontSize: "12px", fontWeight: 600, color: r.pos ? C.green : C.white }}>{r.amount}</span>
+        {[
+          { label: "Total Revenue", val: "$24,800", color: C.green,  bold: false },
+          { label: "Total Expenses", val: "−$14,200", color: C.white, bold: false },
+          { label: "Net Income",    val: "$10,600",  color: C.gold,  bold: true  },
+        ].map((r, i) => (
+          <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 0", borderBottom: i < 2 ? `1px solid ${C.border}` : "none" }}>
+            <span style={{ fontSize: "12px", color: r.bold ? C.white : C.muted, fontWeight: r.bold ? 700 : 400 }}>{r.label}</span>
+            <span style={{ fontSize: r.bold ? "18px" : "13px", fontWeight: 700, color: r.color, letterSpacing: r.bold ? "-0.5px" : "0" }}>{r.val}</span>
           </div>
         ))}
-        <div style={{ marginTop: "16px", background: "rgba(255,255,255,0.04)", borderRadius: "10px", padding: "14px", border: `1px solid ${C.border}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <span style={{ fontSize: "12px", fontWeight: 600, color: C.white }}>Net Income</span>
-          <span style={{ fontSize: "20px", fontWeight: 800, color: C.green, letterSpacing: "-0.5px" }}>+$5,432</span>
+        <div style={{ margin: "16px 0", background: "rgba(201,168,76,0.08)", borderRadius: "10px", padding: "14px 16px", border: `1px solid ${C.goldBorder}` }}>
+          <div style={{ fontSize: "9px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase", marginBottom: "6px" }}>AI Commentary</div>
+          <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, margin: 0 }}>
+            Revenue grew 18% vs. March, driven by new client onboarding. Operating costs stayed flat. Cash position remains strong.
+          </p>
         </div>
-        <div style={{ marginTop: "12px", display: "flex", alignItems: "center", gap: "8px" }}>
-          <div style={{ width: "18px", height: "18px", borderRadius: "4px", background: "#2CA01C", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <span style={{ fontSize: "9px", fontWeight: 800, color: "#fff" }}>Q</span>
-          </div>
-          <span style={{ fontSize: "11px", color: C.muted }}>QuickBooks synced · 99.4% match rate</span>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span style={{ fontSize: "11px", color: C.muted }}>Delivered to your portal · Included free with bookkeeping</span>
         </div>
       </div>
     </div>
@@ -280,6 +280,7 @@ const SERVICES = [
       "QuickBooks managed for you",
       "P&L, balance sheet, and cash flow reports",
       "Audit-ready at any time",
+      "Free monthly CFO report with AI commentary, delivered to your portal",
     ],
     cta: "Get a quote",
     href: "/business-tax-intake",
@@ -380,6 +381,73 @@ export default function Services() {
           </div>
         ))}
       </div>
+
+      {/* ── Included with every plan ── */}
+      <section style={{ background: C.offWhite, padding: "56px 44px", borderBottom: `1px solid ${C.borderLight}` }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "36px" }}>
+            <div style={{ fontSize: "11px", fontWeight: 600, color: C.gold, letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "10px" }}>Included with every plan</div>
+            <h2 style={{ fontSize: "clamp(22px,2.8vw,32px)", fontWeight: 800, color: C.textDark, letterSpacing: "-0.8px", lineHeight: 1.15, margin: 0 }}>
+              More than just tax and accounting.
+            </h2>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
+
+            {/* Card 1: Financial Planning Dashboard — all clients */}
+            <div style={{ background: C.white, borderRadius: "16px", border: `1px solid ${C.borderLight}`, padding: "28px 32px", boxShadow: "0 4px 24px rgba(26,46,74,0.06)" }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: C.goldSoft, border: `1px solid ${C.goldBorder}`, color: C.gold, fontSize: "10px", fontWeight: 700, padding: "4px 10px", borderRadius: "12px", marginBottom: "16px" }}>
+                All clients · Free
+              </div>
+              <h3 style={{ fontSize: "18px", fontWeight: 800, color: C.textDark, letterSpacing: "-0.4px", marginBottom: "10px", lineHeight: 1.25 }}>
+                Personal Financial Planning Dashboard
+              </h3>
+              <p style={{ fontSize: "13px", color: C.mutedDark, lineHeight: 1.75, marginBottom: "18px" }}>
+                Every client gets access to a full household planning dashboard. Track your net worth, set financial goals, model retirement scenarios, and see your complete financial picture in one place.
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
+                {[
+                  "Net worth and asset tracking",
+                  "Budget, income, and expense categories",
+                  "Goal projections and retirement scenarios",
+                  "Social Security and college savings estimators",
+                ].map(b => (
+                  <div key={b} style={{ display: "flex", alignItems: "center", gap: "9px", fontSize: "12px", color: C.mutedDark }}>
+                    <span style={{ color: C.gold, fontWeight: 700, fontSize: "13px", flexShrink: 0 }}>✓</span>
+                    {b}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Card 2: Monthly CFO Report — bookkeeping clients */}
+            <div style={{ background: C.dark, borderRadius: "16px", border: `1px solid rgba(255,255,255,0.08)`, padding: "28px 32px", boxShadow: "0 4px 24px rgba(0,0,0,0.2)" }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(110,231,183,0.1)", border: "1px solid rgba(110,231,183,0.25)", color: C.green, fontSize: "10px", fontWeight: 700, padding: "4px 10px", borderRadius: "12px", marginBottom: "16px" }}>
+                Bookkeeping clients · Free
+              </div>
+              <h3 style={{ fontSize: "18px", fontWeight: 800, color: C.white, letterSpacing: "-0.4px", marginBottom: "10px", lineHeight: 1.25 }}>
+                Monthly CFO Report
+              </h3>
+              <p style={{ fontSize: "13px", color: C.muted, lineHeight: 1.75, marginBottom: "18px" }}>
+                Every month, your books close and a plain-language report lands in your client portal. P&amp;L summary, cash flow, and an AI-generated narrative that explains what your numbers actually mean.
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
+                {[
+                  "Monthly P&L, balance sheet, and cash flow",
+                  "AI-generated narrative in plain language",
+                  "Revenue trends and expense breakdowns",
+                  "Delivered automatically, no extra charge",
+                ].map(b => (
+                  <div key={b} style={{ display: "flex", alignItems: "center", gap: "9px", fontSize: "12px", color: C.muted }}>
+                    <span style={{ color: C.green, fontWeight: 700, fontSize: "13px", flexShrink: 0 }}>✓</span>
+                    {b}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
 
       {/* ── Alternating service rows ── */}
       {SERVICES.map((svc) => (

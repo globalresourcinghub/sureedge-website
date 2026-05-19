@@ -10,16 +10,16 @@ const C = {
   green: "#6ee7b7", blue: "#93c5fd", violet: "#c4b5fd",
 };
 
-const NAV_ITEMS = ["Dashboard", "Returns", "Books", "Tools", "Documents", "Messages"];
+const PLANNER_NAV = ["Dashboard", "Income", "Expenses", "Assets & Debts", "Goals", "Scenarios"];
 
-const ACTIVITY = [
-  { icon: "✓", color: C.green,  text: "W-2 from Employer uploaded",       time: "2h ago" },
-  { icon: "✓", color: C.green,  text: "1099-NEC added to your return",     time: "Yesterday" },
-  { icon: "●", color: C.gold,   text: "Schedule B requested by your CPA",  time: "Pending" },
-  { icon: "💬", color: C.blue,  text: "Message from CPA: \"Almost done!\"",time: "1h ago" },
+const PLANNER_STATS = [
+  { label: "NET WORTH",        val: "$284,200",  color: C.gold    },
+  { label: "ANNUAL INCOME",   val: "$124,000",  color: C.textDark },
+  { label: "ANNUAL EXPENSES", val: "$89,400",   color: C.textDark },
+  { label: "TOTAL ASSETS",    val: "$318,500",  color: C.textDark },
+  { label: "GOALS SET",       val: "4",         color: C.textDark },
+  { label: "CASH FLOW",       val: "+$34,600",  color: "#16a34a"  },
 ];
-
-const TOOLS = ["Tax Bracket", "Roth IRA", "Quarterly Tax", "+ 3 more"];
 
 function PortalMock() {
   return (
@@ -31,13 +31,13 @@ function PortalMock() {
       overflow: "hidden",
     }}>
       {/* Top nav */}
-      <div style={{ background: C.navy, padding: "13px 20px", display: "flex", alignItems: "center", gap: "20px", overflow: "hidden" }}>
+      <div style={{ background: C.navy, padding: "13px 20px", display: "flex", alignItems: "center", gap: "16px", overflow: "hidden" }}>
         <span style={{ color: C.gold, fontWeight: 800, fontSize: "13px", letterSpacing: "-0.2px", flexShrink: 0 }}>SureEdge</span>
-        <div style={{ display: "flex", gap: "16px", overflow: "hidden" }}>
-          {NAV_ITEMS.map((item, i) => (
+        <div style={{ display: "flex", gap: "14px", overflow: "hidden" }}>
+          {PLANNER_NAV.map((item, i) => (
             <span key={item} style={{
               color: i === 0 ? C.gold : "rgba(255,255,255,0.45)",
-              fontSize: "11px", fontWeight: i === 0 ? 600 : 400,
+              fontSize: "10px", fontWeight: i === 0 ? 600 : 400,
               borderBottom: i === 0 ? `2px solid ${C.gold}` : "2px solid transparent",
               paddingBottom: "2px", whiteSpace: "nowrap",
             }}>
@@ -50,68 +50,45 @@ function PortalMock() {
         </div>
       </div>
 
-      <div style={{ padding: "24px" }}>
-        {/* Welcome */}
-        <div style={{ marginBottom: "18px" }}>
-          <div style={{ fontSize: "16px", fontWeight: 800, color: C.textDark, letterSpacing: "-0.3px" }}>Welcome back, Sarah K.</div>
-          <div style={{ fontSize: "12px", color: C.muted, marginTop: "3px" }}>Tax Year 2024 · Under Review by your CPA</div>
+      <div style={{ padding: "20px 24px" }}>
+        {/* Page header */}
+        <div style={{ marginBottom: "16px" }}>
+          <div style={{ fontSize: "18px", fontWeight: 800, color: C.textDark, letterSpacing: "-0.3px" }}>Your Household</div>
+          <div style={{ fontSize: "11px", color: C.muted, marginTop: "2px" }}>Financial Planning Dashboard</div>
         </div>
 
-        {/* Stats row */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "10px", marginBottom: "20px" }}>
-          {[
-            { label: "Est. Refund", val: "$3,240", color: C.gold },
-            { label: "Progress",    val: "94%",    color: C.textDark },
-            { label: "Documents",   val: "4 / 5",  color: C.green },
-          ].map(s => (
-            <div key={s.label} style={{ background: C.offWhite, borderRadius: "10px", padding: "12px 14px", border: `1px solid ${C.borderLight}` }}>
-              <div style={{ fontSize: "10px", color: C.muted, marginBottom: "5px" }}>{s.label}</div>
-              <div style={{ fontSize: "20px", fontWeight: 800, color: s.color, letterSpacing: "-0.5px", lineHeight: 1 }}>{s.val}</div>
+        {/* Onboarding banner */}
+        <div style={{ background: C.navy, borderRadius: "10px", padding: "12px 16px", marginBottom: "16px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px" }}>
+          <div>
+            <div style={{ fontSize: "11px", fontWeight: 700, color: C.white, marginBottom: "2px" }}>Set up your plan in 5 minutes</div>
+            <div style={{ fontSize: "10px", color: "rgba(255,255,255,0.5)" }}>Answer a few questions and we&#39;ll build your first financial projection.</div>
+          </div>
+          <div style={{ background: C.gold, color: C.dark, fontSize: "10px", fontWeight: 700, padding: "6px 12px", borderRadius: "6px", flexShrink: 0, whiteSpace: "nowrap" }}>
+            Start Setup →
+          </div>
+        </div>
+
+        {/* Stats grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "8px", marginBottom: "14px" }}>
+          {PLANNER_STATS.map((s) => (
+            <div key={s.label} style={{ background: C.offWhite, borderRadius: "8px", padding: "10px 12px", border: `1px solid ${C.borderLight}` }}>
+              <div style={{ fontSize: "8px", color: C.muted, letterSpacing: "0.8px", textTransform: "uppercase", marginBottom: "4px" }}>{s.label}</div>
+              <div style={{ fontSize: "14px", fontWeight: 800, color: s.color, letterSpacing: "-0.5px", lineHeight: 1 }}>{s.val}</div>
             </div>
           ))}
         </div>
 
-        {/* Progress bar */}
-        <div style={{ marginBottom: "18px" }}>
-          <div style={{ height: "6px", background: C.borderLight, borderRadius: "3px", overflow: "hidden" }}>
-            <div style={{ width: "94%", height: "100%", background: `linear-gradient(90deg, ${C.gold}, #e8c56a)`, borderRadius: "3px" }} />
-          </div>
-        </div>
-
-        {/* Activity feed */}
-        <div style={{ marginBottom: "16px" }}>
-          <div style={{ fontSize: "10px", color: C.muted, letterSpacing: "1.2px", textTransform: "uppercase", marginBottom: "10px" }}>Recent Activity</div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-            {ACTIVITY.map((a, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "10px", padding: "9px 0", borderBottom: i < ACTIVITY.length - 1 ? `1px solid ${C.borderLight}` : "none" }}>
-                <div style={{ width: "18px", height: "18px", borderRadius: "50%", background: `${a.color}18`, border: `1px solid ${a.color}40`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: "1px" }}>
-                  <span style={{ fontSize: "8px" }}>{a.icon}</span>
-                </div>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: "12px", color: C.textDark, fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{a.text}</div>
-                </div>
-                <div style={{ fontSize: "10px", color: C.muted, flexShrink: 0 }}>{a.time}</div>
+        {/* Quick-start checklist */}
+        <div style={{ background: C.offWhite, borderRadius: "8px", padding: "12px 14px", border: `1px solid ${C.borderLight}` }}>
+          <div style={{ fontSize: "9px", fontWeight: 700, color: C.textDark, letterSpacing: "1px", textTransform: "uppercase", marginBottom: "8px" }}>Quick-Start Checklist</div>
+          {["Add your income sources", "Add your expenses", "Set your financial goals"].map((item) => (
+            <div key={item} style={{ display: "flex", alignItems: "center", gap: "8px", padding: "4px 0" }}>
+              <div style={{ width: "14px", height: "14px", borderRadius: "50%", border: `1.5px solid ${C.gold}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <div style={{ width: "5px", height: "5px", borderRadius: "50%", background: C.gold }} />
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Free tools row */}
-        <div>
-          <div style={{ fontSize: "10px", color: C.muted, letterSpacing: "1.2px", textTransform: "uppercase", marginBottom: "8px" }}>Free Financial Tools</div>
-          <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
-            {TOOLS.map(tool => (
-              <div key={tool} style={{
-                background: tool.startsWith("+") ? C.goldSoft : C.offWhite,
-                border: `1px solid ${tool.startsWith("+") ? C.goldBorder : C.borderLight}`,
-                color: tool.startsWith("+") ? C.gold : C.mutedDark,
-                fontSize: "10px", fontWeight: 600,
-                padding: "4px 10px", borderRadius: "10px",
-              }}>
-                {tool}
-              </div>
-            ))}
-          </div>
+              <span style={{ fontSize: "11px", color: C.gold }}>{item}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -119,6 +96,15 @@ function PortalMock() {
 }
 
 const FEATURES = [
+  {
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+      </svg>
+    ),
+    title: "Financial planning dashboard, included free",
+    desc: "Every client gets a full household planning dashboard: net worth, budget, income, goals, retirement scenarios, Social Security estimator, college savings, and more. One place for your complete financial picture.",
+  },
   {
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -159,7 +145,7 @@ export default function PortalFeatures() {
             </div>
             <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "16px" }}>
               <h2 style={{ fontSize: "clamp(28px,3vw,40px)", fontWeight: 800, color: C.textDark, letterSpacing: "-1px", lineHeight: 1.15, margin: 0, maxWidth: "480px" }}>
-                Your finances,<br />always within reach.
+                A complete financial picture,<br />included with your account.
               </h2>
               <Link
                 href="/portal"

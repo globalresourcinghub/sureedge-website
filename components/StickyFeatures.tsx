@@ -115,11 +115,24 @@ function BooksMock() {
         </div>
 
         {/* QB badge */}
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
           <div style={{ width: "20px", height: "20px", borderRadius: "5px", background: "#2CA01C", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <span style={{ fontSize: "10px", fontWeight: 800, color: "#fff" }}>Q</span>
           </div>
           <span style={{ fontSize: "11px", color: C.muted }}>QuickBooks synced · 99.4% match rate</span>
+        </div>
+
+        {/* CFO report notification */}
+        <div style={{ background: C.goldSoft, borderRadius: "10px", padding: "12px 14px", border: `1px solid ${C.goldBorder}`, display: "flex", alignItems: "center", gap: "12px" }}>
+          <div style={{ width: "30px", height: "30px", borderRadius: "8px", background: "rgba(201,168,76,0.15)", border: `1px solid ${C.goldBorder}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <div>
+            <div style={{ fontSize: "11px", fontWeight: 700, color: C.white, marginBottom: "2px" }}>Monthly CFO report ready</div>
+            <div style={{ fontSize: "10px", color: C.muted }}>AI summary · Delivered to your portal · Free</div>
+          </div>
         </div>
       </div>
     </div>
@@ -199,8 +212,8 @@ const FEATURES = [
     id: "books",
     label: "02",
     title: "You run the business. We keep the books.",
-    desc: "Monthly reconciliation and categorization via QuickBooks. Your finances are always audit-ready, and you actually understand your P&L.",
-    bullets: ["Monthly transaction reconciliation", "QuickBooks managed for you", "P&L, balance sheet, cash flow delivered"],
+    desc: "Monthly reconciliation and categorization via QuickBooks. Books always audit-ready, and every month a plain-language CFO report lands in your portal.",
+    bullets: ["Monthly transaction reconciliation", "QuickBooks managed for you", "P&L, balance sheet, cash flow delivered", "Free monthly CFO report with AI commentary"],
     mock: <BooksMock />,
   },
   {
