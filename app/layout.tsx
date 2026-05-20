@@ -99,6 +99,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={inter.variable}>
       <body className="font-sans">
+        {/* ── Announcement bar — visible on every page, zero scroll ── */}
+        <div style={{
+          background: "#C9A84C",
+          padding: "9px 24px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "12px",
+          flexWrap: "wrap",
+          textAlign: "center",
+        }}>
+          <span style={{ fontSize: "13px", fontWeight: 600, color: "#0B1929", lineHeight: 1.5 }}>
+            ✦&nbsp; Included free with every client account: Personal Financial Planning Dashboard &amp; Monthly CFO Reports
+          </span>
+          <a
+            href="/portal"
+            style={{ fontSize: "12px", fontWeight: 700, color: "#0B1929", borderBottom: "1px solid rgba(11,25,41,0.45)", whiteSpace: "nowrap", textDecoration: "none" }}
+          >
+            See what&apos;s included →
+          </a>
+        </div>
         <Header />
         <main>{children}</main>
         <Footer />

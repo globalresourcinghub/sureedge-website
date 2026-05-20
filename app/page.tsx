@@ -182,23 +182,33 @@ export default function Home() {
 
           {/* Trust micro-markers */}
           <div style={{
-            display: "flex", flexWrap: "wrap", gap: "24px",
+            display: "flex", flexWrap: "wrap", gap: "16px",
             marginTop: "48px",
             animation: "fadeIn 0.7s 0.45s ease both",
           }}>
             {[
-              { icon: "✓", label: "Licensed CPA & Enrolled Agent" },
-              { icon: "✓", label: "No office visit required" },
-              { icon: "✓", label: "Response within 2 business days" },
-            ].map((t) => (
-              <span key={t.label} style={{
+              "Licensed CPA & Enrolled Agent",
+              "No office visit required",
+              "Response within 2 business days",
+            ].map((label) => (
+              <span key={label} style={{
                 display: "flex", alignItems: "center", gap: "7px",
                 fontSize: "12px", color: "rgba(255,255,255,0.55)",
               }}>
-                <span style={{ color: C.gold, fontWeight: 700, fontSize: "13px" }}>{t.icon}</span>
-                {t.label}
+                <span style={{ color: C.gold, fontWeight: 700, fontSize: "13px" }}>✓</span>
+                {label}
               </span>
             ))}
+            {/* Highlighted 4th marker — value-add */}
+            <span style={{
+              display: "inline-flex", alignItems: "center", gap: "7px",
+              fontSize: "12px", fontWeight: 600, color: C.gold,
+              background: C.goldSoft, border: `1px solid ${C.goldBorder}`,
+              borderRadius: "20px", padding: "3px 10px 3px 8px",
+            }}>
+              <span style={{ fontWeight: 800, fontSize: "13px" }}>✓</span>
+              Financial Planning Dashboard, included free
+            </span>
           </div>
         </div>{/* end left col */}
 
@@ -297,6 +307,98 @@ export default function Home() {
           </div>
         ))}
       </div>
+
+      {/* ══ WHAT'S INCLUDED FREE ═════════════════════════════════════ */}
+      <section style={{ background: C.dark, padding: "60px 44px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+
+          {/* Header */}
+          <div style={{ textAlign: "center", marginBottom: "36px" }}>
+            <div style={{ fontSize: "11px", fontWeight: 600, color: C.gold, letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "10px" }}>
+              Included with every plan
+            </div>
+            <h2 style={{ fontSize: "clamp(22px,2.8vw,32px)", fontWeight: 800, color: C.white, letterSpacing: "-0.8px", lineHeight: 1.15, margin: 0 }}>
+              More than just tax and accounting.
+            </h2>
+          </div>
+
+          {/* Two feature cards */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", marginBottom: "28px" }}>
+
+            {/* Card 1: Financial Planning Dashboard */}
+            <div style={{
+              background: "rgba(255,255,255,0.04)", border: `1px solid ${C.goldBorder}`,
+              borderRadius: "16px", padding: "28px 28px 24px",
+            }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: C.goldSoft, border: `1px solid ${C.goldBorder}`, color: C.gold, fontSize: "10px", fontWeight: 700, padding: "4px 10px", borderRadius: "12px", marginBottom: "16px" }}>
+                All clients · Free
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" }}>
+                <div style={{ width: "40px", height: "40px", borderRadius: "10px", background: C.goldSoft, border: `1px solid ${C.goldBorder}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                  </svg>
+                </div>
+                <div style={{ fontSize: "17px", fontWeight: 800, color: C.white, letterSpacing: "-0.3px", lineHeight: 1.2 }}>
+                  Personal Financial<br />Planning Dashboard
+                </div>
+              </div>
+              <p style={{ fontSize: "13px", color: C.muted, lineHeight: 1.7, marginBottom: "18px" }}>
+                Track your household net worth, budget, income, expenses, goals, and retirement scenarios — all in one place, at no extra charge.
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
+                {["Net worth and asset tracking", "Budget and expense categories", "Goal projections and retirement scenarios", "Social Security and college savings estimators"].map(b => (
+                  <div key={b} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "12px", color: C.muted }}>
+                    <span style={{ color: C.gold, fontWeight: 700, flexShrink: 0 }}>✓</span>{b}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Card 2: Monthly CFO Report */}
+            <div style={{
+              background: "rgba(110,231,183,0.04)", border: "1px solid rgba(110,231,183,0.25)",
+              borderRadius: "16px", padding: "28px 28px 24px",
+            }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(110,231,183,0.1)", border: "1px solid rgba(110,231,183,0.25)", color: "#6ee7b7", fontSize: "10px", fontWeight: 700, padding: "4px 10px", borderRadius: "12px", marginBottom: "16px" }}>
+                Bookkeeping clients · Free
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" }}>
+                <div style={{ width: "40px", height: "40px", borderRadius: "10px", background: "rgba(110,231,183,0.1)", border: "1px solid rgba(110,231,183,0.25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6ee7b7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+                  </svg>
+                </div>
+                <div style={{ fontSize: "17px", fontWeight: 800, color: C.white, letterSpacing: "-0.3px", lineHeight: 1.2 }}>
+                  Monthly CFO Report<br />with AI Commentary
+                </div>
+              </div>
+              <p style={{ fontSize: "13px", color: C.muted, lineHeight: 1.7, marginBottom: "18px" }}>
+                Every month your books close and a plain-language report lands in your portal: P&amp;L, cash flow, and an AI narrative that explains what your numbers mean.
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
+                {["Monthly P&L, balance sheet, and cash flow", "AI-generated narrative in plain language", "Revenue trends and expense breakdowns", "Delivered automatically, no extra charge"].map(b => (
+                  <div key={b} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "12px", color: C.muted }}>
+                    <span style={{ color: "#6ee7b7", fontWeight: 700, flexShrink: 0 }}>✓</span>{b}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+
+          {/* CTA row */}
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <a
+              href="/portal"
+              style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 700, color: C.gold, borderBottom: `1px solid ${C.goldBorder}`, textDecoration: "none", paddingBottom: "1px" }}
+            >
+              See everything included in your account →
+            </a>
+          </div>
+
+        </div>
+      </section>
 
       {/* ══ INTERACTIVE SHOWCASE ══════════════════════════════════════ */}
       <InteractiveShowcase />
