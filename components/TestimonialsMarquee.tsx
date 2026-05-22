@@ -1,14 +1,5 @@
 "use client";
-
-const C = {
-  gold: "#C9A84C",
-  goldSoft: "rgba(201,168,76,0.12)",
-  goldBorder: "rgba(201,168,76,0.28)",
-  offWhite: "#F8F7F4",
-  white: "#FFFFFF",
-  textDark: "#1a2e4a",
-  borderLight: "#EDEAE3",
-};
+import { C } from "@/lib/tokens";
 
 const ALL = [
   {

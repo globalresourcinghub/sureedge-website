@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import type { Metadata } from "next";
+import { C } from "@/lib/tokens";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -11,21 +12,6 @@ export const metadata: Metadata = {
     description: "Meet the team behind SureEdge, a Texas-based virtual tax services business with a licensed CPA and Enrolled Agent, serving individuals and small businesses nationwide.",
     url: "/about",
   },
-};
-
-const C = {
-  dark:        "#0B1929",
-  darkMid:     "#0f2035",
-  navy:        "#1a2e4a",
-  gold:        "#C9A84C",
-  goldSoft:    "rgba(201,168,76,0.12)",
-  goldBorder:  "rgba(201,168,76,0.28)",
-  offWhite:    "#F8F7F4",
-  white:       "#FFFFFF",
-  muted:       "#8A9BB0",
-  mutedDark:   "#6b7a8d",
-  textDark:    "#1a2e4a",
-  borderLight: "#EDEAE3",
 };
 
 const CREDENTIALS = [

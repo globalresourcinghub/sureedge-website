@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import EmailResultsModal from "@/components/EmailResultsModal";
+import ToolShell from "@/components/ToolShell";
 import {
   TAX_YEARS, TaxYear, FilingStatus, US_STATES,
   fmt, computeTax, computeSeTax, getStateRate, buildPortalSaveUrl,
@@ -31,6 +32,20 @@ export default function QuarterlyTaxPage() {
   const [consented, setConsented] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
   const calculated = calcCount > 0;
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      (window as any).gtag("event", "tool_started", { tool_name: "quarterly-tax" });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (calcCount > 0 && quarterlyPayment > 0) {
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("event", "tool_calculated", { tool_name: "quarterly-tax" });
+      }
+    }
+  }, [calcCount]);
   const stateTaxRate = stateRateOverride !== null ? stateRateOverride : getStateRate(stateCode);
 
   const yd = TAX_YEARS[taxYear];
@@ -78,7 +93,11 @@ export default function QuarterlyTaxPage() {
   );
 
   return (
-    <>
+    <ToolShell
+      disclaimerText="General estimate for reference only, not tax advice. Excludes AMT, NIIT, QBI deduction, most credits, and state-specific quarterly rules. Due dates may shift when they fall on a weekend or holiday. Consult a licensed CPA for your specific situation."
+      ctaHeading="Want a real quarterly tax plan?"
+      ctaHref="/tax-intake"
+    >
       {showEmail && <EmailResultsModal
         onClose={() => setShowEmail(false)}
         toolSlug="quarterly-tax"
@@ -330,10 +349,10 @@ export default function QuarterlyTaxPage() {
                 )}
 
                 <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-                  <button onClick={() => setShowEmail(true)} style={{ flex: 1, minWidth: "140px", background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}>
+                  <button onClick={() => { if (typeof window !== "undefined" && (window as any).gtag) { (window as any).gtag("event", "tool_email_clicked", { tool_name: "quarterly-tax" }); } setShowEmail(true); }} style={{ flex: 1, minWidth: "140px", background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}>
                     Email my results
                   </button>
-                  <a href={buildPortalSaveUrl('quarterly-tax', {
+                  <a onClick={() => { if (typeof window !== "undefined" && (window as any).gtag) { (window as any).gtag("event", "tool_register_clicked", { tool_name: "quarterly-tax" }); } }} href={buildPortalSaveUrl('quarterly-tax', {
                     inputs: { taxYear, filing, seIncome, otherWages, w2Withholding, otherDeductions, stateCode, stateTaxRate, priorYearTax, priorYearAgi, paidQ1, paidQ2, paidQ3 },
                     outputs: { quarterlyAmount: alreadyPaid > 0 ? adjustedQuarterly : recommendedQuarterly, totalAnnualTax, fedTax: fedTax.totalTax, seTax: seTax.totalSeTax, stateTax, isUnderpaying },
                     taxYear,
@@ -350,28 +369,6 @@ export default function QuarterlyTaxPage() {
         </div>
       </section>
 
-      <section style={{ background: "#fff", padding: "36px 44px", borderTop: "1px solid #f0ede6" }}>
-        <div style={{ maxWidth: "720px" }}>
-          <div style={{ background: "#fff8e6", border: "1px solid #f0d98a", borderRadius: "10px", padding: "14px 18px", marginBottom: "24px", display: "flex", gap: "12px", alignItems: "flex-start" }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: "1px" }}>
-              <path d="M12 2L2 20h20L12 2z" stroke="#b8962e" strokeWidth="1.8" strokeLinejoin="round"/>
-              <path d="M12 9v5M12 16.5v.5" stroke="#b8962e" strokeWidth="1.8" strokeLinecap="round"/>
-            </svg>
-            <p style={{ fontSize: "11px", color: "#7a6010", lineHeight: 1.8, margin: 0 }}>
-              General estimate for reference only, not tax advice. Excludes AMT, NIIT, QBI deduction, most credits, and state-specific quarterly rules. Due dates may shift when they fall on a weekend or holiday. Consult a licensed CPA for your specific situation.
-            </p>
-          </div>
-          <div style={{ background: "#faf9f6", borderRadius: "12px", padding: "24px 28px", border: "1px solid #f0ede6", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px", flexWrap: "wrap" }}>
-            <div>
-              <div style={{ fontSize: "14px", fontWeight: 700, color: "#1a2e4a", marginBottom: "4px" }}>Need a real quarterly tax plan?</div>
-              <div style={{ fontSize: "12px", color: "#666" }}>Our CPA &amp; EA team optimizes SE tax, finds deductions, and handles the IRS for you.</div>
-            </div>
-            <Link href="/booking" style={{ background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "11px 22px", borderRadius: "7px", textDecoration: "none", whiteSpace: "nowrap" }}>
-              Book a Free Consultation →
-            </Link>
-          </div>
-        </div>
-      </section>
-    </>
+    </ToolShell>
   );
 }

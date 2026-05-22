@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import EmailResultsModal from "@/components/EmailResultsModal";
+import ToolShell from "@/components/ToolShell";
 import { fmt, buildPortalSaveUrl } from "@/lib/tax-data";
 
 // SSA reduction/credit factors. FRA depends on birth year.
@@ -48,6 +49,20 @@ export default function SocialSecurityPage() {
   const [consented, setConsented] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
   const calculated = calcCount > 0;
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      (window as any).gtag("event", "tool_started", { tool_name: "social-security" });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (calcCount > 0 && totalAtLE[winnerIdx] > 0) {
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("event", "tool_calculated", { tool_name: "social-security" });
+      }
+    }
+  }, [calcCount]);
 
   const fra = getFRA(birthYear);
   const currentAge = 2026 - birthYear;
@@ -115,7 +130,11 @@ export default function SocialSecurityPage() {
   const STRATEGY_COLORS = ["#c0392b", "#1a2e4a", "#27ae60"];
 
   return (
-    <>
+    <ToolShell
+      disclaimerText="General estimate for reference only, not financial advice. Does not factor in spousal/survivor benefits, the earnings test, taxation of benefits, or Medicare premium impacts. A real claiming strategy benefits from professional review."
+      ctaHeading="Want a real claiming strategy?"
+      ctaHref="/tax-intake"
+    >
       {showEmail && <EmailResultsModal
         onClose={() => setShowEmail(false)}
         toolSlug="social-security"
@@ -292,10 +311,10 @@ export default function SocialSecurityPage() {
                 </div>
 
                 <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-                  <button onClick={() => setShowEmail(true)} style={{ flex: 1, minWidth: "140px", background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}>
+                  <button onClick={() => { if (typeof window !== "undefined" && (window as any).gtag) { (window as any).gtag("event", "tool_email_clicked", { tool_name: "social-security" }); } setShowEmail(true); }} style={{ flex: 1, minWidth: "140px", background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}>
                     Email my results
                   </button>
-                  <a href={buildPortalSaveUrl('social-security', {
+                  <a onClick={() => { if (typeof window !== "undefined" && (window as any).gtag) { (window as any).gtag("event", "tool_register_clicked", { tool_name: "social-security" }); } }} href={buildPortalSaveUrl('social-security', {
                     inputs: { birthYear, fraBenefit, lifeExpectancy, colaRate },
                     outputs: { bestStrategy: strategies[winnerIdx].age, fra, totalAtLE: totalAtLE[winnerIdx], breakeven62vsFra, breakevenFraVs70, breakeven62vs70 },
                   })} style={{ flex: 1, minWidth: "140px", background: "#b8962e", color: "#fff", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -311,29 +330,7 @@ export default function SocialSecurityPage() {
         </div>
       </section>
 
-      <section style={{ background: "#fff", padding: "36px 44px", borderTop: "1px solid #f0ede6" }}>
-        <div style={{ maxWidth: "720px" }}>
-          <div style={{ background: "#fff8e6", border: "1px solid #f0d98a", borderRadius: "10px", padding: "14px 18px", marginBottom: "24px", display: "flex", gap: "12px", alignItems: "flex-start" }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: "1px" }}>
-              <path d="M12 2L2 20h20L12 2z" stroke="#b8962e" strokeWidth="1.8" strokeLinejoin="round"/>
-              <path d="M12 9v5M12 16.5v.5" stroke="#b8962e" strokeWidth="1.8" strokeLinecap="round"/>
-            </svg>
-            <p style={{ fontSize: "11px", color: "#7a6010", lineHeight: 1.8, margin: 0 }}>
-              General estimate for reference only, not financial advice. Does not factor in spousal/survivor benefits, the earnings test, taxation of benefits, or Medicare premium impacts. A real claiming strategy benefits from professional review.
-            </p>
-          </div>
-          <div style={{ background: "#faf9f6", borderRadius: "12px", padding: "24px 28px", border: "1px solid #f0ede6", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px", flexWrap: "wrap" }}>
-            <div>
-              <div style={{ fontSize: "14px", fontWeight: 700, color: "#1a2e4a", marginBottom: "4px" }}>Want a real claiming strategy?</div>
-              <div style={{ fontSize: "12px", color: "#666" }}>Our team weighs taxation of benefits, IRMAA, and Roth conversion timing alongside the breakeven math.</div>
-            </div>
-            <Link href="/booking" style={{ background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "11px 22px", borderRadius: "7px", textDecoration: "none", whiteSpace: "nowrap" }}>
-              Book a Free Consultation →
-            </Link>
-          </div>
-        </div>
-      </section>
-    </>
+    </ToolShell>
   );
 }
 

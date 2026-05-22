@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { C } from "@/lib/tokens";
 
 export const metadata: Metadata = {
   title: "Free Financial Planning Tools",
   description:
     "Free tax and retirement calculators from SureEdge Tax & Accounting. Roth vs Traditional IRA comparison, tax bracket estimator, and more. No sign-up required.",
   alternates: { canonical: "/tools" },
-};
-
-const C = {
-  navy: "#1a2e4a", gold: "#C9A84C",
-  goldSoft: "rgba(201,168,76,0.12)", goldBorder: "rgba(201,168,76,0.28)",
-  offWhite: "#F8F7F4", white: "#FFFFFF",
-  muted: "#8A9BB0", mutedDark: "#6b7a8d",
-  borderLight: "#EDEAE3",
 };
 
 const tools = [

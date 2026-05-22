@@ -1,14 +1,9 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { C } from "@/lib/tokens";
 
 type ServiceId = "individual" | "business" | "bookkeeping" | "irs";
-
-const C = {
-  dark: "#0B1929", darkMid: "#0f2035", navy: "#1a2e4a",
-  gold: "#C9A84C", goldSoft: "rgba(201,168,76,0.12)", goldBorder: "rgba(201,168,76,0.28)",
-  muted: "#8A9BB0", border: "rgba(255,255,255,0.08)", white: "#fff",
-};
 
 const TABS: { id: ServiceId; label: string; desc: string; href: string }[] = [
   { id: "individual", label: "Individual Tax", desc: "Federal & state returns for W-2 employees, freelancers, retirees, and investors.", href: "/tax-intake" },

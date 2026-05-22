@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
+import { C } from "@/lib/tokens";
 
 export const metadata: Metadata = {
   title: "Client Portal",
@@ -11,15 +12,6 @@ export const metadata: Metadata = {
     description: "Upload documents, message your CPA, track your return, and access 6 free financial tools. All in one secure place.",
     url: "/portal",
   },
-};
-
-const C = {
-  dark: "#0B1929", darkMid: "#0f2035", navy: "#1a2e4a",
-  gold: "#C9A84C", goldSoft: "rgba(201,168,76,0.12)", goldBorder: "rgba(201,168,76,0.28)",
-  offWhite: "#F8F7F4", white: "#FFFFFF", textDark: "#1a2e4a",
-  muted: "#8A9BB0", mutedDark: "#6b7a8d",
-  borderLight: "#EDEAE3", border: "rgba(255,255,255,0.08)",
-  green: "#6ee7b7", blue: "#93c5fd", violet: "#c4b5fd",
 };
 
 const NAV = ["Dashboard", "Returns", "Books", "Tools", "Documents", "Messages"];

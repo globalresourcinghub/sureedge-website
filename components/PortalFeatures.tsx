@@ -1,14 +1,6 @@
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
-
-const C = {
-  dark: "#0B1929", navy: "#1a2e4a", darkMid: "#0f2035",
-  gold: "#C9A84C", goldSoft: "rgba(201,168,76,0.12)", goldBorder: "rgba(201,168,76,0.28)",
-  offWhite: "#F8F7F4", white: "#FFFFFF", textDark: "#1a2e4a",
-  muted: "#8A9BB0", mutedDark: "#6b7a8d",
-  borderLight: "#EDEAE3", border: "rgba(255,255,255,0.08)",
-  green: "#6ee7b7", blue: "#93c5fd", violet: "#c4b5fd",
-};
+import { C } from "@/lib/tokens";
 
 const PLANNER_NAV = ["Dashboard", "Income", "Expenses", "Assets & Debts", "Goals", "Scenarios"];
 

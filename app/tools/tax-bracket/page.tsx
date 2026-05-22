@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import EmailResultsModal from "@/components/EmailResultsModal";
+import ToolShell from "@/components/ToolShell";
 import {
   TAX_YEARS, TaxYear, FilingStatus, US_STATES,
   fmt, fmtRange, computeTax, computeFica, get401kMax, getIraMax, getHsaMax, getStateRate, buildPortalSaveUrl,
@@ -26,6 +27,20 @@ export default function TaxBracketPage() {
   const [consented, setConsented]       = useState(false);
   const [showEmail, setShowEmail]       = useState(false);
   const calculated = calcCount > 0;
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      (window as any).gtag("event", "tool_started", { tool_name: "tax-bracket" });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (calcCount > 0 && totalTaxAll > 0) {
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("event", "tool_calculated", { tool_name: "tax-bracket" });
+      }
+    }
+  }, [calcCount]);
 
   const yd      = TAX_YEARS[taxYear];
   const limits  = yd.limits;
@@ -89,7 +104,11 @@ export default function TaxBracketPage() {
   );
 
   return (
-    <>
+    <ToolShell
+      disclaimerText="General estimate for reference only, not tax advice. State tax uses a flat top-rate approximation; actual liability depends on your state's brackets, deductions, and credits. Excludes AMT, NIIT, QBI deduction, and most tax credits. Consult a licensed CPA for your specific situation."
+      ctaHeading="Want a real tax review?"
+      ctaHref="/tax-intake"
+    >
       {showEmail && <EmailResultsModal
         onClose={() => setShowEmail(false)}
         toolSlug="tax-bracket"
@@ -408,10 +427,10 @@ export default function TaxBracketPage() {
                 </div>
 
                 <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-                  <button onClick={() => setShowEmail(true)} style={{ flex: 1, minWidth: "140px", background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}>
+                  <button onClick={() => { if (typeof window !== "undefined" && (window as any).gtag) { (window as any).gtag("event", "tool_email_clicked", { tool_name: "tax-bracket" }); } setShowEmail(true); }} style={{ flex: 1, minWidth: "140px", background: "#fff", color: "#1a2e4a", border: "1.5px solid #1a2e4a", borderRadius: "8px", padding: "12px", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}>
                     Email my results
                   </button>
-                  <a href={buildPortalSaveUrl('tax-bracket', {
+                  <a onClick={() => { if (typeof window !== "undefined" && (window as any).gtag) { (window as any).gtag("event", "tool_register_clicked", { tool_name: "tax-bracket" }); } }} href={buildPortalSaveUrl('tax-bracket', {
                     inputs: { taxYear, filing, age, grossIncome, withholding, stateCode, stateRate, contrib401k, contribIra, contribHsa, hsaCoverage, deductionType, itemizedAmount },
                     outputs: { totalTax: totalTaxAll, fedTax, ficaTotal: fica.total, stateTax, marginalRate, effectiveRate, refundOrOwed, isRefund },
                     taxYear,
@@ -428,29 +447,7 @@ export default function TaxBracketPage() {
         </div>
       </section>
 
-      <section style={{ background: "#fff", padding: "36px 44px", borderTop: "1px solid #f0ede6" }}>
-        <div style={{ maxWidth: "720px" }}>
-          <div style={{ background: "#fff8e6", border: "1px solid #f0d98a", borderRadius: "10px", padding: "14px 18px", marginBottom: "24px", display: "flex", gap: "12px", alignItems: "flex-start" }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: "1px" }}>
-              <path d="M12 2L2 20h20L12 2z" stroke="#b8962e" strokeWidth="1.8" strokeLinejoin="round"/>
-              <path d="M12 9v5M12 16.5v.5" stroke="#b8962e" strokeWidth="1.8" strokeLinecap="round"/>
-            </svg>
-            <p style={{ fontSize: "11px", color: "#7a6010", lineHeight: 1.8, margin: 0 }}>
-              General estimate for reference only, not tax advice. State tax uses a flat top-rate approximation; actual liability depends on your state&apos;s brackets, deductions, and credits. Excludes AMT, NIIT, QBI deduction, and most tax credits. Consult a licensed CPA for your specific situation.
-            </p>
-          </div>
-          <div style={{ background: "#faf9f6", borderRadius: "12px", padding: "24px 28px", border: "1px solid #f0ede6", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px", flexWrap: "wrap" }}>
-            <div>
-              <div style={{ fontSize: "14px", fontWeight: 700, color: "#1a2e4a", marginBottom: "4px" }}>Want a real tax review?</div>
-              <div style={{ fontSize: "12px", color: "#666" }}>Our CPA &amp; EA team finds deductions and credits that calculators miss.</div>
-            </div>
-            <Link href="/tax-intake" style={{ background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "11px 22px", borderRadius: "7px", textDecoration: "none", whiteSpace: "nowrap" }}>
-              Get a Free Quote →
-            </Link>
-          </div>
-        </div>
-      </section>
-    </>
+    </ToolShell>
   );
 }
 

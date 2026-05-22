@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { posts } from "@/lib/posts";
+import { C } from "@/lib/tokens";
 
 export const metadata: Metadata = {
   title: "Tax & Accounting Blog",
@@ -11,14 +12,6 @@ export const metadata: Metadata = {
     description: "Practical tax tips, small-business accounting advice, and IRS compliance guidance.",
     url: "/blog",
   },
-};
-
-const C = {
-  navy: "#1a2e4a", gold: "#C9A84C",
-  goldSoft: "rgba(201,168,76,0.12)", goldBorder: "rgba(201,168,76,0.28)",
-  offWhite: "#F8F7F4", white: "#FFFFFF",
-  muted: "#8A9BB0", mutedDark: "#6b7a8d",
-  borderLight: "#EDEAE3",
 };
 
 /* Assign a thematic Unsplash image to each post by slug */

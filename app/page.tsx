@@ -1,26 +1,14 @@
 import Link from "next/link";
+import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 import HeroParallax from "@/components/HeroParallax";
 import InteractiveShowcase from "@/components/InteractiveShowcase";
 import StickyFeatures from "@/components/StickyFeatures";
 import PortalFeatures from "@/components/PortalFeatures";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
+import { C } from "@/lib/tokens";
 
 /* ── Design tokens ─────────────────────────────── */
-const C = {
-  dark:       "#0B1929",
-  darkMid:    "#0f2035",
-  navy:       "#1a2e4a",
-  gold:       "#C9A84C",
-  goldSoft:   "rgba(201,168,76,0.12)",
-  goldBorder: "rgba(201,168,76,0.28)",
-  offWhite:   "#F8F7F4",
-  white:      "#FFFFFF",
-  muted:      "#8A9BB0",
-  textDark:   "#1a2e4a",
-  borderDark: "rgba(255,255,255,0.08)",
-  borderLight:"#EDEAE3",
-};
 
 /* ── Data ───────────────────────────────────────── */
 
@@ -132,12 +120,11 @@ export default function Home() {
             marginBottom: "28px",
             animation: "fadeIn 0.7s 0.25s ease both",
           }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=faces&auto=format&q=80"
               alt="Tax professional"
               width={40} height={40}
-              style={{ width: 40, height: 40, borderRadius: "50%", objectFit: "cover", border: `2px solid rgba(201,168,76,0.45)`, flexShrink: 0 }}
+              style={{ borderRadius: "50%", objectFit: "cover", border: `2px solid rgba(201,168,76,0.45)`, flexShrink: 0 }}
             />
             <div>
               <div style={{ fontSize: "12px", fontWeight: 700, color: C.white, marginBottom: "2px" }}>Licensed CPA &amp; EA on our team</div>
