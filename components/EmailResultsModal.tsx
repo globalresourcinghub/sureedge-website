@@ -32,11 +32,10 @@ export default function EmailResultsModal({ onClose, toolSlug, toolName, results
 
     // Run in parallel; both are best-effort. Treat success as "either succeeded".
     const [w3, portal] = await Promise.all([
-      fetch("https://api.web3forms.com/submit", {
+      fetch("/api/submit-form", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
           subject: `${toolName} Results — ${name}`,
           name, email,
           message: `Calculator results requested by ${name} (${email}):\n\n${resultsSummary}\n\nSent from: ${sourceUrl}`,
