@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#
+# .githooks/pre-push — enforces docs-in-sync for the marketing site.
+#
+# NOTE: unlike the portal, this repo deploys via pushes to main, so this hook does
+# NOT block main — it only runs the documentation gate.
+#
+# Activate once per clone (npm "prepare" does this automatically):
+#   git config core.hooksPath .githooks
+#
+# Emergency skip of the significance gate: DOCS_GATE_OVERRIDE=yes
+
+STDIN_DATA="$(cat)"
+
+if command -v node >/dev/null 2>&1; then
+  node scripts/docs-check.mjs || exit 1
+  printf '%s\n' "$STDIN_DATA" | node scripts/docs-gate.mjs || exit 1
+else
+  echo "pre-push: node not found on PATH — skipping docs-sync checks." >&2
+fi
+
+exit 0
