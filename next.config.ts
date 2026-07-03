@@ -42,6 +42,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "sureedgetax.com" },
       { protocol: "https", hostname: "www.sureedgetax.com" },
+      // Hero/about/tools photos still load from Unsplash; removing this host
+      // makes the homepage prerender throw (next/image unconfigured host).
+      { protocol: "https", hostname: "images.unsplash.com" },
     ],
   },
   async redirects() {

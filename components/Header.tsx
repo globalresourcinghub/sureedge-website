@@ -47,17 +47,6 @@ export default function Header() {
         <nav className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: "28px" }}>
           {links.map(l => {
             const isActive = pathname === l.href || pathname.startsWith(l.href + "/");
-            if (l.href === "/contact") {
-              return (
-                <Link key={l.href} href={l.href} style={{
-                  fontSize: "13px", fontWeight: 500,
-                  color: isActive ? "#b8962e" : "#1a2e4a",
-                  padding: "7px 18px", borderRadius: "6px",
-                  border: `1.5px solid ${isActive ? "#b8962e" : "#1a2e4a"}`,
-                  textDecoration: "none",
-                }}>Contact</Link>
-              );
-            }
             return (
               <Link key={l.href} href={l.href} style={{
                 fontSize: "13px",

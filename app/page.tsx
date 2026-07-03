@@ -17,7 +17,7 @@ const stats = [
   { val: "Flat Fee",  lbl: "No surprise billing"  },
   { val: "100%",      lbl: "Virtual service"       },
   { val: "6",         lbl: "Free planning tools"   },
-  { val: "2 Days",    lbl: "Quote response"        },
+  { val: "$10K+",     lbl: "Avg. small-biz savings identified" },
 ];
 
 
