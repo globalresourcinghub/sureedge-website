@@ -63,17 +63,10 @@ function GroupCheckboxes({ name, options }: { name: string; options: string[] })
 export default function BusinessTaxIntakePage() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorDetail, setErrorDetail] = useState<string | null>(null);
-  const web3FormsKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
-
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setStatus("sending");
     setErrorDetail(null);
-    if (!web3FormsKey) {
-      setStatus("error");
-      setErrorDetail("Missing NEXT_PUBLIC_WEB3FORMS_KEY. Add it in Vercel (or .env.local), then redeploy.");
-      return;
-    }
 
     const formData = new FormData(event.currentTarget);
     const values = Object.fromEntries(formData.entries());
@@ -81,7 +74,6 @@ export default function BusinessTaxIntakePage() {
       ...values,
       servicesNeeded: joinFieldList(formData.getAll("servicesNeeded")),
       incomeActivity: joinFieldList(formData.getAll("incomeActivity")),
-      access_key: web3FormsKey,
       subject: "New Business Tax Quote Request - SureEdge",
       formType: "business-tax-intake",
     };

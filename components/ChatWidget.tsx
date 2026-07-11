@@ -28,9 +28,12 @@ export default function ChatWidget() {
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [sessionCount, setSessionCount] = useState(0);
   const [limitReached, setLimitReached] = useState(false);
   const [showLabel, setShowLabel] = useState(true);
+  const [piiDismissed, setPiiDismissed] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    return sessionStorage.getItem('chat_pii_ok') === '1';
+  });
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -49,13 +52,11 @@ export default function ChatWidget() {
     setInput("");
     setMessages(prev => [...prev, { role: "user", text: msg }]);
     setLoading(true);
-    const newCount = sessionCount + 1;
-    setSessionCount(newCount);
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: msg, sessionCount: newCount }),
+        body: JSON.stringify({ message: msg }),
       });
       const data = await res.json();
       if (res.status === 429) {
@@ -71,7 +72,6 @@ export default function ChatWidget() {
           (window as any).gtag("event", "chatbot_message", {
             event_category: "Chatbot",
             event_label: msg.substring(0, 100),
-            value: newCount,
           });
         }
       } else {
@@ -210,6 +210,19 @@ export default function ChatWidget() {
                   {s}
                 </button>
               ))}
+            </div>
+          )}
+
+          {/* PII warning — one-time dismissible per session */}
+          {!piiDismissed && (
+            <div style={{ padding: "8px 12px", background: "#fef9c3", borderTop: "1px solid #fde68a", fontSize: "11px", color: "#713f12", display: "flex", alignItems: "flex-start", gap: "6px" }}>
+              <span style={{ flexShrink: 0 }}>&#9888;</span>
+              <span style={{ flex: 1 }}>Questions are logged. Do not share SSNs, EINs, or account numbers.</span>
+              <button
+                onClick={() => { sessionStorage.setItem('chat_pii_ok', '1'); setPiiDismissed(true); }}
+                aria-label="Dismiss privacy notice"
+                style={{ background: "none", border: "none", cursor: "pointer", color: "#713f12", fontSize: "14px", lineHeight: 1, padding: "0 0 0 4px", flexShrink: 0 }}
+              >&#x2715;</button>
             </div>
           )}
 

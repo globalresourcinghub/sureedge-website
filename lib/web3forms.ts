@@ -26,13 +26,10 @@ export async function submitToWeb3Forms(payload: Record<string, unknown>): Promi
   ok: boolean;
   message?: string;
 }> {
-  const res = await fetch("https://api.web3forms.com/submit", {
+  const res = await fetch("/api/submit-form", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-      ...payload,
-    }),
+    body: JSON.stringify(payload),
   });
 
   const data: unknown = await res.json().catch(() => ({}));

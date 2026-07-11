@@ -15,7 +15,10 @@ STRICT RULES:
 
 You represent a professional tax services business. Maintain accuracy and professionalism at all times.`;
 
+// Per-instance maps — effective for single-instance deployments.
+// For multi-instance Vercel, upgrade to Vercel KV for cross-instance consistency.
 const ipRequestCounts = new Map<string, { count: number; resetTime: number }>();
+const sessionCounts = new Map<string, number>();
 const SESSION_LIMIT = 10;
 const IP_DAILY_LIMIT = 30;
 
@@ -79,11 +82,15 @@ export async function POST(req: NextRequest) {
       ipRequestCounts.set(ip, { count: 1, resetTime: now + dayMs });
     }
 
-    const { message, sessionCount } = await req.json();
+    const { message } = await req.json();
 
+    // Session tracking via HTTP-only cookie — client cannot spoof the count
+    const sessionId = req.cookies.get('chat_sid')?.value ?? crypto.randomUUID();
+    const sessionCount = sessionCounts.get(sessionId) ?? 0;
     if (sessionCount >= SESSION_LIMIT) {
       return NextResponse.json({ error: 'SESSION_LIMIT' }, { status: 429 });
     }
+    sessionCounts.set(sessionId, sessionCount + 1);
 
     if (!message || typeof message !== 'string') {
       return NextResponse.json({ error: 'Invalid message' }, { status: 400 });
@@ -132,10 +139,20 @@ export async function POST(req: NextRequest) {
       question: message.substring(0, 500),
       response_text: reply.substring(0, 1000),
       response_length: reply.length,
-      session_count: sessionCount,
+      session_count: sessionCount + 1,
     });
 
-    return NextResponse.json({ reply, location });
+    const res = NextResponse.json({ reply, location });
+    if (!req.cookies.get('chat_sid')) {
+      res.cookies.set('chat_sid', sessionId, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'strict',
+        maxAge: 60 * 60, // 1 hour
+        path: '/',
+      });
+    }
+    return res;
   } catch {
     return NextResponse.json({ error: 'Service temporarily unavailable.' }, { status: 500 });
   }
