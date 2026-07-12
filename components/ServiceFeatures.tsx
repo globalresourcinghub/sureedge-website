@@ -165,7 +165,7 @@ function IrsPanel() {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "24px" }}>
           <div style={{ fontSize: "12px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>IRS Notice CP2000</div>
           <div style={{ background: "rgba(201,168,76,0.12)", border: `1px solid ${C.goldBorder}`, color: C.gold, fontSize: "10px", fontWeight: 600, padding: "3px 10px", borderRadius: "12px" }}>
-            EA Assigned
+            Agent Assigned
           </div>
         </div>
 
@@ -179,7 +179,7 @@ function IrsPanel() {
           </div>
           <div>
             <div style={{ fontSize: "11px", color: C.muted, marginBottom: "4px" }}>Enrolled Agent Defense</div>
-            <div style={{ fontSize: "13px", fontWeight: 700, color: C.white, lineHeight: 1.4 }}>Your EA responds directly<br/>to the IRS on your behalf</div>
+            <div style={{ fontSize: "13px", fontWeight: 700, color: C.white, lineHeight: 1.4 }}>Your Enrolled Agent responds<br/>to the IRS on your behalf</div>
           </div>
         </div>
 
@@ -207,7 +207,7 @@ const SERVICES = [
   {
     label: "Individual Tax Preparation",
     title: "Taxes filed accurately, every year.",
-    desc: "Federal and state returns prepared by a licensed CPA. From simple W-2s to complex investor portfolios, multi-state filings, and rental income — we handle it all.",
+    desc: "Federal and state returns prepared by a licensed tax professional. From simple W-2s to complex investor portfolios, multi-state filings, and rental income — we handle it all.",
     bullets: ["W-2, freelance, investor & retiree returns", "Multi-state filers welcome", "Direct e-file tracking to IRS acceptance"],
     href: "/tax-intake",
     cta: "Get your free quote",
@@ -227,7 +227,7 @@ const SERVICES = [
   {
     label: "Bookkeeping & QuickBooks",
     title: "Clean books, month after month.",
-    desc: "Monthly transaction reconciliation and categorization via QuickBooks. Get real P&Ls, balance sheets, and cash flow statements you can actually trust.",
+    desc: "Monthly transaction reconciliation and categorization via QuickBooks. Get real P&L, balance sheet, and cash flow reports you can actually use.",
     bullets: ["Monthly close within 48 hours", "QuickBooks managed end-to-end", "P&L, balance sheet & cash flow reports"],
     href: "/business-tax-intake",
     cta: "Get started",
@@ -237,8 +237,8 @@ const SERVICES = [
   {
     label: "IRS Representation",
     title: "IRS on your doorstep? We’ve got it.",
-    desc: "Our Enrolled Agent has the same authority to represent you before the IRS as an attorney. Audits, CP notices, appeals — handled from first letter to final resolution.",
-    bullets: ["Full EA representation rights", "Audit, notice & appeals handling", "Average case resolution under 18 days"],
+    desc: "Our Enrolled Agent has the same authority to represent you before the IRS as an attorney. IRS audits, CP notices, appeals — handled from first letter to final resolution.",
+    bullets: ["Full IRS representation rights", "IRS audit, notice & appeals handling", "Average case resolution under 18 days"],
     href: "/contact",
     cta: "Talk to us",
     panel: <IrsPanel />,
@@ -257,7 +257,7 @@ export default function ServiceFeatures() {
             </div>
             <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: "16px" }}>
               <h2 style={{ fontSize: "clamp(28px,3vw,40px)", fontWeight: 800, color: C.textDark, letterSpacing: "-1px", lineHeight: 1.15, margin: 0, maxWidth: "440px" }}>
-                Full-service tax &amp; accounting.
+                Full-service tax &amp; advisory.
               </h2>
               <Link href="/services" className="btn-ghost" style={{ color: C.mutedDark, fontSize: "13px", fontWeight: 500, padding: "10px 20px", borderRadius: "8px", border: `1px solid ${C.borderLight}`, display: "inline-flex", alignItems: "center", gap: "6px" }}>
                 View all services

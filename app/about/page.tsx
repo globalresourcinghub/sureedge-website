@@ -5,25 +5,25 @@ import { C } from "@/lib/tokens";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Meet the team behind SureEdge, a Texas-based virtual tax services business with a licensed CPA and Enrolled Agent, serving individuals and small businesses nationwide.",
+  description: "Meet the team behind SureEdge, a Texas-based virtual tax services business with a licensed Enrolled Agent, serving individuals and small businesses nationwide.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About Us | SureEdge Tax & Accounting",
-    description: "Meet the team behind SureEdge, a Texas-based virtual tax services business with a licensed CPA and Enrolled Agent, serving individuals and small businesses nationwide.",
+    title: "About Us | SureEdge Tax & Advisory",
+    description: "Meet the team behind SureEdge, a Texas-based virtual tax services business with a licensed Enrolled Agent, serving individuals and small businesses nationwide.",
     url: "/about",
   },
 };
 
 const CREDENTIALS = [
   {
-    abbr: "CPA",
-    title: "Certified Public Accountant",
-    desc: "Licensed for full accounting and tax services. The highest standard in the profession.",
+    abbr: "IRS",
+    title: "Enrolled Agent",
+    desc: "Federally licensed to represent clients in all tax matters, including IRS audits and appeals. The highest IRS credential.",
   },
   {
-    abbr: "EA",
-    title: "IRS Enrolled Agent",
-    desc: "Federally licensed to represent clients in all tax matters, including audits and appeals.",
+    abbr: "Flat-Fee",
+    title: "Transparent Pricing",
+    desc: "Clear flat-fee quotes with no surprise bills. You approve the price before any work begins.",
   },
   {
     abbr: "100%",
@@ -108,7 +108,7 @@ export default function About() {
                 padding: "6px 14px", borderRadius: "20px", marginBottom: "28px",
               }}>
                 <span style={{ width: "6px", height: "6px", background: C.gold, borderRadius: "50%", display: "inline-block" }} />
-                Texas-Based · Licensed CPA &amp; EA
+                Texas-Based · Licensed Enrolled Agent
               </div>
 
               <h1 style={{
@@ -137,7 +137,7 @@ export default function About() {
 
               {/* Trust pills */}
               <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-                {["Licensed CPA & Enrolled Agent", "All 50 States", "Flat-Fee Pricing", "Year-Round Support"].map(t => (
+                {["Licensed Enrolled Agent", "All 50 States", "Flat-Fee Pricing", "Year-Round Support"].map(t => (
                   <span key={t} style={{
                     display: "inline-flex", alignItems: "center", gap: "6px",
                     background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)",
@@ -272,12 +272,12 @@ export default function About() {
 
               <ScrollReveal delay={60}>
                 <p style={{ fontSize: "15px", color: C.mutedDark, lineHeight: 1.75, marginBottom: "16px" }}>
-                  SureEdge Tax &amp; Accounting was founded on a simple belief: every individual and
-                  small business deserves the quality of tax and accounting services that larger
+                  SureEdge Tax &amp; Advisory was founded on a simple belief: every individual and
+                  small business deserves the quality of tax and advisory services that larger
                   firms provide their biggest clients.
                 </p>
                 <p style={{ fontSize: "15px", color: C.mutedDark, lineHeight: 1.75, marginBottom: "16px" }}>
-                  We are a family-run practice based in Texas, with a licensed CPA and Enrolled
+                  We are a family-run practice based in Texas, with a licensed Enrolled
                   Agent on our team. We serve our clients as a true partner, not just a
                   once-a-year tax preparer.
                 </p>
@@ -372,7 +372,7 @@ export default function About() {
                   {[
                     { step: "01", title: "Free quote in 2 business days", desc: "Tell us about your situation. We respond fast with a clear, flat-fee proposal." },
                     { step: "02", title: "Secure document upload", desc: "Upload your documents from any device via our encrypted client portal." },
-                    { step: "03", title: "CPA review & preparation", desc: "Your licensed CPA reviews everything, identifies every deduction, and prepares your return." },
+                    { step: "03", title: "Expert review & preparation", desc: "Your licensed tax professional reviews everything, identifies every deduction, and prepares your return." },
                     { step: "04", title: "Review, sign, and file", desc: "You review your return, e-sign in the portal, and we file electronically. Done." },
                   ].map((s, i) => (
                     <div key={s.step} style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>

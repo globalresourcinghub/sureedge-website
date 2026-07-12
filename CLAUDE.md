@@ -6,7 +6,7 @@
 
 ## Project Overview
 - **Site:** https://sureedgetax.com
-- **Type:** Marketing website for SureEdge Tax & Accounting (virtual tax services business; not a CPA firm — Strivix LLC is owned by a non-CPA, so all marketing uses person-centric "licensed CPA and EA on our team" language rather than firm-level claims)
+- **Type:** Marketing website for SureEdge Tax & Accounting (virtual tax services business; not a CPA firm — SureEdge Tax & Accounting LLC is owned by a non-CPA, so all marketing uses person-centric "licensed CPA and EA on our team" language rather than firm-level claims)
 - **Framework:** Next.js 16.2.2 + TypeScript (Turbopack)
 - **Styling:** Inline styles only — no Tailwind
 - **Deployment:** Vercel — auto-deploys on push to main (bizgales-projects/sureedge-website)
@@ -184,7 +184,7 @@ All tools import tax brackets, standard deductions, contribution limits, state t
 ## Important Rules
 - Owner names must NOT appear anywhere on the site (conflict of interest)
 - CFP candidate/ChFC candidate must NOT appear on marketing materials (CFP Board rule)
-- Brand name is always "SureEdge Tax & Accounting" (with ampersand, not "and")
+- Brand name is always "SureEdge Tax & Advisory" (with ampersand, not "and"). **TSBPA notice 26-06-42N (July 2026) — prohibited in ALL user-facing copy:** "accounting", "accountant", "CPA", "certified public accountant", "auditor"/"auditing"/asserting audit expertise (e.g. "audit-ready"), AND the **bare abbreviation "EA"** (Tex. Occ. Code §901.453(a)(2) lists it as confusable with CPA). Always spell out **"Enrolled Agent"**; use "tax professional", "bookkeeping", "advisory". A client's *IRS audit* is fine — prefix with "IRS".
 - Always run `npx next build` before pushing — Vercel will reject broken builds
 - Rotate ANTHROPIC_API_KEY in Vercel after every Claude session
 
@@ -261,10 +261,55 @@ All tools import tax brackets, standard deductions, contribution limits, state t
 ---
 
 ## Business Context
-- **Entity:** Strivix LLC (DBA: SureEdge Tax & Accounting) — Wyoming LLC, Texas conversion in progress
+- **Entity:** SureEdge Tax & Accounting LLC — Texas LLC, formed June 25, 2026 (TX SOS File No. 806669935), sole member Pankaj Singhal (non-CPA). Prior entity Strivix LLC has been dissolved.
 - **Credentials:** CPA + EA (wife — the licensed professional), ChFC-in-progress (husband — operations/business owner; ChFC candidacy cannot be advertised per American College / CFP Board rules)
 - **Services:** Tax prep, bookkeeping, payroll, tax planning, IRS representation, business returns
 - **Email:** contact@sureedgetax.com (M365)
 - **Business Gmail:** sureedgetax@gmail.com
 - **Calendly:** sureedgetax@gmail.com (Google Meet integration)
 - **Analytics:** GA Measurement ID G-YBD5VMDTRG
+
+<!-- gitnexus:start -->
+# GitNexus — Code Intelligence
+
+This project is indexed by GitNexus as **sureedge-website** (473 symbols, 729 relationships, 8 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
+
+> Index stale? Run `node .gitnexus/run.cjs analyze` from the project root — it auto-selects an available runner. No `.gitnexus/run.cjs` yet? `npx gitnexus analyze` (npm 11 crash → `npm i -g gitnexus`; #1939).
+
+## Always Do
+
+- **MUST run impact analysis before editing any symbol.** Before modifying a function, class, or method, run `impact({target: "symbolName", direction: "upstream"})` and report the blast radius (direct callers, affected processes, risk level) to the user.
+- **MUST run `detect_changes()` before committing** to verify your changes only affect expected symbols and execution flows. For regression review, compare against the default branch: `detect_changes({scope: "compare", base_ref: "main"})`.
+- **MUST warn the user** if impact analysis returns HIGH or CRITICAL risk before proceeding with edits.
+- When exploring unfamiliar code, use `query({search_query: "concept"})` to find execution flows instead of grepping. It returns process-grouped results ranked by relevance.
+- When you need full context on a specific symbol — callers, callees, which execution flows it participates in — use `context({name: "symbolName"})`.
+- For security review, `explain({target: "fileOrSymbol"})` lists taint findings (source→sink flows; needs `analyze --pdg`).
+
+## Never Do
+
+- NEVER edit a function, class, or method without first running `impact` on it.
+- NEVER ignore HIGH or CRITICAL risk warnings from impact analysis.
+- NEVER rename symbols with find-and-replace — use `rename` which understands the call graph.
+- NEVER commit changes without running `detect_changes()` to check affected scope.
+
+## Resources
+
+| Resource | Use for |
+|----------|---------|
+| `gitnexus://repo/sureedge-website/context` | Codebase overview, check index freshness |
+| `gitnexus://repo/sureedge-website/clusters` | All functional areas |
+| `gitnexus://repo/sureedge-website/processes` | All execution flows |
+| `gitnexus://repo/sureedge-website/process/{name}` | Step-by-step execution trace |
+
+## CLI
+
+| Task | Read this skill file |
+|------|---------------------|
+| Understand architecture / "How does X work?" | `.claude/skills/gitnexus/gitnexus-exploring/SKILL.md` |
+| Blast radius / "What breaks if I change X?" | `.claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md` |
+| Trace bugs / "Why is X failing?" | `.claude/skills/gitnexus/gitnexus-debugging/SKILL.md` |
+| Rename / extract / split / refactor | `.claude/skills/gitnexus/gitnexus-refactoring/SKILL.md` |
+| Tools, resources, schema reference | `.claude/skills/gitnexus/gitnexus-guide/SKILL.md` |
+| Index, status, clean, wiki CLI commands | `.claude/skills/gitnexus/gitnexus-cli/SKILL.md` |
+
+<!-- gitnexus:end -->

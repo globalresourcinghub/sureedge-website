@@ -105,7 +105,7 @@ export default function TaxBracketPage() {
 
   return (
     <ToolShell
-      disclaimerText="General estimate for reference only, not tax advice. State tax uses a flat top-rate approximation; actual liability depends on your state's brackets, deductions, and credits. Excludes AMT, NIIT, QBI deduction, and most tax credits. Consult a licensed CPA for your specific situation."
+      disclaimerText="General estimate for reference only, not tax advice. State tax uses a flat top-rate approximation; actual liability depends on your state's brackets, deductions, and credits. Excludes AMT, NIIT, QBI deduction, and most tax credits. Consult a licensed tax professional for your specific situation."
       ctaHeading="Want a real tax review?"
       ctaHref="/tax-intake"
     >

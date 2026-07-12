@@ -94,7 +94,7 @@ export default function QuarterlyTaxPage() {
 
   return (
     <ToolShell
-      disclaimerText="General estimate for reference only, not tax advice. Excludes AMT, NIIT, QBI deduction, most credits, and state-specific quarterly rules. Due dates may shift when they fall on a weekend or holiday. Consult a licensed CPA for your specific situation."
+      disclaimerText="General estimate for reference only, not tax advice. Excludes AMT, NIIT, QBI deduction, most credits, and state-specific quarterly rules. Due dates may shift when they fall on a weekend or holiday. Consult a licensed tax professional for your specific situation."
       ctaHeading="Want a real quarterly tax plan?"
       ctaHref="/tax-intake"
     >

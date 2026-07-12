@@ -66,7 +66,7 @@ export default function Home() {
             animation: "fadeIn 0.6s ease forwards",
           }}>
             <span style={{ width: "6px", height: "6px", background: C.gold, borderRadius: "50%", display: "inline-block" }} />
-            CPA &amp; EA · Virtual · Nationwide
+            Enrolled Agent · Virtual · Nationwide
           </div>
 
           {/* Headline */}
@@ -83,7 +83,7 @@ export default function Home() {
               animation: "fadeIn 0.7s 0.1s ease both",
             }}
           >
-            Tax &amp; Accounting<br />
+            Tax &amp; Advisory<br />
             Done{" "}
             <span style={{ color: C.gold, position: "relative" }}>
               Right.
@@ -107,7 +107,7 @@ export default function Home() {
             marginBottom: "44px",
             animation: "fadeIn 0.7s 0.2s ease both",
           }}>
-            Virtual tax services by a licensed CPA and Enrolled Agent.
+            Virtual tax services by a licensed Enrolled Agent.
             Expert guidance, personal service, year-round support for
             individuals and small businesses nationwide.
           </p>
@@ -127,7 +127,7 @@ export default function Home() {
               style={{ borderRadius: "50%", objectFit: "cover", border: `2px solid rgba(201,168,76,0.45)`, flexShrink: 0 }}
             />
             <div>
-              <div style={{ fontSize: "12px", fontWeight: 700, color: C.white, marginBottom: "2px" }}>Licensed CPA &amp; EA on our team</div>
+              <div style={{ fontSize: "12px", fontWeight: 700, color: C.white, marginBottom: "2px" }}>Licensed Enrolled Agent on our team</div>
               <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.45)" }}>Virtual · Nationwide · Flat-fee pricing</div>
             </div>
             <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#6ee7b7", boxShadow: "0 0 6px #6ee7b7", flexShrink: 0 }} />
@@ -174,7 +174,7 @@ export default function Home() {
             animation: "fadeIn 0.7s 0.45s ease both",
           }}>
             {[
-              "Licensed CPA & Enrolled Agent",
+              "Licensed Enrolled Agent",
               "No office visit required",
               "Response within 2 business days",
             ].map((label) => (
@@ -232,7 +232,7 @@ export default function Home() {
               {[
                 { text: "W-2 &amp; 1099s uploaded", delay: "1.0s" },
                 { text: "All deductions reviewed", delay: "1.2s" },
-                { text: "Licensed CPA review", delay: "1.4s" },
+                { text: "Licensed tax pro review", delay: "1.4s" },
                 { text: "E-filed &amp; accepted", delay: "1.6s" },
               ].map((item, i) => (
                 <div key={i} style={{
@@ -305,7 +305,7 @@ export default function Home() {
               Included with every plan
             </div>
             <h2 style={{ fontSize: "clamp(22px,2.8vw,32px)", fontWeight: 800, color: C.white, letterSpacing: "-0.8px", lineHeight: 1.15, margin: 0 }}>
-              More than just tax and accounting.
+              More than just tax and advisory.
             </h2>
           </div>
 

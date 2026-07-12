@@ -9,16 +9,16 @@ import ChatWidget from "@/components/ChatWidget";
 import VisitTracker from "@/components/VisitTracker";
 
 const SITE_URL = "https://www.sureedgetax.com";
-const DEFAULT_TITLE = "SureEdge Tax & Accounting | Tax Services by a Licensed CPA & EA";
+const DEFAULT_TITLE = "SureEdge Tax & Advisory | Tax Services by a Licensed Enrolled Agent";
 const DEFAULT_DESCRIPTION =
-  "Virtual tax preparation, bookkeeping, payroll, and IRS representation by a licensed CPA and Enrolled Agent on our team. Based in Texas, serving individuals and small businesses nationwide.";
+  "Virtual tax preparation, bookkeeping, payroll, and IRS representation by a licensed Enrolled Agent on our team. Based in Texas, serving individuals and small businesses nationwide.";
 const DEFAULT_OG_IMAGE = "/sureedge-logo-whatsapp.png"; // 1200x630 preferred
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: DEFAULT_TITLE,
-    template: "%s | SureEdge Tax & Accounting",
+    template: "%s | SureEdge Tax & Advisory",
   },
   description: DEFAULT_DESCRIPTION,
   alternates: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: SITE_URL,
-    siteName: "SureEdge Tax & Accounting",
+    siteName: "SureEdge Tax & Advisory",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
     images: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
         url: DEFAULT_OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "SureEdge Tax & Accounting",
+        alt: "SureEdge Tax & Advisory",
       },
     ],
     locale: "en_US",
@@ -65,7 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const organizationLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "SureEdge Tax & Accounting",
+    name: "SureEdge Tax & Advisory",
     url: SITE_URL,
     logo: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
     description: DEFAULT_DESCRIPTION,
@@ -81,8 +81,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   // LocalBusiness / ProfessionalService — helps with local-pack eligibility
   const professionalServiceLd = {
     "@context": "https://schema.org",
-    "@type": "AccountingService",
-    name: "SureEdge Tax & Accounting",
+    "@type": "ProfessionalService",
+    name: "SureEdge Tax & Advisory",
     url: SITE_URL,
     description: DEFAULT_DESCRIPTION,
     areaServed: "US",

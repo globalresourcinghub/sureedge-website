@@ -134,7 +134,7 @@ function BooksMock() {
 }
 
 function IrsMock() {
-  const steps = ["Notice Received", "EA Assigned", "Response Filed", "Case Closed"];
+  const steps = ["Notice Received", "Agent Assigned", "Response Filed", "Case Closed"];
   return (
     <div style={{ background: C.darkMid, borderRadius: "20px", border: `1px solid ${C.border}`, overflow: "hidden" }}>
       <div style={{ background: C.navy, padding: "14px 20px", borderBottom: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -198,7 +198,7 @@ const FEATURES = [
     id: "tax",
     label: "01",
     title: "Your return, done right. Every deduction found.",
-    desc: "A licensed CPA reviews every line of your return, not a software algorithm. You get your maximum refund and never have to refile.",
+    desc: "A licensed tax professional reviews every line of your return, not a software algorithm. You get your maximum refund and never have to refile.",
     bullets: ["All types: W-2, freelance, rental, investor", "Multi-state returns handled", "Tracked step-by-step to IRS acceptance"],
     mock: <TaxMock />,
   },
@@ -206,7 +206,7 @@ const FEATURES = [
     id: "books",
     label: "02",
     title: "You run the business. We keep the books.",
-    desc: "Monthly reconciliation and categorization via QuickBooks. Books always audit-ready, and every month a plain-language CFO report lands in your portal.",
+    desc: "Monthly reconciliation and categorization via QuickBooks. Books always organized and review-ready, and every month a plain-language CFO report lands in your portal.",
     bullets: ["Monthly transaction reconciliation", "QuickBooks managed for you", "P&L, balance sheet, cash flow delivered", "Free monthly CFO report with AI commentary"],
     mock: <BooksMock />,
   },
@@ -215,7 +215,7 @@ const FEATURES = [
     label: "03",
     title: "You focus on your life. We handle the IRS.",
     desc: "Received a notice? Our Enrolled Agent steps in and deals directly with the IRS on your behalf so you never have to face them alone.",
-    bullets: ["Direct EA representation. Unlimited rights.", "Audits, CP notices & appeals", "Average resolution: 18 days"],
+    bullets: ["Direct Enrolled Agent representation. Unlimited rights.", "IRS audits, CP notices & appeals", "Average resolution: 18 days"],
     mock: <IrsMock />,
   },
 ];

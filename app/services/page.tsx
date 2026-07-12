@@ -5,11 +5,11 @@ import { C } from "@/lib/tokens";
 
 export const metadata: Metadata = {
   title: "Our Services",
-  description: "Full-service tax and accounting for individuals and small businesses. Prepared by a licensed CPA and Enrolled Agent, serving clients nationwide.",
+  description: "Full-service tax and advisory for individuals and small businesses. Prepared by a licensed Enrolled Agent, serving clients nationwide.",
   alternates: { canonical: "/services" },
   openGraph: {
-    title: "Our Services | SureEdge Tax & Accounting",
-    description: "Full-service tax and accounting for individuals and small businesses. Prepared by a licensed CPA and Enrolled Agent, serving clients nationwide.",
+    title: "Our Services | SureEdge Tax & Advisory",
+    description: "Full-service tax and advisory for individuals and small businesses. Prepared by a licensed Enrolled Agent, serving clients nationwide.",
     url: "/services",
   },
 };
@@ -45,7 +45,7 @@ function IndividualPanel() {
         </div>
         <div style={{ fontSize: "10px", color: C.muted, display: "flex", alignItems: "center", gap: "6px" }}>
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Reviewed &amp; signed by licensed CPA
+          Reviewed &amp; signed by a licensed tax pro
         </div>
       </div>
     </div>
@@ -121,7 +121,7 @@ function BookkeepingPanel() {
 }
 
 function IrsPanel() {
-  const steps = ["Notice Received", "EA Assigned", "Response Filed", "Case Closed"];
+  const steps = ["Notice Received", "Agent Assigned", "Response Filed", "Case Closed"];
   return (
     <div style={{ background: C.darkMid, borderRadius: "16px", border: `1px solid ${C.border}`, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
       <div style={{ background: C.navy, padding: "12px 18px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -234,7 +234,7 @@ const SERVICES = [
   {
     eyebrow: "Individual returns",
     title: "Personal Tax Preparation",
-    desc: "Federal and state returns for W-2 employees, freelancers, investors, rental owners, and retirees. Every deduction reviewed by a licensed CPA. Nothing left on the table.",
+    desc: "Federal and state returns for W-2 employees, freelancers, investors, rental owners, and retirees. Every deduction reviewed by a licensed tax professional. Nothing left on the table.",
     bullets: [
       "W-2, 1099, freelance, rental, and investment income",
       "Multi-state filers handled",
@@ -265,13 +265,13 @@ const SERVICES = [
   },
   {
     eyebrow: "Monthly bookkeeping",
-    title: "Bookkeeping & Financial Statements",
-    desc: "Monthly reconciliation and categorization via QuickBooks. Clean books you can actually use to run your business, delivered with P&L, balance sheet, and cash flow every month.",
+    title: "Bookkeeping & Monthly Financials",
+    desc: "Monthly reconciliation and categorization via QuickBooks. Clean books you can actually use to run your business, delivered with P&L, balance sheet, and cash flow reports every month.",
     bullets: [
       "Monthly transaction reconciliation",
       "QuickBooks managed for you",
       "P&L, balance sheet, and cash flow reports",
-      "Audit-ready at any time",
+      "Organized and review-ready at any time",
       "Free monthly CFO report with AI commentary, delivered to your portal",
     ],
     cta: "Get a quote",
@@ -283,9 +283,9 @@ const SERVICES = [
   {
     eyebrow: "IRS representation",
     title: "IRS Defense & Representation",
-    desc: "Received a notice or facing an audit? Our licensed Enrolled Agent represents you directly before the IRS with unlimited practice rights so you never face them alone.",
+    desc: "Received a notice or facing an IRS audit? Our licensed Enrolled Agent represents you directly before the IRS with unlimited practice rights so you never face them alone.",
     bullets: [
-      "CP notices, audits, and appeals",
+      "CP notices, IRS audits, and appeals",
       "Enrolled Agent with unlimited IRS practice rights",
       "Average resolution in 18 days",
       "$0 owed in most CP2000 cases we handle",
@@ -342,10 +342,10 @@ export default function Services() {
               What We Offer
             </div>
             <h1 style={{ fontSize: "clamp(32px,4.5vw,60px)", fontWeight: 800, color: C.white, letterSpacing: "-2px", lineHeight: 1.05, marginBottom: "16px", maxWidth: "640px" }}>
-              Full-Service Tax<br />&amp; Accounting.
+              Full-Service Tax<br />&amp; Advisory.
             </h1>
             <p style={{ fontSize: "16px", color: C.muted, lineHeight: 1.75, maxWidth: "520px", marginBottom: "32px" }}>
-              From individual returns to complex small business accounting, all prepared by a licensed CPA and Enrolled Agent on our team.
+              From individual returns to complex small business filings, all prepared by a licensed Enrolled Agent on our team.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
               <Link href="/tax-intake" className="btn-gold" style={{ background: C.gold, color: C.dark, fontSize: "13px", fontWeight: 700, padding: "12px 28px", borderRadius: "7px" }}>
@@ -362,7 +362,7 @@ export default function Services() {
       {/* ── Trust bar ── */}
       <div style={{ background: C.navy, borderBottom: `1px solid ${C.border}`, display: "flex" }}>
         {[
-          "Licensed CPA & Enrolled Agent on our team",
+          "Licensed Enrolled Agent on our team",
           "Federal + state returns for all 50 states",
           "Flat-fee pricing. No surprise billing.",
           "Year-round support, not just April",
@@ -380,7 +380,7 @@ export default function Services() {
           <div style={{ textAlign: "center", marginBottom: "36px" }}>
             <div style={{ fontSize: "11px", fontWeight: 600, color: C.gold, letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "10px" }}>Included with every plan</div>
             <h2 style={{ fontSize: "clamp(22px,2.8vw,32px)", fontWeight: 800, color: C.textDark, letterSpacing: "-0.8px", lineHeight: 1.15, margin: 0 }}>
-              More than just tax and accounting.
+              More than just tax and advisory.
             </h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>

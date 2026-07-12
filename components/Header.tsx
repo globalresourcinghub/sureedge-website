@@ -27,7 +27,7 @@ function HeaderLogo() {
           Sure<span style={{ color: "#b8962e" }}>Edge</span>
         </span>
         <span style={{ fontSize: "9px", color: "#666", letterSpacing: "1.8px", textTransform: "uppercase", marginTop: "3px" }}>
-          Tax &amp; Accounting
+          Tax &amp; Advisory
         </span>
       </div>
     </Link>

@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   description: "Fill out our business tax intake form and receive a personalized fee quote within 2 business days.",
   alternates: { canonical: "/business-tax-intake" },
   openGraph: {
-    title: "Business Tax Return Quote | SureEdge Tax & Accounting",
+    title: "Business Tax Return Quote | SureEdge Tax & Advisory",
     description: "Personalized fee quote within 2 business days.",
     url: "/business-tax-intake",
   },

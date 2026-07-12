@@ -1,5 +1,5 @@
 const stats = [
-  { value: "CPA & EA", label: "Dual Credentials" },
+  { value: "Enrolled Agent", label: "IRS Licensed" },
   { value: "100%", label: "Virtual Service" },
   { value: "Nationwide", label: "Client Coverage" },
   { value: "2 Days", label: "Quote Response" },

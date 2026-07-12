@@ -24,7 +24,7 @@ function stripMarkdown(text: string): string {
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<{ role: "user" | "assistant"; text: string }[]>([
-    { role: "assistant", text: "Hi! I am an AI tax assistant trained to answer general US tax and accounting questions. Ask me anything and I will do my best to help. For advice specific to your situation, our licensed CPA and EA are here too." }
+    { role: "assistant", text: "Hi! I am an AI tax assistant trained to answer general US tax questions. Ask me anything and I will do my best to help. For advice specific to your situation, our licensed Enrolled Agent is here too." }
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -171,7 +171,7 @@ export default function ChatWidget() {
           {/* AI notice bar */}
           <div style={{ background: "#fffbeb", padding: "7px 14px", fontSize: "11px", color: "#92400e", borderBottom: "1px solid #fde68a", display: "flex", alignItems: "center", gap: "6px" }}>
             <span>&#x26A0;&#xFE0F;</span>
-            This is an AI chatbot, not a human. For personal tax advice, contact our licensed CPA and EA.
+            This is an AI chatbot, not a human. For personal tax advice, contact our licensed Enrolled Agent.
           </div>
 
           {/* Messages */}
@@ -231,7 +231,7 @@ export default function ChatWidget() {
 
           {/* Contact CTA */}
           <a href="/contact" style={{ display: "block", textAlign: "center", padding: "10px", background: gold, color: "#fff", textDecoration: "none", fontSize: "12px", fontWeight: 700 }}>
-            Talk to a Real CPA &#x2192;
+            Talk to a Real Tax Pro &#x2192;
           </a>
         </div>
       )}

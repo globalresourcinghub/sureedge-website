@@ -24,7 +24,7 @@ Know your filing status before you do anything else. Your filing status affects 
 
 On the question of standard versus itemized deductions: for most people, the standard deduction is the right call. For 2025, it is $15,000 for single filers and $30,000 for married couples filing jointly. You would only want to itemize if your mortgage interest, state taxes, charitable donations, and qualifying medical expenses add up to more than those amounts.
 
-Do not assume you have nothing to claim. Many taxpayers miss credits they are fully entitled to. The Child Tax Credit, the Earned Income Tax Credit, education credits, and retirement contribution deductions are among the most commonly overlooked. A good CPA reviews your full picture and catches these.
+Do not assume you have nothing to claim. Many taxpayers miss credits they are fully entitled to. The Child Tax Credit, the Earned Income Tax Credit, education credits, and retirement contribution deductions are among the most commonly overlooked. A good tax professional reviews your full picture and catches these.
 
 If you owe money and cannot pay the full amount by the deadline, file anyway. The penalty for failing to file is much steeper than the penalty for paying late. You can set up a payment plan with the IRS, but only if you have filed your return first.
 
@@ -32,7 +32,7 @@ Tax law changes every year. What applied last year may not apply this year. If y
 
 **Don't leave money on the table**
 
-Many taxpayers miss credits and deductions they are fully entitled to. Common ones include the Child Tax Credit, the Earned Income Tax Credit for lower and moderate income earners, the Child and Dependent Care Credit, education credits, and contributions to retirement accounts. A licensed CPA or Enrolled Agent reviews your full situation and catches these — tax software often does not.
+Many taxpayers miss credits and deductions they are fully entitled to. Common ones include the Child Tax Credit, the Earned Income Tax Credit for lower and moderate income earners, the Child and Dependent Care Credit, education credits, and contributions to retirement accounts. A licensed Enrolled Agent reviews your full situation and catches these — tax software often does not.
 
 **File on time, even if you can't pay**
 
@@ -40,9 +40,9 @@ If you owe taxes and cannot pay the full amount, file your return anyway. The pe
 
 **Work with a professional**
 
-Tax law changes every year. A licensed CPA or Enrolled Agent stays current on those changes and applies them to your specific situation. If your return involves self-employment, investments, rental income, or multiple states, professional preparation more than pays for itself in accuracy and missed deductions recovered.
+Tax law changes every year. A licensed Enrolled Agent stays current on those changes and applies them to your specific situation. If your return involves self-employment, investments, rental income, or multiple states, professional preparation more than pays for itself in accuracy and missed deductions recovered.
 
-At SureEdge Tax & Accounting, we handle individual returns of all complexity levels. Reach out to schedule your free consultation.`
+At SureEdge Tax & Advisory, we handle individual returns of all complexity levels. Reach out to schedule your free consultation.`
   },
   {
     slug: "maximizing-tax-refunds",
@@ -66,7 +66,7 @@ Charitable donations add up more than most people realize. Cash donations to qua
 
 If you had significant medical expenses in a given year, it is worth calculating whether you cross the 7.5 percent of adjusted gross income threshold. Many people dismiss this without running the numbers.
 
-The most reliable way to make sure you are not leaving money behind is to work with someone who reviews your complete financial picture and not just your W-2. That is what we do at SureEdge Tax & Accounting. If you want to know whether you are claiming everything you should be, we are happy to take a look.`
+The most reliable way to make sure you are not leaving money behind is to work with someone who reviews your complete financial picture and not just your W-2. That is what we do at SureEdge Tax & Advisory. If you want to know whether you are claiming everything you should be, we are happy to take a look.`
   },
   {
     slug: "small-business-financial-support",
@@ -80,15 +80,15 @@ Let me be specific about what I mean.
 
 An incorrectly categorized expense can trigger IRS scrutiny. A missed payroll tax deposit results in penalties that start at two percent and climb quickly with repeated failures. Misclassifying a worker as an independent contractor when the IRS considers them an employee exposes you to back taxes, penalties, and potential employment law liability. These are not hypothetical risks. They happen regularly to small business owners who are managing their own finances while also running their business.
 
-What a licensed CPA does for a business goes beyond tax preparation. Clean, accurate books give you a real-time picture of where your money is going and how profitable you actually are. Many business owners are surprised when they see what their margins look like once everything is categorized correctly. Decisions get easier when you know your actual numbers.
+What a licensed tax professional does for a business goes beyond tax preparation. Clean, accurate books give you a real-time picture of where your money is going and how profitable you actually are. Many business owners are surprised when they see what their margins look like once everything is categorized correctly. Decisions get easier when you know your actual numbers.
 
-An Enrolled Agent adds another layer of protection. An EA is licensed by the IRS with unlimited representation rights, meaning if you receive an IRS notice or face an audit, your EA can represent you directly before the agency. A general bookkeeper cannot do that.
+An Enrolled Agent adds another layer of protection. An Enrolled Agent is licensed by the IRS with unlimited representation rights, meaning if you receive an IRS notice or face an IRS audit, your Enrolled Agent can represent you directly before the agency. A general bookkeeper cannot do that.
 
 There is also the planning component. Most small businesses only think about taxes when it is time to file. That approach locks you out of opportunities. Timing income and expenses, maximizing retirement contributions before year-end, choosing the right depreciation method, structuring owner compensation properly: these are decisions that have to be made before December 31. After that, the window closes.
 
 Entity structure is another area where early decisions matter. The difference between operating as a sole proprietor and electing S-Corp status can mean thousands of dollars in annual savings once your net income crosses a certain threshold. That analysis should happen before you are locked into a structure that does not serve you.
 
-Together, a CPA and EA team handles entity structure advice, quarterly estimated taxes, payroll compliance, financial statement preparation, and tax planning throughout the year — not just a return filed in April.
+Together, an Enrolled Agent-led team handles entity structure advice, quarterly estimated taxes, payroll compliance, monthly financial reporting, and tax planning throughout the year — not just a return filed in April.
 
 **Tax planning vs tax preparation**
 
@@ -100,7 +100,7 @@ A business that waits until tax season to think about taxes leaves planning oppo
 
 The choice between operating as a sole proprietor, LLC, S-Corp, or C-Corp has significant tax implications. An S-Corp election, for example, can reduce self-employment tax for profitable businesses by paying the owner a reasonable salary and taking the remainder as a distribution. Getting this right from the start — or restructuring at the right time — is one of the highest-value decisions a business owner can make.
 
-At SureEdge Tax & Accounting, we work with small businesses year-round on bookkeeping, payroll, and tax strategy. Contact us for a free consultation to discuss your situation.`
+At SureEdge Tax & Advisory, we work with small businesses year-round on bookkeeping, payroll, and tax strategy. Contact us for a free consultation to discuss your situation.`
   },
   {
     slug: "personalized-solutions-entrepreneurs",
@@ -120,7 +120,7 @@ Retirement accounts deserve serious attention for self-employed people. A SEP-IR
 
 If you are self-employed and not eligible for coverage through a spouse's employer plan, you can also deduct 100 percent of health insurance premiums for yourself and your family. This reduces your adjusted gross income, which affects your eligibility for other deductions and credits.
 
-Beyond taxes, entrepreneurs often focus on the business and neglect the personal financial picture. Emergency funds, liability coverage, and retirement savings should all be part of the plan. At SureEdge Tax & Accounting, we work with entrepreneurs to build a strategy that fits both their business and their long-term goals.`
+Beyond taxes, entrepreneurs often focus on the business and neglect the personal financial picture. Emergency funds, liability coverage, and retirement savings should all be part of the plan. At SureEdge Tax & Advisory, we work with entrepreneurs to build a strategy that fits both their business and their long-term goals.`
   },
   {
     slug: "navigating-tax-season",
@@ -128,13 +128,13 @@ Beyond taxes, entrepreneurs often focus on the business and neglect the personal
     date: "December 30, 2025",
     category: "Tax Tips",
     excerpt: "A behind-the-scenes look at how our team approaches tax season to deliver accurate, timely returns for every client.",
-    content: `Tax season runs from January through April, but at SureEdge Tax & Accounting, preparation begins long before the first document arrives. Here's how we approach the season to ensure every client receives an accurate, thorough return filed on time.
+    content: `Tax season runs from January through April, but at SureEdge Tax & Advisory, preparation begins long before the first document arrives. Here's how we approach the season to ensure every client receives an accurate, thorough return filed on time.
 
 In January, before any client documents come in, we review each client's prior year return. We look for carry-forward items, capital loss carryovers, prior year credits, and any notes from the previous filing. We also flag life changes the client mentioned during the year, a new job, a home purchase, a business started, a child born. By the time their documents arrive, we already know what we are looking for and what questions we need to ask.
 
 We give each client a personalized document checklist based on their specific situation. A straightforward W-2 employee gets a short list. A self-employed client with rental income and investments gets a comprehensive one that covers every income source and deduction category. Everything is collected through a secure portal. We do not accept tax documents by email.
 
-Once all documents are in, preparation begins. Every return at SureEdge is prepared and then reviewed by our licensed CPA before it goes to the client. That review pass catches errors that a single-pass workflow would miss. We verify mathematical accuracy, confirm all income is reported, check that every deduction is properly supported, and run diagnostics for IRS matching issues.
+Once all documents are in, preparation begins. Every return at SureEdge is prepared and then reviewed by our licensed Enrolled Agent before it goes to the client. That review pass catches errors that a single-pass workflow would miss. We verify mathematical accuracy, confirm all income is reported, check that every deduction is properly supported, and run diagnostics for IRS matching issues.
 
 Before we file anything, we walk the client through what was reported, what was claimed, and why. Clients sign Form 8879 electronically to authorize e-filing. We do not rush signatures.
 
@@ -143,16 +143,16 @@ After filing, we provide confirmation of IRS and state acceptance. Federal ackno
 Tax season ends at filing, but our relationship with clients continues year-round. We send quarterly estimated tax reminders, answer questions as they come up, and flag any IRS correspondence that needs attention. If you are looking for a firm that stays engaged beyond April, we would be glad to talk.`
   },
   {
-    slug: "choosing-accounting-service",
-    title: "Choosing the Right Accounting Service for Your Business",
+    slug: "choosing-tax-professional",
+    title: "Choosing the Right Tax Professional for Your Business",
     date: "December 5, 2025",
     category: "Small Business",
-    excerpt: "Not all accounting services are created equal. Here is what to look for when choosing a CPA or accounting firm.",
-    content: `I get asked this question a lot: what should I look for when hiring an accountant? The answer depends on what your business actually needs, but there are a few things I would tell any business owner to consider before making a decision.
+    excerpt: "Not all tax professionals are created equal. Here is what to look for when choosing who handles your business taxes.",
+    content: `I get asked this question a lot: what should I look for when hiring a tax professional? The answer depends on what your business actually needs, but there are a few things I would tell any business owner to consider before making a decision.
 
-Credentials matter more than most people realize. There is a meaningful difference between a bookkeeper, an accountant, a CPA, and an Enrolled Agent. A bookkeeper records transactions. An accountant interprets them. A CPA has passed the Uniform CPA Exam and meets ongoing continuing education requirements. An Enrolled Agent is licensed specifically by the IRS for tax matters and holds unlimited representation rights before the IRS. For a business with any complexity to its taxes, you want someone with credentials. When an IRS notice arrives, only a CPA, EA, or attorney can represent you directly. That distinction matters a great deal if you ever face an audit.
+Credentials matter more than most people realize. There is a meaningful difference between a bookkeeper, a tax preparer, and an Enrolled Agent. A bookkeeper records transactions. A seasonal preparer files returns. An Enrolled Agent is licensed specifically by the IRS for tax matters and holds unlimited representation rights before the IRS. For a business with any complexity to its taxes, you want someone with credentials. When an IRS notice arrives, only an Enrolled Agent, CPA, or attorney can represent you directly. That distinction matters a great deal if you ever face an audit.
 
-Ask about industry experience. A CPA who regularly works with restaurants knows food cost structures, tip reporting, and relevant depreciation schedules. A CPA who works with tech consultants understands home office deductions, contractor classification, and R&D credits. Ask any firm you are considering how much of their practice serves businesses like yours. The answer tells you how quickly they will understand your situation.
+Ask about industry experience. A tax professional who regularly works with restaurants knows food cost structures, tip reporting, and relevant depreciation schedules. One who works with tech consultants understands home office deductions, contractor classification, and R&D credits. Ask any firm you are considering how much of their practice serves businesses like yours. The answer tells you how quickly they will understand your situation.
 
 The difference between reactive and proactive service is significant. A reactive firm processes your documents and files your return. A proactive firm contacts you before year-end to discuss planning, reminds you of contribution deadlines, and flags law changes that affect your situation. Ask any firm you are considering how they communicate with clients during the year, not just in tax season.
 
@@ -164,7 +164,7 @@ Ask any firm you consider how much of their practice serves businesses like your
 
 **Proactive vs reactive service**
 
-Many accounting firms are reactive — they process your documents and file your return. A proactive firm contacts you before the year ends to discuss tax planning, reminds you of contribution deadlines, flags changes in tax law that affect your situation, and meets with you regularly to review your numbers.
+Many tax firms are reactive — they process your documents and file your return. A proactive firm contacts you before the year ends to discuss tax planning, reminds you of contribution deadlines, flags changes in tax law that affect your situation, and meets with you regularly to review your numbers.
 
 The difference in tax savings between reactive and proactive service is often significant. Ask any firm you consider how they communicate during the year, not just at tax time.
 
@@ -180,7 +180,7 @@ Some firms bill hourly with no ceiling. Others offer flat fees. For a small busi
 
 Who specifically will handle my account? What is the turnaround time for returns? How do you handle IRS notices? Can I reach someone directly with questions during the year? Do you offer any tax planning beyond the annual return?
 
-At SureEdge Tax & Accounting, our team includes a licensed CPA and Enrolled Agent. We offer flat-fee pricing, a secure client portal, and year-round availability. Contact us to discuss your business's needs.`
+At SureEdge Tax & Advisory, our team includes a licensed Enrolled Agent. We offer flat-fee pricing, a secure client portal, and year-round availability. Contact us to discuss your business's needs.`
   },
   {
     slug: "irs-notices-explained",
@@ -212,11 +212,11 @@ If you receive a Letter 531 or CP3219A, also called a Statutory Notice of Defici
 
 **What a tax professional does when you receive a notice**
 
-A CPA or Enrolled Agent reviews the notice, identifies the issue, and develops a response strategy. In many cases, the response is a simple letter with supporting documentation. In more complex cases — audits, collection actions, offers in compromise — representation before the IRS is essential.
+An Enrolled Agent reviews the notice, identifies the issue, and develops a response strategy. In many cases, the response is a simple letter with supporting documentation. In more complex cases — audits, collection actions, offers in compromise — representation before the IRS is essential.
 
 Enrolled Agents have unlimited practice rights before the IRS, meaning they can represent you in any matter at any IRS office. This is a meaningful advantage when your situation requires direct IRS interaction.
 
-At SureEdge Tax & Accounting, we handle IRS notices and representation for our clients. If you've received a notice and are unsure how to respond, contact us for guidance.`
+At SureEdge Tax & Advisory, we handle IRS notices and representation for our clients. If you've received a notice and are unsure how to respond, contact us for guidance.`
   },
   {
     slug: "s-corp-vs-llc-tax",
@@ -234,7 +234,7 @@ An S-Corp does not eliminate self-employment tax. What it does is restructure ho
 
 A simple example makes this clear. Say your business nets $150,000. As a sole proprietor, you pay self-employment tax on all $150,000. As an S-Corp, you pay yourself a $90,000 salary and take $60,000 as a distribution. You pay payroll taxes on the $90,000 but not on the $60,000 distribution. The payroll tax savings on that $60,000 is roughly $9,180 per year. In many cases, that exceeds the administrative cost of running an S-Corp.
 
-The IRS requires that owner-employees pay themselves a reasonable salary for services rendered. Setting an artificially low salary to maximize distributions is a known audit trigger. A CPA can help you determine what is defensible based on your industry, role, and market.
+The IRS requires that owner-employees pay themselves a reasonable salary for services rendered. Setting an artificially low salary to maximize distributions is a known audit trigger. A tax professional can help you determine what is defensible based on your industry, role, and market.
 
 The S-Corp election generally makes sense when your net business profit consistently exceeds $40,000 to $50,000 per year. Below that threshold, the administrative costs, which include payroll processing, additional tax filings, and state fees, often outweigh the tax savings. Above $50,000 in net profit, the math starts to favor the S-Corp election. At $100,000, the annual savings can exceed $5,000. At $200,000, it can exceed $12,000.
 
@@ -256,11 +256,11 @@ The most common structure for profitable small businesses is an LLC that has ele
 
 **State considerations**
 
-Some states impose additional franchise taxes or fees on S-Corps that can offset the federal tax savings. California, for example, imposes a 1.5% franchise tax on S-Corp net income with a minimum of $800. Your CPA should run the analysis for your specific state before recommending the election.
+Some states impose additional franchise taxes or fees on S-Corps that can offset the federal tax savings. California, for example, imposes a 1.5% franchise tax on S-Corp net income with a minimum of $800. Your tax professional should run the analysis for your specific state before recommending the election.
 
 **Getting the analysis done right**
 
-Entity structure decisions have long-term consequences and should be made with a CPA who runs the numbers for your specific income level, state, and business structure. At SureEdge Tax & Accounting, we provide entity structure analysis as part of our business consulting services. Contact us to discuss whether an S-Corp election makes sense for your business.`
+Entity structure decisions have long-term consequences and should be made with a tax professional who runs the numbers for your specific income level, state, and business structure. At SureEdge Tax & Advisory, we provide entity structure analysis as part of our business consulting services. Contact us to discuss whether an S-Corp election makes sense for your business.`
   },
 ];
 

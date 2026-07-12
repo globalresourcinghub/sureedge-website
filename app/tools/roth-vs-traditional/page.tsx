@@ -117,7 +117,7 @@ Breakeven: If your retirement tax rate is above ${pct(breakevenRate)}, Roth wins
 
   return (
     <ToolShell
-      disclaimerText="General estimate for reference only, not tax or financial advice. Based on simplified assumptions; does not account for workplace plan coverage, AMT, or future tax law changes. Consult a licensed CPA or EA before making contribution decisions."
+      disclaimerText="General estimate for reference only, not tax or financial advice. Based on simplified assumptions; does not account for workplace plan coverage, AMT, or future tax law changes. Consult a licensed tax professional before making contribution decisions."
       ctaHeading="Want a real Roth conversion strategy?"
       ctaHref="/tax-intake"
     >

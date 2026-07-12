@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: post.excerpt,
       url: `/blog/${slug}`,
       publishedTime: post.date,
-      authors: ["SureEdge Tax & Accounting"],
+      authors: ["SureEdge Tax & Advisory"],
     },
     twitter: {
       card: "summary_large_image",
@@ -73,12 +73,12 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     dateModified: post.date,
     author: {
       "@type": "Organization",
-      name: "SureEdge Tax & Accounting",
+      name: "SureEdge Tax & Advisory",
       url: "https://www.sureedgetax.com",
     },
     publisher: {
       "@type": "Organization",
-      name: "SureEdge Tax & Accounting",
+      name: "SureEdge Tax & Advisory",
       logo: {
         "@type": "ImageObject",
         url: "https://www.sureedgetax.com/sureedge-logo-whatsapp.png",
@@ -110,7 +110,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             {post.title}
           </h1>
           <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)", paddingBottom: "40px" }}>
-            {post.date} · SureEdge Tax & Accounting
+            {post.date} · SureEdge Tax & Advisory
           </p>
         </div>
       </div>
@@ -133,7 +133,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             <div style={{ background: "#1a2e4a", borderRadius: "12px", padding: "28px", marginBottom: "28px" }}>
               <h3 style={{ fontSize: "16px", fontWeight: 700, color: "white", marginBottom: "8px" }}>Ready to get started?</h3>
               <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.6, marginBottom: "20px" }}>
-                Get a free, personalized quote from a licensed CPA or EA. No commitment required.
+                Get a free, personalized quote from a licensed Enrolled Agent. No commitment required.
               </p>
               <Link href="/tax-intake" style={{ display: "block", textAlign: "center", background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 700, padding: "12px 20px", borderRadius: "7px", textDecoration: "none" }}>
                 Get a Free Quote

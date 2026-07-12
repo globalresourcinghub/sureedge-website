@@ -5,7 +5,7 @@ import { C } from "@/lib/tokens";
 export const metadata: Metadata = {
   title: "Free Financial Planning Tools",
   description:
-    "Free tax and retirement calculators from SureEdge Tax & Accounting. Roth vs Traditional IRA comparison, tax bracket estimator, and more. No sign-up required.",
+    "Free tax and retirement calculators from SureEdge Tax & Advisory. Roth vs Traditional IRA comparison, tax bracket estimator, and more. No sign-up required.",
   alternates: { canonical: "/tools" },
 };
 
@@ -80,7 +80,7 @@ export default function ToolsPage() {
             Free Financial Planning Tools
           </h1>
           <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.65)", lineHeight: 1.75, maxWidth: "560px" }}>
-            Tax-focused calculators built by a CPA &amp; EA team. Use them free, no email or sign-up required. When you&apos;re ready to turn the numbers into a real plan, we&apos;re one click away.
+            Tax-focused calculators built by an Enrolled Agent-led team. Use them free, no email or sign-up required. When you&apos;re ready to turn the numbers into a real plan, we&apos;re one click away.
           </p>
         </div>
       </section>
@@ -92,7 +92,7 @@ export default function ToolsPage() {
           <path d="M12 8v5M12 15.5v.5" stroke="#999" strokeWidth="2" strokeLinecap="round"/>
         </svg>
         <p style={{ fontSize: "11px", color: "#888", lineHeight: 1.5, margin: 0 }}>
-          General estimates for reference only, not tax or financial advice. Consult a licensed CPA or EA for your specific situation.
+          General estimates for reference only, not tax or financial advice. Consult a licensed tax professional for your specific situation.
         </p>
       </div>
 
@@ -147,7 +147,7 @@ export default function ToolsPage() {
             Want a real tax strategy behind the numbers?
           </h2>
           <p style={{ fontSize: "13px", color: C.mutedDark }}>
-            Our CPA &amp; EA team reviews your full picture and builds a plan, not just a calculator result.
+            Our Enrolled Agent-led team reviews your full picture and builds a plan, not just a calculator result.
           </p>
         </div>
         <Link href="/booking" style={{ background: C.gold, color: "#0B1929", fontSize: "13px", fontWeight: 700, padding: "13px 28px", borderRadius: "7px", textDecoration: "none", whiteSpace: "nowrap" }}>

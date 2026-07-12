@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy policy for SureEdge Tax & Accounting. Learn how we collect, use, and protect your information.",
+  description: "Privacy policy for SureEdge Tax & Advisory. Learn how we collect, use, and protect your information.",
   alternates: { canonical: "/privacy" },
   openGraph: {
     title: "Privacy Policy",
-    description: "Privacy policy for SureEdge Tax & Accounting.",
+    description: "Privacy policy for SureEdge Tax & Advisory.",
     url: "/privacy",
   },
 };
@@ -111,7 +111,7 @@ export default function Privacy() {
 
         <section>
           <h2 style={{fontSize:"15px",fontWeight:700,color:"#1a2e4a",marginBottom:"8px"}}>10. IRS Circular 230 Disclosure</h2>
-          <p>Any tax information on this website, including responses from our AI chatbot, is not intended or written to be used, and cannot be used, by any taxpayer for the purpose of avoiding tax penalties. All content is for general informational purposes only and does not constitute personalized tax advice. Consult a licensed CPA or EA for advice specific to your situation.</p>
+          <p>Any tax information on this website, including responses from our AI chatbot, is not intended or written to be used, and cannot be used, by any taxpayer for the purpose of avoiding tax penalties. All content is for general informational purposes only and does not constitute personalized tax advice. Consult a licensed tax professional for advice specific to your situation.</p>
         </section>
 
         <section>

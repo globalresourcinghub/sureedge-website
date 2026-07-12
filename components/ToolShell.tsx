@@ -30,7 +30,7 @@ export default function ToolShell({
           <div style={{ background: "#faf9f6", borderRadius: "12px", padding: "24px 28px", border: "1px solid #f0ede6", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px", flexWrap: "wrap" }}>
             <div>
               <div style={{ fontSize: "14px", fontWeight: 700, color: "#1a2e4a", marginBottom: "4px" }}>{ctaHeading}</div>
-              <div style={{ fontSize: "12px", color: "#666" }}>Our CPA &amp; EA team finds deductions and credits that calculators miss.</div>
+              <div style={{ fontSize: "12px", color: "#666" }}>Our Enrolled Agent-led team finds deductions and credits that calculators miss.</div>
             </div>
             <Link href={ctaHref} style={{ background: "#b8962e", color: "#fff", fontSize: "13px", fontWeight: 600, padding: "11px 22px", borderRadius: "7px", textDecoration: "none", whiteSpace: "nowrap" }}>
               Get a Free Quote →

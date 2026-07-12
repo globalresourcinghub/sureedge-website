@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Book a Free Consultation",
-  description: "Schedule a free 30-minute consultation with a licensed CPA or EA. No commitment required.",
+  description: "Schedule a free 30-minute consultation with a licensed Enrolled Agent. No commitment required.",
 };
 
 export default function Booking() {
@@ -24,7 +24,7 @@ export default function BookingOriginal() {
         <div style={{flex:1,background:"#1a2e4a",display:"flex",flexDirection:"column",justifyContent:"center",padding:"52px 48px"}}>
           <div style={{display:"inline-block",color:"white",fontSize:"10px",fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",padding:"4px 12px",borderRadius:"20px",marginBottom:"20px",background:"#b8962e",width:"fit-content"}}>Free Consultation</div>
           <h1 style={{fontSize:"34px",fontWeight:700,color:"white",lineHeight:1.2,marginBottom:"14px"}}>Book a Free 30-Minute Call</h1>
-          <p style={{fontSize:"14px",color:"rgba(255,255,255,0.88)",lineHeight:1.7,maxWidth:"380px"}}>Meet with a licensed CPA or EA to discuss your tax situation, get answers, and learn how we can help.</p>
+          <p style={{fontSize:"14px",color:"rgba(255,255,255,0.88)",lineHeight:1.7,maxWidth:"380px"}}>Meet with a licensed Enrolled Agent to discuss your tax situation, get answers, and learn how we can help.</p>
         </div>
         <div style={{flex:1,background:"#faf9f6",display:"flex",alignItems:"center",justifyContent:"center",padding:"44px 48px"}}>
           <div style={{width:"100%",maxWidth:"480px"}}>

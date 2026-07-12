@@ -54,6 +54,12 @@ const nextConfig: NextConfig = {
         destination: "/services",
         permanent: true,
       },
+      {
+        // TSBPA compliance: old slug contained the regulated word "accounting"
+        source: "/blog/choosing-accounting-service",
+        destination: "/blog/choosing-tax-professional",
+        permanent: true,
+      },
     ];
   },
   async headers() {

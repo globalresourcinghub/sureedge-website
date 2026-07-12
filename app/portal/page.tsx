@@ -5,11 +5,11 @@ import { C } from "@/lib/tokens";
 
 export const metadata: Metadata = {
   title: "Client Portal",
-  description: "Manage your return, upload documents from any device, message your CPA directly, and access a free financial planning dashboard. All in the SureEdge client portal.",
+  description: "Manage your return, upload documents from any device, message your tax pro directly, and access a free financial planning dashboard. All in the SureEdge client portal.",
   alternates: { canonical: "/portal" },
   openGraph: {
-    title: "Client Portal | SureEdge Tax & Accounting",
-    description: "Upload documents, message your CPA, track your return, and access 6 free financial tools. All in one secure place.",
+    title: "Client Portal | SureEdge Tax & Advisory",
+    description: "Upload documents, message your tax pro, track your return, and access 6 free financial tools. All in one secure place.",
     url: "/portal",
   },
 };
@@ -41,7 +41,7 @@ function DashboardMock() {
   const steps = [
     { label: "Intake form completed", done: true, active: false },
     { label: "Documents received", done: true, active: false },
-    { label: "Under CPA review", done: true, active: true },
+    { label: "Under expert review", done: true, active: true },
     { label: "E-filed to IRS", done: false, active: false },
     { label: "Refund received", done: false, active: false },
   ];
@@ -50,7 +50,7 @@ function DashboardMock() {
       <PortalNav active={0} />
       <div style={{ padding: "22px" }}>
         <div style={{ fontSize: "15px", fontWeight: 800, color: C.textDark }}>Welcome back, Sarah K.</div>
-        <div style={{ fontSize: "11px", color: C.muted, marginTop: "2px", marginBottom: "16px" }}>Tax Year 2024 · Under Review by your CPA</div>
+        <div style={{ fontSize: "11px", color: C.muted, marginTop: "2px", marginBottom: "16px" }}>Tax Year 2024 · Under Review by your tax pro</div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "8px", marginBottom: "14px" }}>
           {[
             { label: "Est. Refund", val: "$3,240", color: C.gold },
@@ -134,7 +134,7 @@ function IdentityMock() {
   const checks = [
     { label: "Email address verified",       detail: "sarah@example.com"              },
     { label: "Government ID uploaded",       detail: "Driver's License · expires 2028" },
-    { label: "Identity confirmed by CPA",    detail: "Reviewed and approved"           },
+    { label: "Identity confirmed by our team", detail: "Reviewed and approved"           },
     { label: "Two-factor authentication",    detail: "SMS to ···· 4821 · Enabled"     },
   ];
   return (
@@ -256,13 +256,13 @@ function MessagesMock() {
           <div style={{ background: C.gold, color: C.dark, fontSize: "9px", fontWeight: 700, padding: "2px 6px", borderRadius: "10px" }}>1 new</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-          {/* CPA message */}
+          {/* Tax pro message */}
           <div style={{ display: "flex", gap: "8px", alignItems: "flex-start" }}>
             <div style={{ width: "26px", height: "26px", borderRadius: "50%", background: C.goldSoft, border: `1px solid ${C.goldBorder}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-              <span style={{ fontSize: "7px", fontWeight: 700, color: C.gold }}>CPA</span>
+              <span style={{ fontSize: "7px", fontWeight: 700, color: C.gold }}>SE</span>
             </div>
             <div style={{ maxWidth: "78%" }}>
-              <div style={{ fontSize: "9px", color: "rgba(255,255,255,0.3)", marginBottom: "4px" }}>Your CPA · 10:15 AM</div>
+              <div style={{ fontSize: "9px", color: "rgba(255,255,255,0.3)", marginBottom: "4px" }}>Your Tax Pro · 10:15 AM</div>
               <div style={{ background: "rgba(255,255,255,0.08)", borderRadius: "0 10px 10px 10px", padding: "9px 11px", fontSize: "11px", color: "rgba(255,255,255,0.85)", lineHeight: 1.6 }}>
                 Hi Sarah! I&apos;ve reviewed your W-2 and 1099-NEC. Just need your 1099-INT from your bank and we&apos;re all set!
               </div>
@@ -277,10 +277,10 @@ function MessagesMock() {
               <div style={{ fontSize: "9px", color: "rgba(255,255,255,0.2)", textAlign: "right", marginTop: "3px" }}>10:17 AM · Delivered</div>
             </div>
           </div>
-          {/* CPA response */}
+          {/* Tax pro response */}
           <div style={{ display: "flex", gap: "8px", alignItems: "flex-start" }}>
             <div style={{ width: "26px", height: "26px", borderRadius: "50%", background: C.goldSoft, border: `1px solid ${C.goldBorder}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-              <span style={{ fontSize: "7px", fontWeight: 700, color: C.gold }}>CPA</span>
+              <span style={{ fontSize: "7px", fontWeight: 700, color: C.gold }}>SE</span>
             </div>
             <div style={{ maxWidth: "78%" }}>
               <div style={{ background: "rgba(255,255,255,0.08)", borderRadius: "0 10px 10px 10px", padding: "9px 11px", fontSize: "11px", color: "rgba(255,255,255,0.85)", lineHeight: 1.6 }}>
@@ -329,7 +329,7 @@ export default function PortalPage() {
               Everything you need,<br />in one secure place.
             </h1>
             <p style={{ fontSize: "clamp(15px,1.4vw,18px)", color: C.muted, lineHeight: 1.75, maxWidth: "560px", margin: "0 auto 40px" }}>
-              Track your return, upload documents from any device, message your CPA directly, and access a free financial planning dashboard. All in one place.
+              Track your return, upload documents from any device, message your tax pro directly, and access a free financial planning dashboard. All in one place.
             </p>
             <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "12px" }}>
               <Link href="https://portal.sureedgetax.com/register" className="btn-gold" style={{ background: C.gold, color: C.dark, fontSize: "14px", fontWeight: 700, padding: "14px 32px", borderRadius: "8px" }}>
@@ -349,7 +349,7 @@ export default function PortalPage() {
         {[
           { icon: "🔒", label: "Bank-level encryption" },
           { icon: "📱", label: "Upload from any device" },
-          { icon: "💬", label: "Direct CPA messaging" },
+          { icon: "💬", label: "Direct tax pro messaging" },
           { icon: "📊", label: "Financial planning dashboard" },
         ].map((item, i) => (
           <div key={i} style={{ flex: 1, textAlign: "center", padding: "18px 16px", borderRight: i < 3 ? `1px solid ${C.border}` : "none", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}>
@@ -371,7 +371,7 @@ export default function PortalPage() {
                   Know exactly where<br />your return stands.
                 </h2>
                 <p style={{ fontSize: "15px", color: C.mutedDark, lineHeight: 1.75, marginBottom: "24px" }}>
-                  See every step from intake to IRS acceptance, without calling or waiting for a reply. Your estimated refund is visible the moment your CPA starts.
+                  See every step from intake to IRS acceptance, without calling or waiting for a reply. Your estimated refund is visible the moment your tax pro starts.
                 </p>
                 {[
                   "Step-by-step timeline: intake → review → e-filed → accepted",
@@ -396,7 +396,7 @@ export default function PortalPage() {
                   Upload from your laptop,<br />phone, or tablet.
                 </h2>
                 <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.75, marginBottom: "24px" }}>
-                  Snap a photo of your W-2 or 1099 on your phone and it goes straight to your CPA. No scanner, no fax, no printing anything. We accept PDFs, photos, and scans.
+                  Snap a photo of your W-2 or 1099 on your phone and it goes straight to your tax pro. No scanner, no fax, no printing anything. We accept PDFs, photos, and scans.
                 </p>
                 {[
                   "Drag & drop or browse files from your computer",
@@ -439,7 +439,7 @@ export default function PortalPage() {
         </div>
       </section>
 
-      {/* ── Section 4: CPA Messaging ── */}
+      {/* ── Section 4: Tax Pro Messaging ── */}
       <section style={{ background: C.dark, padding: "96px 44px" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <ScrollReveal>
@@ -447,16 +447,16 @@ export default function PortalPage() {
               <div>
                 <div style={{ fontSize: "11px", fontWeight: 600, color: C.gold, letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "14px" }}>Direct messaging</div>
                 <h2 style={{ fontSize: "clamp(26px,3vw,40px)", fontWeight: 800, color: C.white, letterSpacing: "-1px", lineHeight: 1.15, marginBottom: "16px" }}>
-                  Talk to your CPA,<br />not a phone tree.
+                  Talk to your tax pro,<br />not a phone tree.
                 </h2>
                 <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.75, marginBottom: "24px" }}>
-                  Message your CPA directly inside the portal. Ask questions, share context, get answers with full conversation history always at your fingertips.
+                  Message your tax pro directly inside the portal. Ask questions, share context, get answers with full conversation history always at your fingertips.
                 </p>
                 {[
-                  "Direct line to your CPA. No call centers or assistants.",
+                  "Direct line to your tax pro. No call centers or assistants.",
                   "Attach documents or photos directly in a message",
                   "Full conversation history, always searchable",
-                  "Average CPA response within one business day",
+                  "Average tax pro response within one business day",
                   "All messages encrypted and securely stored",
                 ].map((b, i) => <Bullet key={i} text={b} dark={true} />)}
               </div>
@@ -501,7 +501,7 @@ export default function PortalPage() {
             <div style={{ fontSize: "11px", fontWeight: 600, color: C.gold, letterSpacing: "2.5px", textTransform: "uppercase", marginBottom: "16px" }}>Get started free</div>
             <h2 style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: C.white, letterSpacing: "-1.5px", lineHeight: 1.1, marginBottom: "16px" }}>Your portal is ready when you are.</h2>
             <p style={{ fontSize: "16px", color: C.muted, lineHeight: 1.7, marginBottom: "40px" }}>
-              Create a free account and your CPA will be in touch within 2 business days.
+              Create a free account and your tax pro will be in touch within 2 business days.
             </p>
             <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "12px" }}>
               <Link href="https://portal.sureedgetax.com/register" className="btn-gold" style={{ background: C.gold, color: C.dark, fontSize: "15px", fontWeight: 700, padding: "16px 40px", borderRadius: "9px" }}>

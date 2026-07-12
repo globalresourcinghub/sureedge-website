@@ -4,12 +4,12 @@ import { posts } from "@/lib/posts";
 import { C } from "@/lib/tokens";
 
 export const metadata: Metadata = {
-  title: "Tax & Accounting Blog",
-  description: "Practical tax tips, small-business accounting advice, and IRS compliance guidance from licensed CPA and Enrolled Agent professionals.",
+  title: "Tax & Advisory Blog",
+  description: "Practical tax tips, small-business bookkeeping advice, and IRS compliance guidance from licensed Enrolled Agent professionals.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "Tax Tips & Accounting Insights | SureEdge",
-    description: "Practical tax tips, small-business accounting advice, and IRS compliance guidance.",
+    title: "Tax Tips & Advisory Insights | SureEdge",
+    description: "Practical tax tips, small-business bookkeeping advice, and IRS compliance guidance.",
     url: "/blog",
   },
 };
@@ -21,7 +21,7 @@ const POST_IMAGES: Record<string, string> = {
   "small-business-financial-support":"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=520&h=280&fit=crop&auto=format&q=70",
   "personalized-solutions-entrepreneurs":"https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=520&h=280&fit=crop&auto=format&q=70",
   "navigating-tax-season":           "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=520&h=280&fit=crop&auto=format&q=70",
-  "choosing-accounting-service":     "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=520&h=280&fit=crop&auto=format&q=70",
+  "choosing-tax-professional":       "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=520&h=280&fit=crop&auto=format&q=70",
   "irs-notices-explained":           "https://images.unsplash.com/photo-1589578527966-fdac0f44566c?w=520&h=280&fit=crop&auto=format&q=70",
   "s-corp-vs-llc-tax":               "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=520&h=280&fit=crop&auto=format&q=70",
 };
@@ -44,11 +44,11 @@ export default function Blog() {
           <div>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: C.goldSoft, border: `1px solid ${C.goldBorder}`, color: C.gold, fontSize: "10px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", padding: "4px 12px", borderRadius: "20px", marginBottom: "20px" }}>
               <span style={{ width: 5, height: 5, background: C.gold, borderRadius: "50%", display: "inline-block" }} />
-              Tax &amp; Accounting Insights
+              Tax &amp; Advisory Insights
             </div>
             <h1 style={{ fontSize: "clamp(28px,3.5vw,48px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, marginBottom: "16px", letterSpacing: "-1.2px" }}>
               Tips from our<br />
-              <span style={{ color: C.gold }}>CPA &amp; EA team.</span>
+              <span style={{ color: C.gold }}>Enrolled Agent team.</span>
             </h1>
             <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.75, maxWidth: "420px", marginBottom: "32px" }}>
               Practical tax tips and financial guidance written by licensed professionals, not algorithms.

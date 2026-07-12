@@ -44,7 +44,7 @@ export default function Logo({ dark = false, size = "md" }: LogoProps) {
         fill={dark ? "rgba(255,255,255,0.45)" : "#aaa"}
         letterSpacing="2"
       >
-        TAX &amp; ACCOUNTING
+        TAX &amp; ADVISORY
       </text>
     </svg>
   );
