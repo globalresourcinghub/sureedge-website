@@ -227,6 +227,8 @@ All tools import tax brackets, standard deductions, contribution limits, state t
 ### Medium Priority
 - [ ] Set Anthropic spending limit to $20/month (currently $10)
 - [ ] Calendly paid upgrade — remove "Powered by Calendly" ($10/mo)
+- [ ] **Claims review: "Every client, every time"** (`app/about/page.tsx` ~301) — "Delivered personally, accessibly, and affordably. Every client, every time." Deferred 2026-07-18 during the TSBPA claims cleanup. It's a service pledge, not a results claim, so it was left live — but "every client, every time" is a strong absolute for a firm formed June 2026. Decide whether to soften or keep. See commit `00eca61` for the class of fixes applied to the rest of the site.
+- [ ] Delete `components/ServiceFeatures.tsx` — dead code, not imported by any page (cleaned in `00eca61` so it can't leak stale claims, but it should just go)
 
 ### Tools — Phase 2 (Portal Integration) — COMPLETE
 - [x] ~~Portal: add `registration_source` + `registration_tool` columns to users~~ — shipped
