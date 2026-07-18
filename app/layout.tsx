@@ -111,7 +111,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           textAlign: "center",
         }}>
           <span style={{ fontSize: "13px", fontWeight: 600, color: "#0B1929", lineHeight: 1.5 }}>
-            ✦&nbsp; Included free with every client account: Personal Financial Planning Dashboard &amp; Monthly CFO Reports
+            ✦&nbsp; Included with every bookkeeping plan: Personal Financial Planning Dashboard &amp; CFO Reports
           </span>
           <a
             href="/portal"

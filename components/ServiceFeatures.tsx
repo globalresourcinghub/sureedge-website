@@ -12,6 +12,22 @@ function DotGrid() {
   );
 }
 
+function SampleNote() {
+  return (
+    <div style={{ marginTop: "16px", fontSize: "10px", color: C.muted, textAlign: "center", letterSpacing: "0.5px" }}>
+      Sample data for illustration purposes
+    </div>
+  );
+}
+
+function SampleBadge() {
+  return (
+    <span style={{ fontSize: "9px", fontWeight: 700, color: "rgba(255,255,255,0.62)", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.2)", letterSpacing: "1px", textTransform: "uppercase", padding: "2px 7px", borderRadius: "10px", whiteSpace: "nowrap" }}>
+      Sample
+    </span>
+  );
+}
+
 function IndividualTaxPanel() {
   return (
     <div style={{ position: "relative", background: C.darkMid, borderRadius: "20px", border: `1px solid ${C.border}`, padding: "36px 32px", overflow: "hidden", minHeight: "340px" }}>
@@ -19,7 +35,10 @@ function IndividualTaxPanel() {
       <div style={{ position: "relative", zIndex: 1 }}>
         {/* Header */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "28px" }}>
-          <div style={{ fontSize: "12px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>Your 2024 Return</div>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <div style={{ fontSize: "12px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>Your 2024 Return</div>
+            <SampleBadge />
+          </div>
           <div style={{ background: "rgba(110,231,183,0.12)", border: "1px solid rgba(110,231,183,0.25)", color: C.green, fontSize: "11px", fontWeight: 600, padding: "3px 10px", borderRadius: "12px" }}>
             Filed ✓
           </div>
@@ -52,6 +71,7 @@ function IndividualTaxPanel() {
             </div>
           ))}
         </div>
+        <SampleNote />
       </div>
     </div>
   );
@@ -66,7 +86,10 @@ function SmallBizPanel() {
       <div style={{ position: "relative", zIndex: 1 }}>
         {/* Header */}
         <div style={{ marginBottom: "20px" }}>
-          <div style={{ fontSize: "12px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase", marginBottom: "10px" }}>Business Entity</div>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px" }}>
+            <div style={{ fontSize: "12px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>Business Entity</div>
+            <SampleBadge />
+          </div>
           <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
             {["S-Corp", "LLC", "Schedule K-1"].map(tag => (
               <div key={tag} style={{ background: C.goldSoft, border: `1px solid ${C.goldBorder}`, color: C.gold, fontSize: "11px", fontWeight: 600, padding: "4px 10px", borderRadius: "12px" }}>
@@ -80,7 +103,7 @@ function SmallBizPanel() {
         <div style={{ background: "rgba(255,255,255,0.04)", borderRadius: "12px", padding: "16px", border: `1px solid ${C.border}`, marginBottom: "20px" }}>
           <div style={{ fontSize: "10px", color: C.muted, marginBottom: "4px" }}>Tax Savings Found</div>
           <div style={{ fontSize: "32px", fontWeight: 800, color: C.gold, letterSpacing: "-1px", lineHeight: 1 }}>$12,800</div>
-          <div style={{ fontSize: "11px", color: C.muted, marginTop: "4px" }}>Average for S-Corp clients · Strategy Applied ✓</div>
+          <div style={{ fontSize: "11px", color: C.muted, marginTop: "4px" }}>Example S-Corp dashboard · Strategy Applied ✓</div>
         </div>
 
         {/* Mini bar chart */}
@@ -97,6 +120,7 @@ function SmallBizPanel() {
             ))}
           </div>
         </div>
+        <SampleNote />
       </div>
     </div>
   );
@@ -114,7 +138,10 @@ function BookkeepingPanel() {
       <div style={{ position: "relative", zIndex: 1 }}>
         {/* Header */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "24px" }}>
-          <div style={{ fontSize: "12px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>Monthly Books</div>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <div style={{ fontSize: "12px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>Monthly Books</div>
+            <SampleBadge />
+          </div>
           <div style={{ background: "rgba(147,197,253,0.1)", border: "1px solid rgba(147,197,253,0.25)", color: C.blue, fontSize: "10px", fontWeight: 600, padding: "3px 10px", borderRadius: "12px" }}>
             Reconciled ✓
           </div>
@@ -151,6 +178,7 @@ function BookkeepingPanel() {
             <span style={{ fontSize: "10px", color: C.muted }}>QuickBooks Synced</span>
           </div>
         </div>
+        <SampleNote />
       </div>
     </div>
   );
@@ -163,7 +191,10 @@ function IrsPanel() {
       <div style={{ position: "relative", zIndex: 1 }}>
         {/* Header */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "24px" }}>
-          <div style={{ fontSize: "12px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>IRS Notice CP2000</div>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <div style={{ fontSize: "12px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>IRS Notice CP2000</div>
+            <SampleBadge />
+          </div>
           <div style={{ background: "rgba(201,168,76,0.12)", border: `1px solid ${C.goldBorder}`, color: C.gold, fontSize: "10px", fontWeight: 600, padding: "3px 10px", borderRadius: "12px" }}>
             Agent Assigned
           </div>
@@ -196,8 +227,9 @@ function IrsPanel() {
         </div>
 
         <div style={{ fontSize: "11px", color: C.muted, textAlign: "center" }}>
-          Average resolution · 18 days · Case closed ✓
+          Example case · 18 days · Case closed ✓
         </div>
+        <SampleNote />
       </div>
     </div>
   );
@@ -238,7 +270,7 @@ const SERVICES = [
     label: "IRS Representation",
     title: "IRS on your doorstep? We’ve got it.",
     desc: "Our Enrolled Agent has the same authority to represent you before the IRS as an attorney. IRS audits, CP notices, appeals — handled from first letter to final resolution.",
-    bullets: ["Full IRS representation rights", "IRS audit, notice & appeals handling", "Average case resolution under 18 days"],
+    bullets: ["Full IRS representation rights", "IRS audit, notice & appeals handling", "Handled from first letter to final resolution"],
     href: "/contact",
     cta: "Talk to us",
     panel: <IrsPanel />,

@@ -37,6 +37,28 @@ function PortalNav({ active }: { active: number }) {
   );
 }
 
+function SampleNote() {
+  return (
+    <div style={{ marginTop: "16px", fontSize: "10px", color: C.muted, textAlign: "center", letterSpacing: "0.5px" }}>
+      Sample data for illustration purposes
+    </div>
+  );
+}
+
+function SampleBadge({ light = false }: { light?: boolean }) {
+  return (
+    <span style={{
+      fontSize: "9px", fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase",
+      color: light ? C.mutedDark : "rgba(255,255,255,0.62)",
+      background: light ? "rgba(26,46,74,0.06)" : "rgba(255,255,255,0.08)",
+      border: `1px solid ${light ? "rgba(26,46,74,0.18)" : "rgba(255,255,255,0.2)"}`,
+      padding: "2px 7px", borderRadius: "10px", whiteSpace: "nowrap",
+    }}>
+      Sample
+    </span>
+  );
+}
+
 function DashboardMock() {
   const steps = [
     { label: "Intake form completed", done: true, active: false },
@@ -49,7 +71,10 @@ function DashboardMock() {
     <div style={{ background: C.white, borderRadius: "16px", border: `1px solid ${C.borderLight}`, boxShadow: "0 24px 80px rgba(26,46,74,0.16)", overflow: "hidden" }}>
       <PortalNav active={0} />
       <div style={{ padding: "22px" }}>
-        <div style={{ fontSize: "15px", fontWeight: 800, color: C.textDark }}>Welcome back, Sarah K.</div>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <div style={{ fontSize: "15px", fontWeight: 800, color: C.textDark }}>Welcome back, Sarah K.</div>
+          <SampleBadge light />
+        </div>
         <div style={{ fontSize: "11px", color: C.muted, marginTop: "2px", marginBottom: "16px" }}>Tax Year 2024 · Under Review by your tax pro</div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "8px", marginBottom: "14px" }}>
           {[
@@ -76,6 +101,7 @@ function DashboardMock() {
             {s.active && <span style={{ fontSize: "9px", background: C.goldSoft, border: `1px solid ${C.goldBorder}`, color: C.gold, padding: "2px 6px", borderRadius: "10px", flexShrink: 0 }}>Active</span>}
           </div>
         ))}
+        <SampleNote />
       </div>
     </div>
   );
@@ -202,7 +228,10 @@ function PlannerMock() {
       <div style={{ padding: "18px 20px" }}>
         {/* Header */}
         <div style={{ marginBottom: "14px" }}>
-          <div style={{ fontSize: "15px", fontWeight: 800, color: C.textDark }}>Your Household</div>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <div style={{ fontSize: "15px", fontWeight: 800, color: C.textDark }}>Your Household</div>
+            <SampleBadge light />
+          </div>
           <div style={{ fontSize: "10px", color: C.muted, marginTop: "1px" }}>Financial Planning Dashboard</div>
         </div>
         {/* Onboarding banner */}
@@ -241,6 +270,7 @@ function PlannerMock() {
             </div>
           ))}
         </div>
+        <SampleNote />
       </div>
     </div>
   );
@@ -254,6 +284,7 @@ function MessagesMock() {
         <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "14px" }}>
           <div style={{ fontSize: "13px", fontWeight: 800, color: C.white }}>Messages</div>
           <div style={{ background: C.gold, color: C.dark, fontSize: "9px", fontWeight: 700, padding: "2px 6px", borderRadius: "10px" }}>1 new</div>
+          <SampleBadge />
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
           {/* Tax pro message */}
@@ -297,6 +328,7 @@ function MessagesMock() {
             <span style={{ fontSize: "10px", color: C.dark, fontWeight: 700 }}>→</span>
           </div>
         </div>
+        <SampleNote />
       </div>
     </div>
   );
@@ -456,7 +488,7 @@ export default function PortalPage() {
                   "Direct line to your tax pro. No call centers or assistants.",
                   "Attach documents or photos directly in a message",
                   "Full conversation history, always searchable",
-                  "Average tax pro response within one business day",
+                  "Tax pro responses within 2 business days",
                   "All messages encrypted and securely stored",
                 ].map((b, i) => <Bullet key={i} text={b} dark={true} />)}
               </div>

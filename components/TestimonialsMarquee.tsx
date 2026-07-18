@@ -11,7 +11,7 @@ const ALL = [
     tag: "S-Corp Owner",
   },
   {
-    quote: "IRS notice? SureEdge handles the response, the paperwork, and the follow-up. Most cases resolved in weeks, not months.",
+    quote: "IRS notice? SureEdge handles the response, the paperwork, and the follow-up, and keeps you updated at every step.",
     tag: "IRS Notice",
   },
   {

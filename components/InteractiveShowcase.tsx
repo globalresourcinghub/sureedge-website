@@ -14,7 +14,7 @@ const TABS: { id: ServiceId; label: string; desc: string; href: string }[] = [
 
 /* Bar chart data per service — 6 months of mock data (0–100) */
 const BAR_DATA: Record<ServiceId, { vals: number[]; label: string; color: string }> = {
-  individual:  { vals: [42, 68, 55, 82, 64, 91], label: "Avg. Refund Trend",  color: C.gold },
+  individual:  { vals: [42, 68, 55, 82, 64, 91], label: "Refund Trend",       color: C.gold },
   business:    { vals: [58, 73, 88, 62, 95, 78], label: "Revenue Recognized", color: "#6ee7b7" },
   bookkeeping: { vals: [33, 52, 71, 89, 67, 84], label: "Books Reconciled",   color: "#93c5fd" },
   irs:         { vals: [85, 44, 63, 32, 57, 74], label: "Cases Resolved",     color: "#c4b5fd" },
@@ -23,10 +23,10 @@ const MONTHS = ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 /* Status cards per service */
 const STATUS_CARDS: Record<ServiceId, { title: string; value: string; sub: string; badge: string }> = {
-  individual:  { title: "Avg. Federal Refund",  value: "$3,240",  sub: "for our individual clients",  badge: "Filed & Accepted ✓" },
-  business:    { title: "Tax Savings Found",    value: "$12,800", sub: "avg. for S-Corp clients",      badge: "Strategy Applied ✓" },
-  bookkeeping: { title: "Transactions Matched", value: "99.4%",   sub: "accuracy rate, last quarter",  badge: "Books Closed ✓" },
-  irs:         { title: "Avg. Resolution Time", value: "18 days", sub: "IRS notice to resolution",    badge: "Case Closed ✓" },
+  individual:  { title: "Federal Refund",       value: "$3,240",  sub: "example client dashboard",     badge: "Filed & Accepted ✓" },
+  business:    { title: "Tax Savings Found",    value: "$12,800", sub: "example S-Corp dashboard",     badge: "Strategy Applied ✓" },
+  bookkeeping: { title: "Transactions Matched", value: "99.4%",   sub: "example bookkeeping dashboard", badge: "Books Closed ✓" },
+  irs:         { title: "Resolution Time",      value: "18 days", sub: "example IRS case dashboard",  badge: "Case Closed ✓" },
 };
 
 /* Animated counter hook */
@@ -232,8 +232,13 @@ export default function InteractiveShowcase() {
           }}>
             {/* Panel header */}
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <div style={{ fontSize: "12px", fontWeight: 600, color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>
-                {TABS.find(t => t.id === active)?.label}
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <div style={{ fontSize: "12px", fontWeight: 600, color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>
+                  {TABS.find(t => t.id === active)?.label}
+                </div>
+                <span style={{ fontSize: "9px", fontWeight: 700, color: "rgba(255,255,255,0.62)", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.2)", letterSpacing: "1px", textTransform: "uppercase", padding: "2px 7px", borderRadius: "10px", whiteSpace: "nowrap" }}>
+                  Sample
+                </span>
               </div>
               <div style={{ display: "flex", gap: "6px" }}>
                 {["#ff5f57","#febc2e","#28c840"].map(c => (
@@ -249,7 +254,7 @@ export default function InteractiveShowcase() {
             <BarChart key={`${active}-chart-${chartKey}`} service={active} visible={visible} />
 
             {/* Bottom label */}
-            <div style={{ fontSize: "10px", color: "rgba(255,255,255,0.2)", textAlign: "center", letterSpacing: "0.5px" }}>
+            <div style={{ fontSize: "10px", color: "rgba(255,255,255,0.38)", textAlign: "center", letterSpacing: "0.5px" }}>
               Sample data for illustration purposes
             </div>
           </div>

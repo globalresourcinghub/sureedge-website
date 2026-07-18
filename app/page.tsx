@@ -17,7 +17,7 @@ const stats = [
   { val: "Flat Fee",  lbl: "No surprise billing"  },
   { val: "100%",      lbl: "Virtual service"       },
   { val: "6",         lbl: "Free planning tools"   },
-  { val: "$10K+",     lbl: "Avg. small-biz savings identified" },
+  { val: "2 Day",     lbl: "Response time commitment" },
 ];
 
 
@@ -209,7 +209,10 @@ export default function Home() {
               animation: "fadeIn 0.7s 0.5s ease both",
             }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
-                <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.45)", letterSpacing: "1px", textTransform: "uppercase" }}>Tax Year 2024</span>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                  <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.45)", letterSpacing: "1px", textTransform: "uppercase" }}>Tax Year 2024</span>
+                  <span style={{ fontSize: "9px", fontWeight: 700, color: "rgba(255,255,255,0.62)", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.2)", letterSpacing: "1px", textTransform: "uppercase", padding: "2px 7px", borderRadius: "10px", whiteSpace: "nowrap" }}>Sample</span>
+                </div>
                 <div style={{ display: "inline-flex", alignItems: "center", gap: "5px", background: "rgba(110,231,183,0.1)", border: "1px solid rgba(110,231,183,0.25)", padding: "3px 9px", borderRadius: "20px" }}>
                   <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#6ee7b7", animation: "pulseGlow 2s ease-in-out infinite" }} />
                   <span style={{ fontSize: "10px", fontWeight: 600, color: "#6ee7b7" }}>Filed &amp; Accepted</span>
@@ -246,18 +249,8 @@ export default function Home() {
                   <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.55)" }} dangerouslySetInnerHTML={{ __html: item.text }} />
                 </div>
               ))}
-            </div>
-            {/* Mini savings card */}
-            <div style={{
-              marginTop: "12px", background: C.goldSoft,
-              border: `1px solid ${C.goldBorder}`, borderRadius: "14px",
-              padding: "14px 18px", display: "flex", alignItems: "center", gap: "14px",
-              animation: "fadeIn 0.7s 1.9s ease both",
-            }}>
-              <div style={{ fontSize: "24px", fontWeight: 800, color: C.gold, letterSpacing: "-1px", flexShrink: 0 }}>$10K+</div>
-              <div>
-                <div style={{ fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.85)" }}>Average savings identified</div>
-                <div style={{ fontSize: "10px", color: "rgba(255,255,255,0.4)", marginTop: "2px" }}>For small business clients</div>
+              <div style={{ marginTop: "14px", fontSize: "10px", color: "rgba(255,255,255,0.32)", textAlign: "center", letterSpacing: "0.5px" }}>
+                Sample data for illustration purposes
               </div>
             </div>
           </div>
@@ -357,11 +350,11 @@ export default function Home() {
                   </svg>
                 </div>
                 <div style={{ fontSize: "17px", fontWeight: 800, color: C.white, letterSpacing: "-0.3px", lineHeight: 1.2 }}>
-                  Monthly CFO Report<br />with AI Commentary
+                  CFO Report<br />with AI Commentary
                 </div>
               </div>
               <p style={{ fontSize: "13px", color: C.muted, lineHeight: 1.7, marginBottom: "18px" }}>
-                Every month your books close and a plain-language report lands in your portal: P&amp;L, cash flow, and an AI narrative that explains what your numbers mean.
+                Your books close and a plain-language report lands in your portal: P&amp;L, cash flow, and an AI narrative that explains what your numbers mean. Reporting is monthly or quarterly, depending on your bookkeeping plan and transaction activity.
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
                 {["Monthly P&L, balance sheet, and cash flow", "AI-generated narrative in plain language", "Revenue trends and expense breakdowns", "Delivered automatically, no extra charge"].map(b => (

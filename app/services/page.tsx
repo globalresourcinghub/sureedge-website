@@ -16,11 +16,30 @@ export const metadata: Metadata = {
 
 /* ── Mock panels ─────────────────────────────────────────────────── */
 
+function SampleNote() {
+  return (
+    <div style={{ marginTop: "16px", fontSize: "10px", color: C.muted, textAlign: "center", letterSpacing: "0.5px" }}>
+      Sample data for illustration purposes
+    </div>
+  );
+}
+
+function SampleBadge() {
+  return (
+    <span style={{ fontSize: "9px", fontWeight: 700, color: "rgba(255,255,255,0.62)", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.2)", letterSpacing: "1px", textTransform: "uppercase", padding: "2px 7px", borderRadius: "10px", whiteSpace: "nowrap" }}>
+      Sample
+    </span>
+  );
+}
+
 function IndividualPanel() {
   return (
     <div style={{ background: C.darkMid, borderRadius: "16px", border: `1px solid ${C.border}`, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
       <div style={{ background: C.navy, padding: "12px 18px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <span style={{ fontSize: "11px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>Federal Return · 2024</span>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <span style={{ fontSize: "11px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>Federal Return · 2024</span>
+          <SampleBadge />
+        </div>
         <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(110,231,183,0.1)", border: "1px solid rgba(110,231,183,0.25)", color: C.green, fontSize: "10px", fontWeight: 600, padding: "3px 8px", borderRadius: "12px" }}>
           <span style={{ width: 6, height: 6, borderRadius: "50%", background: C.green, display: "inline-block" }} />
           Filed &amp; Accepted
@@ -47,6 +66,7 @@ function IndividualPanel() {
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           Reviewed &amp; signed by a licensed tax pro
         </div>
+        <SampleNote />
       </div>
     </div>
   );
@@ -56,7 +76,10 @@ function SmallBizPanel() {
   return (
     <div style={{ background: C.darkMid, borderRadius: "16px", border: `1px solid ${C.border}`, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
       <div style={{ background: C.navy, padding: "12px 18px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <span style={{ fontSize: "11px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>S-Corp Return · Form 1120-S</span>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <span style={{ fontSize: "11px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>S-Corp Return · Form 1120-S</span>
+          <SampleBadge />
+        </div>
         <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(147,197,253,0.1)", border: "1px solid rgba(147,197,253,0.25)", color: "#93c5fd", fontSize: "10px", fontWeight: 600, padding: "3px 8px", borderRadius: "12px" }}>
           <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#93c5fd", display: "inline-block" }} />
           Under Review
@@ -78,6 +101,7 @@ function SmallBizPanel() {
             </div>
           ))}
         </div>
+        <SampleNote />
       </div>
     </div>
   );
@@ -87,7 +111,10 @@ function BookkeepingPanel() {
   return (
     <div style={{ background: C.darkMid, borderRadius: "16px", border: `1px solid ${C.border}`, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
       <div style={{ background: C.navy, padding: "12px 18px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <span style={{ fontSize: "11px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>April 2025 · Monthly Report</span>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <span style={{ fontSize: "11px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>April 2025 · Monthly Report</span>
+          <SampleBadge />
+        </div>
         <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(110,231,183,0.1)", border: "1px solid rgba(110,231,183,0.25)", color: C.green, fontSize: "10px", fontWeight: 600, padding: "3px 8px", borderRadius: "12px" }}>
           Report Ready ✓
         </div>
@@ -115,6 +142,7 @@ function BookkeepingPanel() {
           </svg>
           <span style={{ fontSize: "11px", color: C.muted }}>Delivered to your portal · Included free with bookkeeping</span>
         </div>
+        <SampleNote />
       </div>
     </div>
   );
@@ -125,7 +153,10 @@ function IrsPanel() {
   return (
     <div style={{ background: C.darkMid, borderRadius: "16px", border: `1px solid ${C.border}`, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
       <div style={{ background: C.navy, padding: "12px 18px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <span style={{ fontSize: "11px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>IRS Notice CP2000</span>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <span style={{ fontSize: "11px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>IRS Notice CP2000</span>
+          <SampleBadge />
+        </div>
         <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(196,181,253,0.1)", border: "1px solid rgba(196,181,253,0.25)", color: "#c4b5fd", fontSize: "10px", fontWeight: 600, padding: "3px 8px", borderRadius: "12px" }}>
           Resolved · 18 days
         </div>
@@ -154,6 +185,7 @@ function IrsPanel() {
             <div style={{ fontSize: "18px", fontWeight: 700, color: "#c4b5fd" }}>$0</div>
           </div>
         </div>
+        <SampleNote />
       </div>
     </div>
   );
@@ -163,7 +195,10 @@ function PayrollPanel() {
   return (
     <div style={{ background: C.white, borderRadius: "16px", border: `1px solid ${C.borderLight}`, overflow: "hidden", boxShadow: "0 20px 60px rgba(26,46,74,0.14)" }}>
       <div style={{ background: C.navy, padding: "12px 18px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.6)", letterSpacing: "1px", textTransform: "uppercase" }}>Payroll · April 2025</span>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.6)", letterSpacing: "1px", textTransform: "uppercase" }}>Payroll · April 2025</span>
+          <SampleBadge />
+        </div>
         <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: C.goldSoft, border: `1px solid ${C.goldBorder}`, color: C.gold, fontSize: "10px", fontWeight: 600, padding: "3px 8px", borderRadius: "12px" }}>
           Processed ✓
         </div>
@@ -192,6 +227,7 @@ function PayrollPanel() {
           <span style={{ fontSize: "11px", color: C.mutedDark }}>W-2s &amp; 1099s prepared</span>
           <span style={{ fontSize: "11px", fontWeight: 600, color: C.gold }}>Year-end ✓</span>
         </div>
+        <SampleNote />
       </div>
     </div>
   );
@@ -201,7 +237,10 @@ function PlanningPanel() {
   return (
     <div style={{ background: C.white, borderRadius: "16px", border: `1px solid ${C.borderLight}`, overflow: "hidden", boxShadow: "0 20px 60px rgba(26,46,74,0.14)" }}>
       <div style={{ background: C.navy, padding: "12px 18px" }}>
-        <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.6)", letterSpacing: "1px", textTransform: "uppercase" }}>2025 Tax Strategy</span>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.6)", letterSpacing: "1px", textTransform: "uppercase" }}>2025 Tax Strategy</span>
+          <SampleBadge />
+        </div>
       </div>
       <div style={{ padding: "20px" }}>
         <div style={{ fontSize: "10px", color: C.muted, textTransform: "uppercase", letterSpacing: "1px", marginBottom: "12px" }}>Savings Opportunities Identified</div>
@@ -223,6 +262,7 @@ function PlanningPanel() {
           <span style={{ fontSize: "11px", color: C.mutedDark }}>Estimated tax savings</span>
           <span style={{ fontSize: "13px", fontWeight: 800, color: C.gold }}>$10,310</span>
         </div>
+        <SampleNote />
       </div>
     </div>
   );
@@ -266,13 +306,13 @@ const SERVICES = [
   {
     eyebrow: "Monthly bookkeeping",
     title: "Bookkeeping & Monthly Financials",
-    desc: "Monthly reconciliation and categorization via QuickBooks. Clean books you can actually use to run your business, delivered with P&L, balance sheet, and cash flow reports every month.",
+    desc: "Monthly reconciliation and categorization via QuickBooks. Clean books you can actually use to run your business, delivered with P&L, balance sheet, and cash flow reports on a monthly or quarterly cycle, depending on your bookkeeping plan.",
     bullets: [
       "Monthly transaction reconciliation",
       "QuickBooks managed for you",
       "P&L, balance sheet, and cash flow reports",
       "Organized and review-ready at any time",
-      "Free monthly CFO report with AI commentary, delivered to your portal",
+      "Free CFO report with AI commentary, delivered to your portal",
     ],
     cta: "Get a quote",
     href: "/business-tax-intake",
@@ -287,8 +327,8 @@ const SERVICES = [
     bullets: [
       "CP notices, IRS audits, and appeals",
       "Enrolled Agent with unlimited IRS practice rights",
-      "Average resolution in 18 days",
-      "$0 owed in most CP2000 cases we handle",
+      "We manage every IRS deadline and response for you",
+      "We challenge proposed amounts that are not supported",
     ],
     cta: "Get help now",
     href: "/contact",
@@ -417,10 +457,10 @@ export default function Services() {
                 Bookkeeping clients · Free
               </div>
               <h3 style={{ fontSize: "18px", fontWeight: 800, color: C.white, letterSpacing: "-0.4px", marginBottom: "10px", lineHeight: 1.25 }}>
-                Monthly CFO Report
+                CFO Report
               </h3>
               <p style={{ fontSize: "13px", color: C.muted, lineHeight: 1.75, marginBottom: "18px" }}>
-                Every month, your books close and a plain-language report lands in your client portal. P&amp;L summary, cash flow, and an AI-generated narrative that explains what your numbers actually mean.
+                Your books close and a plain-language report lands in your client portal. P&amp;L summary, cash flow, and an AI-generated narrative that explains what your numbers actually mean. Reporting runs monthly or quarterly, depending on your bookkeeping plan and transaction activity.
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
                 {[

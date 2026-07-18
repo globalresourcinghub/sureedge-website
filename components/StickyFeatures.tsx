@@ -2,12 +2,31 @@
 import { useState, useRef, useEffect } from "react";
 import { C } from "@/lib/tokens";
 
+function SampleNote() {
+  return (
+    <div style={{ marginTop: "16px", fontSize: "10px", color: C.muted, textAlign: "center", letterSpacing: "0.5px" }}>
+      Sample data for illustration purposes
+    </div>
+  );
+}
+
+function SampleBadge() {
+  return (
+    <span style={{ fontSize: "9px", fontWeight: 700, color: "rgba(255,255,255,0.62)", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.2)", letterSpacing: "1px", textTransform: "uppercase", padding: "2px 7px", borderRadius: "10px", whiteSpace: "nowrap" }}>
+      Sample
+    </span>
+  );
+}
+
 function TaxMock() {
   return (
     <div style={{ background: C.darkMid, borderRadius: "20px", border: `1px solid ${C.border}`, overflow: "hidden" }}>
       {/* Window chrome */}
       <div style={{ background: C.navy, padding: "14px 20px", borderBottom: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <span style={{ fontSize: "11px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>Federal Return · 2024</span>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <span style={{ fontSize: "11px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>Federal Return · 2024</span>
+          <SampleBadge />
+        </div>
         <div style={{ display: "flex", gap: "6px" }}>
           {["#ff5f57", "#febc2e", "#28c840"].map(c => (
             <div key={c} style={{ width: "9px", height: "9px", borderRadius: "50%", background: c, opacity: 0.7 }} />
@@ -61,6 +80,7 @@ function TaxMock() {
             Filed ✓
           </div>
         </div>
+        <SampleNote />
       </div>
     </div>
   );
@@ -77,7 +97,10 @@ function BooksMock() {
   return (
     <div style={{ background: C.darkMid, borderRadius: "20px", border: `1px solid ${C.border}`, overflow: "hidden" }}>
       <div style={{ background: C.navy, padding: "14px 20px", borderBottom: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <span style={{ fontSize: "11px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>April 2025 · Books</span>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <span style={{ fontSize: "11px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>April 2025 · Books</span>
+          <SampleBadge />
+        </div>
         <div style={{ display: "flex", gap: "6px" }}>
           {["#ff5f57", "#febc2e", "#28c840"].map(c => (
             <div key={c} style={{ width: "9px", height: "9px", borderRadius: "50%", background: c, opacity: 0.7 }} />
@@ -124,10 +147,11 @@ function BooksMock() {
             </svg>
           </div>
           <div>
-            <div style={{ fontSize: "11px", fontWeight: 700, color: C.white, marginBottom: "2px" }}>Monthly CFO report ready</div>
+            <div style={{ fontSize: "11px", fontWeight: 700, color: C.white, marginBottom: "2px" }}>CFO report ready</div>
             <div style={{ fontSize: "10px", color: C.muted }}>AI summary · Delivered to your portal · Free</div>
           </div>
         </div>
+        <SampleNote />
       </div>
     </div>
   );
@@ -138,7 +162,10 @@ function IrsMock() {
   return (
     <div style={{ background: C.darkMid, borderRadius: "20px", border: `1px solid ${C.border}`, overflow: "hidden" }}>
       <div style={{ background: C.navy, padding: "14px 20px", borderBottom: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <span style={{ fontSize: "11px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>IRS Notice CP2000</span>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <span style={{ fontSize: "11px", color: C.muted, letterSpacing: "1px", textTransform: "uppercase" }}>IRS Notice CP2000</span>
+          <SampleBadge />
+        </div>
         <div style={{ display: "flex", gap: "6px" }}>
           {["#ff5f57", "#febc2e", "#28c840"].map(c => (
             <div key={c} style={{ width: "9px", height: "9px", borderRadius: "50%", background: c, opacity: 0.7 }} />
@@ -188,6 +215,7 @@ function IrsMock() {
         <div style={{ marginTop: "14px", fontSize: "11px", color: C.muted, textAlign: "center" }}>
           Enrolled Agent representation · $4,800 saved
         </div>
+        <SampleNote />
       </div>
     </div>
   );
@@ -198,7 +226,7 @@ const FEATURES = [
     id: "tax",
     label: "01",
     title: "Your return, done right. Every deduction found.",
-    desc: "A licensed tax professional reviews every line of your return, not a software algorithm. You get your maximum refund and never have to refile.",
+    desc: "A licensed tax professional reviews every line of your return, not a software algorithm. Every deduction you qualify for, checked by a human.",
     bullets: ["All types: W-2, freelance, rental, investor", "Multi-state returns handled", "Tracked step-by-step to IRS acceptance"],
     mock: <TaxMock />,
   },
@@ -206,8 +234,8 @@ const FEATURES = [
     id: "books",
     label: "02",
     title: "You run the business. We keep the books.",
-    desc: "Monthly reconciliation and categorization via QuickBooks. Books always organized and review-ready, and every month a plain-language CFO report lands in your portal.",
-    bullets: ["Monthly transaction reconciliation", "QuickBooks managed for you", "P&L, balance sheet, cash flow delivered", "Free monthly CFO report with AI commentary"],
+    desc: "Monthly reconciliation and categorization via QuickBooks. Books always organized and review-ready, and a plain-language CFO report lands in your portal monthly or quarterly, depending on your bookkeeping plan.",
+    bullets: ["Monthly transaction reconciliation", "QuickBooks managed for you", "P&L, balance sheet, cash flow delivered", "Free CFO report with AI commentary"],
     mock: <BooksMock />,
   },
   {
@@ -215,7 +243,7 @@ const FEATURES = [
     label: "03",
     title: "You focus on your life. We handle the IRS.",
     desc: "Received a notice? Our Enrolled Agent steps in and deals directly with the IRS on your behalf so you never have to face them alone.",
-    bullets: ["Direct Enrolled Agent representation. Unlimited rights.", "IRS audits, CP notices & appeals", "Average resolution: 18 days"],
+    bullets: ["Direct Enrolled Agent representation. Unlimited rights.", "IRS audits, CP notices & appeals", "Direct response to IRS notices and deadlines"],
     mock: <IrsMock />,
   },
 ];
